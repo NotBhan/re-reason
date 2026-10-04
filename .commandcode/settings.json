@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(echo:*)",
+      "Shell(test:*)",
+      "Shell(for:*)",
+      "Shell(do:*)",
+      "Shell(done:*)",
+      "Shell(./scripts/run-with-ipv4.sh:*)",
+      "Shell(grep:*)",
+      "Shell(pnpm:*)",
+      "Shell(./scripts/run-with-ipv4.sh pnpm exec dotenv -e .env.local -- sh -c 'pnpm exec prisma migrate diff --from-url \"$DATABASE_URL\" --to-schema-datamodel prisma/schema.prisma --script' > /tmp/diff.sql 2>/tmp/diff.err; echo \"exit=$?\"; head -5 /tmp/diff.err; wc -l /tmp/diff.sql)",
+      "Shell(TS=$(date +%Y%m%d%H%M%S); DIR=\"prisma/migrations/${TS}_add_organiser_and_checkin\"; mkdir -p \"$DIR\"; printf '%s\\n' \\ '-- CreateEnum' \\ 'CREATE TYPE \"CheckInStatus\" AS ENUM ('\"'\"'NOT_CHECKED_IN'\"'\"', '\"'\"'CHECKED_IN'\"'\"');' \\ '' \\ '-- CreateEnum' \\ 'CREATE TYPE \"OrganiserRole\" AS ENUM ('\"'\"'ENTRY_SCANNER'\"'\"', '\"'\"'ADMIN'\"'\"');' \\ '' \\ '-- AlterTable' \\ 'ALTER TABLE \"bookings\" ADD COLUMN \"check_in_status\" \"CheckInStatus\" NOT NULL DEFAULT '\"'\"'NOT_CHECKED_IN'\"'\"',' \\ 'ADD COLUMN \"checked_in_at\" TIMESTAMP(3),' \\ 'ADD COLUMN \"checked_in_by\" TEXT,' \\ 'ADD COLUMN \"checked_in_by_id\" TEXT;' \\ '' \\ '-- CreateTable' \\ 'CREATE TABLE \"organisers\" (' \\ ' \"id\" TEXT NOT NULL,' \\ ' \"name\" TEXT NOT NULL,' \\ ' \"login_id\" TEXT NOT NULL,' \\ ' \"credential_hash\" TEXT NOT NULL,' \\ ' \"role\" \"OrganiserRole\" NOT NULL DEFAULT '\"'\"'ENTRY_SCANNER'\"'\"',' \\ ' \"gate_id\" TEXT NOT NULL,' \\ ' \"active\" BOOLEAN NOT NULL DEFAULT true,' \\ ' \"failed_login_attempts\" INTEGER NOT NULL DEFAULT 0,' \\ ' \"locked_until\" TIMESTAMP(3),' \\ ' \"created_at\" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,' \\ ' \"updated_at\" TIMESTAMP(3) NOT NULL,' \\ ' \"last_login_at\" TIMESTAMP(3),' \\ '' \\ ' CONSTRAINT \"organisers_pkey\" PRIMARY KEY (\"id\")' \\ ');' \\ '' \\ '-- CreateIndex' \\ 'CREATE UNIQUE INDEX \"organisers_login_id_key\" ON \"organisers\"(\"login_id\");' \\ > \"$DIR/migration.sql\"; echo \"created $DIR\"; cat \"$DIR/migration.sql\")",
+      "Shell(set -e QRSEC=$(openssl rand -hex 32) ORGSEC=$(openssl rand -hex 32) cat >> .env.local <<EOF # ===== Organiser entry / check-in (added for QR entry feature) ===== BOOKING_OPEN_AT=\"2026-01-01T00:00:00+05:30\" BOOKING_CLOSE_AT=\"2026-10-16T23:00:00+05:30\" ENTRY_QR_SECRET=\"${QRSEC}\" ORGANISER_SESSION_SECRET=\"${ORGSEC}\" ORGANISER_GATE_IDS= EOF unset QRSEC ORGSEC for k in BOOKING_OPEN_AT BOOKING_CLOSE_AT ENTRY_QR_SECRET ORGANISER_SESSION_SECRET ORGANISER_GATE_IDS; do grep -q \"^$k=\" .env.local && echo \"$k: PRESENT\" || echo \"$k: MISSING\"; done echo \"=== length check (values not shown) ===\"; awk -F= '/^(ENTRY_QR_SECRET|ORGANISER_SESSION_SECRET)=/{gsub(/\"/,\"\",$2); print $1 \" length=\" length($2)}' .env.local git check-ignore -v .env.local)",
+      "Shell(find app -type f | sort | head -80; echo \"=== components/booking ===\"; ls components/booking/ 2>/dev/null; echo \"=== components dirs ===\"; ls components/)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}
