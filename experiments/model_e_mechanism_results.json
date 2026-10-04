@@ -1,0 +1,4492 @@
+{
+  "metadata": {
+    "date": "2026-10-04",
+    "scope": "RE:Reason Mechanism Decomposition & Novelty Audit across 7 models",
+    "device": "cuda",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "total_steps": 3000,
+    "batch_size": 64,
+    "total_wall_clock_s": 1356.534554709
+  },
+  "summary": {
+    "model_a_layernorm": {
+      "param_count": 226472,
+      "test_exact_mean": 0.05950000000000001,
+      "test_exact_std": 0.010535653752852737,
+      "test_per_reg_mean": 0.4722083333333334,
+      "test_per_reg_std": 0.005139714648369757,
+      "val_exact_mean": 0.0622,
+      "val_exact_std": 0.004445222154178575,
+      "wall_clock_s_mean": 34.558984119200616,
+      "inference_latency_ms_mean": 0.06256406787231658,
+      "flops_per_step": 452072,
+      "peak_memory_mb_mean": 253.83203125,
+      "attenuation_ratio_mean": 0.4224924373925735,
+      "attenuation_ratio_std": 0.05954745692772446,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.13283333629369737,
+          "exact_std": 0.016621608368253337,
+          "per_reg_mean": 0.5901250123977662,
+          "per_reg_std": 0.013339583632161185
+        },
+        "10": {
+          "exact_mean": 0.05216666758060455,
+          "exact_std": 0.005259911244413294,
+          "per_reg_mean": 0.4646666765213013,
+          "per_reg_std": 0.005080252223707393
+        },
+        "15": {
+          "exact_mean": 0.025833334028720855,
+          "exact_std": 0.004472135507956136,
+          "per_reg_mean": 0.39450001120567324,
+          "per_reg_std": 0.006304754093771461
+        },
+        "20": {
+          "exact_mean": 0.018666667118668556,
+          "exact_std": 0.002666666847653701,
+          "per_reg_mean": 0.3550833463668823,
+          "per_reg_std": 0.0063990557165842085
+        },
+        "25": {
+          "exact_mean": 0.011666666902601718,
+          "exact_std": 0.001900292441600264,
+          "per_reg_mean": 0.33754167556762693,
+          "per_reg_std": 0.004811378619462289
+        },
+        "30": {
+          "exact_mean": 0.008000000100582837,
+          "exact_std": 0.0028185890208762402,
+          "per_reg_mean": 0.3365833401679993,
+          "per_reg_std": 0.010877793511726163
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.040666668117046355,
+          "exact_std": 0.01721917641694992,
+          "per_reg_mean": 0.27083333730697634,
+          "per_reg_std": 0.014115105225182306
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.0,
+          "exact_std": 0.0,
+          "per_reg_mean": 0.09266666769981384,
+          "per_reg_std": 0.0013591242396952246
+        },
+        "running_accumulation": {
+          "exact_mean": 0.03416666686534882,
+          "exact_std": 0.01253882801342381,
+          "per_reg_mean": 0.38233333826065063,
+          "per_reg_std": 0.025381254688652446
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.02083333320915699,
+          "exact_std": 0.00345607349660949,
+          "per_reg_mean": 0.3794583439826965,
+          "per_reg_std": 0.017496819706910992
+        }
+      },
+      "gate_summary": null
+    },
+    "model_b_bounded_additive": {
+      "param_count": 225960,
+      "test_exact_mean": 0.0605,
+      "test_exact_std": 0.006863753427324666,
+      "test_per_reg_mean": 0.4723333333333334,
+      "test_per_reg_std": 0.014816235464291646,
+      "val_exact_mean": 0.0628,
+      "val_exact_std": 0.005153639490690052,
+      "wall_clock_s_mean": 32.2283890187995,
+      "inference_latency_ms_mean": 0.0586566855265334,
+      "flops_per_step": 451048,
+      "peak_memory_mb_mean": 256.81611328125,
+      "attenuation_ratio_mean": 1.1899546847800113,
+      "attenuation_ratio_std": 0.18182151732700508,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.1205000028014183,
+          "exact_std": 0.016377491753722127,
+          "per_reg_mean": 0.5778750061988831,
+          "per_reg_std": 0.01858416589981301
+        },
+        "10": {
+          "exact_mean": 0.05166666805744171,
+          "exact_std": 0.011843891611541592,
+          "per_reg_mean": 0.47091667652130126,
+          "per_reg_std": 0.010159837915869422
+        },
+        "15": {
+          "exact_mean": 0.019500000588595866,
+          "exact_std": 0.005976807060030656,
+          "per_reg_mean": 0.35787500739097594,
+          "per_reg_std": 0.018904186599272968
+        },
+        "20": {
+          "exact_mean": 0.006000000145286321,
+          "exact_std": 0.0014337209937551546,
+          "per_reg_mean": 0.2737500071525574,
+          "per_reg_std": 0.025079043049711692
+        },
+        "25": {
+          "exact_mean": 0.002000000048428774,
+          "exact_std": 0.0012472191902385991,
+          "per_reg_mean": 0.2158750057220459,
+          "per_reg_std": 0.030821339905481252
+        },
+        "30": {
+          "exact_mean": 0.0006666666828095913,
+          "exact_std": 0.00033333334140479566,
+          "per_reg_mean": 0.1747916668653488,
+          "per_reg_std": 0.02638885274791898
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.027166667580604553,
+          "exact_std": 0.01687042219191437,
+          "per_reg_mean": 0.2538750022649765,
+          "per_reg_std": 0.021975604347310888
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.0,
+          "exact_std": 0.0,
+          "per_reg_mean": 0.09504166841506959,
+          "per_reg_std": 0.002283699026026676
+        },
+        "running_accumulation": {
+          "exact_mean": 0.03550000116229057,
+          "exact_std": 0.017139947732480912,
+          "per_reg_mean": 0.38445834517478944,
+          "per_reg_std": 0.040619896522609236
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.021166666783392428,
+          "exact_std": 0.005883120594453721,
+          "per_reg_mean": 0.373208349943161,
+          "per_reg_std": 0.017526568983665794
+        }
+      },
+      "gate_summary": null
+    },
+    "model_c_convex_unbounded": {
+      "param_count": 226152,
+      "test_exact_mean": 0.24566666666666664,
+      "test_exact_std": 0.03148368184031567,
+      "test_per_reg_mean": 0.695875,
+      "test_per_reg_std": 0.01988788017305459,
+      "val_exact_mean": 0.24299999999999997,
+      "val_exact_std": 0.01730895721873505,
+      "wall_clock_s_mean": 37.787946447200376,
+      "inference_latency_ms_mean": 0.06481384029550434,
+      "flops_per_step": 451240,
+      "peak_memory_mb_mean": 271.38974609375,
+      "attenuation_ratio_mean": 0.8077791005990435,
+      "attenuation_ratio_std": 0.03881310551693899,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.5598333477973938,
+          "exact_std": 0.0321861025049111,
+          "per_reg_mean": 0.8666666865348815,
+          "per_reg_std": 0.011459469548162512
+        },
+        "10": {
+          "exact_mean": 0.24383334517478944,
+          "exact_std": 0.017885440950075788,
+          "per_reg_mean": 0.6944583415985107,
+          "per_reg_std": 0.013254054672213729
+        },
+        "15": {
+          "exact_mean": 0.1178333356976509,
+          "exact_std": 0.01243427258033093,
+          "per_reg_mean": 0.5769166827201844,
+          "per_reg_std": 0.014254863570854787
+        },
+        "20": {
+          "exact_mean": 0.0721666693687439,
+          "exact_std": 0.011979149171844167,
+          "per_reg_mean": 0.5145833492279053,
+          "per_reg_std": 0.014170955651507638
+        },
+        "25": {
+          "exact_mean": 0.06683333441615105,
+          "exact_std": 0.006859706414939467,
+          "per_reg_mean": 0.49275001883506775,
+          "per_reg_std": 0.014781633156153709
+        },
+        "30": {
+          "exact_mean": 0.04933333471417427,
+          "exact_std": 0.003704352285013337,
+          "per_reg_mean": 0.48008334040641787,
+          "per_reg_std": 0.011353381557328405
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.004333333461545408,
+          "exact_std": 0.0021343748138564467,
+          "per_reg_mean": 0.2215416669845581,
+          "per_reg_std": 0.011649988031870154
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.00033333334140479566,
+          "exact_std": 0.0006666666828095913,
+          "per_reg_mean": 0.09900000095367431,
+          "per_reg_std": 0.002878922632505275
+        },
+        "running_accumulation": {
+          "exact_mean": 0.018000000156462193,
+          "exact_std": 0.0031446603498422377,
+          "per_reg_mean": 0.315500009059906,
+          "per_reg_std": 0.012124649847905272
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.04816666841506958,
+          "exact_std": 0.0024381233101710984,
+          "per_reg_mean": 0.4446666777133942,
+          "per_reg_std": 0.006043240909910108
+        }
+      },
+      "gate_summary": {
+        "mean_gate": 0.25476851165294645,
+        "std_gate": 0.3995341777801514,
+        "gate_entropy": 0.14367420077323914,
+        "frac_near_0": 0.6774420380592346,
+        "frac_near_1": 0.19122356474399566,
+        "op_means": {
+          "SET": 0.285457444190979,
+          "SWAP": 0.26384828984737396,
+          "ADD": 0.19061914682388306
+        },
+        "gate_state_displacement_corr": 0.73623825179206
+      }
+    },
+    "model_d_bounded_convex": {
+      "param_count": 226152,
+      "test_exact_mean": 0.4326666666666667,
+      "test_exact_std": 0.042332677160268936,
+      "test_per_reg_mean": 0.8045416666666666,
+      "test_per_reg_std": 0.01908651720165019,
+      "val_exact_mean": 0.4234,
+      "val_exact_std": 0.04647407879667977,
+      "wall_clock_s_mean": 38.242619900999856,
+      "inference_latency_ms_mean": 0.06910672165495749,
+      "flops_per_step": 451240,
+      "peak_memory_mb_mean": 299.06708984375,
+      "attenuation_ratio_mean": 0.6710861824317318,
+      "attenuation_ratio_std": 0.03734160967119312,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.7948333501815796,
+          "exact_std": 0.031461619976393095,
+          "per_reg_mean": 0.9432916760444641,
+          "per_reg_std": 0.00887842901608641
+        },
+        "10": {
+          "exact_mean": 0.43283334374427795,
+          "exact_std": 0.0337828045288474,
+          "per_reg_mean": 0.8000833630561829,
+          "per_reg_std": 0.016702350744820262
+        },
+        "15": {
+          "exact_mean": 0.24350000619888307,
+          "exact_std": 0.026179931691599625,
+          "per_reg_mean": 0.6825000286102295,
+          "per_reg_std": 0.021533648164957224
+        },
+        "20": {
+          "exact_mean": 0.14950000643730163,
+          "exact_std": 0.02096028076083351,
+          "per_reg_mean": 0.6050833582878112,
+          "per_reg_std": 0.01847558740933448
+        },
+        "25": {
+          "exact_mean": 0.11816667169332504,
+          "exact_std": 0.016477258506871557,
+          "per_reg_mean": 0.5672083377838135,
+          "per_reg_std": 0.021699746339384134
+        },
+        "30": {
+          "exact_mean": 0.08900000303983688,
+          "exact_std": 0.00818874495184055,
+          "per_reg_mean": 0.5545000195503235,
+          "per_reg_std": 0.016265814785482176
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.013500000350177288,
+          "exact_std": 0.00270801267223379,
+          "per_reg_mean": 0.25879167318344115,
+          "per_reg_std": 0.004467088278496402
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.00016666667070239783,
+          "exact_std": 0.00033333334140479566,
+          "per_reg_mean": 0.09675000309944153,
+          "per_reg_std": 0.0024029785613210474
+        },
+        "running_accumulation": {
+          "exact_mean": 0.029500000923871995,
+          "exact_std": 0.002211083443673501,
+          "per_reg_mean": 0.35879167914390564,
+          "per_reg_std": 0.01617740996359412
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.03500000014901161,
+          "exact_std": 0.002738612442920705,
+          "per_reg_mean": 0.4256250083446503,
+          "per_reg_std": 0.005913139692326601
+        }
+      },
+      "gate_summary": {
+        "mean_gate": 0.31206433176994325,
+        "std_gate": 0.42704633474349973,
+        "gate_entropy": 0.15423940420150756,
+        "frac_near_0": 0.6156351447105408,
+        "frac_near_1": 0.24414980113506318,
+        "op_means": {
+          "SET": 0.37488285899162294,
+          "SWAP": 0.3224955379962921,
+          "ADD": 0.18902684450149537
+        },
+        "gate_state_displacement_corr": 0.6821689460012649
+      }
+    },
+    "model_e_canonical_ugrnn": {
+      "param_count": 226360,
+      "test_exact_mean": 0.09516666666666666,
+      "test_exact_std": 0.009134793070696479,
+      "test_per_reg_mean": 0.547375,
+      "test_per_reg_std": 0.007158425494168115,
+      "val_exact_mean": 0.1006,
+      "val_exact_std": 0.0033823069050575505,
+      "wall_clock_s_mean": 35.966824816999726,
+      "inference_latency_ms_mean": 0.06602280005447363,
+      "flops_per_step": 451512,
+      "peak_memory_mb_mean": 299.06708984375,
+      "attenuation_ratio_mean": 0.4414654955104438,
+      "attenuation_ratio_std": 0.07458672281946788,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.2171666741371155,
+          "exact_std": 0.012567598008052796,
+          "per_reg_mean": 0.6785416841506958,
+          "per_reg_std": 0.013409951191403155
+        },
+        "10": {
+          "exact_mean": 0.09100000113248825,
+          "exact_std": 0.0054619897075212295,
+          "per_reg_mean": 0.543708348274231,
+          "per_reg_std": 0.00560165334145463
+        },
+        "15": {
+          "exact_mean": 0.0523333340883255,
+          "exact_std": 0.0030000007814833148,
+          "per_reg_mean": 0.45966668128967286,
+          "per_reg_std": 0.00855800894790133
+        },
+        "20": {
+          "exact_mean": 0.03366666734218597,
+          "exact_std": 0.003822447332214042,
+          "per_reg_mean": 0.41220834851264954,
+          "per_reg_std": 0.008895221989972378
+        },
+        "25": {
+          "exact_mean": 0.029500000178813934,
+          "exact_std": 0.0016329934295238897,
+          "per_reg_mean": 0.39712501168251035,
+          "per_reg_std": 0.009287453142974782
+        },
+        "30": {
+          "exact_mean": 0.01950000077486038,
+          "exact_std": 0.0023921168928124448,
+          "per_reg_mean": 0.39320834875106814,
+          "per_reg_std": 0.010365372190378053
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.021500000543892384,
+          "exact_std": 0.004755114358577153,
+          "per_reg_mean": 0.26933333873748777,
+          "per_reg_std": 0.007778841192253221
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.00016666667070239783,
+          "exact_std": 0.00033333334140479566,
+          "per_reg_mean": 0.09570833593606949,
+          "per_reg_std": 0.0020095269131768113
+        },
+        "running_accumulation": {
+          "exact_mean": 0.030166666954755783,
+          "exact_std": 0.00933035630103873,
+          "per_reg_mean": 0.37795833945274354,
+          "per_reg_std": 0.026712003134155598
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.03833333365619183,
+          "exact_std": 0.006123724296124247,
+          "per_reg_mean": 0.4313750028610229,
+          "per_reg_std": 0.022748855083427347
+        }
+      },
+      "gate_summary": {
+        "mean_gate": 0.32588475942611694,
+        "std_gate": 0.40769490599632263,
+        "gate_entropy": 0.2531608253717422,
+        "frac_near_0": 0.5510705947875977,
+        "frac_near_1": 0.21596776843070983,
+        "op_means": {
+          "SET": 0.391749107837677,
+          "SWAP": 0.3031440317630768,
+          "ADD": 0.23095762133598327
+        },
+        "gate_state_displacement_corr": 0.6902152657508851
+      }
+    },
+    "model_f_canonical_mgu": {
+      "param_count": 226360,
+      "test_exact_mean": 0.37066666666666664,
+      "test_exact_std": 0.016384274303259345,
+      "test_per_reg_mean": 0.7777083333333333,
+      "test_per_reg_std": 0.010301024760241629,
+      "val_exact_mean": 0.3702,
+      "val_exact_std": 0.02326714421668461,
+      "wall_clock_s_mean": 47.617268791399695,
+      "inference_latency_ms_mean": 0.08098210060299145,
+      "flops_per_step": 451512,
+      "peak_memory_mb_mean": 299.06708984375,
+      "attenuation_ratio_mean": 0.5394124330878121,
+      "attenuation_ratio_std": 0.05238409574268827,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.6673333406448364,
+          "exact_std": 0.027025703030585616,
+          "per_reg_mean": 0.9053333640098572,
+          "per_reg_std": 0.008485693305979971
+        },
+        "10": {
+          "exact_mean": 0.38700000643730165,
+          "exact_std": 0.007756724081173784,
+          "per_reg_mean": 0.7798750162124634,
+          "per_reg_std": 0.0037744487481080535
+        },
+        "15": {
+          "exact_mean": 0.20933333933353424,
+          "exact_std": 0.01684405676500126,
+          "per_reg_mean": 0.6655416846275329,
+          "per_reg_std": 0.004473301652443459
+        },
+        "20": {
+          "exact_mean": 0.13366667032241822,
+          "exact_std": 0.006315764353219611,
+          "per_reg_mean": 0.5954166769981384,
+          "per_reg_std": 0.0033978211975922027
+        },
+        "25": {
+          "exact_mean": 0.10866667032241821,
+          "exact_std": 0.002718251311702745,
+          "per_reg_mean": 0.5683333396911621,
+          "per_reg_std": 0.004320092715125893
+        },
+        "30": {
+          "exact_mean": 0.09533333480358124,
+          "exact_std": 0.006510674355048716,
+          "per_reg_mean": 0.5576666712760925,
+          "per_reg_std": 0.003504449950336166
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.014166666753590107,
+          "exact_std": 0.003118047636461496,
+          "per_reg_mean": 0.257833331823349,
+          "per_reg_std": 0.00551292651622642
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.00016666667070239783,
+          "exact_std": 0.00033333334140479566,
+          "per_reg_mean": 0.09508333504199981,
+          "per_reg_std": 0.0016904565941382216
+        },
+        "running_accumulation": {
+          "exact_mean": 0.018166667222976683,
+          "exact_std": 0.0028087164103829387,
+          "per_reg_mean": 0.32491667866706847,
+          "per_reg_std": 0.004488789244061199
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.040833333134651185,
+          "exact_std": 0.00519080390749445,
+          "per_reg_mean": 0.4253750145435333,
+          "per_reg_std": 0.015088513710411058
+        }
+      },
+      "gate_summary": {
+        "mean_gate": 0.32217668890953066,
+        "std_gate": 0.41538068652153015,
+        "gate_entropy": 0.21713188886642457,
+        "frac_near_0": 0.5728604555130005,
+        "frac_near_1": 0.225877046585083,
+        "op_means": {
+          "SET": 0.36995154023170473,
+          "SWAP": 0.3331361413002014,
+          "ADD": 0.22558997869491576
+        },
+        "gate_state_displacement_corr": 0.6976078046692742
+      }
+    },
+    "model_g_canonical_gru": {
+      "param_count": 229200,
+      "test_exact_mean": 0.10783333333333334,
+      "test_exact_std": 0.00860555376228372,
+      "test_per_reg_mean": 0.5616249999999999,
+      "test_per_reg_std": 0.010456092057318157,
+      "val_exact_mean": 0.10979999999999998,
+      "val_exact_std": 0.009368030742904297,
+      "wall_clock_s_mean": 28.47140905299966,
+      "inference_latency_ms_mean": 0.04969262637020795,
+      "flops_per_step": 49800,
+      "peak_memory_mb_mean": 299.06708984375,
+      "attenuation_ratio_mean": 0.4656205794185853,
+      "attenuation_ratio_std": 0.08357366376501282,
+      "horizon_summary": {
+        "5": {
+          "exact_mean": 0.24699999988079072,
+          "exact_std": 0.02713955488104164,
+          "per_reg_mean": 0.7034166812896728,
+          "per_reg_std": 0.02096898026868634
+        },
+        "10": {
+          "exact_mean": 0.09766666889190674,
+          "exact_std": 0.003741659194830525,
+          "per_reg_mean": 0.5577916860580444,
+          "per_reg_std": 0.007240402383942522
+        },
+        "15": {
+          "exact_mean": 0.05533333495259285,
+          "exact_std": 0.0031885216982863473,
+          "per_reg_mean": 0.4710833430290222,
+          "per_reg_std": 0.004694487036697665
+        },
+        "20": {
+          "exact_mean": 0.037833334505558015,
+          "exact_std": 0.0024494896880328867,
+          "per_reg_mean": 0.42404167652130126,
+          "per_reg_std": 0.005975356715735529
+        },
+        "25": {
+          "exact_mean": 0.03166666775941849,
+          "exact_std": 0.0036132473081994447,
+          "per_reg_mean": 0.40812501311302185,
+          "per_reg_std": 0.003959433423655572
+        },
+        "30": {
+          "exact_mean": 0.02083333358168602,
+          "exact_std": 0.0026352315798137166,
+          "per_reg_mean": 0.40254167914390565,
+          "per_reg_std": 0.0032686404482451734
+        }
+      },
+      "algo_transfer_summary": {
+        "copy_broadcast": {
+          "exact_mean": 0.018166667222976683,
+          "exact_std": 0.005359311983135345,
+          "per_reg_mean": 0.25600000023841857,
+          "per_reg_std": 0.00739908800641368
+        },
+        "permutation_cycle": {
+          "exact_mean": 0.0,
+          "exact_std": 0.0,
+          "per_reg_mean": 0.09612500369548797,
+          "per_reg_std": 0.0029362437064923337
+        },
+        "running_accumulation": {
+          "exact_mean": 0.03333333432674408,
+          "exact_std": 0.005868939281133619,
+          "per_reg_mean": 0.3715000092983246,
+          "per_reg_std": 0.01629076701718707
+        },
+        "conditional_overwrite": {
+          "exact_mean": 0.032500000298023225,
+          "exact_std": 0.008010409152809171,
+          "per_reg_mean": 0.41816667914390565,
+          "per_reg_std": 0.01794106768455777
+        }
+      },
+      "gate_summary": null
+    }
+  },
+  "paired_statistics": {
+    "model_d_minus_model_a_layernorm": {
+      "paired_delta_mean": 0.37316666666666665,
+      "paired_delta_std": 0.033654288153385614,
+      "seed_deltas": [
+        0.32333333333333336,
+        0.36083333333333334,
+        0.36083333333333334,
+        0.41750000000000004,
+        0.4033333333333333
+      ],
+      "cohens_d": 11.088235322818027
+    },
+    "model_d_minus_model_b_bounded_additive": {
+      "paired_delta_mean": 0.37216666666666665,
+      "paired_delta_std": 0.037589153281823794,
+      "seed_deltas": [
+        0.3141666666666667,
+        0.3616666666666667,
+        0.35916666666666663,
+        0.42000000000000004,
+        0.4058333333333333
+      ],
+      "cohens_d": 9.90090582451687
+    },
+    "model_d_minus_model_c_convex_unbounded": {
+      "paired_delta_mean": 0.187,
+      "paired_delta_std": 0.03688796852934873,
+      "seed_deltas": [
+        0.16166666666666668,
+        0.18833333333333332,
+        0.13916666666666666,
+        0.24833333333333335,
+        0.19749999999999995
+      ],
+      "cohens_d": 5.069403587546965
+    },
+    "model_d_minus_model_e_canonical_ugrnn": {
+      "paired_delta_mean": 0.3375,
+      "paired_delta_std": 0.03500396802903604,
+      "seed_deltas": [
+        0.28500000000000003,
+        0.3275,
+        0.3225,
+        0.38083333333333336,
+        0.37166666666666665
+      ],
+      "cohens_d": 9.641764034295807
+    },
+    "model_d_minus_model_f_canonical_mgu": {
+      "paired_delta_mean": 0.06200000000000001,
+      "paired_delta_std": 0.03588020190702512,
+      "seed_deltas": [
+        0.005833333333333357,
+        0.06333333333333335,
+        0.04999999999999999,
+        0.1166666666666667,
+        0.07416666666666666
+      ],
+      "cohens_d": 1.727972438969492
+    },
+    "model_d_minus_model_g_canonical_gru": {
+      "paired_delta_mean": 0.3248333333333333,
+      "paired_delta_std": 0.03945250308915773,
+      "seed_deltas": [
+        0.26166666666666666,
+        0.31333333333333335,
+        0.31916666666666665,
+        0.37916666666666665,
+        0.35083333333333333
+      ],
+      "cohens_d": 8.233529127397837
+    }
+  },
+  "runs": {
+    "model_a_layernorm": [
+      {
+        "model_key": "model_a_layernorm",
+        "seed": 42,
+        "param_count": 226472,
+        "total_steps": 3000,
+        "wall_clock_s": 36.225268612000946,
+        "train_throughput_examples_per_s": 5300.167738063175,
+        "inference_latency_ms": 0.06474025136969287,
+        "inference_throughput_examples_per_s": 988565.8249075102,
+        "flops_per_step": 452072,
+        "peak_mem_mb": 72.998046875,
+        "best_val_exact": 0.065,
+        "best_val_step": 900,
+        "test_at_best_val_checkpoint_exact": 0.04,
+        "test_at_best_val_checkpoint_loss": 1.6345206006368,
+        "test_at_best_val_checkpoint_per_reg": 0.4675,
+        "credit_diag": {
+          "state_norms": [
+            15.960833549499512,
+            15.963573455810547,
+            15.991683959960938,
+            16.01712417602539,
+            16.0374755859375,
+            16.058258056640625,
+            16.073936462402344,
+            16.081758499145508,
+            16.086959838867188,
+            16.096019744873047
+          ],
+          "state_stds": [
+            0.9995044469833374,
+            0.9996762275695801,
+            1.0014365911483765,
+            1.003029704093933,
+            1.0043044090270996,
+            1.0056055784225464,
+            1.0065875053405762,
+            1.0070772171020508,
+            1.0074028968811035,
+            1.0079700946807861
+          ],
+          "grad_norms": [
+            0.0006617425242438912,
+            0.0008179079741239548,
+            0.0008566622855141759,
+            0.0009055455448105931,
+            0.0009611154673621058,
+            0.0010154582560062408,
+            0.001082741655409336,
+            0.0011525859590619802,
+            0.001230857102200389,
+            0.001350207021459937
+          ],
+          "attenuation_ratio": 0.49010449044204313
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.14083333313465118,
+            "per_register": 0.6018750071525574
+          },
+          "10": {
+            "exact_match": 0.046666666865348816,
+            "per_register": 0.4570833444595337
+          },
+          "15": {
+            "exact_match": 0.02666666731238365,
+            "per_register": 0.39625000953674316
+          },
+          "20": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.3583333492279053
+          },
+          "25": {
+            "exact_match": 0.013333333656191826,
+            "per_register": 0.34354168176651
+          },
+          "30": {
+            "exact_match": 0.009999999776482582,
+            "per_register": 0.3502083420753479
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.2631250023841858
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.0910416692495346
+          },
+          "running_accumulation": {
+            "exact_match": 0.01833333447575569,
+            "per_register": 0.34979167580604553
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.019999999552965164,
+            "per_register": 0.367083340883255
+          }
+        }
+      },
+      {
+        "model_key": "model_a_layernorm",
+        "seed": 43,
+        "param_count": 226472,
+        "total_steps": 3000,
+        "wall_clock_s": 32.09857107300013,
+        "train_throughput_examples_per_s": 5981.5746801732785,
+        "inference_latency_ms": 0.0564146030697294,
+        "inference_throughput_examples_per_s": 1134458.0395415514,
+        "flops_per_step": 452072,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.057,
+        "best_val_step": 800,
+        "test_at_best_val_checkpoint_exact": 0.06,
+        "test_at_best_val_checkpoint_loss": 1.6454829390843708,
+        "test_at_best_val_checkpoint_per_reg": 0.46458333333333335,
+        "credit_diag": {
+          "state_norms": [
+            15.942419052124023,
+            15.934612274169922,
+            15.967731475830078,
+            15.999959945678711,
+            16.022348403930664,
+            16.034778594970703,
+            16.049562454223633,
+            16.059646606445312,
+            16.06928062438965,
+            16.078205108642578
+          ],
+          "state_stds": [
+            0.9983512163162231,
+            0.9978622198104858,
+            0.999936580657959,
+            1.0019549131393433,
+            1.0033568143844604,
+            1.0041353702545166,
+            1.005061149597168,
+            1.005692720413208,
+            1.0062960386276245,
+            1.006854772567749
+          ],
+          "grad_norms": [
+            0.000610258721280843,
+            0.0007367657381109893,
+            0.0007894965820014477,
+            0.0008347451221197844,
+            0.0008879530942067504,
+            0.000947378808632493,
+            0.0010141911916434765,
+            0.0010858962778002024,
+            0.0011726550292223692,
+            0.0013180194655433297
+          ],
+          "attenuation_ratio": 0.46301191843875755
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.12250000238418579,
+            "per_register": 0.5804166793823242
+          },
+          "10": {
+            "exact_match": 0.04500000178813934,
+            "per_register": 0.460625022649765
+          },
+          "15": {
+            "exact_match": 0.024166667833924294,
+            "per_register": 0.3929166793823242
+          },
+          "20": {
+            "exact_match": 0.015000000596046448,
+            "per_register": 0.35583335161209106
+          },
+          "25": {
+            "exact_match": 0.011666666716337204,
+            "per_register": 0.3293749988079071
+          },
+          "30": {
+            "exact_match": 0.007500000298023224,
+            "per_register": 0.32375001907348633
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.03916666656732559,
+            "per_register": 0.2785416841506958
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09270833432674408
+          },
+          "running_accumulation": {
+            "exact_match": 0.03999999910593033,
+            "per_register": 0.382708340883255
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.019166667014360428,
+            "per_register": 0.3843750059604645
+          }
+        }
+      },
+      {
+        "model_key": "model_a_layernorm",
+        "seed": 44,
+        "param_count": 226472,
+        "total_steps": 3000,
+        "wall_clock_s": 34.83293815700017,
+        "train_throughput_examples_per_s": 5512.02425516364,
+        "inference_latency_ms": 0.062461742322539704,
+        "inference_throughput_examples_per_s": 1024627.1977095524,
+        "flops_per_step": 452072,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.064,
+        "best_val_step": 800,
+        "test_at_best_val_checkpoint_exact": 0.06416666666666666,
+        "test_at_best_val_checkpoint_loss": 1.598557899792989,
+        "test_at_best_val_checkpoint_per_reg": 0.47625,
+        "credit_diag": {
+          "state_norms": [
+            15.937585830688477,
+            15.932382583618164,
+            15.958141326904297,
+            15.98176097869873,
+            16.00110626220703,
+            16.01519012451172,
+            16.024259567260742,
+            16.034725189208984,
+            16.04241371154785,
+            16.048789978027344
+          ],
+          "state_stds": [
+            0.998048722743988,
+            0.9977228045463562,
+            0.9993362426757812,
+            1.000815510749817,
+            1.0020270347595215,
+            1.0029089450836182,
+            1.003476619720459,
+            1.0041322708129883,
+            1.0046136379241943,
+            1.0050129890441895
+          ],
+          "grad_norms": [
+            0.0005468844319693744,
+            0.0007010783301666379,
+            0.0007529770955443382,
+            0.0008004530100151896,
+            0.0008493155473843217,
+            0.0009068276849575341,
+            0.000974689144641161,
+            0.001048546051606536,
+            0.0011439267545938492,
+            0.001278492622077465
+          ],
+          "attenuation_ratio": 0.4277572060452909
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.1158333346247673,
+            "per_register": 0.5825000405311584
+          },
+          "10": {
+            "exact_match": 0.054999999701976776,
+            "per_register": 0.46916666626930237
+          },
+          "15": {
+            "exact_match": 0.03166666626930237,
+            "per_register": 0.4037500023841858
+          },
+          "20": {
+            "exact_match": 0.02083333395421505,
+            "per_register": 0.36375001072883606
+          },
+          "25": {
+            "exact_match": 0.009999999776482582,
+            "per_register": 0.34062501788139343
+          },
+          "30": {
+            "exact_match": 0.011666666716337204,
+            "per_register": 0.3485416769981384
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.24958333373069763
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09125000238418579
+          },
+          "running_accumulation": {
+            "exact_match": 0.02666666731238365,
+            "per_register": 0.3620833456516266
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.027499999850988388,
+            "per_register": 0.4079166650772095
+          }
+        }
+      },
+      {
+        "model_key": "model_a_layernorm",
+        "seed": 45,
+        "param_count": 226472,
+        "total_steps": 3000,
+        "wall_clock_s": 34.20669608800017,
+        "train_throughput_examples_per_s": 5612.936119467974,
+        "inference_latency_ms": 0.06127605592167272,
+        "inference_throughput_examples_per_s": 1044453.6456753876,
+        "flops_per_step": 452072,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.057,
+        "best_val_step": 800,
+        "test_at_best_val_checkpoint_exact": 0.06166666666666667,
+        "test_at_best_val_checkpoint_loss": 1.656115918159485,
+        "test_at_best_val_checkpoint_per_reg": 0.475625,
+        "credit_diag": {
+          "state_norms": [
+            15.911581993103027,
+            15.91368579864502,
+            15.949478149414062,
+            15.97457218170166,
+            15.993697166442871,
+            16.00640106201172,
+            16.01699447631836,
+            16.02069854736328,
+            16.02598762512207,
+            16.02951431274414
+          ],
+          "state_stds": [
+            0.9964206218719482,
+            0.9965521097183228,
+            0.998793363571167,
+            1.0003647804260254,
+            1.0015623569488525,
+            1.002357840538025,
+            1.003021240234375,
+            1.00325345993042,
+            1.0035845041275024,
+            1.0038055181503296
+          ],
+          "grad_norms": [
+            0.0005273331771604717,
+            0.0006645636167377234,
+            0.0007192778866738081,
+            0.0007812317926436663,
+            0.0008386545814573765,
+            0.0008994172094389796,
+            0.0009629942360334098,
+            0.0010364244226366282,
+            0.0011323962826281786,
+            0.0012673554010689259
+          ],
+          "attenuation_ratio": 0.4160894226794654
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.16166667640209198,
+            "per_register": 0.6100000143051147
+          },
+          "10": {
+            "exact_match": 0.057500001043081284,
+            "per_register": 0.4660416841506958
+          },
+          "15": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.3954166769981384
+          },
+          "20": {
+            "exact_match": 0.02250000089406967,
+            "per_register": 0.3531250059604645
+          },
+          "25": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.3383333384990692
+          },
+          "30": {
+            "exact_match": 0.007500000298023224,
+            "per_register": 0.3331249952316284
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.03333333507180214,
+            "per_register": 0.27145832777023315
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09395833313465118
+          },
+          "running_accumulation": {
+            "exact_match": 0.030833333730697632,
+            "per_register": 0.3947916626930237
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.019999999552965164,
+            "per_register": 0.3816666901111603
+          }
+        }
+      },
+      {
+        "model_key": "model_a_layernorm",
+        "seed": 46,
+        "param_count": 226472,
+        "total_steps": 3000,
+        "wall_clock_s": 35.43144666600165,
+        "train_throughput_examples_per_s": 5418.9150618067815,
+        "inference_latency_ms": 0.06792768667794821,
+        "inference_throughput_examples_per_s": 942178.4125143293,
+        "flops_per_step": 452072,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.068,
+        "best_val_step": 600,
+        "test_at_best_val_checkpoint_exact": 0.07166666666666667,
+        "test_at_best_val_checkpoint_loss": 1.5524014393488565,
+        "test_at_best_val_checkpoint_per_reg": 0.47708333333333336,
+        "credit_diag": {
+          "state_norms": [
+            15.907777786254883,
+            15.93022346496582,
+            15.954493522644043,
+            15.971576690673828,
+            15.985401153564453,
+            15.996694564819336,
+            16.003007888793945,
+            16.00888442993164,
+            16.016822814941406,
+            16.01808738708496
+          ],
+          "state_stds": [
+            0.9961816668510437,
+            0.9975872039794922,
+            0.9991069436073303,
+            1.0001764297485352,
+            1.0010420083999634,
+            1.0017495155334473,
+            1.0021448135375977,
+            1.002512812614441,
+            1.0030100345611572,
+            1.003089427947998
+          ],
+          "grad_norms": [
+            0.0003534540010150522,
+            0.0004422465863171965,
+            0.0004816063737962395,
+            0.0005331819411367178,
+            0.0005912191700190306,
+            0.0006575462175533175,
+            0.0007349750958383083,
+            0.0008253080304712057,
+            0.0009459932334721088,
+            0.0011203009635210037
+          ],
+          "attenuation_ratio": 0.31549914935731066
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.12333333492279053,
+            "per_register": 0.5758333206176758
+          },
+          "10": {
+            "exact_match": 0.05666666850447655,
+            "per_register": 0.4704166650772095
+          },
+          "15": {
+            "exact_match": 0.01833333447575569,
+            "per_register": 0.3841666877269745
+          },
+          "20": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.34437501430511475
+          },
+          "25": {
+            "exact_match": 0.009166667237877846,
+            "per_register": 0.335833340883255
+          },
+          "30": {
+            "exact_match": 0.0033333334140479565,
+            "per_register": 0.32729166746139526
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.0741666704416275,
+            "per_register": 0.2914583384990692
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09437499940395355
+          },
+          "running_accumulation": {
+            "exact_match": 0.054999999701976776,
+            "per_register": 0.42229166626930237
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.35625001788139343
+          }
+        }
+      }
+    ],
+    "model_b_bounded_additive": [
+      {
+        "model_key": "model_b_bounded_additive",
+        "seed": 42,
+        "param_count": 225960,
+        "total_steps": 3000,
+        "wall_clock_s": 32.683025635999,
+        "train_throughput_examples_per_s": 5874.609105606181,
+        "inference_latency_ms": 0.05828783086944336,
+        "inference_throughput_examples_per_s": 1097999.3430078244,
+        "flops_per_step": 451048,
+        "peak_mem_mb": 87.91845703125,
+        "best_val_exact": 0.058,
+        "best_val_step": 700,
+        "test_at_best_val_checkpoint_exact": 0.049166666666666664,
+        "test_at_best_val_checkpoint_loss": 1.619825070699056,
+        "test_at_best_val_checkpoint_per_reg": 0.4735416666666667,
+        "credit_diag": {
+          "state_norms": [
+            7.575850486755371,
+            10.272893905639648,
+            10.970108032226562,
+            11.757996559143066,
+            12.637803077697754,
+            13.405252456665039,
+            14.293699264526367,
+            15.173263549804688,
+            16.00238800048828,
+            16.894927978515625
+          ],
+          "state_stds": [
+            0.47382426261901855,
+            0.6425274014472961,
+            0.6860649585723877,
+            0.7352548837661743,
+            0.7902849316596985,
+            0.838141918182373,
+            0.8935847282409668,
+            0.9485751390457153,
+            1.0003602504730225,
+            1.056225299835205
+          ],
+          "grad_norms": [
+            0.0013239067047834396,
+            0.0013101523509249091,
+            0.0012815094087272882,
+            0.0012564592761918902,
+            0.001234889728948474,
+            0.0012147772358730435,
+            0.0012000640854239464,
+            0.001200205646455288,
+            0.0012199388584122062,
+            0.001265998464077711
+          ],
+          "attenuation_ratio": 1.0457411618962074
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.0949999988079071,
+            "per_register": 0.5481250286102295
+          },
+          "10": {
+            "exact_match": 0.050833333283662796,
+            "per_register": 0.4675000011920929
+          },
+          "15": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.35333335399627686
+          },
+          "20": {
+            "exact_match": 0.006666666828095913,
+            "per_register": 0.2666666805744171
+          },
+          "25": {
+            "exact_match": 0.0024999999441206455,
+            "per_register": 0.21395833790302277
+          },
+          "30": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.1745833307504654
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.0416666679084301,
+            "per_register": 0.2627083361148834
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09583333879709244
+          },
+          "running_accumulation": {
+            "exact_match": 0.0533333346247673,
+            "per_register": 0.4208333492279053
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.021666666492819786,
+            "per_register": 0.37062501907348633
+          }
+        }
+      },
+      {
+        "model_key": "model_b_bounded_additive",
+        "seed": 43,
+        "param_count": 225960,
+        "total_steps": 3000,
+        "wall_clock_s": 30.194343410999863,
+        "train_throughput_examples_per_s": 6358.806925738746,
+        "inference_latency_ms": 0.05534622093898833,
+        "inference_throughput_examples_per_s": 1156357.1805661542,
+        "flops_per_step": 451048,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.064,
+        "best_val_step": 900,
+        "test_at_best_val_checkpoint_exact": 0.059166666666666666,
+        "test_at_best_val_checkpoint_loss": 1.7588146956761679,
+        "test_at_best_val_checkpoint_per_reg": 0.46229166666666666,
+        "credit_diag": {
+          "state_norms": [
+            8.901239395141602,
+            11.90608024597168,
+            12.539661407470703,
+            13.263547897338867,
+            14.228558540344238,
+            15.135456085205078,
+            16.089405059814453,
+            17.201190948486328,
+            18.209728240966797,
+            19.349166870117188
+          ],
+          "state_stds": [
+            0.5567776560783386,
+            0.7446571588516235,
+            0.7841760516166687,
+            0.8290510177612305,
+            0.8891535997390747,
+            0.9456838369369507,
+            1.0051754713058472,
+            1.0744032859802246,
+            1.1372601985931396,
+            1.2081398963928223
+          ],
+          "grad_norms": [
+            0.001855038688518107,
+            0.0018095948034897447,
+            0.0017434157198294997,
+            0.001681991503573954,
+            0.0016253584763035178,
+            0.0015656107570976019,
+            0.0015130171086639166,
+            0.0014794813469052315,
+            0.0014625906478613615,
+            0.0014921301044523716
+          ],
+          "attenuation_ratio": 1.2432151077059912
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.11833333969116211,
+            "per_register": 0.5774999856948853
+          },
+          "10": {
+            "exact_match": 0.04833333566784859,
+            "per_register": 0.46416667103767395
+          },
+          "15": {
+            "exact_match": 0.01666666753590107,
+            "per_register": 0.3454166650772095
+          },
+          "20": {
+            "exact_match": 0.004999999888241291,
+            "per_register": 0.25874999165534973
+          },
+          "25": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.1927083432674408
+          },
+          "30": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.1577083319425583
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.019166667014360428,
+            "per_register": 0.24958333373069763
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09375
+          },
+          "running_accumulation": {
+            "exact_match": 0.023333333432674408,
+            "per_register": 0.37062501907348633
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.02083333395421505,
+            "per_register": 0.3760416805744171
+          }
+        }
+      },
+      {
+        "model_key": "model_b_bounded_additive",
+        "seed": 44,
+        "param_count": 225960,
+        "total_steps": 3000,
+        "wall_clock_s": 32.35252456099988,
+        "train_throughput_examples_per_s": 5934.621875890667,
+        "inference_latency_ms": 0.05972640926736922,
+        "inference_throughput_examples_per_s": 1071552.7818439538,
+        "flops_per_step": 451048,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.066,
+        "best_val_step": 1100,
+        "test_at_best_val_checkpoint_exact": 0.06583333333333333,
+        "test_at_best_val_checkpoint_loss": 1.7040499607721964,
+        "test_at_best_val_checkpoint_per_reg": 0.4814583333333333,
+        "credit_diag": {
+          "state_norms": [
+            8.806571960449219,
+            11.788385391235352,
+            12.578519821166992,
+            13.452507972717285,
+            14.28896713256836,
+            15.217676162719727,
+            16.17441749572754,
+            17.123199462890625,
+            18.066884994506836,
+            19.00579261779785
+          ],
+          "state_stds": [
+            0.5502686500549316,
+            0.7364377975463867,
+            0.7858726978302002,
+            0.8406416177749634,
+            0.8930090069770813,
+            0.9508970379829407,
+            1.010756015777588,
+            1.0702869892120361,
+            1.1291240453720093,
+            1.187699794769287
+          ],
+          "grad_norms": [
+            0.002053342293947935,
+            0.0020047295838594437,
+            0.0019465028308331966,
+            0.001881944015622139,
+            0.0018169379327446222,
+            0.001753196818754077,
+            0.001698556705377996,
+            0.001641907263547182,
+            0.0016121582593768835,
+            0.0016052380669862032
+          ],
+          "attenuation_ratio": 1.2791512587307607
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.1433333307504654,
+            "per_register": 0.6068750023841858
+          },
+          "10": {
+            "exact_match": 0.07000000029802322,
+            "per_register": 0.4833333492279053
+          },
+          "15": {
+            "exact_match": 0.027499999850988388,
+            "per_register": 0.37708333134651184
+          },
+          "20": {
+            "exact_match": 0.008333333767950535,
+            "per_register": 0.29625001549720764
+          },
+          "25": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.2383333444595337
+          },
+          "30": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.18562500178813934
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.25874999165534973
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09875000268220901
+          },
+          "running_accumulation": {
+            "exact_match": 0.01833333447575569,
+            "per_register": 0.3620833456516266
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.3685416877269745
+          }
+        }
+      },
+      {
+        "model_key": "model_b_bounded_additive",
+        "seed": 45,
+        "param_count": 225960,
+        "total_steps": 3000,
+        "wall_clock_s": 32.49754200499956,
+        "train_throughput_examples_per_s": 5908.139143891618,
+        "inference_latency_ms": 0.05584377631569288,
+        "inference_throughput_examples_per_s": 1146054.3004505788,
+        "flops_per_step": 451048,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.056,
+        "best_val_step": 1200,
+        "test_at_best_val_checkpoint_exact": 0.059166666666666666,
+        "test_at_best_val_checkpoint_loss": 1.8692374960581462,
+        "test_at_best_val_checkpoint_per_reg": 0.4508333333333333,
+        "credit_diag": {
+          "state_norms": [
+            9.31255054473877,
+            12.248129844665527,
+            12.984094619750977,
+            13.965238571166992,
+            14.870518684387207,
+            15.889358520507812,
+            16.949142456054688,
+            18.071502685546875,
+            19.128612518310547,
+            20.213857650756836
+          ],
+          "state_stds": [
+            0.5816413164138794,
+            0.7650661468505859,
+            0.8109495639801025,
+            0.8723166584968567,
+            0.9290140271186829,
+            0.9928292036056519,
+            1.0591576099395752,
+            1.1293652057647705,
+            1.1954549551010132,
+            1.2633335590362549
+          ],
+          "grad_norms": [
+            0.002357897814363241,
+            0.0022757116239517927,
+            0.002179943723604083,
+            0.002084103412926197,
+            0.0019847722724080086,
+            0.001889553852379322,
+            0.001801439211703837,
+            0.0017105932347476482,
+            0.0016510121058672667,
+            0.001626820769160986
+          ],
+          "attenuation_ratio": 1.449390036727463
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.11416666954755783,
+            "per_register": 0.57833331823349
+          },
+          "10": {
+            "exact_match": 0.03333333507180214,
+            "per_register": 0.45750001072883606
+          },
+          "15": {
+            "exact_match": 0.013333333656191826,
+            "per_register": 0.3318749964237213
+          },
+          "20": {
+            "exact_match": 0.004166666883975267,
+            "per_register": 0.23916667699813843
+          },
+          "25": {
+            "exact_match": 0.0016666667070239782,
+            "per_register": 0.17416666448116302
+          },
+          "30": {
+            "exact_match": 0.0,
+            "per_register": 0.13895833492279053
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.005833333358168602,
+            "per_register": 0.21562500298023224
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.0949999988079071
+          },
+          "running_accumulation": {
+            "exact_match": 0.023333333432674408,
+            "per_register": 0.32854166626930237
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03166666626930237,
+            "per_register": 0.40270835161209106
+          }
+        }
+      },
+      {
+        "model_key": "model_b_bounded_additive",
+        "seed": 46,
+        "param_count": 225960,
+        "total_steps": 3000,
+        "wall_clock_s": 33.414509480999186,
+        "train_throughput_examples_per_s": 5746.006839010424,
+        "inference_latency_ms": 0.06407919024117323,
+        "inference_throughput_examples_per_s": 998764.1816184757,
+        "flops_per_step": 451048,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.07,
+        "best_val_step": 600,
+        "test_at_best_val_checkpoint_exact": 0.06916666666666667,
+        "test_at_best_val_checkpoint_loss": 1.542175407409668,
+        "test_at_best_val_checkpoint_per_reg": 0.49354166666666666,
+        "credit_diag": {
+          "state_norms": [
+            7.347606658935547,
+            9.80904769897461,
+            10.27011489868164,
+            10.977266311645508,
+            11.648011207580566,
+            12.440689086914062,
+            13.199235916137695,
+            13.95274543762207,
+            14.69504451751709,
+            15.417709350585938
+          ],
+          "state_stds": [
+            0.459168940782547,
+            0.6131497621536255,
+            0.6419439315795898,
+            0.6861393451690674,
+            0.7278517484664917,
+            0.7772049903869629,
+            0.8246201276779175,
+            0.8717873096466064,
+            0.918086051940918,
+            0.9631369113922119
+          ],
+          "grad_norms": [
+            0.0010800901800394058,
+            0.0010823040502145886,
+            0.0010737443808466196,
+            0.0010647601447999477,
+            0.0010566450655460358,
+            0.0010531224543228745,
+            0.0010579463560134172,
+            0.0010710337664932013,
+            0.0010992641327902675,
+            0.0011585521278902888
+          ],
+          "attenuation_ratio": 0.9322758588396352
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.13166667520999908,
+            "per_register": 0.5785416960716248
+          },
+          "10": {
+            "exact_match": 0.05583333596587181,
+            "per_register": 0.48208335041999817
+          },
+          "15": {
+            "exact_match": 0.025833334773778915,
+            "per_register": 0.3816666901111603
+          },
+          "20": {
+            "exact_match": 0.005833333358168602,
+            "per_register": 0.30791667103767395
+          },
+          "25": {
+            "exact_match": 0.004166666883975267,
+            "per_register": 0.2602083384990692
+          },
+          "30": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.21708333492279053
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.05166666954755783,
+            "per_register": 0.2827083468437195
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09187500178813934
+          },
+          "running_accumulation": {
+            "exact_match": 0.059166669845581055,
+            "per_register": 0.4402083456516266
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.34812501072883606
+          }
+        }
+      }
+    ],
+    "model_c_convex_unbounded": [
+      {
+        "model_key": "model_c_convex_unbounded",
+        "seed": 42,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 36.697007357000984,
+        "train_throughput_examples_per_s": 5232.03426732209,
+        "inference_latency_ms": 0.06526390186715951,
+        "inference_throughput_examples_per_s": 980633.982477295,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 160.78662109375,
+        "best_val_exact": 0.238,
+        "best_val_step": 2900,
+        "test_at_best_val_checkpoint_exact": 0.20166666666666666,
+        "test_at_best_val_checkpoint_loss": 2.221659032503764,
+        "test_at_best_val_checkpoint_per_reg": 0.6802083333333333,
+        "credit_diag": {
+          "state_norms": [
+            48.96649169921875,
+            64.51236724853516,
+            66.37351989746094,
+            66.66276550292969,
+            66.48698425292969,
+            66.06245422363281,
+            65.64309692382812,
+            65.37714385986328,
+            65.30059814453125,
+            65.08704376220703
+          ],
+          "state_stds": [
+            3.0613231658935547,
+            4.033595085144043,
+            4.150025367736816,
+            4.16727352142334,
+            4.15519905090332,
+            4.12878942489624,
+            4.102011203765869,
+            4.085522651672363,
+            4.081457614898682,
+            4.0677170753479
+          ],
+          "grad_norms": [
+            0.0014046902069821954,
+            0.0014609715435653925,
+            0.001472380361519754,
+            0.001505754771642387,
+            0.0015277853235602379,
+            0.0015590221155434847,
+            0.0015832133358344436,
+            0.0016176523640751839,
+            0.0016291344072669744,
+            0.001627921825274825
+          ],
+          "attenuation_ratio": 0.8628732566719266
+        },
+        "gate_diag": {
+          "mean_gate": 0.23637865483760834,
+          "std_gate": 0.38910973072052,
+          "gate_entropy": 0.13908445835113525,
+          "frac_near_0": 0.6980181932449341,
+          "frac_near_1": 0.17538052797317505,
+          "op_means": {
+            "SET": 0.27501314878463745,
+            "SWAP": 0.227492555975914,
+            "ADD": 0.17735671997070312
+          },
+          "gate_state_displacement_corr": 0.7410436471303304
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.5583333373069763,
+            "per_register": 0.8672916889190674
+          },
+          "10": {
+            "exact_match": 0.2266666740179062,
+            "per_register": 0.6864583492279053
+          },
+          "15": {
+            "exact_match": 0.10583333671092987,
+            "per_register": 0.5660417079925537
+          },
+          "20": {
+            "exact_match": 0.06666667014360428,
+            "per_register": 0.502916693687439
+          },
+          "25": {
+            "exact_match": 0.06416666507720947,
+            "per_register": 0.4845833480358124
+          },
+          "30": {
+            "exact_match": 0.04916666820645332,
+            "per_register": 0.4716666638851166
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.004166666883975267,
+            "per_register": 0.2199999988079071
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.10125000029802322
+          },
+          "running_accumulation": {
+            "exact_match": 0.023333333432674408,
+            "per_register": 0.3372916877269745
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04749999940395355,
+            "per_register": 0.4389583468437195
+          }
+        }
+      },
+      {
+        "model_key": "model_c_convex_unbounded",
+        "seed": 43,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 35.58050619599999,
+        "train_throughput_examples_per_s": 5396.213278764002,
+        "inference_latency_ms": 0.06511021902261953,
+        "inference_throughput_examples_per_s": 982948.6209801593,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.245,
+        "best_val_step": 2200,
+        "test_at_best_val_checkpoint_exact": 0.2325,
+        "test_at_best_val_checkpoint_loss": 1.8589801899592082,
+        "test_at_best_val_checkpoint_per_reg": 0.6789583333333333,
+        "credit_diag": {
+          "state_norms": [
+            47.73084259033203,
+            61.60682678222656,
+            63.54467010498047,
+            63.30744934082031,
+            63.201637268066406,
+            62.814720153808594,
+            62.33296203613281,
+            61.802490234375,
+            61.31190490722656,
+            60.727752685546875
+          ],
+          "state_stds": [
+            2.982435941696167,
+            3.850790500640869,
+            3.970682144165039,
+            3.955909252166748,
+            3.9492311477661133,
+            3.923928737640381,
+            3.8944451808929443,
+            3.861260175704956,
+            3.830488443374634,
+            3.7939023971557617
+          ],
+          "grad_norms": [
+            0.0011688312515616417,
+            0.0012223708909004927,
+            0.001255697337910533,
+            0.0012910349760204554,
+            0.0013350298395380378,
+            0.0013780439039692283,
+            0.0014157135738059878,
+            0.0014642411842942238,
+            0.0014977740356698632,
+            0.0015415262896567583
+          ],
+          "attenuation_ratio": 0.7582298527142848
+        },
+        "gate_diag": {
+          "mean_gate": 0.2544269859790802,
+          "std_gate": 0.39692768454551697,
+          "gate_entropy": 0.1532626748085022,
+          "frac_near_0": 0.6729739308357239,
+          "frac_near_1": 0.18673600256443024,
+          "op_means": {
+            "SET": 0.2826400101184845,
+            "SWAP": 0.26967111229896545,
+            "ADD": 0.18960468471050262
+          },
+          "gate_state_displacement_corr": 0.7371556560198466
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.5174999833106995,
+            "per_register": 0.8527083396911621
+          },
+          "10": {
+            "exact_match": 0.24000000953674316,
+            "per_register": 0.684166669845581
+          },
+          "15": {
+            "exact_match": 0.12083333730697632,
+            "per_register": 0.5681250095367432
+          },
+          "20": {
+            "exact_match": 0.059166669845581055,
+            "per_register": 0.5039583444595337
+          },
+          "25": {
+            "exact_match": 0.057500001043081284,
+            "per_register": 0.47333335876464844
+          },
+          "30": {
+            "exact_match": 0.05000000074505806,
+            "per_register": 0.46812501549720764
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.004999999888241291,
+            "per_register": 0.23208333551883698
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.10000000149011612
+          },
+          "running_accumulation": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.3172916769981384
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04916666820645332,
+            "per_register": 0.4439583420753479
+          }
+        }
+      },
+      {
+        "model_key": "model_c_convex_unbounded",
+        "seed": 44,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 38.0693899580001,
+        "train_throughput_examples_per_s": 5043.422030450795,
+        "inference_latency_ms": 0.06831026836719327,
+        "inference_throughput_examples_per_s": 936901.6039576369,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.263,
+        "best_val_step": 2500,
+        "test_at_best_val_checkpoint_exact": 0.28583333333333333,
+        "test_at_best_val_checkpoint_loss": 1.7666096369425455,
+        "test_at_best_val_checkpoint_per_reg": 0.7214583333333333,
+        "credit_diag": {
+          "state_norms": [
+            52.96873474121094,
+            67.75209045410156,
+            69.06887817382812,
+            69.22711944580078,
+            68.962646484375,
+            68.69789123535156,
+            68.88323974609375,
+            68.37673950195312,
+            67.30970764160156,
+            66.9277114868164
+          ],
+          "state_stds": [
+            3.304795503616333,
+            4.227553367614746,
+            4.311471462249756,
+            4.322258472442627,
+            4.307974815368652,
+            4.290892601013184,
+            4.301473140716553,
+            4.270673751831055,
+            4.205023765563965,
+            4.181865215301514
+          ],
+          "grad_norms": [
+            0.001069923397153616,
+            0.001110641984269023,
+            0.0011489030439406633,
+            0.00118997972458601,
+            0.001218773890286684,
+            0.0012584237847477198,
+            0.0012925532646477222,
+            0.001324555603787303,
+            0.0013535830657929182,
+            0.0013736728578805923
+          ],
+          "attenuation_ratio": 0.7788778754822132
+        },
+        "gate_diag": {
+          "mean_gate": 0.26503297686576843,
+          "std_gate": 0.40536895394325256,
+          "gate_entropy": 0.1453871726989746,
+          "frac_near_0": 0.6664003729820251,
+          "frac_near_1": 0.20051497220993042,
+          "op_means": {
+            "SET": 0.2987617254257202,
+            "SWAP": 0.28302475810050964,
+            "ADD": 0.18706761300563812
+          },
+          "gate_state_displacement_corr": 0.7300122380256653
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.5958333611488342,
+            "per_register": 0.878125011920929
+          },
+          "10": {
+            "exact_match": 0.26250001788139343,
+            "per_register": 0.7112500071525574
+          },
+          "15": {
+            "exact_match": 0.13500000536441803,
+            "per_register": 0.5995833277702332
+          },
+          "20": {
+            "exact_match": 0.09000000357627869,
+            "per_register": 0.5366666913032532
+          },
+          "25": {
+            "exact_match": 0.07250000536441803,
+            "per_register": 0.5127083659172058
+          },
+          "30": {
+            "exact_match": 0.05166666954755783,
+            "per_register": 0.49166667461395264
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.20145833492279053
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09979166835546494
+          },
+          "running_accumulation": {
+            "exact_match": 0.019166667014360428,
+            "per_register": 0.3127083480358124
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04416666924953461,
+            "per_register": 0.4441666901111603
+          }
+        }
+      },
+      {
+        "model_key": "model_c_convex_unbounded",
+        "seed": 45,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 38.5075308939995,
+        "train_throughput_examples_per_s": 4986.037679967653,
+        "inference_latency_ms": 0.06119230454708869,
+        "inference_throughput_examples_per_s": 1045883.1461519926,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.213,
+        "best_val_step": 2500,
+        "test_at_best_val_checkpoint_exact": 0.23083333333333333,
+        "test_at_best_val_checkpoint_loss": 2.0801628748575847,
+        "test_at_best_val_checkpoint_per_reg": 0.6797916666666667,
+        "credit_diag": {
+          "state_norms": [
+            53.205596923828125,
+            68.52723693847656,
+            69.53994750976562,
+            70.09043884277344,
+            69.73265838623047,
+            69.53001403808594,
+            68.82060241699219,
+            68.06517028808594,
+            67.7574462890625,
+            67.08035278320312
+          ],
+          "state_stds": [
+            3.327491283416748,
+            4.285337448120117,
+            4.34754753112793,
+            4.381595611572266,
+            4.3596978187561035,
+            4.346652030944824,
+            4.30116081237793,
+            4.255153656005859,
+            4.237028121948242,
+            4.194694519042969
+          ],
+          "grad_norms": [
+            0.0011661862954497337,
+            0.0011987497564405203,
+            0.001220871228724718,
+            0.0012565103825181723,
+            0.0012870178325101733,
+            0.001324801822192967,
+            0.001355889835394919,
+            0.0014014487387612462,
+            0.0014341764617711306,
+            0.0014616611879318953
+          ],
+          "attenuation_ratio": 0.7978499429814997
+        },
+        "gate_diag": {
+          "mean_gate": 0.26195278763771057,
+          "std_gate": 0.4041462242603302,
+          "gate_entropy": 0.1431000828742981,
+          "frac_near_0": 0.6705462336540222,
+          "frac_near_1": 0.19844238460063934,
+          "op_means": {
+            "SET": 0.2891671359539032,
+            "SWAP": 0.2668924629688263,
+            "ADD": 0.2075587511062622
+          },
+          "gate_state_displacement_corr": 0.735446936554379
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.5316666960716248,
+            "per_register": 0.8547917008399963
+          },
+          "10": {
+            "exact_match": 0.22333334386348724,
+            "per_register": 0.6806250214576721
+          },
+          "15": {
+            "exact_match": 0.10166666656732559,
+            "per_register": 0.5631250143051147
+          },
+          "20": {
+            "exact_match": 0.0625,
+            "per_register": 0.503125011920929
+          },
+          "25": {
+            "exact_match": 0.06333333253860474,
+            "per_register": 0.4860416650772095
+          },
+          "30": {
+            "exact_match": 0.042500000447034836,
+            "per_register": 0.47312501072883606
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.007500000298023224,
+            "per_register": 0.23416666686534882
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0016666667070239782,
+            "per_register": 0.09333333373069763
+          },
+          "running_accumulation": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.3010416626930237
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04833333566784859,
+            "per_register": 0.4560416638851166
+          }
+        }
+      },
+      {
+        "model_key": "model_c_convex_unbounded",
+        "seed": 46,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 40.0852978310013,
+        "train_throughput_examples_per_s": 4789.786040993574,
+        "inference_latency_ms": 0.06419250767346073,
+        "inference_throughput_examples_per_s": 997001.0881263592,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.256,
+        "best_val_step": 3000,
+        "test_at_best_val_checkpoint_exact": 0.2775,
+        "test_at_best_val_checkpoint_loss": 1.9284656111399332,
+        "test_at_best_val_checkpoint_per_reg": 0.7189583333333334,
+        "credit_diag": {
+          "state_norms": [
+            51.07929229736328,
+            65.98304748535156,
+            68.62190246582031,
+            69.03303527832031,
+            68.87454986572266,
+            68.8397216796875,
+            68.65850830078125,
+            67.75505065917969,
+            67.02163696289062,
+            66.75035095214844
+          ],
+          "state_stds": [
+            3.1918587684631348,
+            4.1232476234436035,
+            4.288784027099609,
+            4.3135223388671875,
+            4.303347110748291,
+            4.301563262939453,
+            4.289559364318848,
+            4.23314094543457,
+            4.187327861785889,
+            4.171550750732422
+          ],
+          "grad_norms": [
+            0.0011875814525410533,
+            0.0012281746603548527,
+            0.0012364601716399193,
+            0.0012465356849133968,
+            0.0012720494996756315,
+            0.001316230627708137,
+            0.0013450891710817814,
+            0.0013723003212362528,
+            0.0013927142135798931,
+            0.0014119979459792376
+          ],
+          "attenuation_ratio": 0.8410645751452926
+        },
+        "gate_diag": {
+          "mean_gate": 0.2560511529445648,
+          "std_gate": 0.4021182954311371,
+          "gate_entropy": 0.13753661513328552,
+          "frac_near_0": 0.6792714595794678,
+          "frac_near_1": 0.19504393637180328,
+          "op_means": {
+            "SET": 0.28170520067214966,
+            "SWAP": 0.2721605598926544,
+            "ADD": 0.1915079653263092
+          },
+          "gate_state_displacement_corr": 0.7375327812300788
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.5958333611488342,
+            "per_register": 0.8804166913032532
+          },
+          "10": {
+            "exact_match": 0.2666666805744171,
+            "per_register": 0.7097916603088379
+          },
+          "15": {
+            "exact_match": 0.12583333253860474,
+            "per_register": 0.5877083539962769
+          },
+          "20": {
+            "exact_match": 0.08250000327825546,
+            "per_register": 0.5262500047683716
+          },
+          "25": {
+            "exact_match": 0.07666666805744171,
+            "per_register": 0.5070833563804626
+          },
+          "30": {
+            "exact_match": 0.0533333346247673,
+            "per_register": 0.4958333373069763
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.004166666883975267,
+            "per_register": 0.2199999988079071
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.10062500089406967
+          },
+          "running_accumulation": {
+            "exact_match": 0.015833333134651184,
+            "per_register": 0.30916666984558105
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.05166666954755783,
+            "per_register": 0.4402083456516266
+          }
+        }
+      }
+    ],
+    "model_d_bounded_convex": [
+      {
+        "model_key": "model_d_bounded_convex",
+        "seed": 42,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 36.90762951800025,
+        "train_throughput_examples_per_s": 5202.176420091123,
+        "inference_latency_ms": 0.06727244024175075,
+        "inference_throughput_examples_per_s": 951355.4104772938,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.365,
+        "best_val_step": 2600,
+        "test_at_best_val_checkpoint_exact": 0.36333333333333334,
+        "test_at_best_val_checkpoint_loss": 0.924416580994924,
+        "test_at_best_val_checkpoint_per_reg": 0.7739583333333333,
+        "credit_diag": {
+          "state_norms": [
+            10.168388366699219,
+            12.130727767944336,
+            12.57554817199707,
+            12.842317581176758,
+            13.004079818725586,
+            13.080913543701172,
+            13.133727073669434,
+            13.145895957946777,
+            13.14188003540039,
+            13.15792465209961
+          ],
+          "state_stds": [
+            0.6355078816413879,
+            0.7582197189331055,
+            0.7859383821487427,
+            0.8025556206703186,
+            0.812832772731781,
+            0.8175965547561646,
+            0.8208037614822388,
+            0.82154381275177,
+            0.8212130069732666,
+            0.8222311735153198
+          ],
+          "grad_norms": [
+            0.0016470116097480059,
+            0.0019732320215553045,
+            0.0021152340341359377,
+            0.0022260791156440973,
+            0.0023478383664041758,
+            0.0023884475231170654,
+            0.0024083012249320745,
+            0.002417722251266241,
+            0.0023829033598303795,
+            0.0023737528827041388
+          ],
+          "attenuation_ratio": 0.6938429108390417
+        },
+        "gate_diag": {
+          "mean_gate": 0.29834118485450745,
+          "std_gate": 0.41976529359817505,
+          "gate_entropy": 0.1588955521583557,
+          "frac_near_0": 0.6273033618927002,
+          "frac_near_1": 0.2289274036884308,
+          "op_means": {
+            "SET": 0.36776745319366455,
+            "SWAP": 0.30335718393325806,
+            "ADD": 0.17140549421310425
+          },
+          "gate_state_displacement_corr": 0.6862440903981527
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.746666669845581,
+            "per_register": 0.9300000071525574
+          },
+          "10": {
+            "exact_match": 0.3933333456516266,
+            "per_register": 0.7775000333786011
+          },
+          "15": {
+            "exact_match": 0.20666667819023132,
+            "per_register": 0.6543750166893005
+          },
+          "20": {
+            "exact_match": 0.12083333730697632,
+            "per_register": 0.581250011920929
+          },
+          "25": {
+            "exact_match": 0.09583333879709244,
+            "per_register": 0.5337499976158142
+          },
+          "30": {
+            "exact_match": 0.0833333358168602,
+            "per_register": 0.5335416793823242
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.257708340883255
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09979166835546494
+          },
+          "running_accumulation": {
+            "exact_match": 0.0325000025331974,
+            "per_register": 0.3812500238418579
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03500000014901161,
+            "per_register": 0.42395833134651184
+          }
+        }
+      },
+      {
+        "model_key": "model_d_bounded_convex",
+        "seed": 43,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 37.388080873000945,
+        "train_throughput_examples_per_s": 5135.326433367404,
+        "inference_latency_ms": 0.06988297532647617,
+        "inference_throughput_examples_per_s": 915816.7593896461,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.426,
+        "best_val_step": 2900,
+        "test_at_best_val_checkpoint_exact": 0.42083333333333334,
+        "test_at_best_val_checkpoint_loss": 0.8469999472300211,
+        "test_at_best_val_checkpoint_per_reg": 0.796875,
+        "credit_diag": {
+          "state_norms": [
+            10.504829406738281,
+            12.390885353088379,
+            12.786773681640625,
+            13.011408805847168,
+            13.140107154846191,
+            13.189488410949707,
+            13.259982109069824,
+            13.283393859863281,
+            13.292062759399414,
+            13.295981407165527
+          ],
+          "state_stds": [
+            0.6561567783355713,
+            0.7740325331687927,
+            0.79889976978302,
+            0.8127416372299194,
+            0.8209069967269897,
+            0.8239642977714539,
+            0.8285215497016907,
+            0.8299520611763,
+            0.8307488560676575,
+            0.8310836553573608
+          ],
+          "grad_norms": [
+            0.0017807469703257084,
+            0.002119007520377636,
+            0.0022361944429576397,
+            0.002358833560720086,
+            0.0024757757782936096,
+            0.00257140607573092,
+            0.002622803673148155,
+            0.0026284013874828815,
+            0.0025814473628997803,
+            0.002483586547896266
+          ],
+          "attenuation_ratio": 0.7170062069445894
+        },
+        "gate_diag": {
+          "mean_gate": 0.3203890323638916,
+          "std_gate": 0.4294414222240448,
+          "gate_entropy": 0.15926602482795715,
+          "frac_near_0": 0.6051158905029297,
+          "frac_near_1": 0.2500286400318146,
+          "op_means": {
+            "SET": 0.39036864042282104,
+            "SWAP": 0.3145475685596466,
+            "ADD": 0.203010693192482
+          },
+          "gate_state_displacement_corr": 0.6794627904891968
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.7958333492279053,
+            "per_register": 0.9433333277702332
+          },
+          "10": {
+            "exact_match": 0.4358333349227905,
+            "per_register": 0.8012500405311584
+          },
+          "15": {
+            "exact_match": 0.23083333671092987,
+            "per_register": 0.674583375453949
+          },
+          "20": {
+            "exact_match": 0.1458333432674408,
+            "per_register": 0.5975000262260437
+          },
+          "25": {
+            "exact_match": 0.1133333370089531,
+            "per_register": 0.5610416531562805
+          },
+          "30": {
+            "exact_match": 0.08166667073965073,
+            "per_register": 0.5427083373069763
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.009166667237877846,
+            "per_register": 0.2600000202655792
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09291666746139526
+          },
+          "running_accumulation": {
+            "exact_match": 0.03166666626930237,
+            "per_register": 0.37187501788139343
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03583333268761635,
+            "per_register": 0.4308333396911621
+          }
+        }
+      },
+      {
+        "model_key": "model_d_bounded_convex",
+        "seed": 44,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 38.198124610999,
+        "train_throughput_examples_per_s": 5026.424777532517,
+        "inference_latency_ms": 0.06373680975600923,
+        "inference_throughput_examples_per_s": 1004129.3287975707,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.378,
+        "best_val_step": 3000,
+        "test_at_best_val_checkpoint_exact": 0.425,
+        "test_at_best_val_checkpoint_loss": 0.7834835147857666,
+        "test_at_best_val_checkpoint_per_reg": 0.8025,
+        "credit_diag": {
+          "state_norms": [
+            10.526778221130371,
+            12.401203155517578,
+            12.794299125671387,
+            13.004024505615234,
+            13.155509948730469,
+            13.250338554382324,
+            13.33641529083252,
+            13.357978820800781,
+            13.353487014770508,
+            13.361806869506836
+          ],
+          "state_stds": [
+            0.6582599878311157,
+            0.7756603956222534,
+            0.8002189993858337,
+            0.8134454488754272,
+            0.8228182792663574,
+            0.8288791179656982,
+            0.8343368768692017,
+            0.835625410079956,
+            0.8352195024490356,
+            0.8357795476913452
+          ],
+          "grad_norms": [
+            0.0014975833473727107,
+            0.0018209475092589855,
+            0.001968200784176588,
+            0.0020783827640116215,
+            0.0021602988708764315,
+            0.002238537184894085,
+            0.0023055626079440117,
+            0.0023599606938660145,
+            0.0023549674078822136,
+            0.0023213347885757685
+          ],
+          "attenuation_ratio": 0.6451388893764599
+        },
+        "gate_diag": {
+          "mean_gate": 0.31684133410453796,
+          "std_gate": 0.4293115437030792,
+          "gate_entropy": 0.1538171023130417,
+          "frac_near_0": 0.6112558245658875,
+          "frac_near_1": 0.24921679496765137,
+          "op_means": {
+            "SET": 0.39215925335884094,
+            "SWAP": 0.3087855875492096,
+            "ADD": 0.19161193072795868
+          },
+          "gate_state_displacement_corr": 0.6762834787368774
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.7758333683013916,
+            "per_register": 0.9375
+          },
+          "10": {
+            "exact_match": 0.4033333361148834,
+            "per_register": 0.7889583706855774
+          },
+          "15": {
+            "exact_match": 0.2358333319425583,
+            "per_register": 0.6706250309944153
+          },
+          "20": {
+            "exact_match": 0.13750000298023224,
+            "per_register": 0.596666693687439
+          },
+          "25": {
+            "exact_match": 0.11416666954755783,
+            "per_register": 0.5602083206176758
+          },
+          "30": {
+            "exact_match": 0.08250000327825546,
+            "per_register": 0.5522916913032532
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.012500000186264515,
+            "per_register": 0.25083333253860474
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09875000268220901
+          },
+          "running_accumulation": {
+            "exact_match": 0.02666666731238365,
+            "per_register": 0.3454166650772095
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.030000001192092896,
+            "per_register": 0.4166666865348816
+          }
+        }
+      },
+      {
+        "model_key": "model_d_bounded_convex",
+        "seed": 45,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 38.763975035999465,
+        "train_throughput_examples_per_s": 4953.0524106904095,
+        "inference_latency_ms": 0.07034430427765663,
+        "inference_throughput_examples_per_s": 909810.6898233726,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.484,
+        "best_val_step": 3000,
+        "test_at_best_val_checkpoint_exact": 0.4791666666666667,
+        "test_at_best_val_checkpoint_loss": 0.7389760748545329,
+        "test_at_best_val_checkpoint_per_reg": 0.8270833333333333,
+        "credit_diag": {
+          "state_norms": [
+            9.878012657165527,
+            11.90304183959961,
+            12.500175476074219,
+            12.929194450378418,
+            13.10835075378418,
+            13.253849029541016,
+            13.304378509521484,
+            13.355892181396484,
+            13.36587905883789,
+            13.368522644042969
+          ],
+          "state_stds": [
+            0.616468071937561,
+            0.7428752779960632,
+            0.7802555561065674,
+            0.8072525262832642,
+            0.818487286567688,
+            0.8275903463363647,
+            0.8310927748680115,
+            0.8339805603027344,
+            0.8347039818763733,
+            0.8349390625953674
+          ],
+          "grad_norms": [
+            0.0013469307450577617,
+            0.0016433942364528775,
+            0.0017890111776068807,
+            0.0019438870949670672,
+            0.002018832601606846,
+            0.0020953468047082424,
+            0.002082419116050005,
+            0.002059676917269826,
+            0.002030613599345088,
+            0.001960983034223318
+          ],
+          "attenuation_ratio": 0.6868650679536539
+        },
+        "gate_diag": {
+          "mean_gate": 0.3135336935520172,
+          "std_gate": 0.42880043387413025,
+          "gate_entropy": 0.14977093040943146,
+          "frac_near_0": 0.6158264875411987,
+          "frac_near_1": 0.24735383689403534,
+          "op_means": {
+            "SET": 0.3583081364631653,
+            "SWAP": 0.35663992166519165,
+            "ADD": 0.18808898329734802
+          },
+          "gate_state_displacement_corr": 0.6860498918427361
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.8341667056083679,
+            "per_register": 0.9539583325386047
+          },
+          "10": {
+            "exact_match": 0.4891666769981384,
+            "per_register": 0.8270833492279053
+          },
+          "15": {
+            "exact_match": 0.2824999988079071,
+            "per_register": 0.7158333659172058
+          },
+          "20": {
+            "exact_match": 0.18250000476837158,
+            "per_register": 0.6354166865348816
+          },
+          "25": {
+            "exact_match": 0.14666667580604553,
+            "per_register": 0.5960416793823242
+          },
+          "30": {
+            "exact_match": 0.10166666656732559,
+            "per_register": 0.5800000429153442
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.2639583349227905
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.09645833820104599
+          },
+          "running_accumulation": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.3375000059604645
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.038333334028720856,
+            "per_register": 0.4333333373069763
+          }
+        }
+      },
+      {
+        "model_key": "model_d_bounded_convex",
+        "seed": 46,
+        "param_count": 226152,
+        "total_steps": 3000,
+        "wall_clock_s": 39.9552894669996,
+        "train_throughput_examples_per_s": 4805.371267766165,
+        "inference_latency_ms": 0.07429707867289467,
+        "inference_throughput_examples_per_s": 861406.6817050872,
+        "flops_per_step": 451240,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.464,
+        "best_val_step": 3000,
+        "test_at_best_val_checkpoint_exact": 0.475,
+        "test_at_best_val_checkpoint_loss": 0.7450195908546448,
+        "test_at_best_val_checkpoint_per_reg": 0.8222916666666666,
+        "credit_diag": {
+          "state_norms": [
+            10.114303588867188,
+            12.066644668579102,
+            12.661087036132812,
+            12.989362716674805,
+            13.197891235351562,
+            13.342851638793945,
+            13.402402877807617,
+            13.399221420288086,
+            13.385334014892578,
+            13.394392013549805
+          ],
+          "state_stds": [
+            0.6325067281723022,
+            0.7545583248138428,
+            0.7915632128715515,
+            0.8120481967926025,
+            0.8252031803131104,
+            0.8340555429458618,
+            0.837813138961792,
+            0.8377523422241211,
+            0.8368810415267944,
+            0.8374466896057129
+          ],
+          "grad_norms": [
+            0.0012145917862653732,
+            0.0014911096077412367,
+            0.0016018695896491408,
+            0.0017515817889943719,
+            0.0017974756192415953,
+            0.0019232806516811252,
+            0.002023309236392379,
+            0.0020635141991078854,
+            0.002045184373855591,
+            0.0019827550277113914
+          ],
+          "attenuation_ratio": 0.6125778370449143
+        },
+        "gate_diag": {
+          "mean_gate": 0.31121641397476196,
+          "std_gate": 0.42791298031806946,
+          "gate_entropy": 0.14944741129875183,
+          "frac_near_0": 0.6186741590499878,
+          "frac_near_1": 0.2452223300933838,
+          "op_means": {
+            "SET": 0.3658108115196228,
+            "SWAP": 0.32914742827415466,
+            "ADD": 0.19101712107658386
+          },
+          "gate_state_displacement_corr": 0.6828044785393609
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.8216666579246521,
+            "per_register": 0.9516667127609253
+          },
+          "10": {
+            "exact_match": 0.4425000250339508,
+            "per_register": 0.8056250214576721
+          },
+          "15": {
+            "exact_match": 0.2616666853427887,
+            "per_register": 0.6970833539962769
+          },
+          "20": {
+            "exact_match": 0.16083334386348724,
+            "per_register": 0.6145833730697632
+          },
+          "25": {
+            "exact_match": 0.12083333730697632,
+            "per_register": 0.5850000381469727
+          },
+          "30": {
+            "exact_match": 0.09583333879709244,
+            "per_register": 0.5639583468437195
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.2614583373069763
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09583333879709244
+          },
+          "running_accumulation": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.3579166829586029
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03583333268761635,
+            "per_register": 0.4233333468437195
+          }
+        }
+      }
+    ],
+    "model_e_canonical_ugrnn": [
+      {
+        "model_key": "model_e_canonical_ugrnn",
+        "seed": 42,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 33.776925267999104,
+        "train_throughput_examples_per_s": 5684.353992454856,
+        "inference_latency_ms": 0.061375561674175946,
+        "inference_throughput_examples_per_s": 1042760.3145981195,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.1,
+        "best_val_step": 1200,
+        "test_at_best_val_checkpoint_exact": 0.07833333333333334,
+        "test_at_best_val_checkpoint_loss": 1.392652824719747,
+        "test_at_best_val_checkpoint_per_reg": 0.5454166666666667,
+        "credit_diag": {
+          "state_norms": [
+            7.81793212890625,
+            9.825655937194824,
+            10.32950210571289,
+            10.658111572265625,
+            10.844583511352539,
+            10.961236000061035,
+            11.06477165222168,
+            11.133090019226074,
+            11.176423072814941,
+            11.22549819946289
+          ],
+          "state_stds": [
+            0.5367166996002197,
+            0.6742444038391113,
+            0.708940327167511,
+            0.7315158247947693,
+            0.7443698644638062,
+            0.7524296641349792,
+            0.7594413757324219,
+            0.7642017602920532,
+            0.7672467827796936,
+            0.7704542279243469
+          ],
+          "grad_norms": [
+            0.0010180838871747255,
+            0.0012669109273701906,
+            0.0013703606091439724,
+            0.0014850888401269913,
+            0.0016075617168098688,
+            0.0017280610045418143,
+            0.0018606665544211864,
+            0.002027205191552639,
+            0.0021966504864394665,
+            0.00241648918017745
+          ],
+          "attenuation_ratio": 0.42130703316452034
+        },
+        "gate_diag": {
+          "mean_gate": 0.3212693929672241,
+          "std_gate": 0.40602150559425354,
+          "gate_entropy": 0.2533111870288849,
+          "frac_near_0": 0.5562299489974976,
+          "frac_near_1": 0.21129678189754486,
+          "op_means": {
+            "SET": 0.38964611291885376,
+            "SWAP": 0.285545289516449,
+            "ADD": 0.2367008626461029
+          },
+          "gate_state_displacement_corr": 0.6899210347069634
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.22500000894069672,
+            "per_register": 0.6804167032241821
+          },
+          "10": {
+            "exact_match": 0.09000000357627869,
+            "per_register": 0.546875
+          },
+          "15": {
+            "exact_match": 0.05250000208616257,
+            "per_register": 0.4593750238418579
+          },
+          "20": {
+            "exact_match": 0.0325000025331974,
+            "per_register": 0.40833333134651184
+          },
+          "25": {
+            "exact_match": 0.027499999850988388,
+            "per_register": 0.398125022649765
+          },
+          "30": {
+            "exact_match": 0.01833333447575569,
+            "per_register": 0.3908333480358124
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.02500000037252903,
+            "per_register": 0.26520833373069763
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09520833194255829
+          },
+          "running_accumulation": {
+            "exact_match": 0.030833333730697632,
+            "per_register": 0.38833335041999817
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.042500000447034836,
+            "per_register": 0.44312500953674316
+          }
+        }
+      },
+      {
+        "model_key": "model_e_canonical_ugrnn",
+        "seed": 43,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 35.50555508100115,
+        "train_throughput_examples_per_s": 5407.604516025107,
+        "inference_latency_ms": 0.06274834402219902,
+        "inference_throughput_examples_per_s": 1019947.2352187998,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.097,
+        "best_val_step": 700,
+        "test_at_best_val_checkpoint_exact": 0.09333333333333334,
+        "test_at_best_val_checkpoint_loss": 1.372467269897461,
+        "test_at_best_val_checkpoint_per_reg": 0.5352083333333333,
+        "credit_diag": {
+          "state_norms": [
+            7.500043869018555,
+            9.376953125,
+            9.788450241088867,
+            10.072486877441406,
+            10.299270629882812,
+            10.409313201904297,
+            10.538198471069336,
+            10.625718116760254,
+            10.66629409790039,
+            10.724775314331055
+          ],
+          "state_stds": [
+            0.5153534412384033,
+            0.6443597674369812,
+            0.6723626255989075,
+            0.6916962265968323,
+            0.7070881128311157,
+            0.7142656445503235,
+            0.7234596610069275,
+            0.729489803314209,
+            0.7320264577865601,
+            0.7362849712371826
+          ],
+          "grad_norms": [
+            0.0006070322706364095,
+            0.0007893361616879702,
+            0.0008706733351573348,
+            0.0009470038348808885,
+            0.0010380884632468224,
+            0.0011353208683431149,
+            0.0012469770153984427,
+            0.0013880706392228603,
+            0.001558283343911171,
+            0.0017772691790014505
+          ],
+          "attenuation_ratio": 0.34155336614652115
+        },
+        "gate_diag": {
+          "mean_gate": 0.30903324484825134,
+          "std_gate": 0.3877774477005005,
+          "gate_entropy": 0.3010419011116028,
+          "frac_near_0": 0.5419477224349976,
+          "frac_near_1": 0.18249568343162537,
+          "op_means": {
+            "SET": 0.37778714299201965,
+            "SWAP": 0.28283771872520447,
+            "ADD": 0.2140520215034485
+          },
+          "gate_state_displacement_corr": 0.702063626713223
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.2083333432674408,
+            "per_register": 0.6650000214576721
+          },
+          "10": {
+            "exact_match": 0.08749999850988388,
+            "per_register": 0.5366666913032532
+          },
+          "15": {
+            "exact_match": 0.04749999940395355,
+            "per_register": 0.4475000202655792
+          },
+          "20": {
+            "exact_match": 0.03583333268761635,
+            "per_register": 0.39895835518836975
+          },
+          "25": {
+            "exact_match": 0.027499999850988388,
+            "per_register": 0.3812500238418579
+          },
+          "30": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.37437501549720764
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.02500000037252903,
+            "per_register": 0.2787500023841858
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09687500447034836
+          },
+          "running_accumulation": {
+            "exact_match": 0.04749999940395355,
+            "per_register": 0.42520833015441895
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04583333432674408,
+            "per_register": 0.4399999976158142
+          }
+        }
+      },
+      {
+        "model_key": "model_e_canonical_ugrnn",
+        "seed": 44,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 35.85652449000008,
+        "train_throughput_examples_per_s": 5354.674016260173,
+        "inference_latency_ms": 0.06729912692000589,
+        "inference_throughput_examples_per_s": 950978.1616643058,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.099,
+        "best_val_step": 1400,
+        "test_at_best_val_checkpoint_exact": 0.1025,
+        "test_at_best_val_checkpoint_loss": 1.3834712727864584,
+        "test_at_best_val_checkpoint_per_reg": 0.555,
+        "credit_diag": {
+          "state_norms": [
+            8.030054092407227,
+            9.951526641845703,
+            10.439384460449219,
+            10.755577087402344,
+            10.926051139831543,
+            11.074862480163574,
+            11.188724517822266,
+            11.227704048156738,
+            11.264023780822754,
+            11.32182502746582
+          ],
+          "state_stds": [
+            0.5516121983528137,
+            0.683463454246521,
+            0.7169700860977173,
+            0.7385708093643188,
+            0.7500565052032471,
+            0.7603532075881958,
+            0.7683092355728149,
+            0.7711942195892334,
+            0.7736445665359497,
+            0.7776856422424316
+          ],
+          "grad_norms": [
+            0.0011033447226509452,
+            0.0013691125204786658,
+            0.001498072873800993,
+            0.0016241706907749176,
+            0.0017734909197315574,
+            0.0019162818789482117,
+            0.0020784521475434303,
+            0.002259092405438423,
+            0.0024569318629801273,
+            0.002674105577170849
+          ],
+          "attenuation_ratio": 0.41260327642645367
+        },
+        "gate_diag": {
+          "mean_gate": 0.3308364748954773,
+          "std_gate": 0.4124201536178589,
+          "gate_entropy": 0.24399113655090332,
+          "frac_near_0": 0.5513899326324463,
+          "frac_near_1": 0.22417491674423218,
+          "op_means": {
+            "SET": 0.39627423882484436,
+            "SWAP": 0.31692570447921753,
+            "ADD": 0.22903794050216675
+          },
+          "gate_state_displacement_corr": 0.6893647445572747
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.23750001192092896,
+            "per_register": 0.7033333778381348
+          },
+          "10": {
+            "exact_match": 0.08666666597127914,
+            "per_register": 0.5520833730697632
+          },
+          "15": {
+            "exact_match": 0.054999999701976776,
+            "per_register": 0.4650000035762787
+          },
+          "20": {
+            "exact_match": 0.030000001192092896,
+            "per_register": 0.4125000238418579
+          },
+          "25": {
+            "exact_match": 0.030833333730697632,
+            "per_register": 0.39750000834465027
+          },
+          "30": {
+            "exact_match": 0.01833333447575569,
+            "per_register": 0.3997916877269745
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.012500000186264515,
+            "per_register": 0.2618750035762787
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09833333641290665
+          },
+          "running_accumulation": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.3629166781902313
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03999999910593033,
+            "per_register": 0.43833333253860474
+          }
+        }
+      },
+      {
+        "model_key": "model_e_canonical_ugrnn",
+        "seed": 45,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 35.819620223999664,
+        "train_throughput_examples_per_s": 5360.190833942936,
+        "inference_latency_ms": 0.0683086063603648,
+        "inference_throughput_examples_per_s": 936924.3995751491,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.107,
+        "best_val_step": 2400,
+        "test_at_best_val_checkpoint_exact": 0.09833333333333333,
+        "test_at_best_val_checkpoint_loss": 1.6817401440938313,
+        "test_at_best_val_checkpoint_per_reg": 0.5470833333333334,
+        "credit_diag": {
+          "state_norms": [
+            8.354740142822266,
+            10.22940444946289,
+            10.716506958007812,
+            11.084787368774414,
+            11.28046989440918,
+            11.403701782226562,
+            11.477862358093262,
+            11.542269706726074,
+            11.576972961425781,
+            11.598488807678223
+          ],
+          "state_stds": [
+            0.5739220380783081,
+            0.7028059959411621,
+            0.7364048957824707,
+            0.7616708278656006,
+            0.7751700282096863,
+            0.7836707830429077,
+            0.788745641708374,
+            0.7930026054382324,
+            0.7956975102424622,
+            0.7968548536300659
+          ],
+          "grad_norms": [
+            0.0022402587346732616,
+            0.0026093493215739727,
+            0.0028014564886689186,
+            0.0029724235646426678,
+            0.003157256171107292,
+            0.0033118261490017176,
+            0.003476793644949794,
+            0.003639081958681345,
+            0.0038289891090244055,
+            0.0039414153434336185
+          ],
+          "attenuation_ratio": 0.5683894082377091
+        },
+        "gate_diag": {
+          "mean_gate": 0.34131574630737305,
+          "std_gate": 0.42028483748435974,
+          "gate_entropy": 0.22868219017982483,
+          "frac_near_0": 0.5484721064567566,
+          "frac_near_1": 0.2402161955833435,
+          "op_means": {
+            "SET": 0.4053024351596832,
+            "SWAP": 0.3176480233669281,
+            "ADD": 0.24968835711479187
+          },
+          "gate_state_displacement_corr": 0.6801964243253072
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.20250000059604645,
+            "per_register": 0.6695833206176758
+          },
+          "10": {
+            "exact_match": 0.10166666656732559,
+            "per_register": 0.5443750023841858
+          },
+          "15": {
+            "exact_match": 0.050833333283662796,
+            "per_register": 0.4541666805744171
+          },
+          "20": {
+            "exact_match": 0.030000001192092896,
+            "per_register": 0.4150000214576721
+          },
+          "25": {
+            "exact_match": 0.030833333730697632,
+            "per_register": 0.398333340883255
+          },
+          "30": {
+            "exact_match": 0.019166667014360428,
+            "per_register": 0.3968750238418579
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.024166667833924294,
+            "per_register": 0.26208335161209106
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.09583333879709244
+          },
+          "running_accumulation": {
+            "exact_match": 0.02250000089406967,
+            "per_register": 0.3635416626930237
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.3864583373069763
+          }
+        }
+      },
+      {
+        "model_key": "model_e_canonical_ugrnn",
+        "seed": 46,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 38.87549902199862,
+        "train_throughput_examples_per_s": 4938.843354559957,
+        "inference_latency_ms": 0.07038236129562249,
+        "inference_throughput_examples_per_s": 909318.7386991029,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.1,
+        "best_val_step": 1700,
+        "test_at_best_val_checkpoint_exact": 0.10333333333333333,
+        "test_at_best_val_checkpoint_loss": 1.430812873840332,
+        "test_at_best_val_checkpoint_per_reg": 0.5541666666666667,
+        "credit_diag": {
+          "state_norms": [
+            8.000734329223633,
+            9.96805191040039,
+            10.546795845031738,
+            10.84834098815918,
+            11.036165237426758,
+            11.188396453857422,
+            11.277137756347656,
+            11.316633224487305,
+            11.350647926330566,
+            11.365556716918945
+          ],
+          "state_stds": [
+            0.549177348613739,
+            0.6845128536224365,
+            0.7246732711791992,
+            0.7454619407653809,
+            0.7582827210426331,
+            0.7688274383544922,
+            0.7749366164207458,
+            0.7775481939315796,
+            0.7799199819564819,
+            0.7810260057449341
+          ],
+          "grad_norms": [
+            0.0013905654195696115,
+            0.0017121131531894207,
+            0.001854086178354919,
+            0.0019941087812185287,
+            0.0021390626206994057,
+            0.0022938386537134647,
+            0.0024648162070661783,
+            0.0026294123381376266,
+            0.00280576990917325,
+            0.003000306896865368
+          ],
+          "attenuation_ratio": 0.4634743935770148
+        },
+        "gate_diag": {
+          "mean_gate": 0.3269689381122589,
+          "std_gate": 0.4119705855846405,
+          "gate_entropy": 0.23877771198749542,
+          "frac_near_0": 0.5573132634162903,
+          "frac_near_1": 0.22165526449680328,
+          "op_means": {
+            "SET": 0.389735609292984,
+            "SWAP": 0.31276342272758484,
+            "ADD": 0.22530892491340637
+          },
+          "gate_state_displacement_corr": 0.6895304984516568
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.21250000596046448,
+            "per_register": 0.6743749976158142
+          },
+          "10": {
+            "exact_match": 0.08916667103767395,
+            "per_register": 0.5385416746139526
+          },
+          "15": {
+            "exact_match": 0.05583333596587181,
+            "per_register": 0.4722916781902313
+          },
+          "20": {
+            "exact_match": 0.03999999910593033,
+            "per_register": 0.42625001072883606
+          },
+          "25": {
+            "exact_match": 0.030833333730697632,
+            "per_register": 0.4104166626930237
+          },
+          "30": {
+            "exact_match": 0.024166667833924294,
+            "per_register": 0.40416666865348816
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.02083333395421505,
+            "per_register": 0.2787500023841858
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09229166805744171
+          },
+          "running_accumulation": {
+            "exact_match": 0.021666666492819786,
+            "per_register": 0.34979167580604553
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03500000014901161,
+            "per_register": 0.4489583373069763
+          }
+        }
+      }
+    ],
+    "model_f_canonical_mgu": [
+      {
+        "model_key": "model_f_canonical_mgu",
+        "seed": 42,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 43.906304312999055,
+        "train_throughput_examples_per_s": 4372.948327221333,
+        "inference_latency_ms": 0.0749810326182573,
+        "inference_throughput_examples_per_s": 853549.1945787967,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.381,
+        "best_val_step": 1600,
+        "test_at_best_val_checkpoint_exact": 0.3575,
+        "test_at_best_val_checkpoint_loss": 0.7693617685635885,
+        "test_at_best_val_checkpoint_per_reg": 0.780625,
+        "credit_diag": {
+          "state_norms": [
+            7.88762092590332,
+            9.90623664855957,
+            10.509486198425293,
+            10.816581726074219,
+            10.994876861572266,
+            11.08810806274414,
+            11.153412818908691,
+            11.163690567016602,
+            11.178850173950195,
+            11.196826934814453
+          ],
+          "state_stds": [
+            0.5417712330818176,
+            0.6801612973213196,
+            0.7215926647186279,
+            0.7430136203765869,
+            0.7553484439849854,
+            0.761791467666626,
+            0.7661697268486023,
+            0.7670800089836121,
+            0.7681975364685059,
+            0.7692455649375916
+          ],
+          "grad_norms": [
+            0.0008478822419419885,
+            0.0010525935795158148,
+            0.0011816699989140034,
+            0.001285085454583168,
+            0.0013910476118326187,
+            0.0014930616598576307,
+            0.0016069079283624887,
+            0.0016902175266295671,
+            0.0017762184143066406,
+            0.0018735837657004595
+          ],
+          "attenuation_ratio": 0.4525456814176646
+        },
+        "gate_diag": {
+          "mean_gate": 0.31642085313796997,
+          "std_gate": 0.40932321548461914,
+          "gate_entropy": 0.23115846514701843,
+          "frac_near_0": 0.5712732076644897,
+          "frac_near_1": 0.21432822942733765,
+          "op_means": {
+            "SET": 0.36234524846076965,
+            "SWAP": 0.3332875370979309,
+            "ADD": 0.2189781367778778
+          },
+          "gate_state_displacement_corr": 0.7021956245104471
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.6825000047683716,
+            "per_register": 0.908958375453949
+          },
+          "10": {
+            "exact_match": 0.39500001072883606,
+            "per_register": 0.784583330154419
+          },
+          "15": {
+            "exact_match": 0.2316666692495346,
+            "per_register": 0.6706250309944153
+          },
+          "20": {
+            "exact_match": 0.13166667520999908,
+            "per_register": 0.6008333563804626
+          },
+          "25": {
+            "exact_match": 0.10999999940395355,
+            "per_register": 0.5714583396911621
+          },
+          "30": {
+            "exact_match": 0.10000000149011612,
+            "per_register": 0.5566666722297668
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.257708340883255
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09812500327825546
+          },
+          "running_accumulation": {
+            "exact_match": 0.01833333447575569,
+            "per_register": 0.3227083384990692
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.046666666865348816,
+            "per_register": 0.44062501192092896
+          }
+        }
+      },
+      {
+        "model_key": "model_f_canonical_mgu",
+        "seed": 43,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 44.85103861799871,
+        "train_throughput_examples_per_s": 4280.837320965638,
+        "inference_latency_ms": 0.07787051425404905,
+        "inference_throughput_examples_per_s": 821877.1972046169,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.383,
+        "best_val_step": 2100,
+        "test_at_best_val_checkpoint_exact": 0.3575,
+        "test_at_best_val_checkpoint_loss": 0.8349671928087871,
+        "test_at_best_val_checkpoint_per_reg": 0.7704166666666666,
+        "credit_diag": {
+          "state_norms": [
+            8.038302421569824,
+            10.098018646240234,
+            10.66147232055664,
+            10.954587936401367,
+            11.1236572265625,
+            11.186877250671387,
+            11.260214805603027,
+            11.299023628234863,
+            11.283232688903809,
+            11.282254219055176
+          ],
+          "state_stds": [
+            0.5525951385498047,
+            0.6940728425979614,
+            0.7327234745025635,
+            0.7528973817825317,
+            0.7643847465515137,
+            0.7688164710998535,
+            0.7737334966659546,
+            0.7765576839447021,
+            0.7754969596862793,
+            0.7754494547843933
+          ],
+          "grad_norms": [
+            0.0012031446676701307,
+            0.0014738914323970675,
+            0.0016010574763640761,
+            0.0017724793870002031,
+            0.0019092916045337915,
+            0.0020032390020787716,
+            0.0021394514478743076,
+            0.0022480213083326817,
+            0.0022831973619759083,
+            0.0023485070560127497
+          ],
+          "attenuation_ratio": 0.5123019173350097
+        },
+        "gate_diag": {
+          "mean_gate": 0.32190316915512085,
+          "std_gate": 0.41404345631599426,
+          "gate_entropy": 0.22218793630599976,
+          "frac_near_0": 0.5698345303535461,
+          "frac_near_1": 0.22428813576698303,
+          "op_means": {
+            "SET": 0.37121671438217163,
+            "SWAP": 0.33724114298820496,
+            "ADD": 0.21984364092350006
+          },
+          "gate_state_displacement_corr": 0.6993303034040663
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.6766666769981384,
+            "per_register": 0.9083333611488342
+          },
+          "10": {
+            "exact_match": 0.3791666626930237,
+            "per_register": 0.7768750190734863
+          },
+          "15": {
+            "exact_match": 0.20750001072883606,
+            "per_register": 0.6660416722297668
+          },
+          "20": {
+            "exact_match": 0.12250000238418579,
+            "per_register": 0.590624988079071
+          },
+          "25": {
+            "exact_match": 0.11166667193174362,
+            "per_register": 0.5614583492279053
+          },
+          "30": {
+            "exact_match": 0.08666666597127914,
+            "per_register": 0.5514583587646484
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.010833333246409893,
+            "per_register": 0.25708332657814026
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09375
+          },
+          "running_accumulation": {
+            "exact_match": 0.01666666753590107,
+            "per_register": 0.32208335399627686
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04749999940395355,
+            "per_register": 0.4402083456516266
+          }
+        }
+      },
+      {
+        "model_key": "model_f_canonical_mgu",
+        "seed": 44,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 46.8561345979997,
+        "train_throughput_examples_per_s": 4097.649147699788,
+        "inference_latency_ms": 0.08678622697388753,
+        "inference_throughput_examples_per_s": 737444.2032058438,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.336,
+        "best_val_step": 2500,
+        "test_at_best_val_checkpoint_exact": 0.375,
+        "test_at_best_val_checkpoint_loss": 0.8580046224594117,
+        "test_at_best_val_checkpoint_per_reg": 0.7691666666666667,
+        "credit_diag": {
+          "state_norms": [
+            8.319526672363281,
+            10.278839111328125,
+            10.713508605957031,
+            10.956697463989258,
+            11.100854873657227,
+            11.211112022399902,
+            11.295381546020508,
+            11.332829475402832,
+            11.325250625610352,
+            11.319681167602539
+          ],
+          "state_stds": [
+            0.5711712837219238,
+            0.7051961421966553,
+            0.7353003025054932,
+            0.752199649810791,
+            0.7620508670806885,
+            0.7694490551948547,
+            0.7752386331558228,
+            0.7779501676559448,
+            0.7775869369506836,
+            0.7772426605224609
+          ],
+          "grad_norms": [
+            0.001375660882331431,
+            0.0016515188617631793,
+            0.001813635230064392,
+            0.0019476886373013258,
+            0.00206351256929338,
+            0.0021561256144195795,
+            0.0022542146034538746,
+            0.0023589907214045525,
+            0.002444106386974454,
+            0.0025001673493534327
+          ],
+          "attenuation_ratio": 0.5502275208446307
+        },
+        "gate_diag": {
+          "mean_gate": 0.3329690098762512,
+          "std_gate": 0.4200441241264343,
+          "gate_entropy": 0.21618114411830902,
+          "frac_near_0": 0.5632185339927673,
+          "frac_near_1": 0.23548820614814758,
+          "op_means": {
+            "SET": 0.38922858238220215,
+            "SWAP": 0.334307998418808,
+            "ADD": 0.2319735884666443
+          },
+          "gate_state_displacement_corr": 0.6924787627326118
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.6583333611488342,
+            "per_register": 0.9035416841506958
+          },
+          "10": {
+            "exact_match": 0.3891666829586029,
+            "per_register": 0.7762500047683716
+          },
+          "15": {
+            "exact_match": 0.19416667520999908,
+            "per_register": 0.659166693687439
+          },
+          "20": {
+            "exact_match": 0.13583333790302277,
+            "per_register": 0.5941666960716248
+          },
+          "25": {
+            "exact_match": 0.10500000417232513,
+            "per_register": 0.565833330154419
+          },
+          "30": {
+            "exact_match": 0.09916666895151138,
+            "per_register": 0.5608333349227905
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.012500000186264515,
+            "per_register": 0.25708332657814026
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0008333333535119891,
+            "per_register": 0.09479166567325592
+          },
+          "running_accumulation": {
+            "exact_match": 0.015000000596046448,
+            "per_register": 0.32500001788139343
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.038333334028720856,
+            "per_register": 0.4150000214576721
+          }
+        }
+      },
+      {
+        "model_key": "model_f_canonical_mgu",
+        "seed": 45,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 46.82486734400118,
+        "train_throughput_examples_per_s": 4100.385348440234,
+        "inference_latency_ms": 0.06552686376412646,
+        "inference_throughput_examples_per_s": 976698.6595051668,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.351,
+        "best_val_step": 2900,
+        "test_at_best_val_checkpoint_exact": 0.3625,
+        "test_at_best_val_checkpoint_loss": 0.9270190238952637,
+        "test_at_best_val_checkpoint_per_reg": 0.7716666666666666,
+        "credit_diag": {
+          "state_norms": [
+            8.105508804321289,
+            10.042793273925781,
+            10.617977142333984,
+            10.981477737426758,
+            11.154916763305664,
+            11.275445938110352,
+            11.336637496948242,
+            11.381175994873047,
+            11.400131225585938,
+            11.412915229797363
+          ],
+          "state_stds": [
+            0.5563595294952393,
+            0.6897503137588501,
+            0.7292308807373047,
+            0.754266619682312,
+            0.766415536403656,
+            0.7744866609573364,
+            0.7786707878112793,
+            0.7816831469535828,
+            0.7830086350440979,
+            0.783916711807251
+          ],
+          "grad_norms": [
+            0.001697820145636797,
+            0.002027526032179594,
+            0.0021722724195569754,
+            0.0023363749496638775,
+            0.0024525239132344723,
+            0.0026060952804982662,
+            0.00273893098346889,
+            0.002822111826390028,
+            0.0028681419789791107,
+            0.0028686607256531715
+          ],
+          "attenuation_ratio": 0.5918511486750377
+        },
+        "gate_diag": {
+          "mean_gate": 0.31579992175102234,
+          "std_gate": 0.41521477699279785,
+          "gate_entropy": 0.20716755092144012,
+          "frac_near_0": 0.5840593576431274,
+          "frac_near_1": 0.22401690483093262,
+          "op_means": {
+            "SET": 0.36331069469451904,
+            "SWAP": 0.31554004549980164,
+            "ADD": 0.22996993362903595
+          },
+          "gate_state_displacement_corr": 0.6992070741123624
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.6200000047683716,
+            "per_register": 0.89020836353302
+          },
+          "10": {
+            "exact_match": 0.3766666650772095,
+            "per_register": 0.7772917151451111
+          },
+          "15": {
+            "exact_match": 0.18833333253860474,
+            "per_register": 0.6618750095367432
+          },
+          "20": {
+            "exact_match": 0.13750000298023224,
+            "per_register": 0.5943750143051147
+          },
+          "25": {
+            "exact_match": 0.11083333939313889,
+            "per_register": 0.5737500190734863
+          },
+          "30": {
+            "exact_match": 0.08833333849906921,
+            "per_register": 0.5583333373069763
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.019999999552965164,
+            "per_register": 0.2672916650772095
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09541667252779007
+          },
+          "running_accumulation": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.3212500214576721
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03583333268761635,
+            "per_register": 0.429375022649765
+          }
+        }
+      },
+      {
+        "model_key": "model_f_canonical_mgu",
+        "seed": 46,
+        "param_count": 226360,
+        "total_steps": 3000,
+        "wall_clock_s": 55.64799908399982,
+        "train_throughput_examples_per_s": 3450.25882620108,
+        "inference_latency_ms": 0.09974586540463685,
+        "inference_throughput_examples_per_s": 641630.6053426135,
+        "flops_per_step": 451512,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.4,
+        "best_val_step": 2600,
+        "test_at_best_val_checkpoint_exact": 0.4008333333333333,
+        "test_at_best_val_checkpoint_loss": 0.8176376223564148,
+        "test_at_best_val_checkpoint_per_reg": 0.7966666666666666,
+        "credit_diag": {
+          "state_norms": [
+            7.917976379394531,
+            9.970817565917969,
+            10.628946304321289,
+            10.983718872070312,
+            11.196605682373047,
+            11.348182678222656,
+            11.426689147949219,
+            11.437756538391113,
+            11.445026397705078,
+            11.473620414733887
+          ],
+          "state_stds": [
+            0.5438112020492554,
+            0.6851028800010681,
+            0.7301604151725769,
+            0.7547253370285034,
+            0.7692437171936035,
+            0.7794285416603088,
+            0.7849124073982239,
+            0.7856338024139404,
+            0.7859817743301392,
+            0.7882755398750305
+          ],
+          "grad_norms": [
+            0.0013834387063980103,
+            0.0016585546545684338,
+            0.0017841998487710953,
+            0.0019050948321819305,
+            0.0020253725815564394,
+            0.0021367641165852547,
+            0.0022338824346661568,
+            0.00230991467833519,
+            0.0023626736365258694,
+            0.0023442714009433985
+          ],
+          "attenuation_ratio": 0.5901358971667175
+        },
+        "gate_diag": {
+          "mean_gate": 0.3237904906272888,
+          "std_gate": 0.4182778596878052,
+          "gate_entropy": 0.20896434783935547,
+          "frac_near_0": 0.5759166479110718,
+          "frac_near_1": 0.23126375675201416,
+          "op_means": {
+            "SET": 0.3636564612388611,
+            "SWAP": 0.3453039824962616,
+            "ADD": 0.22718459367752075
+          },
+          "gate_state_displacement_corr": 0.6948272585868835
+        },
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.6991666555404663,
+            "per_register": 0.9156250357627869
+          },
+          "10": {
+            "exact_match": 0.39500001072883606,
+            "per_register": 0.784375011920929
+          },
+          "15": {
+            "exact_match": 0.22500000894069672,
+            "per_register": 0.6700000166893005
+          },
+          "20": {
+            "exact_match": 0.14083333313465118,
+            "per_register": 0.597083330154419
+          },
+          "25": {
+            "exact_match": 0.10583333671092987,
+            "per_register": 0.5691666603088379
+          },
+          "30": {
+            "exact_match": 0.10249999910593033,
+            "per_register": 0.5610416531562805
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.013333333656191826,
+            "per_register": 0.25
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09333333373069763
+          },
+          "running_accumulation": {
+            "exact_match": 0.023333333432674408,
+            "per_register": 0.3335416615009308
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03583333268761635,
+            "per_register": 0.40166667103767395
+          }
+        }
+      }
+    ],
+    "model_g_canonical_gru": [
+      {
+        "model_key": "model_g_canonical_gru",
+        "seed": 42,
+        "param_count": 229200,
+        "total_steps": 3000,
+        "wall_clock_s": 26.450568956999632,
+        "train_throughput_examples_per_s": 7258.823063962521,
+        "inference_latency_ms": 0.04543499095102801,
+        "inference_throughput_examples_per_s": 1408605.9809934206,
+        "flops_per_step": 49800,
+        "peak_mem_mb": 298.64208984375,
+        "best_val_exact": 0.127,
+        "best_val_step": 2200,
+        "test_at_best_val_checkpoint_exact": 0.10166666666666667,
+        "test_at_best_val_checkpoint_loss": 1.4035656277338664,
+        "test_at_best_val_checkpoint_per_reg": 0.5777083333333334,
+        "credit_diag": {
+          "state_norms": [
+            6.85427188873291,
+            8.697927474975586,
+            9.288175582885742,
+            9.660881042480469,
+            9.855464935302734,
+            9.974569320678711,
+            10.09566879272461,
+            10.148838996887207,
+            10.176872253417969,
+            10.220819473266602
+          ],
+          "state_stds": [
+            0.5389819145202637,
+            0.6837457418441772,
+            0.7298052310943604,
+            0.7590190768241882,
+            0.7743618488311768,
+            0.7839645147323608,
+            0.7933733463287354,
+            0.7975291013717651,
+            0.7997182607650757,
+            0.8033826351165771
+          ],
+          "grad_norms": [
+            0.001693457830697298,
+            0.002013260032981634,
+            0.0021607396192848682,
+            0.002326536225154996,
+            0.0024837935343384743,
+            0.0026138764806091785,
+            0.0027717286720871925,
+            0.0029281878378242254,
+            0.0031228167936205864,
+            0.0033294663298875093
+          ],
+          "attenuation_ratio": 0.5086274083914565
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.28083333373069763,
+            "per_register": 0.7300000190734863
+          },
+          "10": {
+            "exact_match": 0.1041666716337204,
+            "per_register": 0.5691666603088379
+          },
+          "15": {
+            "exact_match": 0.05583333596587181,
+            "per_register": 0.47958335280418396
+          },
+          "20": {
+            "exact_match": 0.0416666679084301,
+            "per_register": 0.43291667103767395
+          },
+          "25": {
+            "exact_match": 0.0325000025331974,
+            "per_register": 0.4085416793823242
+          },
+          "30": {
+            "exact_match": 0.02250000089406967,
+            "per_register": 0.40541666746139526
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.025833334773778915,
+            "per_register": 0.25833332538604736
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09937500208616257
+          },
+          "running_accumulation": {
+            "exact_match": 0.0416666679084301,
+            "per_register": 0.398125022649765
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.02250000089406967,
+            "per_register": 0.39500001072883606
+          }
+        }
+      },
+      {
+        "model_key": "model_g_canonical_gru",
+        "seed": 43,
+        "param_count": 229200,
+        "total_steps": 3000,
+        "wall_clock_s": 27.881078716998672,
+        "train_throughput_examples_per_s": 6886.3906575802785,
+        "inference_latency_ms": 0.04830079961200346,
+        "inference_throughput_examples_per_s": 1325029.823814657,
+        "flops_per_step": 49800,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.108,
+        "best_val_step": 3000,
+        "test_at_best_val_checkpoint_exact": 0.1075,
+        "test_at_best_val_checkpoint_loss": 1.6678197717666625,
+        "test_at_best_val_checkpoint_per_reg": 0.55375,
+        "credit_diag": {
+          "state_norms": [
+            7.089447975158691,
+            8.9130859375,
+            9.471988677978516,
+            9.795709609985352,
+            9.978652954101562,
+            10.085291862487793,
+            10.19186782836914,
+            10.258438110351562,
+            10.294893264770508,
+            10.335344314575195
+          ],
+          "state_stds": [
+            0.5568612217903137,
+            0.7005215883255005,
+            0.7444570660591125,
+            0.7697513103485107,
+            0.7840644121170044,
+            0.7924686670303345,
+            0.8007078766822815,
+            0.806044340133667,
+            0.8090440034866333,
+            0.8117043972015381
+          ],
+          "grad_norms": [
+            0.00265567097812891,
+            0.00311638112179935,
+            0.0032942884135991335,
+            0.003430483629927039,
+            0.00359178613871336,
+            0.003739279694855213,
+            0.0039217304438352585,
+            0.004092861898243427,
+            0.004242210183292627,
+            0.004393753129988909
+          ],
+          "attenuation_ratio": 0.6044197066974525
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.2541666626930237,
+            "per_register": 0.7116667032241821
+          },
+          "10": {
+            "exact_match": 0.09666667133569717,
+            "per_register": 0.5579167008399963
+          },
+          "15": {
+            "exact_match": 0.05000000074505806,
+            "per_register": 0.46520835161209106
+          },
+          "20": {
+            "exact_match": 0.038333334028720856,
+            "per_register": 0.4245833456516266
+          },
+          "25": {
+            "exact_match": 0.038333334028720856,
+            "per_register": 0.41187500953674316
+          },
+          "30": {
+            "exact_match": 0.017500000074505806,
+            "per_register": 0.39916667342185974
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.012500000186264515,
+            "per_register": 0.24958333373069763
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09562500566244125
+          },
+          "running_accumulation": {
+            "exact_match": 0.03500000014901161,
+            "per_register": 0.37458333373069763
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.025833334773778915,
+            "per_register": 0.40312501788139343
+          }
+        }
+      },
+      {
+        "model_key": "model_g_canonical_gru",
+        "seed": 44,
+        "param_count": 229200,
+        "total_steps": 3000,
+        "wall_clock_s": 28.0645211989995,
+        "train_throughput_examples_per_s": 6841.378074422478,
+        "inference_latency_ms": 0.04925805839113245,
+        "inference_throughput_examples_per_s": 1299279.7948268587,
+        "flops_per_step": 49800,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.101,
+        "best_val_step": 1600,
+        "test_at_best_val_checkpoint_exact": 0.10583333333333333,
+        "test_at_best_val_checkpoint_loss": 1.3453884077072145,
+        "test_at_best_val_checkpoint_per_reg": 0.56375,
+        "credit_diag": {
+          "state_norms": [
+            6.922541618347168,
+            8.659173965454102,
+            9.144057273864746,
+            9.444337844848633,
+            9.639754295349121,
+            9.803617477416992,
+            9.920400619506836,
+            10.007318496704102,
+            10.038421630859375,
+            10.081926345825195
+          ],
+          "state_stds": [
+            0.5440247058868408,
+            0.6803287863731384,
+            0.7180089354515076,
+            0.7417513132095337,
+            0.7570451498031616,
+            0.7699940204620361,
+            0.7792568206787109,
+            0.7860971689224243,
+            0.7888180017471313,
+            0.7924329042434692
+          ],
+          "grad_norms": [
+            0.0011337005998939276,
+            0.0013848177623003721,
+            0.0015113024273887277,
+            0.0016178775113075972,
+            0.0017449951265007257,
+            0.0018801279366016388,
+            0.0020336599554866552,
+            0.0022389409132301807,
+            0.0024461729917675257,
+            0.0026904442347586155
+          ],
+          "attenuation_ratio": 0.42138044908990363
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.2516666650772095,
+            "per_register": 0.7081249952316284
+          },
+          "10": {
+            "exact_match": 0.09916666895151138,
+            "per_register": 0.5516666769981384
+          },
+          "15": {
+            "exact_match": 0.05583333596587181,
+            "per_register": 0.47083333134651184
+          },
+          "20": {
+            "exact_match": 0.03666666895151138,
+            "per_register": 0.4156250059604645
+          },
+          "25": {
+            "exact_match": 0.028333334252238274,
+            "per_register": 0.40437501668930054
+          },
+          "30": {
+            "exact_match": 0.019166667014360428,
+            "per_register": 0.3993750214576721
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.023333333432674408,
+            "per_register": 0.26770833134651184
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09666667133569717
+          },
+          "running_accumulation": {
+            "exact_match": 0.03666666895151138,
+            "per_register": 0.3760416805744171
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.04333333298563957,
+            "per_register": 0.42770835757255554
+          }
+        }
+      },
+      {
+        "model_key": "model_g_canonical_gru",
+        "seed": 45,
+        "param_count": 229200,
+        "total_steps": 3000,
+        "wall_clock_s": 29.11050399600026,
+        "train_throughput_examples_per_s": 6595.557398332248,
+        "inference_latency_ms": 0.05271997889123444,
+        "inference_throughput_examples_per_s": 1213961.0323448186,
+        "flops_per_step": 49800,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.102,
+        "best_val_step": 1100,
+        "test_at_best_val_checkpoint_exact": 0.1,
+        "test_at_best_val_checkpoint_loss": 1.3194050486882527,
+        "test_at_best_val_checkpoint_per_reg": 0.5472916666666666,
+        "credit_diag": {
+          "state_norms": [
+            6.699649810791016,
+            8.425317764282227,
+            8.965277671813965,
+            9.37133502960205,
+            9.579919815063477,
+            9.74897289276123,
+            9.83967113494873,
+            9.920735359191895,
+            9.973054885864258,
+            10.016225814819336
+          ],
+          "state_stds": [
+            0.5263316631317139,
+            0.6617761850357056,
+            0.7043124437332153,
+            0.7361868619918823,
+            0.7525445222854614,
+            0.7657101154327393,
+            0.7725996971130371,
+            0.7793025374412537,
+            0.7833406925201416,
+            0.7868808507919312
+          ],
+          "grad_norms": [
+            0.0007601715042255819,
+            0.0009439622517675161,
+            0.0010295409010723233,
+            0.0011436431668698788,
+            0.0012706243433058262,
+            0.001389083219692111,
+            0.0015162720810621977,
+            0.0016631088219583035,
+            0.0018590090330690145,
+            0.002098305383697152
+          ],
+          "attenuation_ratio": 0.36227877511622364
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.19750000536441803,
+            "per_register": 0.6660416722297668
+          },
+          "10": {
+            "exact_match": 0.09416666626930237,
+            "per_register": 0.5487500429153442
+          },
+          "15": {
+            "exact_match": 0.06000000238418579,
+            "per_register": 0.4704166650772095
+          },
+          "20": {
+            "exact_match": 0.038333334028720856,
+            "per_register": 0.4272916913032532
+          },
+          "25": {
+            "exact_match": 0.030000001192092896,
+            "per_register": 0.4129166901111603
+          },
+          "30": {
+            "exact_match": 0.02500000037252903,
+            "per_register": 0.4072916805744171
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.015000000596046448,
+            "per_register": 0.257708340883255
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09812500327825546
+          },
+          "running_accumulation": {
+            "exact_match": 0.02666666731238365,
+            "per_register": 0.3552083373069763
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.03999999910593033,
+            "per_register": 0.4456250071525574
+          }
+        }
+      },
+      {
+        "model_key": "model_g_canonical_gru",
+        "seed": 46,
+        "param_count": 229200,
+        "total_steps": 3000,
+        "wall_clock_s": 30.85037239600024,
+        "train_throughput_examples_per_s": 6223.587758859367,
+        "inference_latency_ms": 0.0527493040056414,
+        "inference_throughput_examples_per_s": 1213286.15052732,
+        "flops_per_step": 49800,
+        "peak_mem_mb": 299.17333984375,
+        "best_val_exact": 0.111,
+        "best_val_step": 1900,
+        "test_at_best_val_checkpoint_exact": 0.12416666666666666,
+        "test_at_best_val_checkpoint_loss": 1.3827445411682129,
+        "test_at_best_val_checkpoint_per_reg": 0.565625,
+        "credit_diag": {
+          "state_norms": [
+            7.070735931396484,
+            8.8027982711792,
+            9.367316246032715,
+            9.668510437011719,
+            9.871417999267578,
+            10.03243637084961,
+            10.117876052856445,
+            10.16067886352539,
+            10.185483932495117,
+            10.234573364257812
+          ],
+          "state_stds": [
+            0.5554003119468689,
+            0.691463828086853,
+            0.7359213829040527,
+            0.7599090337753296,
+            0.7756627798080444,
+            0.7886521816253662,
+            0.7952092885971069,
+            0.7985475063323975,
+            0.8003870844841003,
+            0.8044113516807556
+          ],
+          "grad_norms": [
+            0.001278489944525063,
+            0.0016088609118014574,
+            0.0017502179834991693,
+            0.0018884489545598626,
+            0.002029538620263338,
+            0.0021963203325867653,
+            0.0023648664355278015,
+            0.0025622742250561714,
+            0.0027486439794301987,
+            0.0029636071994900703
+          ],
+          "attenuation_ratio": 0.43139655779789066
+        },
+        "gate_diag": null,
+        "horizon_scaling": {
+          "5": {
+            "exact_match": 0.25083333253860474,
+            "per_register": 0.7012500166893005
+          },
+          "10": {
+            "exact_match": 0.09416666626930237,
+            "per_register": 0.5614583492279053
+          },
+          "15": {
+            "exact_match": 0.054999999701976776,
+            "per_register": 0.46937501430511475
+          },
+          "20": {
+            "exact_match": 0.034166667610406876,
+            "per_register": 0.41979166865348816
+          },
+          "25": {
+            "exact_match": 0.02916666679084301,
+            "per_register": 0.40291666984558105
+          },
+          "30": {
+            "exact_match": 0.019999999552965164,
+            "per_register": 0.40145835280418396
+          }
+        },
+        "algorithmic_transfer": {
+          "copy_broadcast": {
+            "exact_match": 0.014166667126119137,
+            "per_register": 0.24666666984558105
+          },
+          "permutation_cycle": {
+            "exact_match": 0.0,
+            "per_register": 0.09083333611488342
+          },
+          "running_accumulation": {
+            "exact_match": 0.02666666731238365,
+            "per_register": 0.35354167222976685
+          },
+          "conditional_overwrite": {
+            "exact_match": 0.030833333730697632,
+            "per_register": 0.4193750023841858
+          }
+        }
+      }
+    ]
+  }
+}

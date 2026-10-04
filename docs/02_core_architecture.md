@@ -179,16 +179,19 @@ $$e_t = \text{Encoder}(x_t)$$
 $$S_t = \text{LayerNorm}\left(S_{t-1} + f_\theta(S_{t-1}, e_t)\right)$$
 $$\hat{y}_t = \text{DecisionHead}(S_t)$$
 
-### Phase 1 Exclusions:
-* Recursion depth: $R = 1$ (strictly single pass; no recursion)
-* Branch count: $K = 1$ (strictly single trajectory; no branching)
-* Adaptive halting: None (static single execution)
-* Verifier: None (no deterministic or learned verifier)
-* Transactional commit: None (standard sequential recurrent update)
-* Multimodal perception: None
-* NLP / Tokenization: None
-* Parameter budget: $\le 250\text{K}$ parameters
-* Direct baseline: Compact `nn.GRUCell` with matched parameter count on Register Tracking.
+### Phase 1 Locked Decisions:
+The engineering and architectural decisions for Phase 1 are locked as follows:
+* **State Representation:** Flat tensor $S \in \mathbb{R}^{B \times 256}$.
+* **State Update:** $S_t = \text{LayerNorm}\left(S_{t-1} + f_\theta(S_{t-1}, e_t)\right)$.
+* **Recursion Depth:** $R = 1$ (strictly single pass; no recursion).
+* **Branch Count:** $K = 1$ (strictly single trajectory; no branching).
+* **Halting:** Fixed single pass (no adaptive halting / PonderNet).
+* **Verifier:** None (no deterministic or learned verifier).
+* **Transactional Commit:** None (standard sequential recurrent state update).
+* **Loss & Supervision:** Terminal supervision at step $t = 10$. Step-wise predictions and losses may be logged only as diagnostics.
+* **Direct Baseline:** Parameter-matched PyTorch `nn.GRUCell` ($\sim 250\text{K}$ parameters).
+* **Phase 1 Pipeline:** Strictly $\text{Input} \to \text{Observation Encoder} \to \text{Persistent State Update} \to \text{Typed Prediction}$.
+* **Exclusions:** No recursion, branching, halting, verification, transactional commit, multimodality, NLP, or online weight updates.
 
 This minimal architecture exists purely to determine whether the proposed persistent-state update formulation can achieve basic sequential state tracking without being materially worse than a standard GRU at comparable parameter count.
 

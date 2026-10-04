@@ -41,7 +41,7 @@ The complete engineering specification, architectural blueprints, experimental m
 * 11 sequential implementation phases (Phase 0 through Phase 10).
 * Explicit staging rationale: Phase 4 evaluates branching in isolation; Phase 5 introduces deterministic verification; Phase 6 evaluates learned verification; Phase 7 connects verification to transactional commit.
 * Phase 0 contracts and CI leak detection.
-* Phase 1 minimal persistent core ($R=1, K=1$) benchmarked directly against `nn.GRUCell` (matching GRU shows viability, not superiority).
+* Phase 1 minimal persistent core ($R=1, K=1$, locked decisions: flat $S \in \mathbb{R}^{B \times 256}$, terminal loss at $t=10$, single pass, no branching/recursion/halting/verification/commit) benchmarked directly against `nn.GRUCell` (matching GRU shows viability, not superiority).
 * Phase 2 recursive cognition ($R \in [1, 2, 4, 8]$).
 * Phase 3 adaptive halting evaluated primarily on compute reduction and accuracy retention.
 * Phase 4 parallel hypothesis branching evaluated under compute parity.

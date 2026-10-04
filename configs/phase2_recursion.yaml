@@ -1,0 +1,17 @@
+# RE:Reason Phase 2: Fixed-Depth Recursive Cognition Configuration Scaffolding
+phase: 2
+seed: 42
+device: "auto"
+
+model:
+  name: "system_d_recursive_core"
+  latent_dim: 256
+  recursion_depth: 4  # Sweep: [1, 2, 4, 8]
+  branch_count: 1
+  halting: false
+  verifier: false
+  commit_gate: false
+
+task:
+  name: "parity_dag"
+  depths: [2, 4, 6]

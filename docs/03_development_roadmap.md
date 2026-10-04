@@ -53,8 +53,18 @@ Any numerical go/no-go threshold below is a **predefined project decision rule**
 ## Phase 1: Minimal Persistent-State Core
 
 * Objective: Determine whether the proposed persistent-state update formulation can achieve basic sequential state tracking without being materially worse than a standard GRU at comparable parameter count.
-* What is Implemented: Minimal core ($R=1, K=1$): $e_t = \text{Encoder}(x_t)$, $S_t = \text{LayerNorm}(S_{t-1} + f_\theta(S_{t-1}, e_t))$, $\hat{y}_t = \text{Head}(S_t)$.
-* Deliberately Excluded: Recursion ($R>1$), branching ($K>1$), adaptive halting, verification, transactional commit, multimodality, NLP.
+* Phase 1 Locked Decisions:
+  * State representation: Flat tensor $S \in \mathbb{R}^{B \times 256}$.
+  * Update: $S_t = \text{LayerNorm}(S_{t-1} + f_\theta(S_{t-1}, e_t))$.
+  * Recursion depth: $R = 1$.
+  * Branch count: $K = 1$.
+  * Halting: Fixed single pass.
+  * Verifier: None.
+  * Transactional commit: None.
+  * Loss: Terminal supervision at step $t = 10$. Step-wise predictions and losses may be logged only as diagnostics.
+  * Direct baseline: Parameter-matched PyTorch `nn.GRUCell` ($\sim 250\text{K}$ parameters).
+  * Phase 1 pipeline: Strictly $\text{Input} \to \text{Observation Encoder} \to \text{Persistent State Update} \to \text{Typed Prediction}$.
+* Deliberately Excluded: Recursion ($R>1$), branching ($K>1$), adaptive halting, verification, transactional commit, multimodality, NLP, online weight updates.
 * Benchmark: Register Tracking (4 registers, sequence length $T=10$ assignments/swaps).
 * Metrics: Exact match accuracy across all registers at step $T=10$, parameter count, training wall-clock time.
 * Baseline: Compact `nn.GRUCell` with matched parameter count ($\sim 250\text{K}$ parameters) trained under identical optimizer, batch size, and seed count.

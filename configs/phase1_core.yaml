@@ -1,0 +1,40 @@
+# RE:Reason Phase 1: Minimal Persistent-State Core (Locked Decisions)
+phase: 1
+seed: 42
+device: "auto"
+
+# Model Architecture - Locked Decisions
+model:
+  name: "system_c_persistent_core"
+  input_dim: 21
+  state_dim: 256
+  encoder_hidden_dim: 64
+  core_hidden_dim: 256
+  num_registers: 4
+  num_values: 10
+  recursion_depth: 1  # R = 1 (strictly single pass; no recursion)
+  branch_count: 1     # K = 1 (strictly single trajectory; no branching)
+  halting: false      # Fixed single pass (no adaptive halting)
+  verifier: false     # None (no verifier)
+  commit_gate: false  # None (standard sequential recurrent update)
+  max_parameters: 250000
+
+# Task & Supervision - Locked Decisions
+task:
+  name: "register_tracking"
+  num_registers: 4
+  num_values: 10
+  sequence_length: 10
+  terminal_loss_step: 10  # Supervision strictly at t = 10
+  log_intermediate_diagnostics: true
+
+# Training Hyperparameters
+training:
+  batch_size: 64
+  learning_rate: 0.001
+  optimizer: "AdamW"
+  weight_decay: 0.01
+  gradient_clip_norm: 1.0
+  total_steps: 1200
+  eval_samples: 1000
+  num_seeds: 5

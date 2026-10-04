@@ -23,6 +23,7 @@ We do not call these benchmarks "reasoning" merely because they involve multiple
 * Description: Tracks the values of 4 integer registers across $T=10$ sequential assign and swap operations (e.g., `R1 = 4`, `SWAP R1 R2`, `R3 = R1 + R4`).
 * Input: Discrete vector encoding register indices and arithmetic operations.
 * Target: Value of all 4 registers at step $T=10$.
+* Loss Formulation: Terminal supervision at step $t=10$. Step-wise predictions and losses may be logged only as diagnostics.
 * What it Actually Tests: Memory retention and sequential update fidelity in a persistent latent vector. Does not test complex reasoning.
 
 ### Benchmark 2: Parity DAGs
@@ -69,7 +70,7 @@ To prevent fabricated wins, every architectural addition is benchmarked against 
 * Parameter- and FLOP-matched to evaluate whether persistent latent recurrence can match standard attention over past context.
 
 ### Baseline C: Persistent Core (Phase 1)
-* Minimal latent update: $R=1, K=1$, no branching, no verifier, no halting.
+* Minimal latent update: $R=1, K=1$, flat tensor $S \in \mathbb{R}^{B \times 256}$, terminal loss at $t=10$, fixed single pass, no branching, no verifier, no halting, no transactional commit. Parameter-matched to Baseline A (`nn.GRUCell`).
 
 ### Baseline D: Recursive Core (Phase 2)
 * Weight-tied recursion: $R \in [1..8], K=1$.

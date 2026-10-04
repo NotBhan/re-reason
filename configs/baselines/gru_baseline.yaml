@@ -1,0 +1,33 @@
+# RE:Reason Baseline A: Parameter-Matched GRU Baseline
+phase: 1
+seed: 42
+device: "auto"
+
+baseline:
+  name: "baseline_a_gru"
+  cell_type: "nn.GRUCell"
+  input_dim: 21
+  encoder_hidden_dim: 64
+  encoder_out_dim: 256
+  gru_hidden_dim: 162
+  num_registers: 4
+  num_values: 10
+  target_parameters: 250000
+
+task:
+  name: "register_tracking"
+  num_registers: 4
+  num_values: 10
+  sequence_length: 10
+  terminal_loss_step: 10
+  log_intermediate_diagnostics: true
+
+training:
+  batch_size: 64
+  learning_rate: 0.001
+  optimizer: "AdamW"
+  weight_decay: 0.01
+  gradient_clip_norm: 1.0
+  total_steps: 1200
+  eval_samples: 1000
+  num_seeds: 5
