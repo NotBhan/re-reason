@@ -1,0 +1,1035 @@
+{
+  "failure_chain": {
+    "A_terminal": {
+      "runs": [
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 691,
+          "counts": {
+            "A_candidate_generation": 44,
+            "C_arithmetic": 528,
+            "B_commit_readout": 119,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 6.367583212735166,
+            "C_arithmetic": 76.410998552822,
+            "B_commit_readout": 17.221418234442837,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.6666666666666665,
+            "C_arithmetic": 44.0,
+            "B_commit_readout": 9.916666666666666,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 528,
+            "op1_cand0_n1": 11,
+            "op1_cand1_n1": 43,
+            "op2_cand0_n1": 108,
+            "op1_cand1_n2": 1
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 648,
+          "counts": {
+            "A_candidate_generation": 53,
+            "C_arithmetic": 470,
+            "B_commit_readout": 125,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 8.179012345679013,
+            "C_arithmetic": 72.53086419753086,
+            "B_commit_readout": 19.290123456790123,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 4.416666666666667,
+            "C_arithmetic": 39.166666666666664,
+            "B_commit_readout": 10.416666666666666,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 470,
+            "op2_cand0_n1": 108,
+            "op1_cand0_n1": 17,
+            "op1_cand1_n1": 51,
+            "op1_cand1_n2": 2
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 643,
+          "counts": {
+            "A_candidate_generation": 57,
+            "C_arithmetic": 484,
+            "B_commit_readout": 102,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 8.864696734059098,
+            "C_arithmetic": 75.27216174183515,
+            "B_commit_readout": 15.863141524105755,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 4.75,
+            "C_arithmetic": 40.333333333333336,
+            "B_commit_readout": 8.5,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 484,
+            "op2_cand0_n1": 88,
+            "op1_cand0_n1": 14,
+            "op1_cand1_n1": 57
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 667,
+          "counts": {
+            "A_candidate_generation": 54,
+            "C_arithmetic": 498,
+            "B_commit_readout": 115,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 8.095952023988007,
+            "C_arithmetic": 74.66266866566717,
+            "B_commit_readout": 17.24137931034483,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 4.5,
+            "C_arithmetic": 41.5,
+            "B_commit_readout": 9.583333333333334,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 498,
+            "op2_cand0_n1": 90,
+            "op1_cand1_n1": 53,
+            "op1_cand0_n1": 25,
+            "op1_cand1_n2": 1
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 707,
+          "counts": {
+            "A_candidate_generation": 56,
+            "C_arithmetic": 547,
+            "B_commit_readout": 104,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 7.920792079207921,
+            "C_arithmetic": 77.36916548797737,
+            "B_commit_readout": 14.71004243281471,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 4.666666666666667,
+            "C_arithmetic": 45.583333333333336,
+            "B_commit_readout": 8.666666666666666,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 547,
+            "op2_cand0_n1": 83,
+            "op1_cand0_n1": 21,
+            "op1_cand1_n1": 56
+          }
+        }
+      ],
+      "summary": {
+        "n_first_real_errors_mean": 671.2,
+        "counts_mean": {
+          "A_candidate_generation": 52.8,
+          "C_arithmetic": 505.4,
+          "B_commit_readout": 113.0,
+          "D_other": 0.0
+        },
+        "percent_of_errors_mean": {
+          "A_candidate_generation": 7.885607279133841,
+          "C_arithmetic": 75.2491717291665,
+          "B_commit_readout": 16.86522099169965,
+          "D_other": 0.0
+        },
+        "per_op_origin_mean": {
+          "op1_cand0_n1": 17.6,
+          "op1_cand1_n1": 52.0,
+          "op1_cand1_n2": 0.8,
+          "op2_cand0_n1": 95.4,
+          "op2_cand1_n1": 505.4
+        }
+      }
+    },
+    "D_late_t6": {
+      "runs": [
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 465,
+          "counts": {
+            "A_candidate_generation": 26,
+            "C_arithmetic": 366,
+            "B_commit_readout": 73,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 5.591397849462366,
+            "C_arithmetic": 78.70967741935483,
+            "B_commit_readout": 15.698924731182796,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 2.1666666666666665,
+            "C_arithmetic": 30.5,
+            "B_commit_readout": 6.083333333333333,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 366,
+            "op2_cand0_n1": 70,
+            "op1_cand1_n1": 26,
+            "op1_cand0_n1": 3
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 433,
+          "counts": {
+            "A_candidate_generation": 33,
+            "C_arithmetic": 320,
+            "B_commit_readout": 80,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 7.621247113163972,
+            "C_arithmetic": 73.90300230946882,
+            "B_commit_readout": 18.475750577367204,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 2.75,
+            "C_arithmetic": 26.666666666666668,
+            "B_commit_readout": 6.666666666666667,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 320,
+            "op1_cand1_n1": 32,
+            "op2_cand0_n1": 71,
+            "op1_cand0_n1": 9,
+            "op1_cand1_n2": 1
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 406,
+          "counts": {
+            "A_candidate_generation": 38,
+            "C_arithmetic": 303,
+            "B_commit_readout": 65,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 9.35960591133005,
+            "C_arithmetic": 74.63054187192118,
+            "B_commit_readout": 16.00985221674877,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.1666666666666665,
+            "C_arithmetic": 25.25,
+            "B_commit_readout": 5.416666666666667,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 303,
+            "op1_cand1_n1": 37,
+            "op2_cand0_n1": 58,
+            "op1_cand1_n2": 1,
+            "op1_cand0_n1": 7
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 433,
+          "counts": {
+            "A_candidate_generation": 32,
+            "C_arithmetic": 331,
+            "B_commit_readout": 70,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 7.390300230946882,
+            "C_arithmetic": 76.44341801385681,
+            "B_commit_readout": 16.166281755196305,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 2.6666666666666665,
+            "C_arithmetic": 27.583333333333332,
+            "B_commit_readout": 5.833333333333333,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 331,
+            "op2_cand0_n1": 65,
+            "op1_cand1_n1": 32,
+            "op1_cand0_n1": 5
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 434,
+          "counts": {
+            "A_candidate_generation": 20,
+            "C_arithmetic": 338,
+            "B_commit_readout": 76,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 4.608294930875576,
+            "C_arithmetic": 77.88018433179724,
+            "B_commit_readout": 17.51152073732719,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 1.6666666666666667,
+            "C_arithmetic": 28.166666666666668,
+            "B_commit_readout": 6.333333333333333,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand0_n1": 73,
+            "op2_cand1_n1": 338,
+            "op1_cand0_n1": 3,
+            "op1_cand1_n1": 19,
+            "op1_cand1_n2": 1
+          }
+        }
+      ],
+      "summary": {
+        "n_first_real_errors_mean": 434.2,
+        "counts_mean": {
+          "A_candidate_generation": 29.8,
+          "C_arithmetic": 331.6,
+          "B_commit_readout": 72.8,
+          "D_other": 0.0
+        },
+        "percent_of_errors_mean": {
+          "A_candidate_generation": 6.914169207155768,
+          "C_arithmetic": 76.31336478927977,
+          "B_commit_readout": 16.772466003564453,
+          "D_other": 0.0
+        },
+        "per_op_origin_mean": {
+          "op1_cand0_n1": 5.4,
+          "op1_cand1_n1": 29.2,
+          "op1_cand1_n2": 0.6,
+          "op2_cand0_n1": 67.4,
+          "op2_cand1_n1": 331.6
+        }
+      }
+    },
+    "E_candidate": {
+      "runs": [
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 411,
+          "counts": {
+            "A_candidate_generation": 29,
+            "C_arithmetic": 231,
+            "B_commit_readout": 151,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 7.0559610705596105,
+            "C_arithmetic": 56.2043795620438,
+            "B_commit_readout": 36.73965936739659,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 2.4166666666666665,
+            "C_arithmetic": 19.25,
+            "B_commit_readout": 12.583333333333334,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 231,
+            "op1_cand1_n1": 29,
+            "op2_cand0_n1": 138,
+            "op1_cand0_n1": 13
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 369,
+          "counts": {
+            "A_candidate_generation": 44,
+            "C_arithmetic": 164,
+            "B_commit_readout": 161,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 11.924119241192411,
+            "C_arithmetic": 44.44444444444444,
+            "B_commit_readout": 43.63143631436314,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.6666666666666665,
+            "C_arithmetic": 13.666666666666666,
+            "B_commit_readout": 13.416666666666666,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand0_n1": 148,
+            "op2_cand1_n1": 164,
+            "op1_cand1_n1": 44,
+            "op1_cand0_n1": 13
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 345,
+          "counts": {
+            "A_candidate_generation": 31,
+            "C_arithmetic": 194,
+            "B_commit_readout": 120,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 8.985507246376812,
+            "C_arithmetic": 56.231884057971016,
+            "B_commit_readout": 34.78260869565217,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 2.5833333333333335,
+            "C_arithmetic": 16.166666666666668,
+            "B_commit_readout": 10.0,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 194,
+            "op2_cand0_n1": 112,
+            "op1_cand1_n1": 31,
+            "op1_cand0_n1": 8
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 353,
+          "counts": {
+            "A_candidate_generation": 40,
+            "C_arithmetic": 181,
+            "B_commit_readout": 132,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 11.331444759206798,
+            "C_arithmetic": 51.274787535410766,
+            "B_commit_readout": 37.39376770538244,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.3333333333333335,
+            "C_arithmetic": 15.083333333333334,
+            "B_commit_readout": 11.0,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op1_cand1_n1": 39,
+            "op2_cand1_n1": 181,
+            "op1_cand0_n1": 6,
+            "op2_cand0_n1": 126,
+            "op1_cand1_n2": 1
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 340,
+          "counts": {
+            "A_candidate_generation": 24,
+            "C_arithmetic": 175,
+            "B_commit_readout": 141,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 7.0588235294117645,
+            "C_arithmetic": 51.470588235294116,
+            "B_commit_readout": 41.470588235294116,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 2.0,
+            "C_arithmetic": 14.583333333333334,
+            "B_commit_readout": 11.75,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand0_n1": 131,
+            "op2_cand1_n1": 175,
+            "op1_cand0_n1": 10,
+            "op1_cand1_n1": 23,
+            "op1_cand1_n2": 1
+          }
+        }
+      ],
+      "summary": {
+        "n_first_real_errors_mean": 363.6,
+        "counts_mean": {
+          "A_candidate_generation": 33.6,
+          "C_arithmetic": 189.0,
+          "B_commit_readout": 141.0,
+          "D_other": 0.0
+        },
+        "percent_of_errors_mean": {
+          "A_candidate_generation": 9.271171169349481,
+          "C_arithmetic": 51.925216767032836,
+          "B_commit_readout": 38.80361206361769,
+          "D_other": 0.0
+        },
+        "per_op_origin_mean": {
+          "op1_cand0_n1": 10.0,
+          "op1_cand1_n1": 33.2,
+          "op1_cand1_n2": 0.4,
+          "op2_cand0_n1": 131.0,
+          "op2_cand1_n1": 189.0
+        }
+      }
+    },
+    "F_combined": {
+      "runs": [
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 362,
+          "counts": {
+            "A_candidate_generation": 44,
+            "C_arithmetic": 184,
+            "B_commit_readout": 134,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 12.154696132596685,
+            "C_arithmetic": 50.828729281767956,
+            "B_commit_readout": 37.01657458563536,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.6666666666666665,
+            "C_arithmetic": 15.333333333333334,
+            "B_commit_readout": 11.166666666666666,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op1_cand1_n1": 43,
+            "op2_cand1_n1": 184,
+            "op2_cand0_n1": 128,
+            "op1_cand1_n2": 1,
+            "op1_cand0_n1": 6
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 394,
+          "counts": {
+            "A_candidate_generation": 48,
+            "C_arithmetic": 174,
+            "B_commit_readout": 172,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 12.182741116751268,
+            "C_arithmetic": 44.16243654822335,
+            "B_commit_readout": 43.65482233502538,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 4.0,
+            "C_arithmetic": 14.5,
+            "B_commit_readout": 14.333333333333334,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand0_n1": 163,
+            "op2_cand1_n1": 174,
+            "op1_cand1_n1": 48,
+            "op1_cand0_n1": 9
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 352,
+          "counts": {
+            "A_candidate_generation": 38,
+            "C_arithmetic": 176,
+            "B_commit_readout": 138,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 10.795454545454545,
+            "C_arithmetic": 50.0,
+            "B_commit_readout": 39.20454545454545,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.1666666666666665,
+            "C_arithmetic": 14.666666666666666,
+            "B_commit_readout": 11.5,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand1_n1": 176,
+            "op2_cand0_n1": 131,
+            "op1_cand1_n1": 38,
+            "op1_cand0_n1": 7
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 344,
+          "counts": {
+            "A_candidate_generation": 51,
+            "C_arithmetic": 171,
+            "B_commit_readout": 122,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 14.825581395348838,
+            "C_arithmetic": 49.7093023255814,
+            "B_commit_readout": 35.46511627906977,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 4.25,
+            "C_arithmetic": 14.25,
+            "B_commit_readout": 10.166666666666666,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op1_cand1_n1": 50,
+            "op2_cand1_n1": 171,
+            "op2_cand0_n1": 114,
+            "op1_cand0_n1": 8,
+            "op1_cand1_n2": 1
+          }
+        },
+        {
+          "n_sequences": 1200,
+          "n_first_real_errors": 390,
+          "counts": {
+            "A_candidate_generation": 41,
+            "C_arithmetic": 219,
+            "B_commit_readout": 130,
+            "D_other": 0
+          },
+          "percent_of_errors": {
+            "A_candidate_generation": 10.512820512820513,
+            "C_arithmetic": 56.15384615384615,
+            "B_commit_readout": 33.333333333333336,
+            "D_other": 0.0
+          },
+          "percent_of_sequences": {
+            "A_candidate_generation": 3.4166666666666665,
+            "C_arithmetic": 18.25,
+            "B_commit_readout": 10.833333333333334,
+            "D_other": 0.0
+          },
+          "per_op_origin": {
+            "op2_cand0_n1": 123,
+            "op2_cand1_n1": 219,
+            "op1_cand1_n1": 39,
+            "op1_cand0_n1": 7,
+            "op1_cand1_n2": 2
+          }
+        }
+      ],
+      "summary": {
+        "n_first_real_errors_mean": 368.4,
+        "counts_mean": {
+          "A_candidate_generation": 44.4,
+          "C_arithmetic": 184.8,
+          "B_commit_readout": 139.2,
+          "D_other": 0.0
+        },
+        "percent_of_errors_mean": {
+          "A_candidate_generation": 12.09425874059437,
+          "C_arithmetic": 50.170862861883776,
+          "B_commit_readout": 37.73487839752186,
+          "D_other": 0.0
+        },
+        "per_op_origin_mean": {
+          "op1_cand0_n1": 7.4,
+          "op1_cand1_n1": 43.6,
+          "op1_cand1_n2": 0.8,
+          "op2_cand0_n1": 131.8,
+          "op2_cand1_n1": 184.8
+        }
+      }
+    }
+  },
+  "t1": {
+    "A_terminal": {
+      "runs": [
+        {
+          "em": 0.75,
+          "failing_episodes": 10,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 10,
+          "errors_by_register": {
+            "R0": 1,
+            "R1": 4,
+            "R2": 2,
+            "R3": 4
+          }
+        },
+        {
+          "em": 0.7750000059604645,
+          "failing_episodes": 9,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 9,
+          "errors_by_register": {
+            "R0": 3,
+            "R1": 4,
+            "R2": 1,
+            "R3": 3
+          }
+        },
+        {
+          "em": 0.6500000059604645,
+          "failing_episodes": 14,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 14,
+          "errors_by_register": {
+            "R0": 4,
+            "R1": 1,
+            "R2": 6,
+            "R3": 3
+          }
+        },
+        {
+          "em": 0.7999999970197678,
+          "failing_episodes": 8,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 8,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 2,
+            "R2": 0,
+            "R3": 7
+          }
+        },
+        {
+          "em": 0.7999999970197678,
+          "failing_episodes": 8,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 8,
+          "errors_by_register": {
+            "R0": 2,
+            "R1": 4,
+            "R2": 0,
+            "R3": 4
+          }
+        }
+      ],
+      "summary": {
+        "em_mean": 0.7550000011920929,
+        "written_wrong_total": 0,
+        "ghost_failures_total": 49
+      }
+    },
+    "D_late_t6": {
+      "runs": [
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        }
+      ],
+      "summary": {
+        "em_mean": 1.0,
+        "written_wrong_total": 0,
+        "ghost_failures_total": 0
+      }
+    },
+    "E_candidate": {
+      "runs": [
+        {
+          "em": 0.8999999985098839,
+          "failing_episodes": 4,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 4,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 2,
+            "R2": 2,
+            "R3": 0
+          }
+        },
+        {
+          "em": 0.7999999970197678,
+          "failing_episodes": 8,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 8,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 4,
+            "R2": 4,
+            "R3": 1
+          }
+        },
+        {
+          "em": 0.8999999985098839,
+          "failing_episodes": 4,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 4,
+          "errors_by_register": {
+            "R0": 1,
+            "R1": 2,
+            "R2": 0,
+            "R3": 1
+          }
+        },
+        {
+          "em": 0.8999999985098839,
+          "failing_episodes": 4,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 4,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 1,
+            "R2": 2,
+            "R3": 2
+          }
+        },
+        {
+          "em": 0.8999999985098839,
+          "failing_episodes": 4,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 4,
+          "errors_by_register": {
+            "R0": 1,
+            "R1": 3,
+            "R2": 0,
+            "R3": 0
+          }
+        }
+      ],
+      "summary": {
+        "em_mean": 0.8799999982118607,
+        "written_wrong_total": 0,
+        "ghost_failures_total": 24
+      }
+    },
+    "F_combined": {
+      "runs": [
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        },
+        {
+          "em": 1.0,
+          "failing_episodes": 0,
+          "n_sequences": 40,
+          "written_register_wrong": 0,
+          "ghost_only_failures": 0,
+          "errors_by_register": {
+            "R0": 0,
+            "R1": 0,
+            "R2": 0,
+            "R3": 0
+          }
+        }
+      ],
+      "summary": {
+        "em_mean": 1.0,
+        "written_wrong_total": 0,
+        "ghost_failures_total": 0
+      }
+    }
+  },
+  "static_loss_components": {
+    "A_terminal": {
+      "terminal": {
+        "mean": 0.049276012508198616,
+        "sd": 0.01721148385754536
+      },
+      "stepwise": {
+        "mean": 0.1665226743416861,
+        "sd": 0.016278937273594536
+      },
+      "candidate": {
+        "mean": 0.5227620686093967,
+        "sd": 0.03441686373312541
+      }
+    },
+    "D_late_t6": {
+      "terminal": {
+        "mean": 0.03703241879120469,
+        "sd": 0.0070162937364238245
+      },
+      "stepwise": {
+        "mean": 0.024687071865967785,
+        "sd": 0.0026061965857410354
+      },
+      "candidate": {
+        "mean": 0.2329873442649842,
+        "sd": 0.03907371482898042
+      }
+    },
+    "E_candidate": {
+      "terminal": {
+        "mean": 0.012685414892621339,
+        "sd": 0.0030771153541746953
+      },
+      "stepwise": {
+        "mean": 0.07532850448585425,
+        "sd": 0.012851967793409273
+      },
+      "candidate": {
+        "mean": 0.014455955700638396,
+        "sd": 0.002989536305266228
+      }
+    },
+    "F_combined": {
+      "terminal": {
+        "mean": 0.02268362413160503,
+        "sd": 0.006379387493989992
+      },
+      "stepwise": {
+        "mean": 0.01831403704018157,
+        "sd": 0.004133160271052977
+      },
+      "candidate": {
+        "mean": 0.027408922285151977,
+        "sd": 0.005384656376051475
+      }
+    }
+  }
+}

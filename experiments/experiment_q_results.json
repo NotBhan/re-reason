@@ -1,0 +1,4278 @@
+{
+  "metadata": {
+    "date": "2026-10-07 18:35:06",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "checkpoints": {
+      "E_candidate": {
+        "checkpoints": {
+          "42": {
+            "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+            "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+            "unchanged_after_run": true
+          },
+          "43": {
+            "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+            "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+            "unchanged_after_run": true
+          },
+          "44": {
+            "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+            "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+            "unchanged_after_run": true
+          },
+          "45": {
+            "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+            "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+            "unchanged_after_run": true
+          },
+          "46": {
+            "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+            "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+            "unchanged_after_run": true
+          }
+        }
+      },
+      "F_combined": {
+        "checkpoints": {
+          "42": {
+            "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+            "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+            "unchanged_after_run": true
+          },
+          "43": {
+            "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+            "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+            "unchanged_after_run": true
+          },
+          "44": {
+            "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+            "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+            "unchanged_after_run": true
+          },
+          "45": {
+            "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+            "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+            "unchanged_after_run": true
+          },
+          "46": {
+            "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+            "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+            "unchanged_after_run": true
+          }
+        }
+      }
+    },
+    "thresholds": {
+      "recover_bar": 0.5,
+      "nonlinear_bar": 0.2,
+      "mix_bar": 0.15
+    },
+    "statistical_discipline": "Five frozen E checkpoints are independent units; F is a control. Probes are analysis-only, fit on TRAIN, tuned on VAL, tested once on TEST; they never enter model inference."
+  },
+  "E_candidate": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "lin_val_acc": 0.86125,
+        "lin_lambda": 0.01,
+        "mlp_val_acc": 0.8725000023841858,
+        "classA": {
+          "n": 448,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.25223214285714285,
+          "nonlinear_acc": 0.24107142857142858,
+          "rawsum_acc": 0.24553571428571427,
+          "recover_linear": 0.25223214285714285,
+          "recover_nonlinear": 0.24107142857142858,
+          "gap_mlp_minus_lin": -0.011160714285714274
+        },
+        "control_candok": {
+          "n": 2751,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.930570701563068,
+          "nonlinear_acc": 0.9447473645946929,
+          "rawsum_acc": 0.9189385677935297,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.014176663031624903
+        },
+        "classA_wrap": {
+          "n": 208,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2980769230769231,
+          "nonlinear_acc": 0.23557692307692307,
+          "rawsum_acc": 0.24519230769230768,
+          "recover_linear": 0.2980769230769231,
+          "recover_nonlinear": 0.23557692307692307,
+          "gap_mlp_minus_lin": -0.0625
+        },
+        "classA_nowrap": {
+          "n": 240,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2125,
+          "nonlinear_acc": 0.24583333333333332,
+          "rawsum_acc": 0.24583333333333332,
+          "recover_linear": 0.2125,
+          "recover_nonlinear": 0.24583333333333332,
+          "gap_mlp_minus_lin": 0.033333333333333326
+        },
+        "classA_repeated": {
+          "n": 214,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.21495327102803738,
+          "nonlinear_acc": 0.21962616822429906,
+          "rawsum_acc": 0.21495327102803738,
+          "recover_linear": 0.21495327102803738,
+          "recover_nonlinear": 0.21962616822429906,
+          "gap_mlp_minus_lin": 0.004672897196261683
+        },
+        "classA_isolated": {
+          "n": 234,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2863247863247863,
+          "nonlinear_acc": 0.2606837606837607,
+          "rawsum_acc": 0.27350427350427353,
+          "recover_linear": 0.2863247863247863,
+          "recover_nonlinear": 0.2606837606837607,
+          "gap_mlp_minus_lin": -0.025641025641025605
+        },
+        "control_wrap": {
+          "n": 483,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.8115942028985508,
+          "nonlinear_acc": 0.8488612836438924,
+          "rawsum_acc": 0.7453416149068323,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.037267080745341574
+        },
+        "control_nowrap": {
+          "n": 2268,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9559082892416225,
+          "nonlinear_acc": 0.9651675485008818,
+          "rawsum_acc": 0.9559082892416225,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.0092592592592593
+        },
+        "lin_acc_all_test": 0.835573616755236,
+        "mlp_acc_all_test": 0.846201938105658,
+        "raw_acc_all_test": 0.8246326977180369,
+        "frozen_acc_all_test": 0.8599562363238512,
+        "confusion_classA": [
+          [
+            14,
+            4,
+            5,
+            0,
+            5,
+            3,
+            10,
+            5,
+            5,
+            4
+          ],
+          [
+            4,
+            10,
+            5,
+            2,
+            10,
+            2,
+            2,
+            1,
+            0,
+            6
+          ],
+          [
+            4,
+            2,
+            16,
+            0,
+            3,
+            2,
+            6,
+            3,
+            3,
+            3
+          ],
+          [
+            0,
+            2,
+            3,
+            4,
+            5,
+            5,
+            2,
+            1,
+            6,
+            2
+          ],
+          [
+            3,
+            1,
+            7,
+            3,
+            19,
+            5,
+            1,
+            5,
+            4,
+            5
+          ],
+          [
+            1,
+            1,
+            5,
+            6,
+            6,
+            5,
+            2,
+            4,
+            5,
+            4
+          ],
+          [
+            7,
+            1,
+            3,
+            5,
+            8,
+            2,
+            18,
+            5,
+            5,
+            2
+          ],
+          [
+            1,
+            2,
+            5,
+            0,
+            6,
+            3,
+            1,
+            8,
+            2,
+            3
+          ],
+          [
+            4,
+            3,
+            6,
+            6,
+            11,
+            2,
+            3,
+            4,
+            14,
+            1
+          ],
+          [
+            4,
+            3,
+            6,
+            2,
+            9,
+            3,
+            4,
+            5,
+            5,
+            5
+          ]
+        ]
+      },
+      {
+        "seed": 43,
+        "lin_val_acc": 0.855,
+        "lin_lambda": 100.0,
+        "mlp_val_acc": 0.8824999928474426,
+        "classA": {
+          "n": 330,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.24545454545454545,
+          "nonlinear_acc": 0.24545454545454545,
+          "rawsum_acc": 0.23636363636363636,
+          "recover_linear": 0.24545454545454545,
+          "recover_nonlinear": 0.24545454545454545,
+          "gap_mlp_minus_lin": 0.0
+        },
+        "control_candok": {
+          "n": 2866,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9263782274947662,
+          "nonlinear_acc": 0.9556873691556176,
+          "rawsum_acc": 0.9173063503140265,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.029309141660851412
+        },
+        "classA_wrap": {
+          "n": 144,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.25,
+          "nonlinear_acc": 0.2777777777777778,
+          "rawsum_acc": 0.22916666666666666,
+          "recover_linear": 0.25,
+          "recover_nonlinear": 0.2777777777777778,
+          "gap_mlp_minus_lin": 0.02777777777777779
+        },
+        "classA_nowrap": {
+          "n": 186,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.24193548387096775,
+          "nonlinear_acc": 0.22043010752688172,
+          "rawsum_acc": 0.24193548387096775,
+          "recover_linear": 0.24193548387096775,
+          "recover_nonlinear": 0.22043010752688172,
+          "gap_mlp_minus_lin": -0.02150537634408603
+        },
+        "classA_repeated": {
+          "n": 147,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.19047619047619047,
+          "nonlinear_acc": 0.14285714285714285,
+          "rawsum_acc": 0.1836734693877551,
+          "recover_linear": 0.19047619047619047,
+          "recover_nonlinear": 0.14285714285714285,
+          "gap_mlp_minus_lin": -0.047619047619047616
+        },
+        "classA_isolated": {
+          "n": 183,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2896174863387978,
+          "nonlinear_acc": 0.32786885245901637,
+          "rawsum_acc": 0.2786885245901639,
+          "recover_linear": 0.2896174863387978,
+          "recover_nonlinear": 0.32786885245901637,
+          "gap_mlp_minus_lin": 0.038251366120218566
+        },
+        "control_wrap": {
+          "n": 508,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.7696850393700787,
+          "nonlinear_acc": 0.8661417322834646,
+          "rawsum_acc": 0.7381889763779528,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.09645669291338588
+        },
+        "control_nowrap": {
+          "n": 2358,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9601357082273113,
+          "nonlinear_acc": 0.9749787955894826,
+          "rawsum_acc": 0.9558948261238338,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.014843087362171326
+        },
+        "lin_acc_all_test": 0.8560700876095119,
+        "mlp_acc_all_test": 0.8823529411764706,
+        "raw_acc_all_test": 0.8469962453066333,
+        "frozen_acc_all_test": 0.8967459324155194,
+        "confusion_classA": [
+          [
+            7,
+            0,
+            1,
+            3,
+            3,
+            5,
+            8,
+            0,
+            10,
+            3
+          ],
+          [
+            1,
+            4,
+            1,
+            3,
+            1,
+            4,
+            8,
+            6,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            12,
+            0,
+            5,
+            0,
+            4,
+            3,
+            3,
+            0
+          ],
+          [
+            1,
+            0,
+            3,
+            9,
+            0,
+            2,
+            2,
+            5,
+            8,
+            5
+          ],
+          [
+            8,
+            0,
+            2,
+            1,
+            14,
+            2,
+            5,
+            1,
+            11,
+            6
+          ],
+          [
+            4,
+            3,
+            1,
+            2,
+            0,
+            9,
+            2,
+            5,
+            4,
+            7
+          ],
+          [
+            3,
+            4,
+            5,
+            3,
+            4,
+            1,
+            11,
+            1,
+            8,
+            1
+          ],
+          [
+            0,
+            0,
+            5,
+            4,
+            1,
+            1,
+            2,
+            4,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            5,
+            7,
+            7,
+            0,
+            3,
+            3,
+            5,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            1,
+            3,
+            5,
+            3,
+            1,
+            1,
+            6
+          ]
+        ]
+      },
+      {
+        "seed": 44,
+        "lin_val_acc": 0.8475,
+        "lin_lambda": 0.01,
+        "mlp_val_acc": 0.8662499785423279,
+        "classA": {
+          "n": 363,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.27823691460055094,
+          "nonlinear_acc": 0.2644628099173554,
+          "rawsum_acc": 0.24793388429752067,
+          "recover_linear": 0.27823691460055094,
+          "recover_nonlinear": 0.2644628099173554,
+          "gap_mlp_minus_lin": -0.013774104683195565
+        },
+        "control_candok": {
+          "n": 2808,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9341168091168092,
+          "nonlinear_acc": 0.9508547008547008,
+          "rawsum_acc": 0.9230769230769231,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.01673789173789164
+        },
+        "classA_wrap": {
+          "n": 150,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.29333333333333333,
+          "nonlinear_acc": 0.2733333333333333,
+          "rawsum_acc": 0.23333333333333334,
+          "recover_linear": 0.29333333333333333,
+          "recover_nonlinear": 0.2733333333333333,
+          "gap_mlp_minus_lin": -0.020000000000000018
+        },
+        "classA_nowrap": {
+          "n": 213,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2676056338028169,
+          "nonlinear_acc": 0.25821596244131456,
+          "rawsum_acc": 0.25821596244131456,
+          "recover_linear": 0.2676056338028169,
+          "recover_nonlinear": 0.25821596244131456,
+          "gap_mlp_minus_lin": -0.009389671361502316
+        },
+        "classA_repeated": {
+          "n": 137,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.24817518248175183,
+          "nonlinear_acc": 0.23357664233576642,
+          "rawsum_acc": 0.22627737226277372,
+          "recover_linear": 0.24817518248175183,
+          "recover_nonlinear": 0.23357664233576642,
+          "gap_mlp_minus_lin": -0.014598540145985411
+        },
+        "classA_isolated": {
+          "n": 226,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.29646017699115046,
+          "nonlinear_acc": 0.2831858407079646,
+          "rawsum_acc": 0.2610619469026549,
+          "recover_linear": 0.29646017699115046,
+          "recover_nonlinear": 0.2831858407079646,
+          "gap_mlp_minus_lin": -0.013274336283185861
+        },
+        "control_wrap": {
+          "n": 506,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.8003952569169961,
+          "nonlinear_acc": 0.8735177865612648,
+          "rawsum_acc": 0.7470355731225297,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.07312252964426869
+        },
+        "control_nowrap": {
+          "n": 2302,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9635099913119027,
+          "nonlinear_acc": 0.9678540399652477,
+          "rawsum_acc": 0.9617723718505647,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.004344048653344923
+        },
+        "lin_acc_all_test": 0.859035004730369,
+        "mlp_acc_all_test": 0.8722800378429517,
+        "raw_acc_all_test": 0.8457899716177862,
+        "frozen_acc_all_test": 0.8855250709555346,
+        "confusion_classA": [
+          [
+            9,
+            0,
+            4,
+            0,
+            3,
+            1,
+            6,
+            1,
+            6,
+            1
+          ],
+          [
+            1,
+            15,
+            1,
+            1,
+            1,
+            8,
+            5,
+            6,
+            2,
+            2
+          ],
+          [
+            1,
+            1,
+            19,
+            2,
+            3,
+            3,
+            7,
+            4,
+            5,
+            0
+          ],
+          [
+            2,
+            3,
+            1,
+            4,
+            0,
+            4,
+            2,
+            4,
+            4,
+            4
+          ],
+          [
+            9,
+            0,
+            9,
+            1,
+            11,
+            1,
+            1,
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            4,
+            2,
+            1,
+            2,
+            8,
+            1,
+            5,
+            3,
+            5
+          ],
+          [
+            5,
+            1,
+            3,
+            1,
+            6,
+            1,
+            10,
+            1,
+            6,
+            0
+          ],
+          [
+            4,
+            2,
+            4,
+            4,
+            1,
+            4,
+            1,
+            13,
+            3,
+            6
+          ],
+          [
+            9,
+            0,
+            5,
+            1,
+            4,
+            0,
+            4,
+            0,
+            9,
+            0
+          ],
+          [
+            1,
+            5,
+            2,
+            2,
+            3,
+            8,
+            3,
+            8,
+            1,
+            3
+          ]
+        ]
+      },
+      {
+        "seed": 45,
+        "lin_val_acc": 0.86625,
+        "lin_lambda": 0.01,
+        "mlp_val_acc": 0.8737499713897705,
+        "classA": {
+          "n": 327,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2782874617737003,
+          "nonlinear_acc": 0.2018348623853211,
+          "rawsum_acc": 0.27522935779816515,
+          "recover_linear": 0.2782874617737003,
+          "recover_nonlinear": 0.2018348623853211,
+          "gap_mlp_minus_lin": -0.07645259938837917
+        },
+        "control_candok": {
+          "n": 2798,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9360257326661902,
+          "nonlinear_acc": 0.9324517512508935,
+          "rawsum_acc": 0.9174410293066476,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": -0.0035739814152966343
+        },
+        "classA_wrap": {
+          "n": 159,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.25157232704402516,
+          "nonlinear_acc": 0.15723270440251572,
+          "rawsum_acc": 0.20754716981132076,
+          "recover_linear": 0.25157232704402516,
+          "recover_nonlinear": 0.15723270440251572,
+          "gap_mlp_minus_lin": -0.09433962264150944
+        },
+        "classA_nowrap": {
+          "n": 168,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.30357142857142855,
+          "nonlinear_acc": 0.24404761904761904,
+          "rawsum_acc": 0.3392857142857143,
+          "recover_linear": 0.30357142857142855,
+          "recover_nonlinear": 0.24404761904761904,
+          "gap_mlp_minus_lin": -0.05952380952380951
+        },
+        "classA_repeated": {
+          "n": 135,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.1925925925925926,
+          "nonlinear_acc": 0.1111111111111111,
+          "rawsum_acc": 0.2074074074074074,
+          "recover_linear": 0.1925925925925926,
+          "recover_nonlinear": 0.1111111111111111,
+          "gap_mlp_minus_lin": -0.08148148148148149
+        },
+        "classA_isolated": {
+          "n": 192,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.3385416666666667,
+          "nonlinear_acc": 0.265625,
+          "rawsum_acc": 0.3229166666666667,
+          "recover_linear": 0.3385416666666667,
+          "recover_nonlinear": 0.265625,
+          "gap_mlp_minus_lin": -0.07291666666666669
+        },
+        "control_wrap": {
+          "n": 459,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.803921568627451,
+          "nonlinear_acc": 0.7995642701525054,
+          "rawsum_acc": 0.6797385620915033,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": -0.004357298474945592
+        },
+        "control_nowrap": {
+          "n": 2339,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9619495510902095,
+          "nonlinear_acc": 0.9585292860196665,
+          "rawsum_acc": 0.9640872167592989,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": -0.0034202650705430493
+        },
+        "lin_acc_all_test": 0.8672,
+        "mlp_acc_all_test": 0.856,
+        "raw_acc_all_test": 0.85024,
+        "frozen_acc_all_test": 0.89536,
+        "confusion_classA": [
+          [
+            5,
+            2,
+            4,
+            1,
+            7,
+            8,
+            3,
+            3,
+            2,
+            1
+          ],
+          [
+            0,
+            9,
+            0,
+            2,
+            5,
+            6,
+            7,
+            0,
+            2,
+            0
+          ],
+          [
+            5,
+            1,
+            15,
+            1,
+            2,
+            0,
+            3,
+            3,
+            9,
+            4
+          ],
+          [
+            0,
+            2,
+            1,
+            8,
+            2,
+            3,
+            1,
+            4,
+            3,
+            2
+          ],
+          [
+            3,
+            0,
+            12,
+            0,
+            9,
+            1,
+            3,
+            1,
+            5,
+            4
+          ],
+          [
+            1,
+            2,
+            2,
+            4,
+            3,
+            7,
+            2,
+            1,
+            1,
+            2
+          ],
+          [
+            4,
+            4,
+            6,
+            1,
+            3,
+            3,
+            3,
+            2,
+            7,
+            1
+          ],
+          [
+            1,
+            1,
+            3,
+            3,
+            2,
+            5,
+            1,
+            4,
+            3,
+            2
+          ],
+          [
+            4,
+            1,
+            8,
+            7,
+            5,
+            1,
+            4,
+            0,
+            17,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            3,
+            1,
+            1,
+            0,
+            1,
+            14
+          ]
+        ]
+      },
+      {
+        "seed": 46,
+        "lin_val_acc": 0.8775,
+        "lin_lambda": 10.0,
+        "mlp_val_acc": 0.9012500047683716,
+        "classA": {
+          "n": 337,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2818991097922849,
+          "nonlinear_acc": 0.21068249258160238,
+          "rawsum_acc": 0.29376854599406527,
+          "recover_linear": 0.2818991097922849,
+          "recover_nonlinear": 0.21068249258160238,
+          "gap_mlp_minus_lin": -0.07121661721068251
+        },
+        "control_candok": {
+          "n": 2735,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9411334552102376,
+          "nonlinear_acc": 0.9590493601462523,
+          "rawsum_acc": 0.93345521023766,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.017915904936014693
+        },
+        "classA_wrap": {
+          "n": 139,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2733812949640288,
+          "nonlinear_acc": 0.2158273381294964,
+          "rawsum_acc": 0.2517985611510791,
+          "recover_linear": 0.2733812949640288,
+          "recover_nonlinear": 0.2158273381294964,
+          "gap_mlp_minus_lin": -0.057553956834532405
+        },
+        "classA_nowrap": {
+          "n": 198,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2878787878787879,
+          "nonlinear_acc": 0.20707070707070707,
+          "rawsum_acc": 0.32323232323232326,
+          "recover_linear": 0.2878787878787879,
+          "recover_nonlinear": 0.20707070707070707,
+          "gap_mlp_minus_lin": -0.08080808080808083
+        },
+        "classA_repeated": {
+          "n": 151,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.26490066225165565,
+          "nonlinear_acc": 0.1986754966887417,
+          "rawsum_acc": 0.2913907284768212,
+          "recover_linear": 0.26490066225165565,
+          "recover_nonlinear": 0.1986754966887417,
+          "gap_mlp_minus_lin": -0.06622516556291394
+        },
+        "classA_isolated": {
+          "n": 186,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2956989247311828,
+          "nonlinear_acc": 0.22043010752688172,
+          "rawsum_acc": 0.2956989247311828,
+          "recover_linear": 0.2956989247311828,
+          "recover_nonlinear": 0.22043010752688172,
+          "gap_mlp_minus_lin": -0.07526881720430109
+        },
+        "control_wrap": {
+          "n": 515,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.8427184466019417,
+          "nonlinear_acc": 0.8679611650485437,
+          "rawsum_acc": 0.8038834951456311,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.025242718446601975
+        },
+        "control_nowrap": {
+          "n": 2220,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.963963963963964,
+          "nonlinear_acc": 0.9801801801801802,
+          "rawsum_acc": 0.9635135135135136,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.01621621621621616
+        },
+        "lin_acc_all_test": 0.8688151041666666,
+        "mlp_acc_all_test": 0.876953125,
+        "raw_acc_all_test": 0.86328125,
+        "frozen_acc_all_test": 0.8902994791666666,
+        "confusion_classA": [
+          [
+            7,
+            1,
+            6,
+            2,
+            6,
+            2,
+            4,
+            2,
+            6,
+            1
+          ],
+          [
+            0,
+            10,
+            1,
+            1,
+            2,
+            4,
+            2,
+            2,
+            1,
+            2
+          ],
+          [
+            7,
+            0,
+            8,
+            2,
+            2,
+            0,
+            6,
+            1,
+            4,
+            3
+          ],
+          [
+            0,
+            1,
+            1,
+            6,
+            1,
+            2,
+            0,
+            4,
+            1,
+            6
+          ],
+          [
+            5,
+            0,
+            3,
+            2,
+            5,
+            1,
+            10,
+            0,
+            2,
+            1
+          ],
+          [
+            1,
+            4,
+            1,
+            4,
+            2,
+            6,
+            3,
+            3,
+            1,
+            4
+          ],
+          [
+            10,
+            0,
+            7,
+            1,
+            7,
+            1,
+            19,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            6,
+            1,
+            4,
+            2,
+            3,
+            3,
+            13,
+            5,
+            2
+          ],
+          [
+            4,
+            0,
+            6,
+            3,
+            6,
+            0,
+            6,
+            0,
+            11,
+            3
+          ],
+          [
+            1,
+            2,
+            2,
+            6,
+            1,
+            6,
+            2,
+            6,
+            0,
+            10
+          ]
+        ]
+      }
+    ],
+    "summary": {
+      "classA": {
+        "n": {
+          "mean": 361.0,
+          "sd": 50.66063560596136,
+          "per_seed": [
+            448,
+            330,
+            363,
+            327,
+            337
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.2672220348956449,
+          "sd": 0.017012555909702725,
+          "per_seed": [
+            0.25223214285714285,
+            0.24545454545454545,
+            0.27823691460055094,
+            0.2782874617737003,
+            0.2818991097922849
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.23270122778205055,
+          "sd": 0.02587983136189097,
+          "per_seed": [
+            0.24107142857142858,
+            0.24545454545454545,
+            0.2644628099173554,
+            0.2018348623853211,
+            0.21068249258160238
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.2597662277478203,
+          "sd": 0.02390323819845813,
+          "per_seed": [
+            0.24553571428571427,
+            0.23636363636363636,
+            0.24793388429752067,
+            0.27522935779816515,
+            0.29376854599406527
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.2672220348956449,
+          "sd": 0.017012555909702725,
+          "per_seed": [
+            0.25223214285714285,
+            0.24545454545454545,
+            0.27823691460055094,
+            0.2782874617737003,
+            0.2818991097922849
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.23270122778205055,
+          "sd": 0.02587983136189097,
+          "per_seed": [
+            0.24107142857142858,
+            0.24545454545454545,
+            0.2644628099173554,
+            0.2018348623853211,
+            0.21068249258160238
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": -0.0345208071135943,
+          "sd": 0.036306553831553394,
+          "per_seed": [
+            -0.011160714285714274,
+            0.0,
+            -0.013774104683195565,
+            -0.07645259938837917,
+            -0.07121661721068251
+          ],
+          "n": 5
+        }
+      },
+      "control_candok": {
+        "n": {
+          "mean": 2791.6,
+          "sd": 51.713634565750645,
+          "per_seed": [
+            2751,
+            2866,
+            2808,
+            2798,
+            2735
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "per_seed": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.9336449852102142,
+          "sd": 0.005572807793818016,
+          "per_seed": [
+            0.930570701563068,
+            0.9263782274947662,
+            0.9341168091168092,
+            0.9360257326661902,
+            0.9411334552102376
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.9485581092004314,
+          "sd": 0.010489322761647631,
+          "per_seed": [
+            0.9447473645946929,
+            0.9556873691556176,
+            0.9508547008547008,
+            0.9324517512508935,
+            0.9590493601462523
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.9220436161457574,
+          "sd": 0.006792625070141231,
+          "per_seed": [
+            0.9189385677935297,
+            0.9173063503140265,
+            0.9230769230769231,
+            0.9174410293066476,
+            0.93345521023766
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "recover_nonlinear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.014913123990217204,
+          "sd": 0.01185229130308481,
+          "per_seed": [
+            0.014176663031624903,
+            0.029309141660851412,
+            0.01673789173789164,
+            -0.0035739814152966343,
+            0.017915904936014693
+          ],
+          "n": 5
+        }
+      },
+      "classA_wrap": {
+        "n": {
+          "mean": 160.0,
+          "sd": 27.847800631288642,
+          "per_seed": [
+            208,
+            144,
+            150,
+            159,
+            139
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.2732727756836621,
+          "sd": 0.02252895379694863,
+          "per_seed": [
+            0.2980769230769231,
+            0.25,
+            0.29333333333333333,
+            0.25157232704402516,
+            0.2733812949640288
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.23194961534400926,
+          "sd": 0.049164353324552414,
+          "per_seed": [
+            0.23557692307692307,
+            0.2777777777777778,
+            0.2733333333333333,
+            0.15723270440251572,
+            0.2158273381294964
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.2334076077309415,
+          "sd": 0.017057693777826816,
+          "per_seed": [
+            0.24519230769230768,
+            0.22916666666666666,
+            0.23333333333333334,
+            0.20754716981132076,
+            0.2517985611510791
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.2732727756836621,
+          "sd": 0.02252895379694863,
+          "per_seed": [
+            0.2980769230769231,
+            0.25,
+            0.29333333333333333,
+            0.25157232704402516,
+            0.2733812949640288
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.23194961534400926,
+          "sd": 0.049164353324552414,
+          "per_seed": [
+            0.23557692307692307,
+            0.2777777777777778,
+            0.2733333333333333,
+            0.15723270440251572,
+            0.2158273381294964
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": -0.04132316033965282,
+          "sd": 0.046776755401165736,
+          "per_seed": [
+            -0.0625,
+            0.02777777777777779,
+            -0.020000000000000018,
+            -0.09433962264150944,
+            -0.057553956834532405
+          ],
+          "n": 5
+        }
+      },
+      "classA_nowrap": {
+        "n": {
+          "mean": 201.0,
+          "sd": 27.331300737432898,
+          "per_seed": [
+            240,
+            186,
+            213,
+            168,
+            198
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.26269826682480024,
+          "sd": 0.03633082503389884,
+          "per_seed": [
+            0.2125,
+            0.24193548387096775,
+            0.2676056338028169,
+            0.30357142857142855,
+            0.2878787878787879
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.23511954588397116,
+          "sd": 0.020799381888262247,
+          "per_seed": [
+            0.24583333333333332,
+            0.22043010752688172,
+            0.25821596244131456,
+            0.24404761904761904,
+            0.20707070707070707
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.28170056343273064,
+          "sd": 0.045989626281625756,
+          "per_seed": [
+            0.24583333333333332,
+            0.24193548387096775,
+            0.25821596244131456,
+            0.3392857142857143,
+            0.32323232323232326
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.26269826682480024,
+          "sd": 0.03633082503389884,
+          "per_seed": [
+            0.2125,
+            0.24193548387096775,
+            0.2676056338028169,
+            0.30357142857142855,
+            0.2878787878787879
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.23511954588397116,
+          "sd": 0.020799381888262247,
+          "per_seed": [
+            0.24583333333333332,
+            0.22043010752688172,
+            0.25821596244131456,
+            0.24404761904761904,
+            0.20707070707070707
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": -0.027578720940829072,
+          "sd": 0.04453049188909876,
+          "per_seed": [
+            0.033333333333333326,
+            -0.02150537634408603,
+            -0.009389671361502316,
+            -0.05952380952380951,
+            -0.08080808080808083
+          ],
+          "n": 5
+        }
+      },
+      "classA_repeated": {
+        "n": {
+          "mean": 156.8,
+          "sd": 32.66802718255267,
+          "per_seed": [
+            214,
+            147,
+            137,
+            135,
+            151
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.22221957976604562,
+          "sd": 0.03329252352157432,
+          "per_seed": [
+            0.21495327102803738,
+            0.19047619047619047,
+            0.24817518248175183,
+            0.1925925925925926,
+            0.26490066225165565
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.18116931224341226,
+          "sd": 0.05222044231465704,
+          "per_seed": [
+            0.21962616822429906,
+            0.14285714285714285,
+            0.23357664233576642,
+            0.1111111111111111,
+            0.1986754966887417
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.22474044971255897,
+          "sd": 0.04039598335673974,
+          "per_seed": [
+            0.21495327102803738,
+            0.1836734693877551,
+            0.22627737226277372,
+            0.2074074074074074,
+            0.2913907284768212
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.22221957976604562,
+          "sd": 0.03329252352157432,
+          "per_seed": [
+            0.21495327102803738,
+            0.19047619047619047,
+            0.24817518248175183,
+            0.1925925925925926,
+            0.26490066225165565
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.18116931224341226,
+          "sd": 0.05222044231465704,
+          "per_seed": [
+            0.21962616822429906,
+            0.14285714285714285,
+            0.23357664233576642,
+            0.1111111111111111,
+            0.1986754966887417
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": -0.041050267522633355,
+          "sd": 0.035713824699265415,
+          "per_seed": [
+            0.004672897196261683,
+            -0.047619047619047616,
+            -0.014598540145985411,
+            -0.08148148148148149,
+            -0.06622516556291394
+          ],
+          "n": 5
+        }
+      },
+      "classA_isolated": {
+        "n": {
+          "mean": 204.2,
+          "sd": 23.94159560263267,
+          "per_seed": [
+            234,
+            183,
+            226,
+            192,
+            186
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.30132860821051677,
+          "sd": 0.021227763217947598,
+          "per_seed": [
+            0.2863247863247863,
+            0.2896174863387978,
+            0.29646017699115046,
+            0.3385416666666667,
+            0.2956989247311828
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.27155871227552464,
+          "sd": 0.03896674781176836,
+          "per_seed": [
+            0.2606837606837607,
+            0.32786885245901637,
+            0.2831858407079646,
+            0.265625,
+            0.22043010752688172
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.2863740672789884,
+          "sd": 0.023915043030922623,
+          "per_seed": [
+            0.27350427350427353,
+            0.2786885245901639,
+            0.2610619469026549,
+            0.3229166666666667,
+            0.2956989247311828
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.30132860821051677,
+          "sd": 0.021227763217947598,
+          "per_seed": [
+            0.2863247863247863,
+            0.2896174863387978,
+            0.29646017699115046,
+            0.3385416666666667,
+            0.2956989247311828
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.27155871227552464,
+          "sd": 0.03896674781176836,
+          "per_seed": [
+            0.2606837606837607,
+            0.32786885245901637,
+            0.2831858407079646,
+            0.265625,
+            0.22043010752688172
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": -0.029769895934992137,
+          "sd": 0.047031475659808954,
+          "per_seed": [
+            -0.025641025641025605,
+            0.038251366120218566,
+            -0.013274336283185861,
+            -0.07291666666666669,
+            -0.07526881720430109
+          ],
+          "n": 5
+        }
+      },
+      "control_wrap": {
+        "n": {
+          "mean": 494.2,
+          "sd": 23.058620947489466,
+          "per_seed": [
+            483,
+            508,
+            506,
+            459,
+            515
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "per_seed": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.8056629028830036,
+          "sd": 0.026141349631130247,
+          "per_seed": [
+            0.8115942028985508,
+            0.7696850393700787,
+            0.8003952569169961,
+            0.803921568627451,
+            0.8427184466019417
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.8512092475379343,
+          "sd": 0.030306737608584666,
+          "per_seed": [
+            0.8488612836438924,
+            0.8661417322834646,
+            0.8735177865612648,
+            0.7995642701525054,
+            0.8679611650485437
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.7428376443288899,
+          "sd": 0.04402724346830618,
+          "per_seed": [
+            0.7453416149068323,
+            0.7381889763779528,
+            0.7470355731225297,
+            0.6797385620915033,
+            0.8038834951456311
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "recover_nonlinear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.0455463446549305,
+          "sd": 0.03976011375766418,
+          "per_seed": [
+            0.037267080745341574,
+            0.09645669291338588,
+            0.07312252964426869,
+            -0.004357298474945592,
+            0.025242718446601975
+          ],
+          "n": 5
+        }
+      },
+      "control_nowrap": {
+        "n": {
+          "mean": 2297.4,
+          "sd": 55.405775872195846,
+          "per_seed": [
+            2268,
+            2358,
+            2302,
+            2339,
+            2220
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "per_seed": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.9610935007670021,
+          "sd": 0.003264030973604071,
+          "per_seed": [
+            0.9559082892416225,
+            0.9601357082273113,
+            0.9635099913119027,
+            0.9619495510902095,
+            0.963963963963964
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.9693419700510917,
+          "sd": 0.008452728378091695,
+          "per_seed": [
+            0.9651675485008818,
+            0.9749787955894826,
+            0.9678540399652477,
+            0.9585292860196665,
+            0.9801801801801802
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.9602352434977666,
+          "sd": 0.004046889916694734,
+          "per_seed": [
+            0.9559082892416225,
+            0.9558948261238338,
+            0.9617723718505647,
+            0.9640872167592989,
+            0.9635135135135136
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "recover_nonlinear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.008248469284089732,
+          "sd": 0.008052942584000692,
+          "per_seed": [
+            0.0092592592592593,
+            0.014843087362171326,
+            0.004344048653344923,
+            -0.0034202650705430493,
+            0.01621621621621616
+          ],
+          "n": 5
+        }
+      }
+    },
+    "lin_val_acc": {
+      "mean": 0.8615,
+      "sd": 0.011367442544389627,
+      "per_seed": [
+        0.86125,
+        0.855,
+        0.8475,
+        0.86625,
+        0.8775
+      ],
+      "n": 5
+    },
+    "mlp_val_acc": {
+      "mean": 0.8792499899864197,
+      "sd": 0.013595734659655903,
+      "per_seed": [
+        0.8725000023841858,
+        0.8824999928474426,
+        0.8662499785423279,
+        0.8737499713897705,
+        0.9012500047683716
+      ],
+      "n": 5
+    },
+    "lin_acc_all_test": {
+      "mean": 0.8573387626523568,
+      "sd": 0.013296228469514717,
+      "per_seed": [
+        0.835573616755236,
+        0.8560700876095119,
+        0.859035004730369,
+        0.8672,
+        0.8688151041666666
+      ],
+      "n": 5
+    },
+    "mlp_acc_all_test": {
+      "mean": 0.8667576084250161,
+      "sd": 0.01513210089379162,
+      "per_seed": [
+        0.846201938105658,
+        0.8823529411764706,
+        0.8722800378429517,
+        0.856,
+        0.876953125
+      ],
+      "n": 5
+    },
+    "raw_acc_all_test": {
+      "mean": 0.8461880329284913,
+      "sd": 0.01391079295989829,
+      "per_seed": [
+        0.8246326977180369,
+        0.8469962453066333,
+        0.8457899716177862,
+        0.85024,
+        0.86328125
+      ],
+      "n": 5
+    },
+    "frozen_acc_all_test": {
+      "mean": 0.8855773437723145,
+      "sd": 0.01499316658653091,
+      "per_seed": [
+        0.8599562363238512,
+        0.8967459324155194,
+        0.8855250709555346,
+        0.89536,
+        0.8902994791666666
+      ],
+      "n": 5
+    },
+    "confusion_classA_total": [
+      [
+        42,
+        7,
+        20,
+        6,
+        24,
+        19,
+        31,
+        11,
+        29,
+        10
+      ],
+      [
+        6,
+        48,
+        8,
+        9,
+        19,
+        24,
+        24,
+        15,
+        6,
+        10
+      ],
+      [
+        17,
+        4,
+        70,
+        5,
+        15,
+        5,
+        26,
+        14,
+        24,
+        10
+      ],
+      [
+        3,
+        8,
+        9,
+        31,
+        8,
+        16,
+        7,
+        18,
+        22,
+        19
+      ],
+      [
+        28,
+        1,
+        33,
+        7,
+        58,
+        10,
+        20,
+        9,
+        26,
+        18
+      ],
+      [
+        9,
+        14,
+        11,
+        17,
+        13,
+        35,
+        10,
+        18,
+        14,
+        22
+      ],
+      [
+        29,
+        10,
+        24,
+        11,
+        28,
+        8,
+        61,
+        9,
+        29,
+        4
+      ],
+      [
+        6,
+        11,
+        18,
+        15,
+        12,
+        16,
+        8,
+        42,
+        14,
+        14
+      ],
+      [
+        21,
+        4,
+        30,
+        24,
+        33,
+        3,
+        20,
+        7,
+        56,
+        5
+      ],
+      [
+        7,
+        11,
+        11,
+        11,
+        19,
+        23,
+        13,
+        20,
+        8,
+        38
+      ]
+    ],
+    "decision": {
+      "verdict": "Q-C_weak_recoverability",
+      "recover_linear": 0.2672220348956449,
+      "recover_nonlinear": 0.23270122778205055,
+      "linear_acc": 0.2672220348956449,
+      "nonlinear_acc": 0.23270122778205055,
+      "wrap_lin": 0.2732727756836621,
+      "nowrap_lin": 0.26269826682480024,
+      "repeated_lin": 0.22221957976604562,
+      "nonlinear_minus_linear": -0.03452080711359434,
+      "spread_wrap_nowrap_rep": 0.05105319591761648,
+      "thresholds": {
+        "recover_bar": 0.5,
+        "nonlinear_bar": 0.2,
+        "mix_bar": 0.15
+      },
+      "rule_note": "Q-A: linear recoverability >= 0.50 with wrap/repeated same direction. Q-B: linear < 0.50 and nonlinear-linear >= 0.20. Q-C: both weak. Q-MIX: wrap/no-wrap/repeated disagree (spread >= 0.15). Bars are declared conventions."
+    }
+  },
+  "F_combined": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "lin_val_acc": 0.88375,
+        "lin_lambda": 1.0,
+        "mlp_val_acc": 0.8887500166893005,
+        "classA": {
+          "n": 367,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.21798365122615804,
+          "nonlinear_acc": 0.22615803814713897,
+          "rawsum_acc": 0.24250681198910082,
+          "recover_linear": 0.21798365122615804,
+          "recover_nonlinear": 0.22615803814713897,
+          "gap_mlp_minus_lin": 0.008174386920980936
+        },
+        "control_candok": {
+          "n": 2832,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9375,
+          "nonlinear_acc": 0.9487994350282486,
+          "rawsum_acc": 0.9247881355932204,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.011299435028248594
+        },
+        "classA_wrap": {
+          "n": 164,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.27439024390243905,
+          "nonlinear_acc": 0.25,
+          "rawsum_acc": 0.27439024390243905,
+          "recover_linear": 0.27439024390243905,
+          "recover_nonlinear": 0.25,
+          "gap_mlp_minus_lin": -0.024390243902439046
+        },
+        "classA_nowrap": {
+          "n": 203,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.1724137931034483,
+          "nonlinear_acc": 0.20689655172413793,
+          "rawsum_acc": 0.21674876847290642,
+          "recover_linear": 0.1724137931034483,
+          "recover_nonlinear": 0.20689655172413793,
+          "gap_mlp_minus_lin": 0.03448275862068964
+        },
+        "classA_repeated": {
+          "n": 170,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.16470588235294117,
+          "nonlinear_acc": 0.2,
+          "rawsum_acc": 0.17058823529411765,
+          "recover_linear": 0.16470588235294117,
+          "recover_nonlinear": 0.2,
+          "gap_mlp_minus_lin": 0.03529411764705884
+        },
+        "classA_isolated": {
+          "n": 197,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2639593908629442,
+          "nonlinear_acc": 0.24873096446700507,
+          "rawsum_acc": 0.30456852791878175,
+          "recover_linear": 0.2639593908629442,
+          "recover_nonlinear": 0.24873096446700507,
+          "gap_mlp_minus_lin": -0.015228426395939104
+        },
+        "control_wrap": {
+          "n": 527,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.8444022770398482,
+          "nonlinear_acc": 0.8690702087286527,
+          "rawsum_acc": 0.7817836812144212,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.024667931688804545
+        },
+        "control_nowrap": {
+          "n": 2305,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9587852494577006,
+          "nonlinear_acc": 0.9670281995661605,
+          "rawsum_acc": 0.9574837310195228,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.008242950108459879
+        },
+        "lin_acc_all_test": 0.8549546733354173,
+        "mlp_acc_all_test": 0.8658955923726165,
+        "raw_acc_all_test": 0.8465145357924352,
+        "frozen_acc_all_test": 0.8852766489527978,
+        "confusion_classA": [
+          [
+            13,
+            4,
+            6,
+            0,
+            8,
+            4,
+            4,
+            3,
+            4,
+            0
+          ],
+          [
+            4,
+            8,
+            1,
+            2,
+            3,
+            5,
+            4,
+            5,
+            2,
+            1
+          ],
+          [
+            7,
+            2,
+            15,
+            2,
+            0,
+            0,
+            1,
+            4,
+            8,
+            3
+          ],
+          [
+            3,
+            5,
+            2,
+            8,
+            2,
+            1,
+            2,
+            4,
+            6,
+            2
+          ],
+          [
+            5,
+            1,
+            11,
+            1,
+            6,
+            1,
+            3,
+            3,
+            4,
+            2
+          ],
+          [
+            3,
+            3,
+            0,
+            1,
+            4,
+            2,
+            3,
+            4,
+            4,
+            5
+          ],
+          [
+            5,
+            3,
+            5,
+            0,
+            1,
+            1,
+            10,
+            5,
+            4,
+            2
+          ],
+          [
+            2,
+            1,
+            4,
+            0,
+            2,
+            8,
+            1,
+            6,
+            1,
+            3
+          ],
+          [
+            8,
+            3,
+            3,
+            2,
+            9,
+            5,
+            4,
+            4,
+            5,
+            2
+          ],
+          [
+            3,
+            5,
+            3,
+            1,
+            5,
+            5,
+            2,
+            0,
+            3,
+            7
+          ]
+        ]
+      },
+      {
+        "seed": 43,
+        "lin_val_acc": 0.84875,
+        "lin_lambda": 10.0,
+        "mlp_val_acc": 0.8812500238418579,
+        "classA": {
+          "n": 347,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.30835734870317005,
+          "nonlinear_acc": 0.33429394812680113,
+          "rawsum_acc": 0.27089337175792505,
+          "recover_linear": 0.30835734870317005,
+          "recover_nonlinear": 0.33429394812680113,
+          "gap_mlp_minus_lin": 0.02593659942363108
+        },
+        "control_candok": {
+          "n": 2849,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9392769392769392,
+          "nonlinear_acc": 0.954018954018954,
+          "rawsum_acc": 0.922077922077922,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.014742014742014753
+        },
+        "classA_wrap": {
+          "n": 149,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.348993288590604,
+          "nonlinear_acc": 0.4161073825503356,
+          "rawsum_acc": 0.3221476510067114,
+          "recover_linear": 0.348993288590604,
+          "recover_nonlinear": 0.4161073825503356,
+          "gap_mlp_minus_lin": 0.06711409395973156
+        },
+        "classA_nowrap": {
+          "n": 198,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2777777777777778,
+          "nonlinear_acc": 0.2727272727272727,
+          "rawsum_acc": 0.23232323232323232,
+          "recover_linear": 0.2777777777777778,
+          "recover_nonlinear": 0.2727272727272727,
+          "gap_mlp_minus_lin": -0.005050505050505083
+        },
+        "classA_repeated": {
+          "n": 157,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.21019108280254778,
+          "nonlinear_acc": 0.2802547770700637,
+          "rawsum_acc": 0.16560509554140126,
+          "recover_linear": 0.21019108280254778,
+          "recover_nonlinear": 0.2802547770700637,
+          "gap_mlp_minus_lin": 0.07006369426751591
+        },
+        "classA_isolated": {
+          "n": 190,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.3894736842105263,
+          "nonlinear_acc": 0.37894736842105264,
+          "rawsum_acc": 0.35789473684210527,
+          "recover_linear": 0.3894736842105263,
+          "recover_nonlinear": 0.37894736842105264,
+          "gap_mlp_minus_lin": -0.010526315789473661
+        },
+        "control_wrap": {
+          "n": 503,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.8111332007952287,
+          "nonlinear_acc": 0.878727634194831,
+          "rawsum_acc": 0.73558648111332,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.06759443339960236
+        },
+        "control_nowrap": {
+          "n": 2346,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9667519181585678,
+          "nonlinear_acc": 0.9701619778346121,
+          "rawsum_acc": 0.9620630861040068,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.0034100596760443525
+        },
+        "lin_acc_all_test": 0.8707759699624531,
+        "mlp_acc_all_test": 0.8867334167709637,
+        "raw_acc_all_test": 0.8513767209011264,
+        "frozen_acc_all_test": 0.8914267834793492,
+        "confusion_classA": [
+          [
+            14,
+            2,
+            3,
+            0,
+            4,
+            11,
+            9,
+            1,
+            3,
+            1
+          ],
+          [
+            2,
+            5,
+            2,
+            1,
+            1,
+            3,
+            6,
+            1,
+            1,
+            5
+          ],
+          [
+            0,
+            1,
+            8,
+            0,
+            3,
+            1,
+            4,
+            3,
+            6,
+            0
+          ],
+          [
+            1,
+            3,
+            3,
+            10,
+            5,
+            4,
+            3,
+            4,
+            11,
+            2
+          ],
+          [
+            3,
+            1,
+            3,
+            1,
+            10,
+            2,
+            2,
+            0,
+            3,
+            3
+          ],
+          [
+            3,
+            2,
+            0,
+            3,
+            2,
+            15,
+            4,
+            1,
+            1,
+            7
+          ],
+          [
+            7,
+            0,
+            0,
+            1,
+            3,
+            1,
+            13,
+            2,
+            6,
+            0
+          ],
+          [
+            2,
+            2,
+            5,
+            3,
+            2,
+            3,
+            2,
+            6,
+            4,
+            0
+          ],
+          [
+            3,
+            0,
+            4,
+            3,
+            4,
+            6,
+            5,
+            0,
+            12,
+            2
+          ],
+          [
+            2,
+            1,
+            1,
+            1,
+            5,
+            5,
+            1,
+            1,
+            2,
+            14
+          ]
+        ]
+      },
+      {
+        "seed": 44,
+        "lin_val_acc": 0.85375,
+        "lin_lambda": 100.0,
+        "mlp_val_acc": 0.8787500262260437,
+        "classA": {
+          "n": 358,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2206703910614525,
+          "nonlinear_acc": 0.2206703910614525,
+          "rawsum_acc": 0.20391061452513967,
+          "recover_linear": 0.2206703910614525,
+          "recover_nonlinear": 0.2206703910614525,
+          "gap_mlp_minus_lin": 0.0
+        },
+        "control_candok": {
+          "n": 2813,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9225026661926768,
+          "nonlinear_acc": 0.9409882687522219,
+          "rawsum_acc": 0.9235691432634199,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.01848560255954501
+        },
+        "classA_wrap": {
+          "n": 145,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.13793103448275862,
+          "nonlinear_acc": 0.15862068965517243,
+          "rawsum_acc": 0.12413793103448276,
+          "recover_linear": 0.13793103448275862,
+          "recover_nonlinear": 0.15862068965517243,
+          "gap_mlp_minus_lin": 0.020689655172413807
+        },
+        "classA_nowrap": {
+          "n": 213,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.27699530516431925,
+          "nonlinear_acc": 0.26291079812206575,
+          "rawsum_acc": 0.25821596244131456,
+          "recover_linear": 0.27699530516431925,
+          "recover_nonlinear": 0.26291079812206575,
+          "gap_mlp_minus_lin": -0.014084507042253502
+        },
+        "classA_repeated": {
+          "n": 146,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2465753424657534,
+          "nonlinear_acc": 0.2534246575342466,
+          "rawsum_acc": 0.2465753424657534,
+          "recover_linear": 0.2465753424657534,
+          "recover_nonlinear": 0.2534246575342466,
+          "gap_mlp_minus_lin": 0.006849315068493178
+        },
+        "classA_isolated": {
+          "n": 212,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2028301886792453,
+          "nonlinear_acc": 0.19811320754716982,
+          "rawsum_acc": 0.17452830188679244,
+          "recover_linear": 0.2028301886792453,
+          "recover_nonlinear": 0.19811320754716982,
+          "gap_mlp_minus_lin": -0.004716981132075471
+        },
+        "control_wrap": {
+          "n": 511,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.7827788649706457,
+          "nonlinear_acc": 0.8317025440313112,
+          "rawsum_acc": 0.7690802348336595,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.048923679060665415
+        },
+        "control_nowrap": {
+          "n": 2302,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9535186794092094,
+          "nonlinear_acc": 0.9652476107732406,
+          "rawsum_acc": 0.9578627280625543,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.011728931364031192
+        },
+        "lin_acc_all_test": 0.8432671081677704,
+        "mlp_acc_all_test": 0.8596657205928729,
+        "raw_acc_all_test": 0.8423210343740145,
+        "frozen_acc_all_test": 0.8871018606117944,
+        "confusion_classA": [
+          [
+            4,
+            2,
+            5,
+            0,
+            6,
+            2,
+            4,
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            3,
+            3,
+            4,
+            4,
+            6,
+            7,
+            2,
+            3,
+            1
+          ],
+          [
+            4,
+            1,
+            15,
+            1,
+            6,
+            2,
+            3,
+            3,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            4,
+            7,
+            1,
+            8,
+            6,
+            6
+          ],
+          [
+            3,
+            0,
+            11,
+            0,
+            6,
+            1,
+            5,
+            3,
+            5,
+            0
+          ],
+          [
+            1,
+            3,
+            5,
+            2,
+            0,
+            13,
+            0,
+            4,
+            5,
+            5
+          ],
+          [
+            7,
+            0,
+            2,
+            0,
+            8,
+            3,
+            10,
+            2,
+            9,
+            0
+          ],
+          [
+            7,
+            4,
+            3,
+            1,
+            0,
+            4,
+            0,
+            14,
+            4,
+            5
+          ],
+          [
+            4,
+            0,
+            2,
+            3,
+            6,
+            3,
+            3,
+            5,
+            6,
+            3
+          ],
+          [
+            1,
+            2,
+            2,
+            0,
+            2,
+            10,
+            1,
+            3,
+            0,
+            7
+          ]
+        ]
+      },
+      {
+        "seed": 45,
+        "lin_val_acc": 0.86625,
+        "lin_lambda": 0.01,
+        "mlp_val_acc": 0.8899999856948853,
+        "classA": {
+          "n": 328,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.3018292682926829,
+          "nonlinear_acc": 0.27439024390243905,
+          "rawsum_acc": 0.23170731707317074,
+          "recover_linear": 0.3018292682926829,
+          "recover_nonlinear": 0.27439024390243905,
+          "gap_mlp_minus_lin": -0.02743902439024387
+        },
+        "control_candok": {
+          "n": 2797,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9259921344297461,
+          "nonlinear_acc": 0.9510189488737933,
+          "rawsum_acc": 0.9131212012870933,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.025026814444047196
+        },
+        "classA_wrap": {
+          "n": 136,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.35294117647058826,
+          "nonlinear_acc": 0.3161764705882353,
+          "rawsum_acc": 0.22794117647058823,
+          "recover_linear": 0.35294117647058826,
+          "recover_nonlinear": 0.3161764705882353,
+          "gap_mlp_minus_lin": -0.03676470588235298
+        },
+        "classA_nowrap": {
+          "n": 192,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.265625,
+          "nonlinear_acc": 0.24479166666666666,
+          "rawsum_acc": 0.234375,
+          "recover_linear": 0.265625,
+          "recover_nonlinear": 0.24479166666666666,
+          "gap_mlp_minus_lin": -0.020833333333333343
+        },
+        "classA_repeated": {
+          "n": 144,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.2638888888888889,
+          "nonlinear_acc": 0.2152777777777778,
+          "rawsum_acc": 0.18055555555555555,
+          "recover_linear": 0.2638888888888889,
+          "recover_nonlinear": 0.2152777777777778,
+          "gap_mlp_minus_lin": -0.048611111111111105
+        },
+        "classA_isolated": {
+          "n": 184,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.33152173913043476,
+          "nonlinear_acc": 0.32065217391304346,
+          "rawsum_acc": 0.2717391304347826,
+          "recover_linear": 0.33152173913043476,
+          "recover_nonlinear": 0.32065217391304346,
+          "gap_mlp_minus_lin": -0.010869565217391297
+        },
+        "control_wrap": {
+          "n": 482,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.7987551867219918,
+          "nonlinear_acc": 0.8630705394190872,
+          "rawsum_acc": 0.7385892116182573,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.06431535269709543
+        },
+        "control_nowrap": {
+          "n": 2315,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9524838012958964,
+          "nonlinear_acc": 0.9693304535637149,
+          "rawsum_acc": 0.9494600431965443,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.016846652267818563
+        },
+        "lin_acc_all_test": 0.86048,
+        "mlp_acc_all_test": 0.88,
+        "raw_acc_all_test": 0.8416,
+        "frozen_acc_all_test": 0.89504,
+        "confusion_classA": [
+          [
+            9,
+            2,
+            5,
+            1,
+            4,
+            1,
+            1,
+            1,
+            4,
+            2
+          ],
+          [
+            2,
+            3,
+            1,
+            4,
+            0,
+            1,
+            6,
+            1,
+            1,
+            2
+          ],
+          [
+            5,
+            1,
+            19,
+            0,
+            8,
+            0,
+            1,
+            4,
+            2,
+            3
+          ],
+          [
+            0,
+            2,
+            0,
+            4,
+            1,
+            6,
+            1,
+            4,
+            7,
+            4
+          ],
+          [
+            1,
+            1,
+            5,
+            1,
+            9,
+            1,
+            2,
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            4,
+            2,
+            4,
+            2,
+            19,
+            1,
+            3,
+            3,
+            6
+          ],
+          [
+            5,
+            3,
+            7,
+            1,
+            4,
+            0,
+            18,
+            1,
+            2,
+            0
+          ],
+          [
+            3,
+            3,
+            14,
+            0,
+            1,
+            5,
+            0,
+            3,
+            2,
+            1
+          ],
+          [
+            10,
+            3,
+            4,
+            2,
+            6,
+            1,
+            5,
+            2,
+            7,
+            2
+          ],
+          [
+            0,
+            4,
+            0,
+            2,
+            5,
+            3,
+            0,
+            1,
+            0,
+            8
+          ]
+        ]
+      },
+      {
+        "seed": 46,
+        "lin_val_acc": 0.86125,
+        "lin_lambda": 1.0,
+        "mlp_val_acc": 0.8600000143051147,
+        "classA": {
+          "n": 423,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.21749408983451538,
+          "nonlinear_acc": 0.25059101654846333,
+          "rawsum_acc": 0.21513002364066194,
+          "recover_linear": 0.21749408983451538,
+          "recover_nonlinear": 0.25059101654846333,
+          "gap_mlp_minus_lin": 0.033096926713947955
+        },
+        "control_candok": {
+          "n": 2649,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9290298225745565,
+          "nonlinear_acc": 0.9426198565496414,
+          "rawsum_acc": 0.9146847867119667,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.013590033975084959
+        },
+        "classA_wrap": {
+          "n": 185,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.24324324324324326,
+          "nonlinear_acc": 0.2918918918918919,
+          "rawsum_acc": 0.20540540540540542,
+          "recover_linear": 0.24324324324324326,
+          "recover_nonlinear": 0.2918918918918919,
+          "gap_mlp_minus_lin": 0.04864864864864865
+        },
+        "classA_nowrap": {
+          "n": 238,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.19747899159663865,
+          "nonlinear_acc": 0.2184873949579832,
+          "rawsum_acc": 0.22268907563025211,
+          "recover_linear": 0.19747899159663865,
+          "recover_nonlinear": 0.2184873949579832,
+          "gap_mlp_minus_lin": 0.021008403361344546
+        },
+        "classA_repeated": {
+          "n": 171,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.17543859649122806,
+          "nonlinear_acc": 0.23391812865497075,
+          "rawsum_acc": 0.17543859649122806,
+          "recover_linear": 0.17543859649122806,
+          "recover_nonlinear": 0.23391812865497075,
+          "gap_mlp_minus_lin": 0.05847953216374269
+        },
+        "classA_isolated": {
+          "n": 252,
+          "frozen_acc": 0.0,
+          "linear_acc": 0.24603174603174602,
+          "nonlinear_acc": 0.2619047619047619,
+          "rawsum_acc": 0.24206349206349206,
+          "recover_linear": 0.24603174603174602,
+          "recover_nonlinear": 0.2619047619047619,
+          "gap_mlp_minus_lin": 0.0158730158730159
+        },
+        "control_wrap": {
+          "n": 469,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.8123667377398721,
+          "nonlinear_acc": 0.8678038379530917,
+          "rawsum_acc": 0.7356076759061834,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.05543710021321957
+        },
+        "control_nowrap": {
+          "n": 2180,
+          "frozen_acc": 1.0,
+          "linear_acc": 0.9541284403669725,
+          "nonlinear_acc": 0.9587155963302753,
+          "rawsum_acc": 0.9532110091743119,
+          "recover_linear": null,
+          "recover_nonlinear": null,
+          "gap_mlp_minus_lin": 0.004587155963302725
+        },
+        "lin_acc_all_test": 0.8310546875,
+        "mlp_acc_all_test": 0.8473307291666666,
+        "raw_acc_all_test": 0.818359375,
+        "frozen_acc_all_test": 0.8623046875,
+        "confusion_classA": [
+          [
+            12,
+            1,
+            10,
+            3,
+            8,
+            7,
+            3,
+            4,
+            7,
+            1
+          ],
+          [
+            2,
+            8,
+            1,
+            5,
+            4,
+            3,
+            3,
+            6,
+            2,
+            3
+          ],
+          [
+            9,
+            4,
+            13,
+            7,
+            4,
+            3,
+            6,
+            6,
+            3,
+            1
+          ],
+          [
+            3,
+            1,
+            2,
+            7,
+            1,
+            4,
+            3,
+            4,
+            2,
+            0
+          ],
+          [
+            5,
+            0,
+            5,
+            2,
+            4,
+            7,
+            7,
+            3,
+            4,
+            4
+          ],
+          [
+            4,
+            5,
+            0,
+            2,
+            0,
+            10,
+            9,
+            5,
+            0,
+            3
+          ],
+          [
+            5,
+            4,
+            6,
+            2,
+            3,
+            6,
+            11,
+            2,
+            6,
+            1
+          ],
+          [
+            2,
+            4,
+            4,
+            4,
+            2,
+            2,
+            8,
+            5,
+            3,
+            1
+          ],
+          [
+            7,
+            0,
+            7,
+            4,
+            2,
+            3,
+            2,
+            4,
+            9,
+            3
+          ],
+          [
+            3,
+            2,
+            1,
+            6,
+            7,
+            4,
+            2,
+            5,
+            3,
+            13
+          ]
+        ]
+      }
+    ],
+    "summary": {
+      "classA": {
+        "n": {
+          "mean": 364.6,
+          "sd": 35.73933407325884,
+          "per_seed": [
+            367,
+            347,
+            358,
+            328,
+            423
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.25326694982359577,
+          "sd": 0.04738247339114907,
+          "per_seed": [
+            0.21798365122615804,
+            0.30835734870317005,
+            0.2206703910614525,
+            0.3018292682926829,
+            0.21749408983451538
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.261220727557259,
+          "sd": 0.04609730051720793,
+          "per_seed": [
+            0.22615803814713897,
+            0.33429394812680113,
+            0.2206703910614525,
+            0.27439024390243905,
+            0.25059101654846333
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.23282962779719965,
+          "sd": 0.025948706111676455,
+          "per_seed": [
+            0.24250681198910082,
+            0.27089337175792505,
+            0.20391061452513967,
+            0.23170731707317074,
+            0.21513002364066194
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.25326694982359577,
+          "sd": 0.04738247339114907,
+          "per_seed": [
+            0.21798365122615804,
+            0.30835734870317005,
+            0.2206703910614525,
+            0.3018292682926829,
+            0.21749408983451538
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.261220727557259,
+          "sd": 0.04609730051720793,
+          "per_seed": [
+            0.22615803814713897,
+            0.33429394812680113,
+            0.2206703910614525,
+            0.27439024390243905,
+            0.25059101654846333
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.00795377773366322,
+          "sd": 0.023830240805592273,
+          "per_seed": [
+            0.008174386920980936,
+            0.02593659942363108,
+            0.0,
+            -0.02743902439024387,
+            0.033096926713947955
+          ],
+          "n": 5
+        }
+      },
+      "control_candok": {
+        "n": {
+          "mean": 2788.0,
+          "sd": 80.1311425102625,
+          "per_seed": [
+            2832,
+            2849,
+            2813,
+            2797,
+            2649
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "per_seed": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.9308603124947838,
+          "sd": 0.007277107242735773,
+          "per_seed": [
+            0.9375,
+            0.9392769392769392,
+            0.9225026661926768,
+            0.9259921344297461,
+            0.9290298225745565
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.9474890926445718,
+          "sd": 0.005540445450448975,
+          "per_seed": [
+            0.9487994350282486,
+            0.954018954018954,
+            0.9409882687522219,
+            0.9510189488737933,
+            0.9426198565496414
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.9196482377867244,
+          "sd": 0.005360351364703743,
+          "per_seed": [
+            0.9247881355932204,
+            0.922077922077922,
+            0.9235691432634199,
+            0.9131212012870933,
+            0.9146847867119667
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "recover_nonlinear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.0166287801497881,
+          "sd": 0.005365877162954054,
+          "per_seed": [
+            0.011299435028248594,
+            0.014742014742014753,
+            0.01848560255954501,
+            0.025026814444047196,
+            0.013590033975084959
+          ],
+          "n": 5
+        }
+      },
+      "classA_wrap": {
+        "n": {
+          "mean": 155.8,
+          "sd": 19.201562436426887,
+          "per_seed": [
+            164,
+            149,
+            145,
+            136,
+            185
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.2714997973379266,
+          "sd": 0.08843831376002556,
+          "per_seed": [
+            0.27439024390243905,
+            0.348993288590604,
+            0.13793103448275862,
+            0.35294117647058826,
+            0.24324324324324326
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.28655928693712707,
+          "sd": 0.0940653887674173,
+          "per_seed": [
+            0.25,
+            0.4161073825503356,
+            0.15862068965517243,
+            0.3161764705882353,
+            0.2918918918918919
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.23080448156392536,
+          "sd": 0.0746229821671864,
+          "per_seed": [
+            0.27439024390243905,
+            0.3221476510067114,
+            0.12413793103448276,
+            0.22794117647058823,
+            0.20540540540540542
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.2714997973379266,
+          "sd": 0.08843831376002556,
+          "per_seed": [
+            0.27439024390243905,
+            0.348993288590604,
+            0.13793103448275862,
+            0.35294117647058826,
+            0.24324324324324326
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.28655928693712707,
+          "sd": 0.0940653887674173,
+          "per_seed": [
+            0.25,
+            0.4161073825503356,
+            0.15862068965517243,
+            0.3161764705882353,
+            0.2918918918918919
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.015059489599200398,
+          "sd": 0.04503232426774958,
+          "per_seed": [
+            -0.024390243902439046,
+            0.06711409395973156,
+            0.020689655172413807,
+            -0.03676470588235298,
+            0.04864864864864865
+          ],
+          "n": 5
+        }
+      },
+      "classA_nowrap": {
+        "n": {
+          "mean": 208.8,
+          "sd": 18.047160441465575,
+          "per_seed": [
+            203,
+            198,
+            213,
+            192,
+            238
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.23805817352843678,
+          "sd": 0.049521540240339286,
+          "per_seed": [
+            0.1724137931034483,
+            0.2777777777777778,
+            0.27699530516431925,
+            0.265625,
+            0.19747899159663865
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.24116273683962525,
+          "sd": 0.028154972024738177,
+          "per_seed": [
+            0.20689655172413793,
+            0.2727272727272727,
+            0.26291079812206575,
+            0.24479166666666666,
+            0.2184873949579832
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.23287040777354112,
+          "sd": 0.015878657988871198,
+          "per_seed": [
+            0.21674876847290642,
+            0.23232323232323232,
+            0.25821596244131456,
+            0.234375,
+            0.22268907563025211
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.23805817352843678,
+          "sd": 0.049521540240339286,
+          "per_seed": [
+            0.1724137931034483,
+            0.2777777777777778,
+            0.27699530516431925,
+            0.265625,
+            0.19747899159663865
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.24116273683962525,
+          "sd": 0.028154972024738177,
+          "per_seed": [
+            0.20689655172413793,
+            0.2727272727272727,
+            0.26291079812206575,
+            0.24479166666666666,
+            0.2184873949579832
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.003104563311188452,
+          "sd": 0.023665010061196125,
+          "per_seed": [
+            0.03448275862068964,
+            -0.005050505050505083,
+            -0.014084507042253502,
+            -0.020833333333333343,
+            0.021008403361344546
+          ],
+          "n": 5
+        }
+      },
+      "classA_repeated": {
+        "n": {
+          "mean": 157.6,
+          "sd": 12.77888884058391,
+          "per_seed": [
+            170,
+            157,
+            146,
+            144,
+            171
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.2121599586002719,
+          "sd": 0.04319874169160169,
+          "per_seed": [
+            0.16470588235294117,
+            0.21019108280254778,
+            0.2465753424657534,
+            0.2638888888888889,
+            0.17543859649122806
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.23657506820741175,
+          "sd": 0.03158399574394975,
+          "per_seed": [
+            0.2,
+            0.2802547770700637,
+            0.2534246575342466,
+            0.2152777777777778,
+            0.23391812865497075
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.1877525650696112,
+          "sd": 0.03334919238840648,
+          "per_seed": [
+            0.17058823529411765,
+            0.16560509554140126,
+            0.2465753424657534,
+            0.18055555555555555,
+            0.17543859649122806
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.2121599586002719,
+          "sd": 0.04319874169160169,
+          "per_seed": [
+            0.16470588235294117,
+            0.21019108280254778,
+            0.2465753424657534,
+            0.2638888888888889,
+            0.17543859649122806
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.23657506820741175,
+          "sd": 0.03158399574394975,
+          "per_seed": [
+            0.2,
+            0.2802547770700637,
+            0.2534246575342466,
+            0.2152777777777778,
+            0.23391812865497075
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.0244151096071399,
+          "sd": 0.04744448606452489,
+          "per_seed": [
+            0.03529411764705884,
+            0.07006369426751591,
+            0.006849315068493178,
+            -0.048611111111111105,
+            0.05847953216374269
+          ],
+          "n": 5
+        }
+      },
+      "classA_isolated": {
+        "n": {
+          "mean": 207.0,
+          "sd": 27.23967694375247,
+          "per_seed": [
+            197,
+            190,
+            212,
+            184,
+            252
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 0.0,
+          "sd": 0.0,
+          "per_seed": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.2867633497829793,
+          "sd": 0.07378445946579208,
+          "per_seed": [
+            0.2639593908629442,
+            0.3894736842105263,
+            0.2028301886792453,
+            0.33152173913043476,
+            0.24603174603174602
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.2816696952506066,
+          "sd": 0.06971348247157487,
+          "per_seed": [
+            0.24873096446700507,
+            0.37894736842105264,
+            0.19811320754716982,
+            0.32065217391304346,
+            0.2619047619047619
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.2701588378291908,
+          "sd": 0.0685905604487779,
+          "per_seed": [
+            0.30456852791878175,
+            0.35789473684210527,
+            0.17452830188679244,
+            0.2717391304347826,
+            0.24206349206349206
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": 0.2867633497829793,
+          "sd": 0.07378445946579208,
+          "per_seed": [
+            0.2639593908629442,
+            0.3894736842105263,
+            0.2028301886792453,
+            0.33152173913043476,
+            0.24603174603174602
+          ],
+          "n": 5
+        },
+        "recover_nonlinear": {
+          "mean": 0.2816696952506066,
+          "sd": 0.06971348247157487,
+          "per_seed": [
+            0.24873096446700507,
+            0.37894736842105264,
+            0.19811320754716982,
+            0.32065217391304346,
+            0.2619047619047619
+          ],
+          "n": 5
+        },
+        "gap_mlp_minus_lin": {
+          "mean": -0.005093654532372727,
+          "sd": 0.012301744836007458,
+          "per_seed": [
+            -0.015228426395939104,
+            -0.010526315789473661,
+            -0.004716981132075471,
+            -0.010869565217391297,
+            0.0158730158730159
+          ],
+          "n": 5
+        }
+      },
+      "control_wrap": {
+        "n": {
+          "mean": 498.4,
+          "sd": 23.082460874005612,
+          "per_seed": [
+            527,
+            503,
+            511,
+            482,
+            469
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "per_seed": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.8098872534535172,
+          "sd": 0.022681350908416997,
+          "per_seed": [
+            0.8444022770398482,
+            0.8111332007952287,
+            0.7827788649706457,
+            0.7987551867219918,
+            0.8123667377398721
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.8620749528653947,
+          "sd": 0.017906283362069085,
+          "per_seed": [
+            0.8690702087286527,
+            0.878727634194831,
+            0.8317025440313112,
+            0.8630705394190872,
+            0.8678038379530917
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.7521294569371683,
+          "sd": 0.02177544161218277,
+          "per_seed": [
+            0.7817836812144212,
+            0.73558648111332,
+            0.7690802348336595,
+            0.7385892116182573,
+            0.7356076759061834
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "recover_nonlinear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.05218769941187747,
+          "sd": 0.01705137440448534,
+          "per_seed": [
+            0.024667931688804545,
+            0.06759443339960236,
+            0.048923679060665415,
+            0.06431535269709543,
+            0.05543710021321957
+          ],
+          "n": 5
+        }
+      },
+      "control_nowrap": {
+        "n": {
+          "mean": 2289.6,
+          "sd": 63.69693870195019,
+          "per_seed": [
+            2305,
+            2346,
+            2302,
+            2315,
+            2180
+          ],
+          "n": 5
+        },
+        "frozen_acc": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "per_seed": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n": 5
+        },
+        "linear_acc": {
+          "mean": 0.9571336177376694,
+          "sd": 0.005894048977896414,
+          "per_seed": [
+            0.9587852494577006,
+            0.9667519181585678,
+            0.9535186794092094,
+            0.9524838012958964,
+            0.9541284403669725
+          ],
+          "n": 5
+        },
+        "nonlinear_acc": {
+          "mean": 0.9660967676136007,
+          "sd": 0.004556670420947453,
+          "per_seed": [
+            0.9670281995661605,
+            0.9701619778346121,
+            0.9652476107732406,
+            0.9693304535637149,
+            0.9587155963302753
+          ],
+          "n": 5
+        },
+        "rawsum_acc": {
+          "mean": 0.956016119511388,
+          "sd": 0.004821318084858224,
+          "per_seed": [
+            0.9574837310195228,
+            0.9620630861040068,
+            0.9578627280625543,
+            0.9494600431965443,
+            0.9532110091743119
+          ],
+          "n": 5
+        },
+        "recover_linear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "recover_nonlinear": {
+          "mean": null,
+          "sd": 0.0,
+          "per_seed": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "n": 0
+        },
+        "gap_mlp_minus_lin": {
+          "mean": 0.008963149875931341,
+          "sd": 0.005484158513375524,
+          "per_seed": [
+            0.008242950108459879,
+            0.0034100596760443525,
+            0.011728931364031192,
+            0.016846652267818563,
+            0.004587155963302725
+          ],
+          "n": 5
+        }
+      }
+    },
+    "lin_val_acc": {
+      "mean": 0.8627499999999999,
+      "sd": 0.013532368602724368,
+      "per_seed": [
+        0.88375,
+        0.84875,
+        0.85375,
+        0.86625,
+        0.86125
+      ],
+      "n": 5
+    },
+    "mlp_val_acc": {
+      "mean": 0.8797500133514404,
+      "sd": 0.012035099305521579,
+      "per_seed": [
+        0.8887500166893005,
+        0.8812500238418579,
+        0.8787500262260437,
+        0.8899999856948853,
+        0.8600000143051147
+      ],
+      "n": 5
+    },
+    "lin_acc_all_test": {
+      "mean": 0.852106487793128,
+      "sd": 0.01539553798812841,
+      "per_seed": [
+        0.8549546733354173,
+        0.8707759699624531,
+        0.8432671081677704,
+        0.86048,
+        0.8310546875
+      ],
+      "n": 5
+    },
+    "mlp_acc_all_test": {
+      "mean": 0.8679250917806239,
+      "sd": 0.01577989503440939,
+      "per_seed": [
+        0.8658955923726165,
+        0.8867334167709637,
+        0.8596657205928729,
+        0.88,
+        0.8473307291666666
+      ],
+      "n": 5
+    },
+    "raw_acc_all_test": {
+      "mean": 0.8400343332135153,
+      "sd": 0.0127291683954734,
+      "per_seed": [
+        0.8465145357924352,
+        0.8513767209011264,
+        0.8423210343740145,
+        0.8416,
+        0.818359375
+      ],
+      "n": 5
+    },
+    "frozen_acc_all_test": {
+      "mean": 0.8842299961087882,
+      "sd": 0.012832694359283851,
+      "per_seed": [
+        0.8852766489527978,
+        0.8914267834793492,
+        0.8871018606117944,
+        0.89504,
+        0.8623046875
+      ],
+      "n": 5
+    },
+    "confusion_classA_total": [
+      [
+        52,
+        11,
+        29,
+        4,
+        30,
+        25,
+        21,
+        11,
+        22,
+        6
+      ],
+      [
+        12,
+        27,
+        8,
+        16,
+        12,
+        18,
+        26,
+        15,
+        9,
+        12
+      ],
+      [
+        25,
+        9,
+        70,
+        10,
+        21,
+        6,
+        15,
+        20,
+        24,
+        7
+      ],
+      [
+        7,
+        11,
+        8,
+        30,
+        13,
+        22,
+        10,
+        24,
+        32,
+        14
+      ],
+      [
+        17,
+        3,
+        35,
+        5,
+        35,
+        12,
+        19,
+        9,
+        18,
+        10
+      ],
+      [
+        11,
+        17,
+        7,
+        12,
+        8,
+        59,
+        17,
+        17,
+        13,
+        26
+      ],
+      [
+        29,
+        10,
+        20,
+        4,
+        19,
+        11,
+        62,
+        12,
+        27,
+        3
+      ],
+      [
+        16,
+        14,
+        30,
+        8,
+        7,
+        22,
+        11,
+        34,
+        14,
+        10
+      ],
+      [
+        32,
+        6,
+        20,
+        14,
+        27,
+        18,
+        19,
+        15,
+        39,
+        12
+      ],
+      [
+        9,
+        14,
+        7,
+        10,
+        24,
+        27,
+        6,
+        10,
+        8,
+        49
+      ]
+    ],
+    "decision": {
+      "verdict": "Q-C_weak_recoverability",
+      "recover_linear": 0.25326694982359577,
+      "recover_nonlinear": 0.261220727557259,
+      "linear_acc": 0.25326694982359577,
+      "nonlinear_acc": 0.261220727557259,
+      "wrap_lin": 0.2714997973379266,
+      "nowrap_lin": 0.23805817352843678,
+      "repeated_lin": 0.2121599586002719,
+      "nonlinear_minus_linear": 0.007953777733663236,
+      "spread_wrap_nowrap_rep": 0.05933983873765472,
+      "thresholds": {
+        "recover_bar": 0.5,
+        "nonlinear_bar": 0.2,
+        "mix_bar": 0.15
+      },
+      "rule_note": "Q-A: linear recoverability >= 0.50 with wrap/repeated same direction. Q-B: linear < 0.50 and nonlinear-linear >= 0.20. Q-C: both weak. Q-MIX: wrap/no-wrap/repeated disagree (spread >= 0.15). Bars are declared conventions."
+    }
+  },
+  "E_vs_F": {
+    "linear_acc": {
+      "E_mean": 0.2672220348956449,
+      "F_mean": 0.25326694982359577,
+      "mean_diff": 0.013955085072049105,
+      "sign_positive": 3,
+      "sign_negative": 2,
+      "cohens_dz": 0.2529759489302639,
+      "n": 5,
+      "paired_t_p": 0.6018405805150179
+    },
+    "nonlinear_acc": {
+      "E_mean": 0.23270122778205055,
+      "F_mean": 0.261220727557259,
+      "mean_diff": -0.02851949977520842,
+      "sign_positive": 2,
+      "sign_negative": 3,
+      "cohens_dz": -0.503710091896926,
+      "n": 5,
+      "paired_t_p": 0.3230254370229965
+    },
+    "recover_linear": {
+      "E_mean": 0.2672220348956449,
+      "F_mean": 0.25326694982359577,
+      "mean_diff": 0.013955085072049105,
+      "sign_positive": 3,
+      "sign_negative": 2,
+      "cohens_dz": 0.2529759489302639,
+      "n": 5,
+      "paired_t_p": 0.6018405805150179
+    },
+    "rawsum_acc": {
+      "E_mean": 0.2597662277478203,
+      "F_mean": 0.23282962779719965,
+      "mean_diff": 0.0269365999506207,
+      "sign_positive": 4,
+      "sign_negative": 1,
+      "cohens_dz": 0.6183827533983836,
+      "n": 5,
+      "paired_t_p": 0.2389244375123784
+    }
+  },
+  "historical": {
+    "A_terminal": {
+      "candidate_written_mean": 0.8297333002090455,
+      "candidate_full_mean": 0.12454999089241028,
+      "terminal_em": 0.5401666641235352,
+      "T20": 0.2334,
+      "add_transition_stats": {}
+    },
+    "E_candidate": {
+      "candidate_written_mean": 0.9559499740600585,
+      "candidate_full_mean": 0.03949999958276749,
+      "terminal_em": 0.7546666622161865,
+      "T20": 0.40679999999999994,
+      "add_transition_stats": {}
+    }
+  },
+  "primary_decision": {
+    "verdict": "Q-C_weak_recoverability",
+    "recover_linear": 0.2672220348956449,
+    "recover_nonlinear": 0.23270122778205055,
+    "linear_acc": 0.2672220348956449,
+    "nonlinear_acc": 0.23270122778205055,
+    "wrap_lin": 0.2732727756836621,
+    "nowrap_lin": 0.26269826682480024,
+    "repeated_lin": 0.22221957976604562,
+    "nonlinear_minus_linear": -0.03452080711359434,
+    "spread_wrap_nowrap_rep": 0.05105319591761648,
+    "thresholds": {
+      "recover_bar": 0.5,
+      "nonlinear_bar": 0.2,
+      "mix_bar": 0.15
+    },
+    "rule_note": "Q-A: linear recoverability >= 0.50 with wrap/repeated same direction. Q-B: linear < 0.50 and nonlinear-linear >= 0.20. Q-C: both weak. Q-MIX: wrap/no-wrap/repeated disagree (spread >= 0.15). Bars are declared conventions."
+  }
+}

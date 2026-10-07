@@ -1,0 +1,128 @@
+{
+  "n_cols": [
+    "seed",
+    "dest",
+    "src_reg",
+    "operand_a",
+    "operand_b",
+    "y_true",
+    "wrap",
+    "cand_pred",
+    "comm_pred",
+    "dec_commit",
+    "dec_prev",
+    "dec_cand",
+    "par_proj_prev",
+    "par_proj_cand",
+    "par_proj_commit",
+    "par_delta_commit",
+    "par_delta_cand",
+    "norm_delta_commit",
+    "norm_delta_cand",
+    "par_ratio_commit",
+    "par_ratio_cand"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "models": {
+    "E_candidate": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+          "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+          "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+          "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+          "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+          "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+          "unchanged_after_run": true
+        }
+      }
+    },
+    "F_combined": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+          "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+          "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+          "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+          "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+          "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+          "unchanged_after_run": true
+        }
+      }
+    }
+  },
+  "m_alignment": {
+    "E_candidate": {
+      "model": "E_candidate",
+      "fail_vector_max_abs_diff": {
+        "S_prev": 0.0,
+        "C": 0.0,
+        "S_commit": 0.0
+      },
+      "n_primary": 5042,
+      "n_offpath": 323,
+      "passed": true
+    },
+    "F_combined": {
+      "model": "F_combined",
+      "fail_vector_max_abs_diff": {
+        "S_prev": 0.0,
+        "C": 0.0,
+        "S_commit": 0.0
+      },
+      "n_primary": 5032,
+      "n_offpath": 353,
+      "passed": true
+    }
+  },
+  "offpath_definition": "strict test split, ADD, general (dest!=src AND operand_b>0), candidate correct, baseline commit wrong, rho_margin >= alpha_star_full",
+  "parity_axis": "per-seed, per-register p = normalize(mean normalized W[even v] - mean normalized W[odd v]); derived from W alone",
+  "note": "Measurement only: frozen checkpoints, no training, no optimizer, no weight/readout/gate/commit modification, no intervention. Pairing-break permutation controls are analysis-only counterfactuals on frozen objects.",
+  "n_primary": {
+    "E_candidate": 5042,
+    "F_combined": 5032
+  },
+  "n_offpath": {
+    "E_candidate": 323,
+    "F_combined": 353
+  },
+  "date": "2026-10-07 16:20:48"
+}

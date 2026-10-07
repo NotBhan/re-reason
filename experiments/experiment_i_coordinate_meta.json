@@ -1,0 +1,178 @@
+{
+  "cols": [
+    "seed",
+    "source",
+    "seq_id",
+    "t",
+    "dest",
+    "src_reg",
+    "operand_a",
+    "operand_b",
+    "wrap",
+    "isolated",
+    "cand_ok",
+    "comm_ok",
+    "prev_ok",
+    "comm_eq_old",
+    "cand_pred",
+    "comm_pred",
+    "prev_pred",
+    "y_true",
+    "a_star_prev",
+    "a_star_commit",
+    "m_prev",
+    "m_cand",
+    "m_commit",
+    "m_commit_altstar",
+    "dm_cand",
+    "dm_commit",
+    "margin_shortfall",
+    "rho_margin",
+    "rho_defined",
+    "sign_m_prev_pos",
+    "sign_m_cand_pos",
+    "sign_m_commit_pos",
+    "crossed_at_commit",
+    "lost_at_commit",
+    "alpha_star_margin",
+    "alpha_star_full",
+    "alpha_full_solution",
+    "align_ratio",
+    "f_mean",
+    "f_min",
+    "f_max",
+    "f_std",
+    "d_cs",
+    "d_ss",
+    "d_sc",
+    "q_cand_sum",
+    "q_cand_pos_sum",
+    "q_cand_neg_sum",
+    "q_cand_abs_sum",
+    "q_deliv_sum",
+    "q_deliv_pos_sum",
+    "q_deliv_neg_sum",
+    "gw_all",
+    "gw_pos",
+    "gw_neg",
+    "gw_mag",
+    "delivered_frac_pos",
+    "suppressed_frac_pos",
+    "delivered_frac_neg",
+    "suppressed_frac_neg",
+    "replay_maxdiff"
+  ],
+  "coord_keys": [
+    "f",
+    "move",
+    "qcand",
+    "abscand"
+  ],
+  "eps_abs": 0.001,
+  "source_ids": {
+    "test": 0,
+    "isolated_add": 1,
+    "add_then_set": 2,
+    "repeated_add": 3,
+    "add_no_wrap": 4,
+    "add_wrap": 5
+  },
+  "op_add": 2,
+  "decision_head": "TypedDecisionHead = single nn.Linear(212, 4*10); logits affine in S",
+  "models": {
+    "E_candidate": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+          "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+          "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+          "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+          "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+          "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+          "unchanged_after_run": true
+        }
+      }
+    },
+    "F_combined": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+          "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+          "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+          "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+          "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+          "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+          "unchanged_after_run": true
+        }
+      }
+    }
+  },
+  "g_verification": {
+    "E_candidate": {
+      "model": "E_candidate",
+      "n_rows_i": 31763,
+      "n_rows_g": 31763,
+      "exact_mismatches": {},
+      "passed": true,
+      "algebra": {
+        "replay_maxdiff_max": 0.0,
+        "replay_identity_ok": true,
+        "q_deliv_equals_dm_commit_maxdiff": 7.62939453125e-06
+      }
+    },
+    "F_combined": {
+      "model": "F_combined",
+      "n_rows_i": 31763,
+      "n_rows_g": 31763,
+      "exact_mismatches": {},
+      "passed": true,
+      "algebra": {
+        "replay_maxdiff_max": 0.0,
+        "replay_identity_ok": true,
+        "q_deliv_equals_dm_commit_maxdiff": 7.62939453125e-06
+      }
+    }
+  },
+  "notes": "Measurement only: frozen checkpoints, no training, no optimizer, no weight modification. Primary competitor a* is chosen at S_(t-1) (fixed local reference); m_commit_altstar uses a* recomputed at S_t as a sensitivity check. rho_margin defined only when dm_cand > 0.001. alpha* values are exact for the linear readout and are empirical local decision-boundary statistics, not model thresholds.",
+  "n_rows": {
+    "E_candidate": 31763,
+    "F_combined": 31763
+  },
+  "n_primary_rows": {
+    "E_candidate": 5042,
+    "F_combined": 5032
+  },
+  "date": "2026-10-06 19:55:46"
+}

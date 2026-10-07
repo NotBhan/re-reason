@@ -9,3 +9,10 @@ dist/
 .pytest_cache/
 .hypothesis/
 
+# Large regenerable experiment artifacts (reproduce via the experiment runners)
+experiments/*.npz
+experiments/checkpoints/
+
+# Editor/agent tool config
+.commandcode/
+

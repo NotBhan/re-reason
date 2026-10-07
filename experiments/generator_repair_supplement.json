@@ -1,0 +1,1504 @@
+{
+  "summary": {
+    "A_terminal": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.8847790479660034,
+        "committed_sd": 0.0090456937482988,
+        "candidate_mean": 0.8445949554443359,
+        "candidate_sd": 0.016671321372859826
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.7587942004203796,
+        "committed_sd": 0.023613514381197225,
+        "candidate_mean": 0.5270671486854553,
+        "candidate_sd": 0.012513440361454803
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.40494661331176757,
+        "committed_sd": 0.038644710663878354,
+        "candidate_mean": 0.4427150309085846,
+        "candidate_sd": 0.046760328357750514
+      },
+      "overall_committed_written_mean": 0.886650002002716,
+      "overall_candidate_written_mean": 0.8297333478927612
+    },
+    "B_stepwise": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.9286620616912842,
+        "committed_sd": 0.004352293124598547,
+        "candidate_mean": 0.9176712274551392,
+        "candidate_sd": 0.0113450276881121
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.8662399530410767,
+        "committed_sd": 0.010998576019867541,
+        "candidate_mean": 0.6929181933403015,
+        "candidate_sd": 0.027692014400126783
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.5283122658729553,
+        "committed_sd": 0.03241706960180831,
+        "candidate_mean": 0.49692398905754087,
+        "candidate_sd": 0.03864631271825942
+      },
+      "overall_committed_written_mean": 0.9274333238601684,
+      "overall_candidate_written_mean": 0.8867500066757202
+    },
+    "C1_hybrid_lam0.25": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.9246926784515381,
+        "committed_sd": 0.0078978254620272,
+        "candidate_mean": 0.9063634753227234,
+        "candidate_sd": 0.016045780253711586
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.850348150730133,
+        "committed_sd": 0.011002909200325038,
+        "candidate_mean": 0.6542492508888245,
+        "candidate_sd": 0.029436718824053056
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.49048674702644346,
+        "committed_sd": 0.04456244614141874,
+        "candidate_mean": 0.4779004693031311,
+        "candidate_sd": 0.03687858158185787
+      },
+      "overall_committed_written_mean": 0.9209833383560181,
+      "overall_candidate_written_mean": 0.8745333194732666
+    },
+    "C2_hybrid_lam0.50": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.9165875673294067,
+        "committed_sd": 0.007405499680109966,
+        "candidate_mean": 0.8967828154563904,
+        "candidate_sd": 0.019163644853731305
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.8310713529586792,
+        "committed_sd": 0.011060930878396843,
+        "candidate_mean": 0.624270248413086,
+        "candidate_sd": 0.028548950100351057
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.46677044630050657,
+        "committed_sd": 0.025976892870272682,
+        "candidate_mean": 0.4742263197898865,
+        "candidate_sd": 0.031761997772808456
+      },
+      "overall_committed_written_mean": 0.9135166645050049,
+      "overall_candidate_written_mean": 0.865583336353302
+    },
+    "C3_hybrid_lam0.75": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.9047032594680786,
+        "committed_sd": 0.008825119486697156,
+        "candidate_mean": 0.8661988973617554,
+        "candidate_sd": 0.02495230512523102
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.8008912801742554,
+        "committed_sd": 0.022959666459559977,
+        "candidate_mean": 0.5608110189437866,
+        "candidate_sd": 0.038281966899235874
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.43172487020492556,
+        "committed_sd": 0.05031002738147725,
+        "candidate_mean": 0.4476744532585144,
+        "candidate_sd": 0.035408537540269354
+      },
+      "overall_committed_written_mean": 0.9021000027656555,
+      "overall_candidate_written_mean": 0.842716658115387
+    },
+    "D_late_t6": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.9354564785957337,
+        "committed_sd": 0.003161002651626077,
+        "candidate_mean": 0.9298299431800843,
+        "candidate_sd": 0.003952380335135111
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.8774645566940308,
+        "committed_sd": 0.010192236313481484,
+        "candidate_mean": 0.673995041847229,
+        "candidate_sd": 0.01814696134689828
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.5613194048404694,
+        "committed_sd": 0.04531918653959309,
+        "candidate_mean": 0.529900312423706,
+        "candidate_sd": 0.03847913611910949
+      },
+      "overall_committed_written_mean": 0.9333500027656555,
+      "overall_candidate_written_mean": 0.887766671180725
+    },
+    "E_candidate": {
+      "n_seeds": 5,
+      "SET": {
+        "committed_mean": 1.0,
+        "committed_sd": 0.0,
+        "candidate_mean": 1.0,
+        "candidate_sd": 0.0
+      },
+      "SWAP": {
+        "committed_mean": 0.9475696563720704,
+        "committed_sd": 0.0038194635611826424,
+        "candidate_mean": 0.9476334571838378,
+        "candidate_sd": 0.004331900053906259
+      },
+      "ADD_no_wrap": {
+        "committed_mean": 0.9027079582214356,
+        "committed_sd": 0.010383951562161825,
+        "candidate_mean": 0.9195205926895141,
+        "candidate_sd": 0.01103201481189974
+      },
+      "ADD_wrap": {
+        "committed_mean": 0.6568410634994507,
+        "committed_sd": 0.036068483599369025,
+        "candidate_mean": 0.7559299468994141,
+        "candidate_sd": 0.036012417461080276
+      },
+      "overall_committed_written_mean": 0.9470333337783814,
+      "overall_candidate_written_mean": 0.9559499979019165
+    }
+  },
+  "runs": [
+    {
+      "terminal_em": 0.5174999833106995,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.8856065273284912,
+          "candidate_written_all_acc": 0.832809567451477,
+          "committed_written_reg_acc": 0.9391891891891891,
+          "candidate_written_reg_acc": 0.9082338152105593
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.7344497442245483,
+          "candidate_written_all_acc": 0.5219298005104065,
+          "committed_written_reg_acc": 0.7344497607655502,
+          "candidate_written_reg_acc": 0.5219298245614035
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.38205498456954956,
+          "candidate_written_all_acc": 0.42981186509132385,
+          "committed_written_reg_acc": 0.38205499276411,
+          "candidate_written_reg_acc": 0.42981186685962375
+        }
+      },
+      "committed_written_all_overall": 0.8785833120346069,
+      "candidate_written_all_overall": 0.8229166865348816,
+      "variant": "A_terminal",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.559166669845581,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.8955317735671997,
+          "candidate_written_all_acc": 0.8558841943740845,
+          "committed_written_reg_acc": 0.9457205789804909,
+          "candidate_written_reg_acc": 0.9222781623662681
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.7802672982215881,
+          "candidate_written_all_acc": 0.5479559898376465,
+          "committed_written_reg_acc": 0.7802672955974843,
+          "candidate_written_reg_acc": 0.5479559748427673
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.453987717628479,
+          "candidate_written_all_acc": 0.5092024803161621,
+          "committed_written_reg_acc": 0.4539877300613497,
+          "candidate_written_reg_acc": 0.50920245398773
+        }
+      },
+      "committed_written_all_overall": 0.8960833549499512,
+      "candidate_written_all_overall": 0.8393333554267883,
+      "variant": "A_terminal",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.5558333396911621,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.8879551887512207,
+          "candidate_written_all_acc": 0.8518518805503845,
+          "committed_written_reg_acc": 0.942110177404295,
+          "candidate_written_reg_acc": 0.9228135698723934
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.7666003704071045,
+          "candidate_written_all_acc": 0.5256461501121521,
+          "committed_written_reg_acc": 0.7666003976143141,
+          "candidate_written_reg_acc": 0.5256461232604374
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.4390243887901306,
+          "candidate_written_all_acc": 0.4710365831851959,
+          "committed_written_reg_acc": 0.43902439024390244,
+          "candidate_written_reg_acc": 0.47103658536585363
+        }
+      },
+      "committed_written_all_overall": 0.89041668176651,
+      "candidate_written_all_overall": 0.8320000171661377,
+      "variant": "A_terminal",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.5400000214576721,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.8841843008995056,
+          "candidate_written_all_acc": 0.8608343601226807,
+          "committed_written_reg_acc": 0.938667496886675,
+          "candidate_written_reg_acc": 0.9265255292652553
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.7798165082931519,
+          "candidate_written_all_acc": 0.525329053401947,
+          "committed_written_reg_acc": 0.7798165137614679,
+          "candidate_written_reg_acc": 0.525329078579976
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.3689320385456085,
+          "candidate_written_all_acc": 0.40291261672973633,
+          "committed_written_reg_acc": 0.36893203883495146,
+          "candidate_written_reg_acc": 0.4029126213592233
+        }
+      },
+      "committed_written_all_overall": 0.890500009059906,
+      "candidate_written_all_overall": 0.8328333497047424,
+      "variant": "A_terminal",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.528333306312561,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.8706174492835999,
+          "candidate_written_all_acc": 0.821594774723053,
+          "committed_written_reg_acc": 0.9300341296928327,
+          "candidate_written_reg_acc": 0.9027303754266212
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.7328370809555054,
+          "candidate_written_all_acc": 0.5144747495651245,
+          "committed_written_reg_acc": 0.7328370554177006,
+          "candidate_written_reg_acc": 0.5144747725392886
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.3807339370250702,
+          "candidate_written_all_acc": 0.40061160922050476,
+          "committed_written_reg_acc": 0.38073394495412843,
+          "candidate_written_reg_acc": 0.40061162079510704
+        }
+      },
+      "committed_written_all_overall": 0.8776666522026062,
+      "candidate_written_all_overall": 0.8215833306312561,
+      "variant": "A_terminal",
+      "seed": 46
+    },
+    {
+      "terminal_em": 0.6616666913032532,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.9321181774139404,
+          "candidate_written_all_acc": 0.9280326962471008,
+          "committed_written_reg_acc": 0.9641734758013828,
+          "candidate_written_reg_acc": 0.9622878692646134
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.8528708219528198,
+          "candidate_written_all_acc": 0.6710526347160339,
+          "committed_written_reg_acc": 0.8528708133971292,
+          "candidate_written_reg_acc": 0.6710526315789473
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.5108538269996643,
+          "candidate_written_all_acc": 0.5036179423332214,
+          "committed_written_reg_acc": 0.5108538350217077,
+          "candidate_written_reg_acc": 0.5036179450072359
+        }
+      },
+      "committed_written_all_overall": 0.9230833053588867,
+      "candidate_written_all_overall": 0.8835833072662354,
+      "variant": "B_stepwise",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.659166693687439,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.9266834259033203,
+          "candidate_written_all_acc": 0.9122089147567749,
+          "committed_written_reg_acc": 0.9619257394587791,
+          "candidate_written_reg_acc": 0.9537444933920705
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.8742138147354126,
+          "candidate_written_all_acc": 0.6910377144813538,
+          "committed_written_reg_acc": 0.8742138364779874,
+          "candidate_written_reg_acc": 0.6910377358490566
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.546012282371521,
+          "candidate_written_all_acc": 0.49233129620552063,
+          "committed_written_reg_acc": 0.5460122699386503,
+          "candidate_written_reg_acc": 0.49233128834355827
+        }
+      },
+      "committed_written_all_overall": 0.9292500019073486,
+      "candidate_written_all_overall": 0.8836666941642761,
+      "variant": "B_stepwise",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.6966666579246521,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.9327731132507324,
+          "candidate_written_all_acc": 0.926548421382904,
+          "committed_written_reg_acc": 0.9652972300031124,
+          "candidate_written_reg_acc": 0.9621848739495799
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.8803181052207947,
+          "candidate_written_all_acc": 0.7395626306533813,
+          "committed_written_reg_acc": 0.8803180914512923,
+          "candidate_written_reg_acc": 0.7395626242544732
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.5716463327407837,
+          "candidate_written_all_acc": 0.5396341681480408,
+          "committed_written_reg_acc": 0.5716463414634146,
+          "candidate_written_reg_acc": 0.5396341463414634
+        }
+      },
+      "committed_written_all_overall": 0.9334999918937683,
+      "candidate_written_all_overall": 0.9005833268165588,
+      "variant": "B_stepwise",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.6666666865348816,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.9221668839454651,
+          "candidate_written_all_acc": 0.9006849527359009,
+          "committed_written_reg_acc": 0.9592154420921544,
+          "candidate_written_reg_acc": 0.9476961394769614
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.8635819554328918,
+          "candidate_written_all_acc": 0.6900678277015686,
+          "committed_written_reg_acc": 0.8635819704826486,
+          "candidate_written_reg_acc": 0.6900678101316314
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.4870550036430359,
+          "candidate_written_all_acc": 0.4352750778198242,
+          "committed_written_reg_acc": 0.48705501618122976,
+          "candidate_written_reg_acc": 0.43527508090614886
+        }
+      },
+      "committed_written_all_overall": 0.9242500066757202,
+      "candidate_written_all_overall": 0.8795833587646484,
+      "variant": "B_stepwise",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.6758333444595337,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.9295687079429626,
+          "candidate_written_all_acc": 0.9208811521530151,
+          "committed_written_reg_acc": 0.9632330127210673,
+          "candidate_written_reg_acc": 0.9578032888613094
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.8602150678634644,
+          "candidate_written_all_acc": 0.6728701591491699,
+          "committed_written_reg_acc": 0.8602150537634409,
+          "candidate_written_reg_acc": 0.6728701406120761
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.5259938836097717,
+          "candidate_written_all_acc": 0.5137614607810974,
+          "committed_written_reg_acc": 0.5259938837920489,
+          "candidate_written_reg_acc": 0.5137614678899083
+        }
+      },
+      "committed_written_all_overall": 0.9270833134651184,
+      "candidate_written_all_overall": 0.8863333463668823,
+      "variant": "B_stepwise",
+      "seed": 46
+    },
+    {
+      "terminal_em": 0.6308333277702332,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.917033314704895,
+          "candidate_written_all_acc": 0.8871778845787048,
+          "committed_written_reg_acc": 0.9564739157762414,
+          "candidate_written_reg_acc": 0.9379321181646763
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.839712917804718,
+          "candidate_written_all_acc": 0.6686602830886841,
+          "committed_written_reg_acc": 0.8397129186602871,
+          "candidate_written_reg_acc": 0.6686602870813397
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.46309694647789,
+          "candidate_written_all_acc": 0.45730826258659363,
+          "committed_written_reg_acc": 0.4630969609261939,
+          "candidate_written_reg_acc": 0.4573082489146165
+        }
+      },
+      "committed_written_all_overall": 0.9135833382606506,
+      "candidate_written_all_overall": 0.8695833086967468,
+      "variant": "C1_hybrid_lam0.25",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.6333333253860474,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.9178729057312012,
+          "candidate_written_all_acc": 0.8974197506904602,
+          "committed_written_reg_acc": 0.9568911264946507,
+          "candidate_written_reg_acc": 0.9455632473253619
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.8439465165138245,
+          "candidate_written_all_acc": 0.6033805012702942,
+          "committed_written_reg_acc": 0.8439465408805031,
+          "candidate_written_reg_acc": 0.6033805031446541
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.4800613522529602,
+          "candidate_written_all_acc": 0.49539875984191895,
+          "committed_written_reg_acc": 0.48006134969325154,
+          "candidate_written_reg_acc": 0.495398773006135
+        }
+      },
+      "committed_written_all_overall": 0.9169166684150696,
+      "candidate_written_all_overall": 0.8613333106040955,
+      "variant": "C1_hybrid_lam0.25",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.7041666507720947,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.935885488986969,
+          "candidate_written_all_acc": 0.93028324842453,
+          "committed_written_reg_acc": 0.9673202614379085,
+          "candidate_written_reg_acc": 0.9635854341736695
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.867196798324585,
+          "candidate_written_all_acc": 0.6556659936904907,
+          "committed_written_reg_acc": 0.8671968190854871,
+          "candidate_written_reg_acc": 0.6556660039761432
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.5640243887901306,
+          "candidate_written_all_acc": 0.5320122241973877,
+          "committed_written_reg_acc": 0.5640243902439024,
+          "candidate_written_reg_acc": 0.5320121951219512
+        }
+      },
+      "committed_written_all_overall": 0.9311666488647461,
+      "candidate_written_all_overall": 0.8835833072662354,
+      "variant": "C1_hybrid_lam0.25",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.653333306312561,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.9237235188484192,
+          "candidate_written_all_acc": 0.9078455567359924,
+          "committed_written_reg_acc": 0.9603051058530511,
+          "candidate_written_reg_acc": 0.951120797011208
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.8456322550773621,
+          "candidate_written_all_acc": 0.6665337085723877,
+          "committed_written_reg_acc": 0.8456322297566813,
+          "candidate_written_reg_acc": 0.6665337056242521
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.44983819127082825,
+          "candidate_written_all_acc": 0.43689319491386414,
+          "committed_written_reg_acc": 0.44983818770226536,
+          "candidate_written_reg_acc": 0.4368932038834951
+        }
+      },
+      "committed_written_all_overall": 0.9190000295639038,
+      "candidate_written_all_overall": 0.8766666650772095,
+      "variant": "C1_hybrid_lam0.25",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.6875,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.928948163986206,
+          "candidate_written_all_acc": 0.9090909361839294,
+          "committed_written_reg_acc": 0.962922742786224,
+          "candidate_written_reg_acc": 0.9523735650015513
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.8552522659301758,
+          "candidate_written_all_acc": 0.6770057678222656,
+          "committed_written_reg_acc": 0.8552522746071133,
+          "candidate_written_reg_acc": 0.6770057899090157
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.4954128563404083,
+          "candidate_written_all_acc": 0.4678899049758911,
+          "committed_written_reg_acc": 0.4954128440366973,
+          "candidate_written_reg_acc": 0.46788990825688076
+        }
+      },
+      "committed_written_all_overall": 0.9242500066757202,
+      "candidate_written_all_overall": 0.8815000057220459,
+      "variant": "C1_hybrid_lam0.25",
+      "seed": 46
+    },
+    {
+      "terminal_em": 0.6108333468437195,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.9142048954963684,
+          "candidate_written_all_acc": 0.8934632539749146,
+          "committed_written_reg_acc": 0.9552168447517285,
+          "candidate_written_reg_acc": 0.9445317410433689
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.8253588676452637,
+          "candidate_written_all_acc": 0.6156299710273743,
+          "committed_written_reg_acc": 0.8253588516746412,
+          "candidate_written_reg_acc": 0.6156299840510366
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.4659913182258606,
+          "candidate_written_all_acc": 0.5007236003875732,
+          "committed_written_reg_acc": 0.46599131693198265,
+          "candidate_written_reg_acc": 0.5007235890014472
+        }
+      },
+      "committed_written_all_overall": 0.9100000262260437,
+      "candidate_written_all_overall": 0.862666666507721,
+      "variant": "C2_hybrid_lam0.50",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.6050000190734863,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.9118942618370056,
+          "candidate_written_all_acc": 0.8665827512741089,
+          "committed_written_reg_acc": 0.9532724984266835,
+          "candidate_written_reg_acc": 0.9276274386406544
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.8219339847564697,
+          "candidate_written_all_acc": 0.597484290599823,
+          "committed_written_reg_acc": 0.8219339622641509,
+          "candidate_written_reg_acc": 0.5974842767295597
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.4631901979446411,
+          "candidate_written_all_acc": 0.4677914083003998,
+          "committed_written_reg_acc": 0.46319018404907975,
+          "candidate_written_reg_acc": 0.4677914110429448
+        }
+      },
+      "committed_written_all_overall": 0.9097499847412109,
+      "candidate_written_all_overall": 0.8504166603088379,
+      "variant": "C2_hybrid_lam0.50",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.6608333587646484,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.928415834903717,
+          "candidate_written_all_acc": 0.9153439402580261,
+          "committed_written_reg_acc": 0.9631185807656396,
+          "candidate_written_reg_acc": 0.956271397447868
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.8477137088775635,
+          "candidate_written_all_acc": 0.6552683711051941,
+          "committed_written_reg_acc": 0.847713717693837,
+          "candidate_written_reg_acc": 0.6552683896620278
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.5076219439506531,
+          "candidate_written_all_acc": 0.5045731663703918,
+          "committed_written_reg_acc": 0.5076219512195121,
+          "candidate_written_reg_acc": 0.5045731707317073
+        }
+      },
+      "committed_written_all_overall": 0.921999990940094,
+      "candidate_written_all_overall": 0.878000020980835,
+      "variant": "C2_hybrid_lam0.50",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.60916668176651,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.9097135663032532,
+          "candidate_written_all_acc": 0.8975716233253479,
+          "committed_written_reg_acc": 0.9526774595267746,
+          "candidate_written_reg_acc": 0.9455168119551681
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.8232947587966919,
+          "candidate_written_all_acc": 0.5991224646568298,
+          "committed_written_reg_acc": 0.8232947746310331,
+          "candidate_written_reg_acc": 0.5991224571200638
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.4352750778198242,
+          "candidate_written_all_acc": 0.42556634545326233,
+          "committed_written_reg_acc": 0.43527508090614886,
+          "candidate_written_reg_acc": 0.4255663430420712
+        }
+      },
+      "committed_written_all_overall": 0.9098333120346069,
+      "candidate_written_all_overall": 0.859250009059906,
+      "variant": "C2_hybrid_lam0.50",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.659166693687439,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.9187092781066895,
+          "candidate_written_all_acc": 0.9109525084495544,
+          "committed_written_reg_acc": 0.9571827489916227,
+          "candidate_written_reg_acc": 0.952528699968973
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.8370554447174072,
+          "candidate_written_all_acc": 0.6538461446762085,
+          "committed_written_reg_acc": 0.837055417700579,
+          "candidate_written_reg_acc": 0.6538461538461539
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.46177369356155396,
+          "candidate_written_all_acc": 0.4724770784378052,
+          "committed_written_reg_acc": 0.4617737003058104,
+          "candidate_written_reg_acc": 0.4724770642201835
+        }
+      },
+      "committed_written_all_overall": 0.9160000085830688,
+      "candidate_written_all_overall": 0.8775833249092102,
+      "variant": "C2_hybrid_lam0.50",
+      "seed": 46
+    },
+    {
+      "terminal_em": 0.5325000286102295,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.8922061324119568,
+          "candidate_written_all_acc": 0.8416090607643127,
+          "committed_written_reg_acc": 0.9429604022627278,
+          "candidate_written_reg_acc": 0.9137335009428033
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.7663477063179016,
+          "candidate_written_all_acc": 0.519138753414154,
+          "committed_written_reg_acc": 0.766347687400319,
+          "candidate_written_reg_acc": 0.5191387559808612
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.3690303862094879,
+          "candidate_written_all_acc": 0.40810421109199524,
+          "committed_written_reg_acc": 0.36903039073806077,
+          "candidate_written_reg_acc": 0.4081041968162084
+        }
+      },
+      "committed_written_all_overall": 0.8862500190734863,
+      "candidate_written_all_overall": 0.8234166502952576,
+      "variant": "C3_hybrid_lam0.75",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.5766666531562805,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.9027690291404724,
+          "candidate_written_all_acc": 0.8370044231414795,
+          "committed_written_reg_acc": 0.9491818753933291,
+          "candidate_written_reg_acc": 0.9114222781623663
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.7952044010162354,
+          "candidate_written_all_acc": 0.5389150977134705,
+          "committed_written_reg_acc": 0.7952044025157232,
+          "candidate_written_reg_acc": 0.5389150943396226
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.44785276055336,
+          "candidate_written_all_acc": 0.44938650727272034,
+          "committed_written_reg_acc": 0.44785276073619634,
+          "candidate_written_reg_acc": 0.4493865030674847
+        }
+      },
+      "committed_written_all_overall": 0.9008333086967468,
+      "candidate_written_all_overall": 0.8291666507720947,
+      "variant": "C3_hybrid_lam0.75",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.64083331823349,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.9156551361083984,
+          "candidate_written_all_acc": 0.8901338577270508,
+          "committed_written_reg_acc": 0.9572051042639278,
+          "candidate_written_reg_acc": 0.9417989417989417
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.8238568305969238,
+          "candidate_written_all_acc": 0.6063618063926697,
+          "committed_written_reg_acc": 0.8238568588469185,
+          "candidate_written_reg_acc": 0.6063618290258449
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.5030487775802612,
+          "candidate_written_all_acc": 0.49542683362960815,
+          "committed_written_reg_acc": 0.5030487804878049,
+          "candidate_written_reg_acc": 0.4954268292682927
+        }
+      },
+      "committed_written_all_overall": 0.9133333563804626,
+      "candidate_written_all_overall": 0.8604999780654907,
+      "variant": "C3_hybrid_lam0.75",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.5924999713897705,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.9028642773628235,
+          "candidate_written_all_acc": 0.8838729858398438,
+          "committed_written_reg_acc": 0.9495641344956414,
+          "candidate_written_reg_acc": 0.9394458281444583
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.7993617653846741,
+          "candidate_written_all_acc": 0.5432788133621216,
+          "committed_written_reg_acc": 0.79936178699641,
+          "candidate_written_reg_acc": 0.5432788193059434
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.40291261672973633,
+          "candidate_written_all_acc": 0.4190938472747803,
+          "committed_written_reg_acc": 0.4029126213592233,
+          "candidate_written_reg_acc": 0.4190938511326861
+        }
+      },
+      "committed_written_all_overall": 0.9013333320617676,
+      "candidate_written_all_overall": 0.843583345413208,
+      "variant": "C3_hybrid_lam0.75",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.6133333444595337,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.9100217223167419,
+          "candidate_written_all_acc": 0.8783741593360901,
+          "committed_written_reg_acc": 0.952528699968973,
+          "candidate_written_reg_acc": 0.9342227738132175
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.819685697555542,
+          "candidate_written_all_acc": 0.5963606238365173,
+          "committed_written_reg_acc": 0.8196856906534326,
+          "candidate_written_reg_acc": 0.5963606286186931
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.4357798099517822,
+          "candidate_written_all_acc": 0.466360867023468,
+          "committed_written_reg_acc": 0.43577981651376146,
+          "candidate_written_reg_acc": 0.46636085626911317
+        }
+      },
+      "committed_written_all_overall": 0.9087499976158142,
+      "candidate_written_all_overall": 0.8569166660308838,
+      "variant": "C3_hybrid_lam0.75",
+      "seed": 46
+    },
+    {
+      "terminal_em": 0.6683333516120911,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.9305468201637268,
+          "candidate_written_all_acc": 0.9270898699760437,
+          "committed_written_reg_acc": 0.9637020741671904,
+          "candidate_written_reg_acc": 0.961659333752357
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.8712121248245239,
+          "candidate_written_all_acc": 0.6527113318443298,
+          "committed_written_reg_acc": 0.8712121212121212,
+          "candidate_written_reg_acc": 0.6527113237639554
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.493487685918808,
+          "candidate_written_all_acc": 0.4920405149459839,
+          "committed_written_reg_acc": 0.4934876989869754,
+          "candidate_written_reg_acc": 0.492040520984081
+        }
+      },
+      "committed_written_all_overall": 0.9254999756813049,
+      "candidate_written_all_overall": 0.8788333535194397,
+      "variant": "D_late_t6",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.6924999952316284,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.9345500469207764,
+          "candidate_written_all_acc": 0.9257394671440125,
+          "committed_written_reg_acc": 0.9663310258023914,
+          "candidate_written_reg_acc": 0.9619257394587791
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.8871855139732361,
+          "candidate_written_all_acc": 0.670597493648529,
+          "committed_written_reg_acc": 0.887185534591195,
+          "candidate_written_reg_acc": 0.6705974842767296
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.5736196041107178,
+          "candidate_written_all_acc": 0.5199386477470398,
+          "committed_written_reg_acc": 0.5736196319018405,
+          "candidate_written_reg_acc": 0.5199386503067485
+        }
+      },
+      "committed_written_all_overall": 0.9355833530426025,
+      "candidate_written_all_overall": 0.8844166398048401,
+      "variant": "D_late_t6",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.7141666412353516,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.935885488986969,
+          "candidate_written_all_acc": 0.9287270307540894,
+          "committed_written_reg_acc": 0.9671646436352319,
+          "candidate_written_reg_acc": 0.9635854341736695
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.8831014037132263,
+          "candidate_written_all_acc": 0.6667991876602173,
+          "committed_written_reg_acc": 0.8831013916500994,
+          "candidate_written_reg_acc": 0.6667992047713718
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.6189024448394775,
+          "candidate_written_all_acc": 0.5884146094322205,
+          "committed_written_reg_acc": 0.6189024390243902,
+          "candidate_written_reg_acc": 0.5884146341463414
+        }
+      },
+      "committed_written_all_overall": 0.9375,
+      "candidate_written_all_overall": 0.8885833621025085,
+      "variant": "D_late_t6",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.7049999833106995,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.9377334713935852,
+          "candidate_written_all_acc": 0.9321295022964478,
+          "committed_written_reg_acc": 0.9676214196762142,
+          "candidate_written_reg_acc": 0.9648194271481942
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.8831272721290588,
+          "candidate_written_all_acc": 0.7020342946052551,
+          "committed_written_reg_acc": 0.8831272437175908,
+          "candidate_written_reg_acc": 0.702034303948943
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.5517799258232117,
+          "candidate_written_all_acc": 0.5032362341880798,
+          "committed_written_reg_acc": 0.551779935275081,
+          "candidate_written_reg_acc": 0.5032362459546925
+        }
+      },
+      "committed_written_all_overall": 0.9358333349227905,
+      "candidate_written_all_overall": 0.8939999938011169,
+      "variant": "D_late_t6",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.7133333086967468,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.9385665655136108,
+          "candidate_written_all_acc": 0.9354638457298279,
+          "committed_written_reg_acc": 0.9669562519391871,
+          "candidate_written_reg_acc": 0.9657151721998138
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.8626964688301086,
+          "candidate_written_all_acc": 0.6778329014778137,
+          "committed_written_reg_acc": 0.8626964433416047,
+          "candidate_written_reg_acc": 0.6778329197684037
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.5688073635101318,
+          "candidate_written_all_acc": 0.5458715558052063,
+          "committed_written_reg_acc": 0.5688073394495413,
+          "candidate_written_reg_acc": 0.5458715596330275
+        }
+      },
+      "committed_written_all_overall": 0.9323333501815796,
+      "candidate_written_all_overall": 0.8930000066757202,
+      "variant": "D_late_t6",
+      "seed": 46
+    },
+    {
+      "terminal_em": 0.721666693687439,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5619,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3182,
+          "committed_written_all_acc": 0.9437460899353027,
+          "candidate_written_all_acc": 0.9437460899353027,
+          "committed_written_reg_acc": 0.9704588309239472,
+          "candidate_written_reg_acc": 0.9704588309239472
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2508,
+          "committed_written_all_acc": 0.8851674795150757,
+          "candidate_written_all_acc": 0.9043062329292297,
+          "committed_written_reg_acc": 0.8851674641148325,
+          "candidate_written_reg_acc": 0.9043062200956937
+        },
+        "ADD_wrap": {
+          "n_transitions": 691,
+          "committed_written_all_acc": 0.6005788445472717,
+          "candidate_written_all_acc": 0.6989869475364685,
+          "committed_written_reg_acc": 0.6005788712011577,
+          "candidate_written_reg_acc": 0.6989869753979739
+        }
+      },
+      "committed_written_all_overall": 0.9380833506584167,
+      "candidate_written_all_overall": 0.9477499723434448,
+      "variant": "E_candidate",
+      "seed": 42
+    },
+    {
+      "terminal_em": 0.7541666626930237,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5626,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3178,
+          "committed_written_all_acc": 0.9433606266975403,
+          "candidate_written_all_acc": 0.9446192383766174,
+          "committed_written_reg_acc": 0.9704216488357458,
+          "candidate_written_reg_acc": 0.9715229704216488
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2544,
+          "committed_written_all_acc": 0.9095911979675293,
+          "candidate_written_all_acc": 0.926886796951294,
+          "committed_written_reg_acc": 0.9095911949685535,
+          "candidate_written_reg_acc": 0.9268867924528302
+        },
+        "ADD_wrap": {
+          "n_transitions": 652,
+          "committed_written_all_acc": 0.6702454090118408,
+          "candidate_written_all_acc": 0.7791411280632019,
+          "committed_written_reg_acc": 0.6702453987730062,
+          "candidate_written_reg_acc": 0.7791411042944786
+        }
+      },
+      "committed_written_all_overall": 0.9479166865348816,
+      "candidate_written_all_overall": 0.9578333497047424,
+      "variant": "E_candidate",
+      "seed": 43
+    },
+    {
+      "terminal_em": 0.7649999856948853,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5616,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3213,
+          "committed_written_all_acc": 0.9505135416984558,
+          "candidate_written_all_acc": 0.9514472484588623,
+          "committed_written_reg_acc": 0.9743230625583567,
+          "candidate_written_reg_acc": 0.9751011515717398
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2515,
+          "committed_written_all_acc": 0.9069582223892212,
+          "candidate_written_all_acc": 0.9153081774711609,
+          "committed_written_reg_acc": 0.9069582504970178,
+          "candidate_written_reg_acc": 0.9153081510934393
+        },
+        "ADD_wrap": {
+          "n_transitions": 656,
+          "committed_written_all_acc": 0.6875,
+          "candidate_written_all_acc": 0.7713414430618286,
+          "committed_written_reg_acc": 0.6875,
+          "candidate_written_reg_acc": 0.7713414634146342
+        }
+      },
+      "committed_written_all_overall": 0.950166642665863,
+      "candidate_written_all_overall": 0.9567499756813049,
+      "variant": "E_candidate",
+      "seed": 44
+    },
+    {
+      "terminal_em": 0.76583331823349,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5663,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3212,
+          "committed_written_all_acc": 0.948630154132843,
+          "candidate_written_all_acc": 0.9452054500579834,
+          "committed_written_reg_acc": 0.973225404732254,
+          "candidate_written_reg_acc": 0.9713574097135741
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2507,
+          "committed_written_all_acc": 0.9102513194084167,
+          "candidate_written_all_acc": 0.932987630367279,
+          "committed_written_reg_acc": 0.9102512963701636,
+          "candidate_written_reg_acc": 0.9329876346230555
+        },
+        "ADD_wrap": {
+          "n_transitions": 618,
+          "committed_written_all_acc": 0.6423948407173157,
+          "candidate_written_all_acc": 0.7427184581756592,
+          "committed_written_reg_acc": 0.6423948220064725,
+          "candidate_written_reg_acc": 0.7427184466019418
+        }
+      },
+      "committed_written_all_overall": 0.9490833282470703,
+      "candidate_written_all_overall": 0.9580833315849304,
+      "variant": "E_candidate",
+      "seed": 45
+    },
+    {
+      "terminal_em": 0.7666666507720947,
+      "per_op": {
+        "SET": {
+          "n_transitions": 5705,
+          "committed_written_all_acc": 1.0,
+          "candidate_written_all_acc": 1.0,
+          "committed_written_reg_acc": 1.0,
+          "candidate_written_reg_acc": 1.0
+        },
+        "SWAP": {
+          "n_transitions": 3223,
+          "committed_written_all_acc": 0.9515978693962097,
+          "candidate_written_all_acc": 0.9531492590904236,
+          "committed_written_reg_acc": 0.9748681352776916,
+          "candidate_written_reg_acc": 0.9756438101147998
+        },
+        "ADD_no_wrap": {
+          "n_transitions": 2418,
+          "committed_written_all_acc": 0.9015715718269348,
+          "candidate_written_all_acc": 0.9181141257286072,
+          "committed_written_reg_acc": 0.901571546732837,
+          "candidate_written_reg_acc": 0.9181141439205955
+        },
+        "ADD_wrap": {
+          "n_transitions": 654,
+          "committed_written_all_acc": 0.6834862232208252,
+          "candidate_written_all_acc": 0.7874617576599121,
+          "committed_written_reg_acc": 0.6834862385321101,
+          "candidate_written_reg_acc": 0.7874617737003058
+        }
+      },
+      "committed_written_all_overall": 0.949916660785675,
+      "candidate_written_all_overall": 0.9593333601951599,
+      "variant": "E_candidate",
+      "seed": 46
+    }
+  ]
+}

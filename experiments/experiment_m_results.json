@@ -1,0 +1,913 @@
+{
+  "metadata": {
+    "date": "2026-10-07 15:59:33",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "primary_model": "E_candidate",
+    "control_model": "F_combined",
+    "checkpoints": {
+      "E_candidate": {
+        "checkpoints": {
+          "42": {
+            "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+            "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+            "unchanged_after_run": true
+          },
+          "43": {
+            "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+            "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+            "unchanged_after_run": true
+          },
+          "44": {
+            "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+            "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+            "unchanged_after_run": true
+          },
+          "45": {
+            "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+            "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+            "unchanged_after_run": true
+          },
+          "46": {
+            "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+            "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+            "unchanged_after_run": true
+          }
+        }
+      },
+      "F_combined": {
+        "checkpoints": {
+          "42": {
+            "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+            "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+            "unchanged_after_run": true
+          },
+          "43": {
+            "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+            "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+            "unchanged_after_run": true
+          },
+          "44": {
+            "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+            "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+            "unchanged_after_run": true
+          },
+          "45": {
+            "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+            "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+            "unchanged_after_run": true
+          },
+          "46": {
+            "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+            "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+            "unchanged_after_run": true
+          }
+        }
+      }
+    },
+    "l_alignment": {
+      "E_candidate": {
+        "model": "E_candidate",
+        "n_rows_m": 15763,
+        "n_rows_l": 15763,
+        "max_abs_diff": {
+          "seed": 0.0,
+          "source": 0.0,
+          "seq_id": 0.0,
+          "t": 0.0,
+          "dest": 0.0,
+          "src_reg": 0.0,
+          "operand_a": 0.0,
+          "operand_b": 0.0,
+          "wrap": 0.0,
+          "isolated": 0.0,
+          "cand_ok": 0.0,
+          "comm_ok": 0.0,
+          "prev_ok": 0.0,
+          "comm_eq_old": 0.0,
+          "cand_pred": 0.0,
+          "comm_pred": 0.0,
+          "prev_pred": 0.0,
+          "y_true": 0.0,
+          "a_star_prev": 0.0,
+          "a_star_commit": 0.0,
+          "competitor_changed": 0.0
+        },
+        "n_offpath_m": 323,
+        "passed": true,
+        "n_offpath_l": 323
+      },
+      "F_combined": {
+        "model": "F_combined",
+        "n_rows_m": 15763,
+        "n_rows_l": 15763,
+        "max_abs_diff": {
+          "seed": 0.0,
+          "source": 0.0,
+          "seq_id": 0.0,
+          "t": 0.0,
+          "dest": 0.0,
+          "src_reg": 0.0,
+          "operand_a": 0.0,
+          "operand_b": 0.0,
+          "wrap": 0.0,
+          "isolated": 0.0,
+          "cand_ok": 0.0,
+          "comm_ok": 0.0,
+          "prev_ok": 0.0,
+          "comm_eq_old": 0.0,
+          "cand_pred": 0.0,
+          "comm_pred": 0.0,
+          "prev_pred": 0.0,
+          "y_true": 0.0,
+          "a_star_prev": 0.0,
+          "a_star_commit": 0.0,
+          "competitor_changed": 0.0
+        },
+        "n_offpath_m": 353,
+        "passed": true,
+        "n_offpath_l": 353
+      }
+    },
+    "offpath_definition": "strict test split, ADD, general (dest!=src AND operand_b>0), candidate correct, baseline commit wrong, rho_margin >= alpha_star_full",
+    "mod_distance": "d_mod(a,b) = min((a-b) mod 10, (b-a) mod 10)",
+    "thresholds": {
+      "modular_parity_bar": 0.6,
+      "perm_p_bar": 0.01,
+      "wrap_tv_bar": 0.3,
+      "R_bar": 0.15,
+      "n_perm": 2000
+    },
+    "statistical_discipline": "Five frozen E checkpoints are independent units; F is a secondary control (not pooled). Transition-level tables are descriptive; directional/parity nulls are permutation tests."
+  },
+  "E_candidate": {
+    "n_offpath": 323,
+    "n_success": 4310,
+    "n_nonoff_failure": 409,
+    "core_A_wrong_value": {
+      "wrong_offset_counts": {
+        "-5": 35,
+        "-4": 60,
+        "-3": 11,
+        "-2": 52,
+        "-1": 16,
+        "1": 16,
+        "2": 49,
+        "3": 7,
+        "4": 77
+      },
+      "abs_offset_counts": {
+        "1": 32,
+        "2": 101,
+        "3": 18,
+        "4": 137,
+        "5": 35
+      },
+      "same_parity_rate": 0.7368421052631579,
+      "same_parity_null_mean": 0.501907120743034,
+      "same_parity_null_p95": 0.5510835913312694,
+      "same_parity_perm_p": 0.0,
+      "wrong_eq_old_rate": 0.0,
+      "wrong_eq_operand_rate": 0.16408668730650156,
+      "dmod_wrong_true_mean": 3.130030959752322,
+      "dmod_wrong_old_mean": 2.777089783281734,
+      "dmod_wrong_operand_mean": 2.321981424148607,
+      "tv_vs_reference_y": 0.16718266253869973,
+      "tv_vs_uniform": 0.0656346749226006,
+      "reference_y_distribution": [
+        54,
+        39,
+        27,
+        31,
+        29,
+        38,
+        15,
+        36,
+        23,
+        31
+      ],
+      "observed_wrong_distribution": [
+        15,
+        30,
+        32,
+        39,
+        35,
+        34,
+        40,
+        34,
+        33,
+        31
+      ]
+    },
+    "core_B_wrap": {
+      "wrap_fraction": 0.5479876160990712,
+      "P_vwrong_given_wrap": [
+        0.04519774011299435,
+        0.07344632768361582,
+        0.0847457627118644,
+        0.1016949152542373,
+        0.12994350282485875,
+        0.096045197740113,
+        0.1694915254237288,
+        0.11864406779661017,
+        0.12994350282485875,
+        0.05084745762711865
+      ],
+      "P_vwrong_given_nowrap": [
+        0.04794520547945205,
+        0.11643835616438356,
+        0.11643835616438356,
+        0.14383561643835616,
+        0.0821917808219178,
+        0.11643835616438356,
+        0.0684931506849315,
+        0.08904109589041095,
+        0.0684931506849315,
+        0.1506849315068493
+      ],
+      "tv_wrap_vs_nowrap": 0.23980342078786465,
+      "same_parity_wrap": 0.7062146892655368,
+      "same_parity_nowrap": 0.773972602739726,
+      "dmod_wrong_true_wrap": 3.0847457627118646,
+      "dmod_wrong_true_nowrap": 3.184931506849315
+    },
+    "core_C_register": {
+      "offpath_dest_src_neither": [
+        0.0030959752321981426,
+        0.15479876160990713,
+        0.8421052631578947
+      ],
+      "success_dest_src_neither": [
+        0.07169373549883991,
+        0.24663573085846868,
+        0.6816705336426914
+      ],
+      "offpath_src_gt_dest": 0.15170278637770898
+    },
+    "core_D_offaxis": {
+      "offpath": {
+        "off_par_norm_median": 5.170807838439941,
+        "off_orth_norm_median": 6.589303493499756,
+        "off_cos_median": 0.6134778261184692,
+        "off_ratio_median": 0.4145727753639221
+      },
+      "success": {
+        "off_par_norm_median": 4.973363161087036,
+        "off_orth_norm_median": 6.35981011390686,
+        "off_cos_median": 0.6112463772296906,
+        "off_ratio_median": 0.4199550002813339
+      },
+      "nonoff": {
+        "off_par_norm_median": 4.583681106567383,
+        "off_orth_norm_median": 6.243719577789307,
+        "off_cos_median": 0.5884928107261658,
+        "off_ratio_median": 0.3988223373889923
+      },
+      "directional_consistency_offpath": {
+        "R": 0.11022006440256397,
+        "null_R_mean": 0.05554389240836251,
+        "null_R_p95": 0.0612415304045443,
+        "R_over_null": 1.98437775286288,
+        "perm_p": 0.0,
+        "mean_pairwise_cosine": 0.00908060067950443,
+        "median_pairwise_cosine": 0.004082993519066621,
+        "n_units": 323,
+        "n_pair_subsample": 323
+      },
+      "directional_consistency_all_primary": {
+        "R": 0.12713855555935683
+      },
+      "R_wrap": 0.12436169940849513,
+      "R_nowrap": 0.13352952433258702
+    },
+    "core_E_arithmetic_direction": {
+      "cos_to_wrap_dir_wrap": 0.12436169940849519,
+      "cos_to_wrap_dir_nowrap": 0.0626744659614839,
+      "cos_to_nowrap_dir_wrap": 0.058371383672995464,
+      "cos_to_nowrap_dir_nowrap": 0.1335295243325869,
+      "R_within_operand_b": {
+        "1": 0.18799661708697546,
+        "2": 0.2130741769606261,
+        "3": 0.1920057050656696,
+        "4": 0.2071483581006308,
+        "5": 0.27068015633855985,
+        "6": 0.19757865456698986,
+        "7": 0.19030581805887678,
+        "8": 0.1972072433001591,
+        "9": 0.21493408594124622
+      },
+      "offaxis_offset_correlation": -0.03133193081155605
+    },
+    "core_F_third_basin": {
+      "mv_prev_off": -13.51378059387207,
+      "mv_cand_off": -2.444333791732788,
+      "mv_commit_off": -8.266085624694824,
+      "hyper_flat_commit_off": -2.2677955627441406,
+      "hyper_flat_commit_succ": -0.9009095728397369,
+      "hyper_ac_commit_off": -0.16798822581768036,
+      "m_commit_off": 1.9590251445770264,
+      "m_commit_succ": 6.610894680023193
+    },
+    "core8_cand_vs_commit": {
+      "offpath": {
+        "m_cand": 5.738987922668457,
+        "m_commit": 1.9590251445770264,
+        "margin_loss": 3.1792616844177246,
+        "d_cs": 16.094593048095703,
+        "offpath_dist": 6.589303493499756,
+        "off_ratio": 0.4145727753639221
+      },
+      "success": {
+        "m_cand": 8.514959812164307,
+        "m_commit": 6.610894680023193,
+        "margin_loss": 1.8374072313308716,
+        "d_cs": 15.295209407806396,
+        "offpath_dist": 6.35981011390686,
+        "off_ratio": 0.4199550002813339
+      },
+      "nonoff": {
+        "m_cand": 3.2800350189208984,
+        "m_commit": -0.6099119186401367,
+        "margin_loss": 3.897239089012146,
+        "d_cs": 15.646806716918945,
+        "offpath_dist": 6.243719577789307,
+        "off_ratio": 0.3988223373889923
+      }
+    },
+    "per_seed": {
+      "offpath_count": [
+        63,
+        68,
+        58,
+        73,
+        61
+      ],
+      "same_parity": [
+        0.5714285714285714,
+        0.75,
+        0.8448275862068966,
+        0.6712328767123288,
+        0.8688524590163934
+      ],
+      "R": [
+        0.26921727390105715,
+        0.2707005857854828,
+        0.25108171644231386,
+        0.24659228239845107,
+        0.24344532904245003
+      ],
+      "mean_cos": [
+        0.057517907350050974,
+        0.05944714754974685,
+        0.04660416917954164,
+        0.047763416984845174,
+        0.043586722036463174
+      ]
+    },
+    "seed_directional": [
+      {
+        "seed": 42,
+        "n": 63,
+        "R": 0.26921727390105715,
+        "null_mean": 0.12528193791252984,
+        "null_p95": 0.14469415271016792,
+        "p": 0.0
+      },
+      {
+        "seed": 43,
+        "n": 68,
+        "R": 0.2707005857854828,
+        "null_mean": 0.12081299040131714,
+        "null_p95": 0.14076163456930244,
+        "p": 0.0
+      },
+      {
+        "seed": 44,
+        "n": 58,
+        "R": 0.25108171644231386,
+        "null_mean": 0.1322387111009516,
+        "null_p95": 0.152715381328197,
+        "p": 0.0
+      },
+      {
+        "seed": 45,
+        "n": 73,
+        "R": 0.24659228239845107,
+        "null_mean": 0.11582809972682957,
+        "null_p95": 0.13496810922406716,
+        "p": 0.0
+      },
+      {
+        "seed": 46,
+        "n": 61,
+        "R": 0.24344532904245003,
+        "null_mean": 0.12744602913820952,
+        "null_p95": 0.14830314129028777,
+        "p": 0.0
+      }
+    ],
+    "classification": {
+      "verdict": "M-A_systematic_modular_geometry",
+      "modular_identity": true,
+      "wrap_specific": false,
+      "directional_systematic": true,
+      "directional_weak": true,
+      "same_parity_rate": 0.7368421052631579,
+      "same_parity_perm_p": 0.0,
+      "wrap_tv": 0.23980342078786465,
+      "R_seed_mean": 0.256207437513951,
+      "R_all_seeds_significant": true,
+      "R_pooled_descriptive": 0.11022006440256397,
+      "R_pooled_perm_p": 0.0,
+      "seed_R": [
+        0.26921727390105715,
+        0.2707005857854828,
+        0.25108171644231386,
+        0.24659228239845107,
+        0.24344532904245003
+      ],
+      "seed_R_p": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "thresholds": {
+        "modular_parity_bar": 0.6,
+        "perm_p_bar": 0.01,
+        "wrap_tv_bar": 0.3,
+        "R_bar": 0.15
+      },
+      "rule_note": "M-A: modular_identity and directional_systematic (seed-level R bar). M-B: directional_systematic and not modular_identity. M-C: not modular_identity and not directional_weak. M-D otherwise. Directional systematics uses the seed-level mean resultant (independent units = the 5 checkpoints); the pooled R is reported descriptively. Bars are declared conventions, not tuned cutoffs."
+    }
+  },
+  "F_combined": {
+    "n_offpath": 353,
+    "n_success": 4292,
+    "n_nonoff_failure": 387,
+    "core_A_wrong_value": {
+      "wrong_offset_counts": {
+        "-5": 56,
+        "-4": 56,
+        "-3": 19,
+        "-2": 56,
+        "-1": 18,
+        "1": 21,
+        "2": 59,
+        "3": 13,
+        "4": 55
+      },
+      "abs_offset_counts": {
+        "1": 39,
+        "2": 115,
+        "3": 32,
+        "4": 111,
+        "5": 56
+      },
+      "same_parity_rate": 0.6402266288951841,
+      "same_parity_null_mean": 0.4986657223796034,
+      "same_parity_null_p95": 0.5439093484419264,
+      "same_parity_perm_p": 0.0,
+      "wrong_eq_old_rate": 0.0056657223796034,
+      "wrong_eq_operand_rate": 0.1359773371104816,
+      "dmod_wrong_true_mean": 3.084985835694051,
+      "dmod_wrong_old_mean": 2.7563739376770537,
+      "dmod_wrong_operand_mean": 2.3541076487252126,
+      "tv_vs_reference_y": 0.2492917847025496,
+      "tv_vs_uniform": 0.09008498583569405,
+      "reference_y_distribution": [
+        59,
+        64,
+        18,
+        22,
+        30,
+        41,
+        22,
+        30,
+        26,
+        41
+      ],
+      "observed_wrong_distribution": [
+        19,
+        28,
+        45,
+        32,
+        35,
+        32,
+        34,
+        43,
+        47,
+        38
+      ]
+    },
+    "core_B_wrap": {
+      "wrap_fraction": 0.5580736543909348,
+      "P_vwrong_given_wrap": [
+        0.03553299492385787,
+        0.050761421319796954,
+        0.1319796954314721,
+        0.07614213197969544,
+        0.07106598984771574,
+        0.08629441624365482,
+        0.1319796954314721,
+        0.1319796954314721,
+        0.16751269035532995,
+        0.116751269035533
+      ],
+      "P_vwrong_given_nowrap": [
+        0.07692307692307693,
+        0.11538461538461539,
+        0.12179487179487179,
+        0.10897435897435898,
+        0.1346153846153846,
+        0.09615384615384616,
+        0.05128205128205128,
+        0.10897435897435898,
+        0.08974358974358974,
+        0.09615384615384616
+      ],
+      "tv_wrap_vs_nowrap": 0.21225432773656122,
+      "same_parity_wrap": 0.6243654822335025,
+      "same_parity_nowrap": 0.6602564102564102,
+      "dmod_wrong_true_wrap": 3.0761421319796955,
+      "dmod_wrong_true_nowrap": 3.0961538461538463
+    },
+    "core_C_register": {
+      "offpath_dest_src_neither": [
+        0.0,
+        0.11048158640226628,
+        0.8895184135977338
+      ],
+      "success_dest_src_neither": [
+        0.09389561975768872,
+        0.19431500465983226,
+        0.711789375582479
+      ],
+      "offpath_src_gt_dest": 0.11048158640226628
+    },
+    "core_D_offaxis": {
+      "offpath": {
+        "off_par_norm_median": 5.243173599243164,
+        "off_orth_norm_median": 6.702698707580566,
+        "off_cos_median": 0.6192832589149475,
+        "off_ratio_median": 0.4162983000278473
+      },
+      "success": {
+        "off_par_norm_median": 5.3562774658203125,
+        "off_orth_norm_median": 6.645867109298706,
+        "off_cos_median": 0.6241461932659149,
+        "off_ratio_median": 0.42787787318229675
+      },
+      "nonoff": {
+        "off_par_norm_median": 4.943080425262451,
+        "off_orth_norm_median": 6.431009769439697,
+        "off_cos_median": 0.6052214503288269,
+        "off_ratio_median": 0.40737229585647583
+      },
+      "directional_consistency_offpath": {
+        "R": 0.13774038053539825,
+        "null_R_mean": 0.05315619244350412,
+        "null_R_p95": 0.05890296910848233,
+        "R_over_null": 2.5912386535546643,
+        "perm_p": 0.0,
+        "mean_pairwise_cosine": 0.016185402238076185,
+        "median_pairwise_cosine": 0.008409217606177438,
+        "n_units": 353,
+        "n_pair_subsample": 353
+      },
+      "directional_consistency_all_primary": {
+        "R": 0.15162589687743755
+      },
+      "R_wrap": 0.1450234246078479,
+      "R_nowrap": 0.1553717391930262
+    },
+    "core_E_arithmetic_direction": {
+      "cos_to_wrap_dir_wrap": 0.14502342460784795,
+      "cos_to_wrap_dir_nowrap": 0.10774741198985328,
+      "cos_to_nowrap_dir_wrap": 0.10057104825214301,
+      "cos_to_nowrap_dir_nowrap": 0.15537173919302627,
+      "R_within_operand_b": {
+        "1": 0.22783235541964236,
+        "2": 0.18712887563852842,
+        "3": 0.2045707543452306,
+        "4": 0.22095694648031972,
+        "5": 0.28664461301191063,
+        "6": 0.20581193496232497,
+        "7": 0.20392795980024928,
+        "8": 0.2016761356918147,
+        "9": 0.2124955159742898
+      },
+      "offaxis_offset_correlation": -0.039943597463108126
+    },
+    "core_F_third_basin": {
+      "mv_prev_off": -13.032147407531738,
+      "mv_cand_off": -3.2723212242126465,
+      "mv_commit_off": -8.458904266357422,
+      "hyper_flat_commit_off": -2.2287545204162598,
+      "hyper_flat_commit_succ": -0.8376926779747009,
+      "hyper_ac_commit_off": -0.15352892875671387,
+      "m_commit_off": 1.9430458545684814,
+      "m_commit_succ": 6.619824171066284
+    },
+    "core8_cand_vs_commit": {
+      "offpath": {
+        "m_cand": 4.603097915649414,
+        "m_commit": 1.9430458545684814,
+        "margin_loss": 2.630985140800476,
+        "d_cs": 16.08455467224121,
+        "offpath_dist": 6.702698707580566,
+        "off_ratio": 0.4162983000278473
+      },
+      "success": {
+        "m_cand": 8.348790168762207,
+        "m_commit": 6.619824171066284,
+        "margin_loss": 1.8295636177062988,
+        "d_cs": 15.63450288772583,
+        "offpath_dist": 6.645867109298706,
+        "off_ratio": 0.42787787318229675
+      },
+      "nonoff": {
+        "m_cand": 3.23934268951416,
+        "m_commit": -0.5291426181793213,
+        "margin_loss": 3.6876126527786255,
+        "d_cs": 15.729249954223633,
+        "offpath_dist": 6.431009769439697,
+        "off_ratio": 0.40737229585647583
+      }
+    },
+    "per_seed": {
+      "offpath_count": [
+        73,
+        65,
+        66,
+        66,
+        83
+      ],
+      "same_parity": [
+        0.6438356164383562,
+        0.6923076923076923,
+        0.6212121212121212,
+        0.6060606060606061,
+        0.6385542168674698
+      ],
+      "R": [
+        0.3070451064984011,
+        0.3280188013450717,
+        0.29914922278193234,
+        0.28096024371202744,
+        0.31359157135979077
+      ],
+      "mean_cos": [
+        0.0816972071110675,
+        0.09365252675516791,
+        0.07548241529858853,
+        0.06476848406282516,
+        0.08734381598921864
+      ]
+    },
+    "seed_directional": [
+      {
+        "seed": 42,
+        "n": 73,
+        "R": 0.3070451064984011,
+        "null_mean": 0.11682033787225916,
+        "null_p95": 0.14031437013760065,
+        "p": 0.0
+      },
+      {
+        "seed": 43,
+        "n": 65,
+        "R": 0.3280188013450717,
+        "null_mean": 0.12234446214466775,
+        "null_p95": 0.14785683488463877,
+        "p": 0.0
+      },
+      {
+        "seed": 44,
+        "n": 66,
+        "R": 0.29914922278193234,
+        "null_mean": 0.12219141760174415,
+        "null_p95": 0.14101311062114963,
+        "p": 0.0
+      },
+      {
+        "seed": 45,
+        "n": 66,
+        "R": 0.28096024371202744,
+        "null_mean": 0.1215177777784064,
+        "null_p95": 0.14306564960731896,
+        "p": 0.0
+      },
+      {
+        "seed": 46,
+        "n": 83,
+        "R": 0.31359157135979077,
+        "null_mean": 0.10942632872871413,
+        "null_p95": 0.13271875854762577,
+        "p": 0.0
+      }
+    ],
+    "classification": {
+      "verdict": "M-A_systematic_modular_geometry",
+      "modular_identity": true,
+      "wrap_specific": false,
+      "directional_systematic": true,
+      "directional_weak": true,
+      "same_parity_rate": 0.6402266288951841,
+      "same_parity_perm_p": 0.0,
+      "wrap_tv": 0.21225432773656122,
+      "R_seed_mean": 0.3057529891394447,
+      "R_all_seeds_significant": true,
+      "R_pooled_descriptive": 0.13774038053539825,
+      "R_pooled_perm_p": 0.0,
+      "seed_R": [
+        0.3070451064984011,
+        0.3280188013450717,
+        0.29914922278193234,
+        0.28096024371202744,
+        0.31359157135979077
+      ],
+      "seed_R_p": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "thresholds": {
+        "modular_parity_bar": 0.6,
+        "perm_p_bar": 0.01,
+        "wrap_tv_bar": 0.3,
+        "R_bar": 0.15
+      },
+      "rule_note": "M-A: modular_identity and directional_systematic (seed-level R bar). M-B: directional_systematic and not modular_identity. M-C: not modular_identity and not directional_weak. M-D otherwise. Directional systematics uses the seed-level mean resultant (independent units = the 5 checkpoints); the pooled R is reported descriptively. Bars are declared conventions, not tuned cutoffs."
+    }
+  },
+  "E_vs_F_paired": {
+    "same_parity": {
+      "E_mean": 0.741268298672838,
+      "F_mean": 0.6403940505772491,
+      "mean_diff": 0.10087424809558891,
+      "sign_positive": 4,
+      "sign_negative": 1,
+      "cohens_dz": 0.7914341591484485,
+      "n": 5,
+      "paired_t_p": 0.15149248439096832
+    },
+    "R": {
+      "E_mean": 0.256207437513951,
+      "F_mean": 0.3057529891394447,
+      "mean_diff": -0.04954555162549369,
+      "sign_positive": 0,
+      "sign_negative": 5,
+      "cohens_dz": -3.3895349573163513,
+      "n": 5,
+      "paired_t_p": 0.0016250179688604303
+    },
+    "mean_cos": {
+      "E_mean": 0.050983872620129565,
+      "F_mean": 0.08058888984337355,
+      "mean_diff": -0.02960501722324399,
+      "sign_positive": 0,
+      "sign_negative": 5,
+      "cohens_dz": -2.9235692858799265,
+      "n": 5,
+      "paired_t_p": 0.0028292682652197873
+    }
+  },
+  "seed_level": {
+    "E_candidate": {
+      "offpath_count": {
+        "mean": 64.6,
+        "sd": 5.941380311005179,
+        "per_seed": [
+          63,
+          68,
+          58,
+          73,
+          61
+        ]
+      },
+      "same_parity": {
+        "mean": 0.741268298672838,
+        "sd": 0.12331765880520933,
+        "per_seed": [
+          0.5714285714285714,
+          0.75,
+          0.8448275862068966,
+          0.6712328767123288,
+          0.8688524590163934
+        ]
+      },
+      "R": {
+        "mean": 0.256207437513951,
+        "sd": 0.012854015196404412,
+        "per_seed": [
+          0.26921727390105715,
+          0.2707005857854828,
+          0.25108171644231386,
+          0.24659228239845107,
+          0.24344532904245003
+        ]
+      },
+      "mean_cos": {
+        "mean": 0.050983872620129565,
+        "sd": 0.007046126699646345,
+        "per_seed": [
+          0.057517907350050974,
+          0.05944714754974685,
+          0.04660416917954164,
+          0.047763416984845174,
+          0.043586722036463174
+        ]
+      }
+    },
+    "F_combined": {
+      "offpath_count": {
+        "mean": 70.6,
+        "sd": 7.635443667528429,
+        "per_seed": [
+          73,
+          65,
+          66,
+          66,
+          83
+        ]
+      },
+      "same_parity": {
+        "mean": 0.6403940505772491,
+        "sd": 0.032622796431019487,
+        "per_seed": [
+          0.6438356164383562,
+          0.6923076923076923,
+          0.6212121212121212,
+          0.6060606060606061,
+          0.6385542168674698
+        ]
+      },
+      "R": {
+        "mean": 0.3057529891394447,
+        "sd": 0.01744397666534227,
+        "per_seed": [
+          0.3070451064984011,
+          0.3280188013450717,
+          0.29914922278193234,
+          0.28096024371202744,
+          0.31359157135979077
+        ]
+      },
+      "mean_cos": {
+        "mean": 0.08058888984337355,
+        "sd": 0.011111675448628715,
+        "per_seed": [
+          0.0816972071110675,
+          0.09365252675516791,
+          0.07548241529858853,
+          0.06476848406282516,
+          0.08734381598921864
+        ]
+      }
+    }
+  },
+  "primary_decision": {
+    "verdict": "M-A_systematic_modular_geometry",
+    "modular_identity": true,
+    "wrap_specific": false,
+    "directional_systematic": true,
+    "directional_weak": true,
+    "same_parity_rate": 0.7368421052631579,
+    "same_parity_perm_p": 0.0,
+    "wrap_tv": 0.23980342078786465,
+    "R_seed_mean": 0.256207437513951,
+    "R_all_seeds_significant": true,
+    "R_pooled_descriptive": 0.11022006440256397,
+    "R_pooled_perm_p": 0.0,
+    "seed_R": [
+      0.26921727390105715,
+      0.2707005857854828,
+      0.25108171644231386,
+      0.24659228239845107,
+      0.24344532904245003
+    ],
+    "seed_R_p": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "thresholds": {
+      "modular_parity_bar": 0.6,
+      "perm_p_bar": 0.01,
+      "wrap_tv_bar": 0.3,
+      "R_bar": 0.15
+    },
+    "rule_note": "M-A: modular_identity and directional_systematic (seed-level R bar). M-B: directional_systematic and not modular_identity. M-C: not modular_identity and not directional_weak. M-D otherwise. Directional systematics uses the seed-level mean resultant (independent units = the 5 checkpoints); the pooled R is reported descriptively. Bars are declared conventions, not tuned cutoffs."
+  }
+}

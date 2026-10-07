@@ -1,0 +1,215 @@
+{
+  "cols": [
+    "seed",
+    "source",
+    "seq_id",
+    "t",
+    "dest",
+    "src_reg",
+    "operand_a",
+    "operand_b",
+    "wrap",
+    "isolated",
+    "cand_ok",
+    "comm_ok",
+    "prev_ok",
+    "comm_eq_old",
+    "cand_pred",
+    "comm_pred",
+    "prev_pred",
+    "y_true",
+    "a_star_prev",
+    "a_star_commit",
+    "competitor_changed",
+    "m_prev",
+    "m_cand",
+    "m_commit",
+    "m_commit_alt",
+    "dm_cand",
+    "dm_commit",
+    "rho_margin",
+    "rho_defined",
+    "alpha_star_full",
+    "f_mean",
+    "d_cs",
+    "d_ss",
+    "d_sc",
+    "lambda_eff",
+    "offpath_dist",
+    "bias_av",
+    "state_av_commit",
+    "bias_ac",
+    "state_ac_commit",
+    "norm_dw_av",
+    "norm_dw_ac",
+    "hyper_av_commit",
+    "hyper_ac_commit",
+    "flat_reg_prev",
+    "flat_val_prev",
+    "flat_reg_cand",
+    "flat_val_cand",
+    "flat_reg_commit",
+    "flat_val_commit",
+    "mv_prev",
+    "mv_cand",
+    "mv_commit",
+    "hyper_flat_commit",
+    "norm_dw_flat",
+    "off_par_norm",
+    "off_orth_norm",
+    "off_cos",
+    "off_ratio",
+    "wrong_offset",
+    "dmod_wrong_true",
+    "dmod_wrong_old",
+    "dmod_wrong_operand"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "models": {
+    "E_candidate": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+          "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+          "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+          "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+          "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+          "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+          "unchanged_after_run": true
+        }
+      }
+    },
+    "F_combined": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+          "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+          "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+          "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+          "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+          "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+          "unchanged_after_run": true
+        }
+      }
+    }
+  },
+  "l_alignment": {
+    "E_candidate": {
+      "model": "E_candidate",
+      "n_rows_m": 15763,
+      "n_rows_l": 15763,
+      "max_abs_diff": {
+        "seed": 0.0,
+        "source": 0.0,
+        "seq_id": 0.0,
+        "t": 0.0,
+        "dest": 0.0,
+        "src_reg": 0.0,
+        "operand_a": 0.0,
+        "operand_b": 0.0,
+        "wrap": 0.0,
+        "isolated": 0.0,
+        "cand_ok": 0.0,
+        "comm_ok": 0.0,
+        "prev_ok": 0.0,
+        "comm_eq_old": 0.0,
+        "cand_pred": 0.0,
+        "comm_pred": 0.0,
+        "prev_pred": 0.0,
+        "y_true": 0.0,
+        "a_star_prev": 0.0,
+        "a_star_commit": 0.0,
+        "competitor_changed": 0.0
+      },
+      "n_offpath_m": 323,
+      "passed": true,
+      "n_offpath_l": 323
+    },
+    "F_combined": {
+      "model": "F_combined",
+      "n_rows_m": 15763,
+      "n_rows_l": 15763,
+      "max_abs_diff": {
+        "seed": 0.0,
+        "source": 0.0,
+        "seq_id": 0.0,
+        "t": 0.0,
+        "dest": 0.0,
+        "src_reg": 0.0,
+        "operand_a": 0.0,
+        "operand_b": 0.0,
+        "wrap": 0.0,
+        "isolated": 0.0,
+        "cand_ok": 0.0,
+        "comm_ok": 0.0,
+        "prev_ok": 0.0,
+        "comm_eq_old": 0.0,
+        "cand_pred": 0.0,
+        "comm_pred": 0.0,
+        "prev_pred": 0.0,
+        "y_true": 0.0,
+        "a_star_prev": 0.0,
+        "a_star_commit": 0.0,
+        "competitor_changed": 0.0
+      },
+      "n_offpath_m": 353,
+      "passed": true,
+      "n_offpath_l": 353
+    }
+  },
+  "readout": "TypedDecisionHead = single nn.Linear(212, 4*10); z_{d,v}(S)=W[d,v].S+b[d,v] exactly",
+  "offpath_definition": "strict test split, ADD, general (dest!=src AND operand_b>0), candidate correct, baseline commit wrong, rho_margin >= alpha_star_full",
+  "mod_distance": "d_mod(a,b) = min((a-b) mod 10, (b-a) mod 10)",
+  "note": "Measurement only: frozen checkpoints, no training, no optimizer, no weight/readout/gate/commit modification, no intervention, no recursive counterfactuals.",
+  "n_rows": {
+    "E_candidate": 15763,
+    "F_combined": 15763
+  },
+  "n_primary": {
+    "E_candidate": 5042,
+    "F_combined": 5032
+  },
+  "n_offpath": {
+    "E_candidate": 323,
+    "F_combined": 353
+  },
+  "date": "2026-10-07 15:56:24"
+}

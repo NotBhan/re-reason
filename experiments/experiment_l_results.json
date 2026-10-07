@@ -1,0 +1,793 @@
+{
+  "metadata": {
+    "date": "2026-10-07 15:32:52",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "primary_model": "E_candidate",
+    "control_model": "F_combined",
+    "checkpoints": {
+      "E_candidate": {
+        "checkpoints": {
+          "42": {
+            "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+            "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+            "unchanged_after_run": true
+          },
+          "43": {
+            "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+            "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+            "unchanged_after_run": true
+          },
+          "44": {
+            "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+            "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+            "unchanged_after_run": true
+          },
+          "45": {
+            "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+            "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+            "unchanged_after_run": true
+          },
+          "46": {
+            "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+            "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+            "unchanged_after_run": true
+          }
+        }
+      },
+      "F_combined": {
+        "checkpoints": {
+          "42": {
+            "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+            "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+            "unchanged_after_run": true
+          },
+          "43": {
+            "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+            "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+            "unchanged_after_run": true
+          },
+          "44": {
+            "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+            "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+            "unchanged_after_run": true
+          },
+          "45": {
+            "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+            "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+            "unchanged_after_run": true
+          },
+          "46": {
+            "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+            "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+            "unchanged_after_run": true
+          }
+        }
+      }
+    },
+    "readout": "TypedDecisionHead = single nn.Linear(212, 4*10); z_{d,v}(S)=W[d,v].S+b[d,v] exactly",
+    "offpath_definition": "strict test split, ADD, general (dest!=src AND operand_b>0), candidate correct, baseline commit wrong, rho_margin >= alpha_star_full",
+    "thresholds": {
+      "readout_bar": 0.3,
+      "placement_bar": 0.6,
+      "perturb_eps": [
+        0.01,
+        0.05,
+        0.1
+      ],
+      "perturb_dirs": 32
+    },
+    "statistical_discipline": "Five frozen E checkpoints are independent units; F is a secondary control (not pooled). Transition-level tables are descriptive; bias-removal/perturbation counterfactuals are analysis-only one-step computations on frozen states."
+  },
+  "E_candidate": {
+    "n_primary": 5042,
+    "n_offpath": 323,
+    "n_primary_succ": 4310,
+    "n_nonoff_fail": 409,
+    "decision": {
+      "verdict": "B_latent_placement",
+      "r_bias": 0.01238390092879257,
+      "r_place": 0.9876160990712074,
+      "readout_evidence": false,
+      "placement_evidence": true,
+      "category_fractions": {
+        "readout_calibration": 0.01238390092879257,
+        "latent_misplacement": 0.9876160990712074,
+        "boundary_shortfall": 0.0,
+        "mixed_unresolved": 0.0
+      },
+      "rule_note": "Pre-registered: readout evidence if r_bias >= 0.3; placement evidence if r_place >= 0.6; both -> C, placement only -> B, readout only -> A, neither -> D."
+    },
+    "analysis_1_margins": {
+      "m_prev": -12.199346542358398,
+      "m_cand": 5.738987922668457,
+      "m_commit": 1.9590251445770264,
+      "m_commit_vs_committed_competitor": -0.6272854804992676,
+      "dm_cand": 18.058364868164062,
+      "dm_commit": 14.43570613861084,
+      "rho_margin": 0.8169344067573547,
+      "alpha_star_full": 0.695793628692627
+    },
+    "analysis_2_bias_vs_state": {
+      "bias_av": 0.007229924667626619,
+      "state_av_commit": 1.9592294692993164,
+      "bias_ac": 0.013155188411474228,
+      "state_ac_commit": -0.6466255784034729,
+      "bias_share_ac_median": 0.0710230972625159,
+      "bias_share_ac_p95": 0.47244459492579816,
+      "bias_share_av_median": 0.023614235291901677,
+      "state_ac_commit_negative_rate": 0.9845201238390093
+    },
+    "analysis_3_counterfactuals": {
+      "actual_offpath_committed_acc": 0.0,
+      "nobias_flip_to_correct_rate": 0.01238390092879257,
+      "nobias_offpath_committed_acc": 0.01238390092879257,
+      "nobias_decision_change_rate_offpath": 0.02786377708978328,
+      "nobias_decision_change_rate_primary": 0.007140023800079333
+    },
+    "analysis_4_geometry": {
+      "dot_av_commit": 14.435701370239258,
+      "dot_av_cand": 18.058361053466797,
+      "dot_ac_commit": -0.1937289834022522,
+      "dot_ac_cand": 2.118040084838867,
+      "moved_intended_rate": 1.0,
+      "moved_vs_committed_competitor_rate": 0.48297213622291024,
+      "competitor_changed_offpath": 1.0,
+      "competitor_changed_success": 0.6529002320185615
+    },
+    "analysis_5_projection": {
+      "offpath_dist_off": 6.567670641299741,
+      "offpath_dist_succ": 6.36132960297392,
+      "offpath_ratio_off": 0.4145727917630063,
+      "offpath_ratio_succ": 0.4199550209884367,
+      "lambda_eff_off": 0.32247355580329895,
+      "lambda_eff_succ": 0.3240360766649246,
+      "d_cs_off": 16.094593048095703,
+      "d_cs_succ": 15.295209407806396
+    },
+    "analysis_6_hyperplane": {
+      "hyper_av_prev": -3.1278903484344482,
+      "hyper_av_cand": 1.4468684196472168,
+      "hyper_av_commit": 0.5206552147865295,
+      "hyper_ac_commit": -0.16798822581768036,
+      "cleared_intended_rate": 1.0,
+      "cleared_intended_rate_nonoff_fail": 0.1784841075794621,
+      "cleared_intended_rate_succ": 1.0
+    },
+    "analysis_8_candidate_vs_commit": {
+      "offpath_m_cand": 5.738987922668457,
+      "offpath_m_commit": 1.9590251445770264,
+      "offpath_margin_loss": 3.1792616844177246,
+      "succ_m_cand": 8.514959812164307,
+      "succ_m_commit": 6.610894680023193,
+      "succ_margin_loss": 1.8374072313308716,
+      "nonoff_m_cand": 3.2800350189208984,
+      "nonoff_m_commit": -0.6099119186401367
+    },
+    "analysis_9_classes": {
+      "wrap_rate": 0.5479876160990712,
+      "wrong_decode_third_rate": 1.0,
+      "dest_hist": [
+        94,
+        82,
+        61,
+        86
+      ],
+      "y_hist": [
+        54,
+        39,
+        27,
+        31,
+        29,
+        38,
+        15,
+        36,
+        23,
+        31
+      ],
+      "committed_pred_hist": [
+        15,
+        30,
+        32,
+        39,
+        35,
+        34,
+        40,
+        34,
+        33,
+        31
+      ],
+      "operand_b_hist": [
+        0,
+        46,
+        40,
+        48,
+        32,
+        17,
+        40,
+        34,
+        39,
+        27
+      ]
+    },
+    "analysis_7_perturbation": {
+      "n": 323,
+      "per_eps": {
+        "0.01": {
+          "stability_mean": 0.9772639318885449,
+          "stability_median": 1.0,
+          "perturb_correct_rate": 0.0168343653250774
+        },
+        "0.05": {
+          "stability_mean": 0.8910603715170279,
+          "stability_median": 1.0,
+          "perturb_correct_rate": 0.0793343653250774
+        },
+        "0.1": {
+          "stability_mean": 0.8094040247678018,
+          "stability_median": 0.875,
+          "perturb_correct_rate": 0.13128869969040247
+        }
+      }
+    },
+    "seed_level": {
+      "offpath_rate": {
+        "mean": 0.020495556171517385,
+        "sd": 0.0019188069689593204,
+        "per_seed": [
+          0.019693654266958426,
+          0.02127659574468085,
+          0.01829076001261432,
+          0.02336,
+          0.019856770833333332
+        ]
+      },
+      "r_bias": {
+        "mean": 0.013084553613604156,
+        "sd": 0.022399839262828545,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.05172413793103448,
+          0.0136986301369863,
+          0.0
+        ]
+      },
+      "r_place": {
+        "mean": 0.9869154463863957,
+        "sd": 0.022399839262828545,
+        "per_seed": [
+          1.0,
+          1.0,
+          0.9482758620689655,
+          0.9863013698630136,
+          1.0
+        ]
+      },
+      "r_short": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "competitor_changed": {
+        "mean": 1.0,
+        "sd": 0.0,
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "cleared_intended": {
+        "mean": 1.0,
+        "sd": 0.0,
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "third_basin": {
+        "mean": 1.0,
+        "sd": 0.0,
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "bias_share_ac": {
+        "mean": 0.07453713161478259,
+        "sd": 0.01998220884930902,
+        "per_seed": [
+          0.06309542706680701,
+          0.06997083206044373,
+          0.1095264485429761,
+          0.060519137683610884,
+          0.06957381272007522
+        ]
+      },
+      "offpath_ratio": {
+        "mean": 0.4139719677182261,
+        "sd": 0.006066233079819082,
+        "per_seed": [
+          0.4188055648467864,
+          0.4174811536251455,
+          0.40657453541425526,
+          0.4188072976034865,
+          0.4081912871014567
+        ]
+      },
+      "hyper_ac_commit": {
+        "mean": -0.16381455361843109,
+        "sd": 0.029904194555533965,
+        "per_seed": [
+          -0.15282374620437622,
+          -0.17649656534194946,
+          -0.12886260449886322,
+          -0.15287107229232788,
+          -0.20801877975463867
+        ]
+      }
+    }
+  },
+  "F_combined": {
+    "n_primary": 5032,
+    "n_offpath": 353,
+    "n_primary_succ": 4292,
+    "n_nonoff_fail": 387,
+    "decision": {
+      "verdict": "B_latent_placement",
+      "r_bias": 0.031161473087818695,
+      "r_place": 0.9688385269121813,
+      "readout_evidence": false,
+      "placement_evidence": true,
+      "category_fractions": {
+        "readout_calibration": 0.031161473087818695,
+        "latent_misplacement": 0.9688385269121813,
+        "boundary_shortfall": 0.0,
+        "mixed_unresolved": 0.0
+      },
+      "rule_note": "Pre-registered: readout evidence if r_bias >= 0.3; placement evidence if r_place >= 0.6; both -> C, placement only -> B, readout only -> A, neither -> D."
+    },
+    "analysis_1_margins": {
+      "m_prev": -11.561904907226562,
+      "m_cand": 4.603097915649414,
+      "m_commit": 1.9430458545684814,
+      "m_commit_vs_committed_competitor": -0.6022765636444092,
+      "dm_cand": 16.34786605834961,
+      "dm_commit": 13.43472671508789,
+      "rho_margin": 0.8381356596946716,
+      "alpha_star_full": 0.7232268452644348
+    },
+    "analysis_2_bias_vs_state": {
+      "bias_av": 0.01362898200750351,
+      "state_av_commit": 1.9107154607772827,
+      "bias_ac": 0.005935341119766235,
+      "state_ac_commit": -0.6114130020141602,
+      "bias_share_ac_median": 0.06717988550089844,
+      "bias_share_ac_p95": 0.5480735372151956,
+      "bias_share_av_median": 0.023697994630107713,
+      "state_ac_commit_negative_rate": 0.9688385269121813
+    },
+    "analysis_3_counterfactuals": {
+      "actual_offpath_committed_acc": 0.0,
+      "nobias_flip_to_correct_rate": 0.031161473087818695,
+      "nobias_offpath_committed_acc": 0.031161473087818695,
+      "nobias_decision_change_rate_offpath": 0.042492917847025496,
+      "nobias_decision_change_rate_primary": 0.00794912559618442
+    },
+    "analysis_4_geometry": {
+      "dot_av_commit": 13.43472671508789,
+      "dot_av_cand": 16.347869873046875,
+      "dot_ac_commit": 0.004127558320760727,
+      "dot_ac_cand": 2.175320863723755,
+      "moved_intended_rate": 1.0,
+      "moved_vs_committed_competitor_rate": 0.5042492917847026,
+      "competitor_changed_offpath": 1.0,
+      "competitor_changed_success": 0.6572693383038211
+    },
+    "analysis_5_projection": {
+      "offpath_dist_off": 6.6327710421835055,
+      "offpath_dist_succ": 6.6207408365643365,
+      "offpath_ratio_off": 0.41629829471477103,
+      "offpath_ratio_succ": 0.42787789794659314,
+      "lambda_eff_off": 0.3293084502220154,
+      "lambda_eff_succ": 0.3421642780303955,
+      "d_cs_off": 16.08455467224121,
+      "d_cs_succ": 15.63450288772583
+    },
+    "analysis_6_hyperplane": {
+      "hyper_av_prev": -2.856128692626953,
+      "hyper_av_cand": 1.1169590950012207,
+      "hyper_av_commit": 0.4659910500049591,
+      "hyper_ac_commit": -0.15352892875671387,
+      "cleared_intended_rate": 1.0,
+      "cleared_intended_rate_nonoff_fail": 0.19121447028423771,
+      "cleared_intended_rate_succ": 1.0
+    },
+    "analysis_8_candidate_vs_commit": {
+      "offpath_m_cand": 4.603097915649414,
+      "offpath_m_commit": 1.9430458545684814,
+      "offpath_margin_loss": 2.6309852600097656,
+      "succ_m_cand": 8.348790168762207,
+      "succ_m_commit": 6.619824171066284,
+      "succ_margin_loss": 1.8295636177062988,
+      "nonoff_m_cand": 3.23934268951416,
+      "nonoff_m_commit": -0.5291426181793213
+    },
+    "analysis_9_classes": {
+      "wrap_rate": 0.5580736543909348,
+      "wrong_decode_third_rate": 0.9943342776203966,
+      "dest_hist": [
+        85,
+        86,
+        101,
+        81
+      ],
+      "y_hist": [
+        59,
+        64,
+        18,
+        22,
+        30,
+        41,
+        22,
+        30,
+        26,
+        41
+      ],
+      "committed_pred_hist": [
+        19,
+        28,
+        45,
+        32,
+        35,
+        32,
+        34,
+        43,
+        47,
+        38
+      ],
+      "operand_b_hist": [
+        0,
+        36,
+        45,
+        44,
+        39,
+        20,
+        39,
+        54,
+        40,
+        36
+      ]
+    },
+    "analysis_7_perturbation": {
+      "n": 353,
+      "per_eps": {
+        "0.01": {
+          "stability_mean": 0.9712287535410765,
+          "stability_median": 1.0,
+          "perturb_correct_rate": 0.023636685552407933
+        },
+        "0.05": {
+          "stability_mean": 0.8744688385269122,
+          "stability_median": 1.0,
+          "perturb_correct_rate": 0.08560552407932011
+        },
+        "0.1": {
+          "stability_mean": 0.7878895184135978,
+          "stability_median": 0.84375,
+          "perturb_correct_rate": 0.13703966005665721
+        }
+      }
+    },
+    "seed_level": {
+      "offpath_rate": {
+        "mean": 0.022421881233406025,
+        "sd": 0.002734451111172034,
+        "per_seed": [
+          0.022819631134729602,
+          0.020337922403003753,
+          0.020813623462630087,
+          0.02112,
+          0.027018229166666668
+        ]
+      },
+      "r_bias": {
+        "mean": 0.030395162410346434,
+        "sd": 0.03111171474379564,
+        "per_seed": [
+          0.0821917808219178,
+          0.015384615384615385,
+          0.030303030303030304,
+          0.0,
+          0.024096385542168676
+        ]
+      },
+      "r_place": {
+        "mean": 0.9696048375896537,
+        "sd": 0.03111171474379565,
+        "per_seed": [
+          0.9178082191780822,
+          0.9846153846153847,
+          0.9696969696969697,
+          1.0,
+          0.9759036144578314
+        ]
+      },
+      "r_short": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "per_seed": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "competitor_changed": {
+        "mean": 1.0,
+        "sd": 0.0,
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "cleared_intended": {
+        "mean": 1.0,
+        "sd": 0.0,
+        "per_seed": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "third_basin": {
+        "mean": 0.9942299709422997,
+        "sd": 0.007917618050635788,
+        "per_seed": [
+          0.9863013698630136,
+          1.0,
+          1.0,
+          0.9848484848484849,
+          1.0
+        ]
+      },
+      "bias_share_ac": {
+        "mean": 0.07453411825181343,
+        "sd": 0.02787998040791932,
+        "per_seed": [
+          0.08581559075731497,
+          0.11454258444476077,
+          0.05890885248494191,
+          0.04087315482037005,
+          0.07253040875167943
+        ]
+      },
+      "offpath_ratio": {
+        "mean": 0.41545759591175724,
+        "sd": 0.00511052382308239,
+        "per_seed": [
+          0.4130582733146136,
+          0.4107932610922192,
+          0.4118152594959118,
+          0.419024356531502,
+          0.42259682912453966
+        ]
+      },
+      "hyper_ac_commit": {
+        "mean": -0.15463201105594634,
+        "sd": 0.0396151201755531,
+        "per_seed": [
+          -0.09495049715042114,
+          -0.13681335747241974,
+          -0.19041694700717926,
+          -0.18661171197891235,
+          -0.16436754167079926
+        ]
+      }
+    }
+  },
+  "E_vs_F_paired": {
+    "r_bias": {
+      "E_mean": 0.013084553613604156,
+      "F_mean": 0.030395162410346434,
+      "mean_diff": -0.017310608796742278,
+      "sign_positive": 2,
+      "sign_negative": 3,
+      "cohens_dz": -0.4223028869917761,
+      "n": 5,
+      "paired_t_p": 0.3984859304715376
+    },
+    "r_place": {
+      "E_mean": 0.9869154463863957,
+      "F_mean": 0.9696048375896537,
+      "mean_diff": 0.017310608796742243,
+      "sign_positive": 3,
+      "sign_negative": 2,
+      "cohens_dz": 0.4223028869917752,
+      "n": 5,
+      "paired_t_p": 0.39848593047153824
+    },
+    "competitor_changed": {
+      "E_mean": 1.0,
+      "F_mean": 1.0,
+      "mean_diff": 0.0,
+      "sign_positive": 0,
+      "sign_negative": 0,
+      "cohens_dz": NaN,
+      "n": 5,
+      "paired_t_p": NaN
+    },
+    "cleared_intended": {
+      "E_mean": 1.0,
+      "F_mean": 1.0,
+      "mean_diff": 0.0,
+      "sign_positive": 0,
+      "sign_negative": 0,
+      "cohens_dz": NaN,
+      "n": 5,
+      "paired_t_p": NaN
+    },
+    "third_basin": {
+      "E_mean": 1.0,
+      "F_mean": 0.9942299709422997,
+      "mean_diff": 0.005770029057700299,
+      "sign_positive": 2,
+      "sign_negative": 0,
+      "cohens_dz": 0.7287581973263996,
+      "n": 5,
+      "paired_t_p": 0.17852883285128576
+    },
+    "bias_share_ac": {
+      "E_mean": 0.07453713161478259,
+      "F_mean": 0.07453411825181343,
+      "mean_diff": 3.0133629691606047e-06,
+      "sign_positive": 2,
+      "sign_negative": 3,
+      "cohens_dz": 8.15637697452307e-05,
+      "n": 5,
+      "paired_t_p": 0.9998632134007093
+    },
+    "offpath_ratio": {
+      "E_mean": 0.4139719677182261,
+      "F_mean": 0.41545759591175724,
+      "mean_diff": -0.0014856281935311856,
+      "sign_positive": 2,
+      "sign_negative": 3,
+      "cohens_dz": -0.17104577348176522,
+      "n": 5,
+      "paired_t_p": 0.7215665129407042
+    },
+    "hyper_ac_commit": {
+      "E_mean": -0.16381455361843109,
+      "F_mean": -0.15463201105594634,
+      "mean_diff": -0.009182542562484741,
+      "sign_positive": 2,
+      "sign_negative": 3,
+      "cohens_dz": -0.17249517628138045,
+      "n": 5,
+      "paired_t_p": 0.7193462085861229
+    }
+  },
+  "alignment": {
+    "E_candidate": {
+      "vs_I_max_abs_diff": {
+        "seed": 0.0,
+        "seq_id": 0.0,
+        "t": 0.0,
+        "dest": 0.0,
+        "src_reg": 0.0,
+        "operand_a": 0.0,
+        "operand_b": 0.0,
+        "cand_ok": 0.0,
+        "comm_ok": 0.0,
+        "a_star_prev": 0.0,
+        "m_prev": 0.0,
+        "m_cand": 0.0,
+        "m_commit": 0.0,
+        "dm_cand": 0.0,
+        "dm_commit": 0.0,
+        "rho_margin": 0.0,
+        "alpha_star_full": 0.0,
+        "alpha_star_margin": 0.0,
+        "f_mean": 0.0,
+        "d_cs": 0.0,
+        "d_ss": 0.0,
+        "d_sc": 0.0
+      },
+      "vs_I_ok": true,
+      "vs_H_max_abs_diff": {
+        "seed": 0.0,
+        "seq_id": 0.0,
+        "t": 0.0,
+        "dest": 0.0,
+        "src_reg": 0.0,
+        "operand_a": 0.0,
+        "operand_b": 0.0,
+        "f_mean": 0.0,
+        "lambda_eff": 0.0,
+        "offpath_dist": 0.0
+      },
+      "vs_H_ok": true
+    },
+    "F_combined": {
+      "vs_I_max_abs_diff": {
+        "seed": 0.0,
+        "seq_id": 0.0,
+        "t": 0.0,
+        "dest": 0.0,
+        "src_reg": 0.0,
+        "operand_a": 0.0,
+        "operand_b": 0.0,
+        "cand_ok": 0.0,
+        "comm_ok": 0.0,
+        "a_star_prev": 0.0,
+        "m_prev": 0.0,
+        "m_cand": 0.0,
+        "m_commit": 0.0,
+        "dm_cand": 0.0,
+        "dm_commit": 0.0,
+        "rho_margin": 0.0,
+        "alpha_star_full": 0.0,
+        "alpha_star_margin": 0.0,
+        "f_mean": 0.0,
+        "d_cs": 0.0,
+        "d_ss": 0.0,
+        "d_sc": 0.0
+      },
+      "vs_I_ok": true,
+      "vs_H_max_abs_diff": {
+        "seed": 0.0,
+        "seq_id": 0.0,
+        "t": 0.0,
+        "dest": 0.0,
+        "src_reg": 0.0,
+        "operand_a": 0.0,
+        "operand_b": 0.0,
+        "f_mean": 0.0,
+        "lambda_eff": 0.0,
+        "offpath_dist": 0.0
+      },
+      "vs_H_ok": true
+    }
+  },
+  "primary_decision": {
+    "verdict": "B_latent_placement",
+    "r_bias": 0.01238390092879257,
+    "r_place": 0.9876160990712074,
+    "readout_evidence": false,
+    "placement_evidence": true,
+    "category_fractions": {
+      "readout_calibration": 0.01238390092879257,
+      "latent_misplacement": 0.9876160990712074,
+      "boundary_shortfall": 0.0,
+      "mixed_unresolved": 0.0
+    },
+    "rule_note": "Pre-registered: readout evidence if r_bias >= 0.3; placement evidence if r_place >= 0.6; both -> C, placement only -> B, readout only -> A, neither -> D."
+  }
+}
