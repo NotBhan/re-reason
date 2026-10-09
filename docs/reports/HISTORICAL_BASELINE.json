@@ -17,6 +17,12 @@
     "docs/reports/experiment_o_representation_intervention.md": "00a2d4538811616d3063a1e39d91466dc905487a9a07e9542bb77e9dc8b209b1",
     "docs/reports/experiment_p_sequence_error_budget.md": "6336d9121e679badb1682a957914b1bcc45e72d092010570a28ae57bed23efc6",
     "docs/reports/experiment_q_candidate_origin.md": "e44b0b7c16e815255c2a4a8078572560b82cf01cbb3520181f55f7dfebd7539a",
+    "docs/reports/experiment_r_candidate_representation.md": "046c55295c7604abbc2a4fbaa282c9cd0a577fc933b48eabf199b0ac88c210b8",
+    "docs/reports/experiment_s_candidate_internal.md": "6299026692ada3804ba94ec95894eb32aa3013d3f4d19be4c0e914a641ae3067",
+    "docs/reports/experiment_t_upstream_representation.md": "0aa134f05b16b313f52a80884d2ac3059ebf1ba9cc90c40cd28051bc636c259a",
+    "docs/reports/experiment_u_task_interface.md": "3e73ad09d1e1497918784f2e19cb2f526b84a72b0d481de9819899c634359ad6",
+    "docs/reports/experiment_v_sequence_access.md": "28348286b2ea618013eb4840cb8d2de00772388c0a5588a2d239a243eb73990c",
+    "docs/reports/experiment_w_data_scale.md": "50c10496a3f22f0578f67f94d0983ee0614ca30babed3cad104d6e4e1b99c951",
     "docs/reports/generator_repair_feasibility.md": "b572ff3b776625f90d8d4ef27972fab75c69ae56ff7a48485ec3874a270c3a38",
     "docs/reports/mechanism_audit_round2.md": "9c823379360e62467627e3ff5eefa8b92c4691522c01e2b3a9dcc24b644dd0c2",
     "docs/reports/mechanism_qa_diagnostic.md": "24d60972107170d5cf3eb02809f6d6469800670e0c5bd41416a31ebd907377f0",
@@ -77,6 +83,36 @@
       "date": "2026-10-07",
       "event": "Experiment Q completed; report docs/reports/experiment_q_candidate_origin.md registered",
       "n_reports": 22
+    },
+    {
+      "date": "2026-10-07",
+      "event": "Experiment R completed; report docs/reports/experiment_r_candidate_representation.md registered",
+      "n_reports": 23
+    },
+    {
+      "date": "2026-10-07",
+      "event": "Experiment S completed; report docs/reports/experiment_s_candidate_internal.md registered",
+      "n_reports": 24
+    },
+    {
+      "date": "2026-10-08",
+      "event": "Experiment T completed; report docs/reports/experiment_t_upstream_representation.md registered",
+      "n_reports": 25
+    },
+    {
+      "date": "2026-10-08",
+      "event": "Experiment U completed; report docs/reports/experiment_u_task_interface.md registered",
+      "n_reports": 26
+    },
+    {
+      "date": "2026-10-08",
+      "event": "Experiment V completed; report docs/reports/experiment_v_sequence_access.md registered",
+      "n_reports": 27
+    },
+    {
+      "date": "2026-10-09",
+      "event": "Experiment W completed; report docs/reports/experiment_w_data_scale.md registered",
+      "n_reports": 28
     }
   ]
 }

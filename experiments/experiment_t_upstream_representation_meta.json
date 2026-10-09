@@ -1,0 +1,148 @@
+{
+  "train_ord_cap": 1500,
+  "val_ord_cap": 800,
+  "extra_stream": 810000,
+  "extra_seqs": 5000,
+  "arch": "NonlinearCandidateMGUModel (Model E/F), state_dim=212, encoder(21->64->256), candidate_hidden_dim=146",
+  "encoder": "ObservationEncoder.net = Sequential(Linear(21,64), GELU, Linear(64,256), LayerNorm(256))",
+  "candidate_network": "cand_mlp = Sequential(Linear(468,146), GELU, Linear(146,212)); C_t=tanh(out_pre)",
+  "stages": [
+    "raw_obs",
+    "enc_h1_pre",
+    "enc_h1_post",
+    "enc_out_pre",
+    "e_t",
+    "S_prev",
+    "gate_pre",
+    "f_gate",
+    "h_reset",
+    "cand_input",
+    "C_t"
+  ],
+  "stage_dims": {
+    "raw_obs": 21,
+    "enc_h1_pre": 64,
+    "enc_h1_post": 64,
+    "enc_out_pre": 256,
+    "e_t": 256,
+    "S_prev": 212,
+    "gate_pre": 212,
+    "f_gate": 212,
+    "h_reset": 212,
+    "cand_input": 468,
+    "C_t": 212
+  },
+  "encoder_stages": [
+    "raw_obs",
+    "enc_h1_pre",
+    "enc_h1_post",
+    "enc_out_pre",
+    "e_t"
+  ],
+  "state_stages": [
+    "S_prev",
+    "gate_pre",
+    "f_gate",
+    "h_reset"
+  ],
+  "key_stages": [
+    "e_t",
+    "S_prev",
+    "gate_pre",
+    "f_gate",
+    "h_reset",
+    "cand_input",
+    "C_t"
+  ],
+  "bridge_stages": [
+    "cand_input",
+    "C_t"
+  ],
+  "models": {
+    "E_candidate": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+          "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+          "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+          "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+          "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+          "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+          "unchanged_after_run": true
+        }
+      }
+    },
+    "F_combined": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+          "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+          "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+          "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+          "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+          "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+          "unchanged_after_run": true
+        }
+      }
+    }
+  },
+  "splits": {
+    "train": "DisjointSplitManager train (6000 seq)",
+    "val": "DisjointSplitManager val (1200 seq)",
+    "test": "canonical strict test split (1200 seq, stream 90042+seed)",
+    "hardextra": "augmented i.i.d. stream (base 810000+seed, 5000 seq), sequence-disjoint"
+  },
+  "hard_tail": "ADD transition with frozen candidate written-register decode != true written value (Q's Class-A definition, unchanged)",
+  "note": "Measurement only: frozen checkpoints, no model training/intervention/counterfactual rollout. Upstream activations are captured read-only via forward hooks inside the existing forward_with_states; the frozen computation is unchanged. Analysis-only probes (in analyze_experiment_t.py) are fit on a regime's train, tuned on its val, evaluated once on the untouched canonical-test hard tail.",
+  "n": {
+    "E_candidate": {
+      "trainord": 7500,
+      "trainhard": 747,
+      "valord": 4000,
+      "valhard": 1775,
+      "test": 15763,
+      "hardextra": 7443
+    },
+    "F_combined": {
+      "trainord": 7500,
+      "trainhard": 1827,
+      "valord": 4000,
+      "valhard": 1869,
+      "test": 15763,
+      "hardextra": 7741
+    }
+  },
+  "date": "2026-10-08 13:13:56"
+}

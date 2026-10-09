@@ -1,0 +1,158 @@
+{
+  "train_sizes": [
+    1500,
+    4000,
+    10000
+  ],
+  "history_lengths": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "full_prefix_length": 10,
+  "pool_stream_base": 2000000,
+  "pool_stream_offsets": {
+    "1500": 0,
+    "4000": 1000000,
+    "10000": 2000000
+  },
+  "train_ord_cap": 1500,
+  "val_ord_cap": 800,
+  "obs_schema": "21-dim one-hot: op[0:3] (SET=0, SWAP=1, ADD=2), reg_a[3:7], reg_b[7:11], immediate[11:21]",
+  "pool_design": "three INDEPENDENT, pairwise sequence-disjoint fresh i.i.d. ordinary-ADD pools per seed (sizes 1500/4000/10000) from distinct RNG streams; NOT nested and NOT recycled/duplicated",
+  "val": "canonical DisjointSplitManager VAL split, ordinary ADD subsample (cap 800/seed); fixed across scales",
+  "test": "canonical strict test split (1200 seq, stream 90042+seed), all ADD; untouched (identical across scales)",
+  "models": {
+    "E_candidate": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+          "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+          "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+          "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+          "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+          "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+          "unchanged_after_run": true
+        }
+      }
+    },
+    "F_combined": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+          "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+          "unchanged_after_run": true
+        },
+        "43": {
+          "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+          "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+          "unchanged_after_run": true
+        },
+        "44": {
+          "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+          "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+          "unchanged_after_run": true
+        },
+        "45": {
+          "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+          "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+          "unchanged_after_run": true
+        },
+        "46": {
+          "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+          "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+          "unchanged_after_run": true
+        }
+      }
+    }
+  },
+  "disjointness": {
+    "42": {
+      "pool1500_vs_4000": 0,
+      "pool1500_vs_10000": 0,
+      "pool4000_vs_10000": 0,
+      "pools_vs_val": 0,
+      "pools_vs_test": 0,
+      "pool_unique_sequences": {
+        "1500": 527,
+        "4000": 1437,
+        "10000": 3634
+      }
+    },
+    "43": {
+      "pool1500_vs_4000": 0,
+      "pool1500_vs_10000": 0,
+      "pool4000_vs_10000": 0,
+      "pools_vs_val": 0,
+      "pools_vs_test": 0,
+      "pool_unique_sequences": {
+        "1500": 552,
+        "4000": 1426,
+        "10000": 3651
+      }
+    },
+    "44": {
+      "pool1500_vs_4000": 0,
+      "pool1500_vs_10000": 0,
+      "pool4000_vs_10000": 0,
+      "pools_vs_val": 0,
+      "pools_vs_test": 0,
+      "pool_unique_sequences": {
+        "1500": 533,
+        "4000": 1447,
+        "10000": 3655
+      }
+    },
+    "45": {
+      "pool1500_vs_4000": 0,
+      "pool1500_vs_10000": 0,
+      "pool4000_vs_10000": 0,
+      "pools_vs_val": 0,
+      "pools_vs_test": 0,
+      "pool_unique_sequences": {
+        "1500": 535,
+        "4000": 1441,
+        "10000": 3624
+      }
+    },
+    "46": {
+      "pool1500_vs_4000": 0,
+      "pool1500_vs_10000": 0,
+      "pool4000_vs_10000": 0,
+      "pools_vs_val": 0,
+      "pools_vs_test": 0,
+      "pool_unique_sequences": {
+        "1500": 517,
+        "4000": 1453,
+        "10000": 3622
+      }
+    }
+  },
+  "n": {
+    "val": 4000,
+    "pool1500": 7500,
+    "pool4000": 20000,
+    "pool10000": 50000,
+    "E_candidate__test": 15763,
+    "F_combined__test": 15763
+  },
+  "date": "2026-10-09 15:06:19"
+}
