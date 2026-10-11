@@ -1,0 +1,209 @@
+{
+  "experiment": "AG \u2014 bounded-reader training-pool coverage and generalization stress",
+  "date": "2026-10-11 23:17:25",
+  "source": {
+    "ad_npz": "experiments/experiment_ad_qualified_access.npz",
+    "ad_npz_sha256": "5a37a028f92c1f9c5aeec1f2c504a0ff8dba0d9daeb6a7107d52a58d66cf8298",
+    "ad_meta_sha256": "0583ed42eae52e9b1926be0f87bb3c4a8455cd25f38686e49e7b0bd029e565df",
+    "v_npz": "experiments/experiment_v_sequence_access.npz",
+    "v_npz_sha256": "b985c386653538cd8312f6fdd0983330f5bee6b8c256718145492c1ae2a55494",
+    "ad_v_array_identity": true
+  },
+  "trained_anything": false,
+  "conditions": [
+    "ae_native",
+    "natural_bootstrap",
+    "pair_balanced_bootstrap",
+    "target_balanced_bootstrap"
+  ],
+  "bootstrap_conditions": [
+    "natural_bootstrap",
+    "pair_balanced_bootstrap",
+    "target_balanced_bootstrap"
+  ],
+  "replicates": 3,
+  "held_out_b": [
+    0,
+    5
+  ],
+  "held_out_pairs_excluded": 20,
+  "pairs_non_held": 80,
+  "eligibility_support": {
+    "E_candidate": {
+      "42": {
+        "eligible": 746,
+        "n_heldout_excluded": 754,
+        "pairs_present": 80,
+        "pairs_total": 80,
+        "missing_pairs": [],
+        "missing_classes": [],
+        "pair_min": 1,
+        "pair_max": 42,
+        "class_counts": [
+          34,
+          58,
+          118,
+          55,
+          119,
+          31,
+          100,
+          61,
+          109,
+          61
+        ],
+        "ok": true
+      },
+      "43": {
+        "eligible": 741,
+        "n_heldout_excluded": 759,
+        "pairs_present": 78,
+        "pairs_total": 80,
+        "missing_pairs": [
+          "5_3",
+          "8_3"
+        ],
+        "missing_classes": [],
+        "pair_min": 0,
+        "pair_max": 52,
+        "class_counts": [
+          28,
+          56,
+          123,
+          59,
+          96,
+          33,
+          120,
+          60,
+          106,
+          60
+        ],
+        "ok": true
+      },
+      "44": {
+        "eligible": 759,
+        "n_heldout_excluded": 741,
+        "pairs_present": 77,
+        "pairs_total": 80,
+        "missing_pairs": [
+          "6_3",
+          "6_7",
+          "9_7"
+        ],
+        "missing_classes": [],
+        "pair_min": 0,
+        "pair_max": 52,
+        "class_counts": [
+          38,
+          52,
+          116,
+          38,
+          114,
+          27,
+          113,
+          54,
+          146,
+          61
+        ],
+        "ok": true
+      },
+      "45": {
+        "eligible": 781,
+        "n_heldout_excluded": 719,
+        "pairs_present": 75,
+        "pairs_total": 80,
+        "missing_pairs": [
+          "1_9",
+          "2_1",
+          "2_7",
+          "4_1",
+          "5_2"
+        ],
+        "missing_classes": [],
+        "pair_min": 0,
+        "pair_max": 41,
+        "class_counts": [
+          27,
+          54,
+          121,
+          64,
+          119,
+          37,
+          119,
+          55,
+          118,
+          67
+        ],
+        "ok": true
+      },
+      "46": {
+        "eligible": 753,
+        "n_heldout_excluded": 747,
+        "pairs_present": 80,
+        "pairs_total": 80,
+        "missing_pairs": [],
+        "missing_classes": [],
+        "pair_min": 1,
+        "pair_max": 44,
+        "class_counts": [
+          36,
+          45,
+          122,
+          65,
+          119,
+          32,
+          115,
+          49,
+          115,
+          55
+        ],
+        "ok": true
+      }
+    }
+  },
+  "invariants_ok": true,
+  "checkpoints": {
+    "E_candidate|42": {
+      "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+      "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1"
+    },
+    "E_candidate|43": {
+      "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+      "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa"
+    },
+    "E_candidate|44": {
+      "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+      "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a"
+    },
+    "E_candidate|45": {
+      "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+      "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8"
+    },
+    "E_candidate|46": {
+      "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+      "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d"
+    },
+    "F_combined|42": {
+      "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+      "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b"
+    },
+    "F_combined|43": {
+      "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+      "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546"
+    },
+    "F_combined|44": {
+      "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+      "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72"
+    },
+    "F_combined|45": {
+      "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+      "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef"
+    },
+    "F_combined|46": {
+      "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+      "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953"
+    }
+  },
+  "post_run": {
+    "all_checkpoints_unchanged": true
+  }
+}
