@@ -12,7 +12,9 @@
 
 ## 🔬 Core Mantra
 
-$$\text{BUILD} \longrightarrow \text{MEASURE} \longrightarrow \text{ABLATE} \longrightarrow \text{INTERPRET} \longrightarrow \text{KEEP OR KILL} \longrightarrow \text{EXTEND}$$
+$$
+\text{BUILD} \longrightarrow \text{MEASURE} \longrightarrow \text{ABLATE} \longrightarrow \text{INTERPRET} \longrightarrow \text{KEEP OR KILL} \longrightarrow \text{EXTEND}
+$$
 
 RE:Reason is **an active research framework, not a finalized or frozen architecture**. Every architectural component is treated as an empirical hypothesis subject to strict ablation, compute-matched benchmarking, and potential falsification. No mechanism belongs to the architecture unless empirical ablations justify its computational cost under controlled parameter budgets.
 
@@ -121,31 +123,41 @@ None of these individual mechanisms represent ungrounded inventions; each maps d
 
 ## 📐 Mathematical Specification: Active Validated Model
 
-Per [docs/RESEARCH_STATUS.md](file:///home/chandrabhan/Documents/Personal%20Projects/re-reason/docs/RESEARCH_STATUS.md), the currently validated active system is **Phase 1 Model E** (`NonlinearCandidateMGUModel`), an Update-Gate RNN / Minimal Gated Unit (MGU) family architecture:
+Per [docs/RESEARCH_STATUS.md](docs/RESEARCH_STATUS.md), the currently validated active system is **Phase 1 Model E** (`NonlinearCandidateMGUModel`), an Update-Gate RNN / Minimal Gated Unit (MGU) family architecture:
 
 ### 1. Mathematical Formulation
 For observation $x_t \in \mathbb{R}^{D_{\text{in}}}$ and previous state $S_{t-1} \in \mathbb{R}^D$:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 e_t &= \text{MLP}_{\text{enc}}(x_t) \in \mathbb{R}^{D_e} \\
-f_t &= \sigma(W_f [S_{t-1}, e_t] + b_f) \in (0, 1)^D \quad &&\text{(Element-wise Update Gate)} \\
+f_t &= \sigma(W_{f, e} e_t + W_{f, s} S_{t-1} + b_f) \in (0, 1)^D \quad &&\text{(Element-wise Update Gate)} \\
 h_{\text{reset}, t} &= f_t \odot S_{t-1} \in \mathbb{R}^D \quad &&\text{(Pre-gated State)} \\
 C_t &= \tanh(\text{MLP}_{\text{cand}}([h_{\text{reset}, t}, e_t])) \in (-1, 1)^D \quad &&\text{(Candidate Delta Vector)} \\
 S_t &= (1 - f_t) \odot S_{t-1} + f_t \odot C_t \in (-1, 1)^D \quad &&\text{(Convex-Bounded Commit)} \\
 y_t &= W_{\text{out}} S_t + b_{\text{out}} \in \mathbb{R}^{N_{\text{reg}} \times N_{\text{classes}}} \quad &&\text{(Linear Readout)}
-\end{aligned}$$
+\end{aligned}
+$$
 
-### 2. Parameter Budget Breakdown (226,358 Parameters)
-* **Observation Encoder $\text{MLP}_{\text{enc}}$:** Linear(21, 256) $\to$ GELU $\to$ Linear(256, 256) (71,424 params)
-* **Update Gate $W_f$:** Linear(212 + 256, 212) (99,428 params)
-* **Candidate Network $\text{MLP}_{\text{cand}}$:** Linear(212 + 256, 146) $\to$ GELU $\to$ Linear(146, 212) (99,566 params)
-* **Linear Readout $W_{\text{out}}$:** Linear(212, 40) (8,520 params)
-* **State Dimension:** $D = 212$, Embedding: $D_e = 256$, Candidate Hidden: $D_c = 146$.
+### 2. Exact Parameter Budget Breakdown (226,358 Parameters)
+* **Observation Encoder $\text{MLP}_{\text{enc}}$ (18,560 params):**
+  * Linear(21, 64) $\to$ GELU $\to$ Linear(64, 256) $\to$ LayerNorm(256)
+* **Update Gate $W_f$ (99,640 params):**
+  * Input projection $W_{f, e}$: Linear(256, 212) (54,484 params)
+  * Hidden projection $W_{f, s}$: Linear(212, 212) (45,156 params)
+* **Candidate Network $\text{MLP}_{\text{cand}}$ (99,638 params):**
+  * First layer: Linear(212 + 256, 146) = Linear(468, 146) (68,474 params) $\to$ GELU
+  * Second layer: Linear(146, 212) (31,164 params)
+* **Linear Decision Readout $W_{\text{out}}$ (8,520 params):**
+  * Linear(212, 4 registers $\times$ 10 classes) = Linear(212, 40)
+* **Dimensionalities:** Latent state $D = 212$, Observation embedding $D_e = 256$, Candidate hidden $D_c = 146$.
 
 ### 3. Supervised Objective: Candidate/Local Supervision ($L_E$)
 The model is trained via local supervision on candidate activations rather than terminal-only loss:
 
-$$L_E = \text{CE}(y_T, y^*_T) + \frac{1}{|W|} \sum_{t=1}^T \sum_{r \in W_t} \text{CE}(\text{head}(C_t)_r, y^*_{t, r})$$
+$$
+L_E = \text{CE}(y_T, y^*_T) + \frac{1}{|W|} \sum_{t=1}^T \sum_{r \in W_t} \text{CE}(\text{head}(C_t)_r, y^*_{t, r})
+$$
 
 where $W_t$ is the set of registers written at step $t$, $\text{head}(C_t)_r$ is the linear decision head applied directly to candidate vector $C_t$, and $y^*_{t, r}$ is the ground-truth value.
 
@@ -173,7 +185,7 @@ Tracks internal state transitions over $M=4$ registers ($R_0 \dots R_3$) holding
 
 ---
 
-## 🔬 The Empirical Research Arc: Experiments A through AE
+## 🔬 The Empirical Research Arc: Experiments A through AF
 
 Rather than assuming theoretical mechanisms work, the repository follows a rigorous empirical investigation chain documenting why components succeed, fail, or remain bounded:
 
@@ -181,7 +193,7 @@ Rather than assuming theoretical mechanisms work, the repository follows a rigor
 [Phases 1 & 1.5] ──► [Early Feasibility] ──► [Residual Isolation] ──► [Representation Probes] ──► [Interface & Scale] ──► [Optimizer & Transfer]
   Model E Bounded       Branching Oracle       Exp G–K: Gate Vector      Exp P: Class-A Budget    Exp U: Bayes=1.0        Exp Z–AC: Qualification
   Convex Update         & Verifiers Fail       Exp L–N: Parity Basin     Exp Q–S: Activations     Exp V: Sequence Readers Exp AD: High Train Fit
-  (0.755 EM)            (Goodhart Artifact)    Exp O: Parity Causal? No  Exp T: Operand-Blind e_t Exp W: Data Scale Flat  Exp AE: Fit-Without-Transfer
+  (0.755 EM)            (Goodhart Artifact)    Exp O: Parity Causal? No  Exp T: Operand-Blind e_t Exp W: Data Scale Flat  Exp AE/AF: Fit-Without-Transfer
 ```
 
 | Experiment / Report | Research Question & Intervention | Key Result & Metric | Decision & Classification |
@@ -204,6 +216,7 @@ Rather than assuming theoretical mechanisms work, the repository follows a rigor
 | **Exp Z, AA, AB (Qualification)** | What training recipe allows readers to fit sequence histories? | AdamW with tuned weight decay (3e-3, 1e-2) achieves high training fit (GRU 0.858, TCN 0.655). | **AdamW recipe qualified**; fitting obstacle removed. |
 | **Exp AC & AD (Qualified Access)** | Does high training fit translate to canonical test accuracy? | Despite training accuracy climbing to 0.44–0.86, canonical Class-A test accuracy stays ~0.09. | **Qualified readers fail transfer (AD-B)**; large train-to-test gap. |
 | **Exp AE (Fit vs. Transfer)** | Do qualified readers learn transferable rules on held-out operands? | GRU and TCN fit the training pool far above baseline, but held-out operand accuracy stays at/below baseline (0.116). | **Fit-without-transfer (AE)**; readers memorize training pairs without general rule induction. |
+| **Exp AF (Task Difficulty Stratification)** | Does raw-interface target identifiability drop on held-out strata? | Every held-out operand stratum retains $\approx 1.0$ Bayes ceiling matching the all-ADD baseline. | **Task limitation not indicated (AF)**; interface contains signal across all strata. |
 
 ---
 
@@ -237,7 +250,7 @@ Phase 10: Future NLP & Semantic Interface Boundary
 
 ### Staging Rationale & Decision Gates
 1. **Phases 4 through 7 are decoupled:** Branching is evaluated alone (Phase 4), before deterministic verification (Phase 5), before learned verifiers (Phase 6), before transactional commits (Phase 7).
-2. **Current Decision Rule:** Phase 2+ machinery remains **deferred in code** while the core representation and sequence learning bottlenecks exposed by Experiments G–AE are analyzed and resolved.
+2. **Current Decision Rule:** Phase 2+ machinery remains **deferred in code** while the core representation and sequence learning bottlenecks exposed by Experiments G–AF are analyzed and resolved.
 
 ---
 
@@ -292,6 +305,8 @@ re-reason/
 ├── tests/                              # Unit, integration, and governance tests
 │   ├── test_documentation_governance.py# SHA-256 hash baseline integrity test
 │   └── test_experiment_*.py            # Experiment validation suites
+├── LICENSE                             # MIT License
+├── pyproject.toml                      # Package build configuration
 └── PROJECT_PLAN.md                     # Master project index and operational status
 ```
 
@@ -359,7 +374,7 @@ Completed research documentation in this repository is **historical and append-o
 * **Current Validated Synthesis (`docs/RESEARCH_STATUS.md`):** Mutable synthesis of what the project currently believes, preserving historical context and citing specific reports.
 * **Amendments over Silent Edits:** Any correction, reinterpretation, or bug fix is appended as a dated amendment (`## Amendment — YYYY-MM-DD`).
 
-For complete policy specifications, see [docs/DOCUMENTATION_POLICY.md](file:///home/chandrabhan/Documents/Personal%20Projects/re-reason/docs/DOCUMENTATION_POLICY.md).
+For complete policy specifications, see [docs/DOCUMENTATION_POLICY.md](docs/DOCUMENTATION_POLICY.md).
 
 ---
 
