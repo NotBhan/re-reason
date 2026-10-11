@@ -156,10 +156,10 @@ $$
 The model is trained via local supervision on candidate activations rather than terminal-only loss:
 
 $$
-L_E = \text{CE}(y_T, y^*_T) + \frac{1}{|W|} \sum_{t=1}^T \sum_{r \in W_t} \text{CE}(\text{head}(C_t)_r, y^*_{t, r})
+L_E = \text{CE}(y_T, y^{\ast}_T) + \frac{1}{|W|} \sum_{t=1}^T \sum_{r \in W_t} \text{CE}(\text{head}(C_t)_r, y^{\ast}_{t, r})
 $$
 
-where $W_t$ is the set of registers written at step $t$, $\text{head}(C_t)_r$ is the linear decision head applied directly to candidate vector $C_t$, and $y^*_{t, r}$ is the ground-truth value.
+where $W_t$ is the set of registers written at step $t$, $\text{head}(C_t)_r$ is the linear decision head applied directly to candidate vector $C_t$, and $y^{\ast}_{t, r}$ is the ground-truth value.
 
 * **Impact:** Lifted Register Tracking $T=10$ Exact Match from **$0.540 \pm 0.018$** (Terminal-only $L_A$) to **$0.755 \pm 0.019$** (Candidate/Local $L_E$).
 * **Extrapolation:** Zero-shot $T=20$ Exact Match reaches **$0.407 \pm 0.023$**.
