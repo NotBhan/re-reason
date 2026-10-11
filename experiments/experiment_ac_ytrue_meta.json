@@ -1,0 +1,969 @@
+{
+  "experiment": "AC \u2014 TCN re-qualification on the ADD y_true target",
+  "target": "y_true",
+  "n_classes": 10,
+  "readers": [
+    "TCN",
+    "GRU"
+  ],
+  "histories": [
+    "L4",
+    "Lfull"
+  ],
+  "subset_size": 256,
+  "subset_seed": 20261010,
+  "held_out_pairs": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      5
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      9,
+      5
+    ]
+  ],
+  "source": {
+    "z_npz": "experiments/experiment_z_op_dest.npz",
+    "z_sha256": "917dcb373d4e2cecbc0a3a2a5c888efed3d97a4dc155d8d0f411dbe2e8364931",
+    "y_npz": "experiments/experiment_y_fitting_control.npz",
+    "y_sha256": "d22f881a973aeb6925c2a66edab09c34a5625041dde40fc9eb669501de0a6de5",
+    "w_npz": "experiments/experiment_w_data_scale.npz",
+    "w_sha256": "fd7b32535401f9b70f7433bb1c8ef9ea66dfa0da21960dfc9a3d600c7df7efe6",
+    "train_sizes": [
+      1500,
+      4000,
+      10000
+    ],
+    "top_size": 10000
+  },
+  "identity": {
+    "sub256__seq_obs": {
+      "sha256": "7b889c103b3e93354d0e78dbc061fafb7f488878607554d03fc595524b90f815",
+      "shape": [
+        1280,
+        210
+      ],
+      "dtype": "float32"
+    },
+    "sub256__t": {
+      "sha256": "6a2d8dada77422ce0560540a735eac19e284f0cb4e9edd41b12716a2f26a36ca",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__y_true": {
+      "sha256": "486d5a05f84fef32a778775877bee03d2179c17fd2b1e69e31710202a41dc599",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__raw_sum": {
+      "sha256": "2fb1ca0a409225d1c6b69e8497926b6e1f4f74c199264f9d9b0f0091cf5a1e54",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__operand_a": {
+      "sha256": "56fd2a8f42902886abb0bce331173ee57491ec7e4771d33cd209508bb930c9a7",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__operand_b": {
+      "sha256": "7cba0c0ff8279c03e1431396a0a85f88ff5fd2d6aa963df621be42da5b4413fd",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__op_dest": {
+      "sha256": "3d7c4c53aace12ca6992c09f0b53b766ff0854090a8f4675bc145a9cb87593ce",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__wrap": {
+      "sha256": "2ca30b9703c8747450cc6178f9e3215f0c4808ed646588b05d7ccde7a5c52b8f",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__repeated": {
+      "sha256": "cd5179b9cb7182d0bc42f02b7dfbf1d7454db001033f4cca7b29da2c45d2b3b9",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__seq": {
+      "sha256": "bd487f0cffd386875367a36d663c4c4d67bd2cb93f060fe25399cd34cc2550c8",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__seed": {
+      "sha256": "b1f93948de6ad6546c70dc5f23002879d5d8336227dfba2e4900a2636344893e",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "sub256__pool_row": {
+      "sha256": "2613f2009b7df3b1c8a6529ecebcb6fde267c1b9adf76887fdce741ed4ce5ba7",
+      "shape": [
+        1280
+      ],
+      "dtype": "int64"
+    },
+    "val__seq_obs": {
+      "sha256": "aa4d91d4591abeedd0ac260dd61648e842ef9c0acd084558a62d0e8aff4db443",
+      "shape": [
+        4000,
+        210
+      ],
+      "dtype": "float32"
+    },
+    "val__t": {
+      "sha256": "9f04bb0db7f948dae82498a9af25937dc882ab9f54d109b0cb056f17f2847f0c",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__y_true": {
+      "sha256": "0e5cbffcacd36c76296cf99c541ecea7436a79961ab27f5ad79eb961aafd0a8a",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__raw_sum": {
+      "sha256": "b78d17ac9ecaf2d113342aa2b292c8ec295958ab4287f8a087df1efe6ff9ed4a",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__operand_a": {
+      "sha256": "e3ad61af9eed1fba9e45f8ff4783b7fadaf74a1e8b4aeecc4026c6ec04d3900f",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__operand_b": {
+      "sha256": "892e3766baf7682356750fdafad60b59742b3a013b73285c129175c2bc25ea1a",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__op_dest": {
+      "sha256": "bc9e793e4ef643d4845ccf3c0af7b8eb64a21df5bc02546ac57e023c4ba61994",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__wrap": {
+      "sha256": "14e5a17225aefe8060bdd5a1f46ba9cf312e0493b17639f046f4e8219ece68f6",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__repeated": {
+      "sha256": "76f5c24917821094ec56b6b1561654802fdffcc50cf2a7f539261791fd0ddd34",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__seq": {
+      "sha256": "54643c35cb7efd3f4e57287d36a1d4ba704f0952e25408b24ff7125df60faba6",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "val__seed": {
+      "sha256": "992948cf0e6a1f7f56de469e200b9923b3dfa216b39d0a3fe777ac862c98161f",
+      "shape": [
+        4000
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__seq_obs": {
+      "sha256": "996120a0e43bc3dc49ccbea4b63ad22dd41925415e33ca129a733e9608f064d9",
+      "shape": [
+        15763,
+        210
+      ],
+      "dtype": "float32"
+    },
+    "E_candidate__test__t": {
+      "sha256": "47109ed45600cba3f0fb7333f0bb4c2b57a8357751abc45b29eddb9630e970e5",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__y_true": {
+      "sha256": "a14b967883c1e3928ad5992e66155850edafe41afba0b8071483972d9180f05a",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__raw_sum": {
+      "sha256": "fc220a577774d57737d9becfd1ca14e4269c86dcf728bf1124d26b61a65b724a",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__operand_a": {
+      "sha256": "28cb17c07d0cc9981a5a3c534bd4cc20b7d7fc26584f810090b1f4e1065eb840",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__operand_b": {
+      "sha256": "103873ca4cbe5c89b06b917f586f1408163826d4c4b40cb6baf67d989860a11f",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__op_dest": {
+      "sha256": "b109033ffb3b9a8faf068f3cd46595a9792f553ef30194d0cced032183f665de",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__wrap": {
+      "sha256": "6b36d5c335fc843df6758a0ff0fa51db49cb7654b02ed8072881d577eac155bd",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__repeated": {
+      "sha256": "c3c3df6e9d3026ef1a6de90815ff4ce78c6cede71d9561e4e95b4d2954cb9dac",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__seq": {
+      "sha256": "8829e88e3c016e8304e8dcb3d9ddc6d3d4b2c962aa259dceadac6dd307d47c8c",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__seed": {
+      "sha256": "b9ccc591d1a5672d602c09e061fe9e82ef3d914868ef258c6a7677975c6648c2",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "E_candidate__test__cand_ok": {
+      "sha256": "185638756594631abe9400df6649778387de587d3f035ee0223b9af6f70d6af3",
+      "shape": [
+        15763
+      ],
+      "dtype": "uint8"
+    },
+    "E_candidate__test__m_cand": {
+      "sha256": "c5e6d005441b2ed1444d58630da2160bd88aa3eaf1a2fbce92191686cf9f9eee",
+      "shape": [
+        15763
+      ],
+      "dtype": "float32"
+    },
+    "E_candidate__test__norm_C": {
+      "sha256": "732b9026d4fd3365282b65411c7d8810902782e4f037b1663d87a0f38aa09d71",
+      "shape": [
+        15763
+      ],
+      "dtype": "float32"
+    },
+    "E_candidate__test__norm_dC": {
+      "sha256": "b1879a277e9cfcf9e3afc3fa1a591e7b8817f1e93f85c24f3c2f538c51ba39f9",
+      "shape": [
+        15763
+      ],
+      "dtype": "float32"
+    },
+    "F_combined__test__seq_obs": {
+      "sha256": "996120a0e43bc3dc49ccbea4b63ad22dd41925415e33ca129a733e9608f064d9",
+      "shape": [
+        15763,
+        210
+      ],
+      "dtype": "float32"
+    },
+    "F_combined__test__t": {
+      "sha256": "47109ed45600cba3f0fb7333f0bb4c2b57a8357751abc45b29eddb9630e970e5",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__y_true": {
+      "sha256": "a14b967883c1e3928ad5992e66155850edafe41afba0b8071483972d9180f05a",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__raw_sum": {
+      "sha256": "fc220a577774d57737d9becfd1ca14e4269c86dcf728bf1124d26b61a65b724a",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__operand_a": {
+      "sha256": "28cb17c07d0cc9981a5a3c534bd4cc20b7d7fc26584f810090b1f4e1065eb840",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__operand_b": {
+      "sha256": "103873ca4cbe5c89b06b917f586f1408163826d4c4b40cb6baf67d989860a11f",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__op_dest": {
+      "sha256": "b109033ffb3b9a8faf068f3cd46595a9792f553ef30194d0cced032183f665de",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__wrap": {
+      "sha256": "6b36d5c335fc843df6758a0ff0fa51db49cb7654b02ed8072881d577eac155bd",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__repeated": {
+      "sha256": "c3c3df6e9d3026ef1a6de90815ff4ce78c6cede71d9561e4e95b4d2954cb9dac",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__seq": {
+      "sha256": "8829e88e3c016e8304e8dcb3d9ddc6d3d4b2c962aa259dceadac6dd307d47c8c",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__seed": {
+      "sha256": "b9ccc591d1a5672d602c09e061fe9e82ef3d914868ef258c6a7677975c6648c2",
+      "shape": [
+        15763
+      ],
+      "dtype": "int64"
+    },
+    "F_combined__test__cand_ok": {
+      "sha256": "6f4ce25505f013dbfa783d615c5873a1c8b014e895cdd60607e1c50eec73493e",
+      "shape": [
+        15763
+      ],
+      "dtype": "uint8"
+    },
+    "F_combined__test__m_cand": {
+      "sha256": "82aac3e72b7bf1b4eb4528ab201273fc1706d2439399b8d067420c9e2ff225ea",
+      "shape": [
+        15763
+      ],
+      "dtype": "float32"
+    },
+    "F_combined__test__norm_C": {
+      "sha256": "f01c85c3a8dd66fe9cb857528f1daefbc8469d2c27d550923c109408839cb3bd",
+      "shape": [
+        15763
+      ],
+      "dtype": "float32"
+    },
+    "F_combined__test__norm_dC": {
+      "sha256": "e5b05c587483a94ea955efd63c639c5c215cc948d386b3c37967d62e2d6de943",
+      "shape": [
+        15763
+      ],
+      "dtype": "float32"
+    }
+  },
+  "class_counts": {
+    "train": {
+      "per_seed": {
+        "42": [
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          25,
+          25,
+          25,
+          25
+        ],
+        "43": [
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          25,
+          25,
+          25,
+          25
+        ],
+        "44": [
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          25,
+          25,
+          25,
+          25
+        ],
+        "45": [
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          25,
+          25,
+          25,
+          25
+        ],
+        "46": [
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          25,
+          25,
+          25,
+          25
+        ]
+      },
+      "pooled": [
+        130,
+        130,
+        130,
+        130,
+        130,
+        130,
+        125,
+        125,
+        125,
+        125
+      ]
+    },
+    "val": {
+      "per_seed": {},
+      "pooled": [
+        1194,
+        269,
+        412,
+        231,
+        380,
+        241,
+        400,
+        240,
+        400,
+        233
+      ]
+    },
+    "test": {
+      "E_candidate": [
+        4565,
+        959,
+        1551,
+        972,
+        1550,
+        967,
+        1586,
+        974,
+        1642,
+        997
+      ],
+      "F_combined": [
+        4565,
+        959,
+        1551,
+        972,
+        1550,
+        967,
+        1586,
+        974,
+        1642,
+        997
+      ]
+    }
+  },
+  "target_derivation": {
+    "train": {
+      "n": 1280,
+      "exact": true,
+      "rule": "(operand_a + operand_b) mod 10"
+    },
+    "val": {
+      "n": 4000,
+      "exact": true,
+      "rule": "(operand_a + operand_b) mod 10"
+    },
+    "E_candidate_test": {
+      "n": 15763,
+      "exact": true,
+      "rule": "(operand_a + operand_b) mod 10"
+    },
+    "F_combined_test": {
+      "n": 15763,
+      "exact": true,
+      "rule": "(operand_a + operand_b) mod 10"
+    }
+  },
+  "heldout_exclusion": {
+    "train": {
+      "n": 1280,
+      "n_with_b_in_{0,5}": 0,
+      "excluded_pairs_b": [
+        0,
+        5
+      ]
+    }
+  },
+  "disjointness": {
+    "subset_vs_val": 0,
+    "subset_vs_E_candidate_test": 0,
+    "val_vs_E_candidate_test": 0,
+    "subset_vs_F_combined_test": 0,
+    "val_vs_F_combined_test": 0
+  },
+  "preflight": {
+    "TCN_L4": {
+      "name": "TCN_L4",
+      "reader": "TCN",
+      "n_trainable_params": 28506,
+      "expected_params": 28506,
+      "n_param_tensors": 10,
+      "all_in_optimizer": true,
+      "all_requires_grad": true,
+      "loss_before": 2.3062119483947754,
+      "loss_after": 2.302805185317993,
+      "loss_decreased": true,
+      "loss_finite": true,
+      "aggregate_grad_norm": 0.030212249429838755,
+      "grad_finite": true,
+      "per_stage_grad": {
+        "conv0": {
+          "grad_norm": 0.001247579709633933,
+          "n_elements": 3484,
+          "zero_grad_fraction": 0.054247990815154995,
+          "dead": false
+        },
+        "conv1": {
+          "grad_norm": 0.0019287361042653285,
+          "n_elements": 8164,
+          "zero_grad_fraction": 0.3968642822146007,
+          "dead": false
+        },
+        "conv2": {
+          "grad_norm": 0.0029981187418444796,
+          "n_elements": 8164,
+          "zero_grad_fraction": 0.8047525722684958,
+          "dead": false
+        },
+        "conv3": {
+          "grad_norm": 0.012229448611048669,
+          "n_elements": 8164,
+          "zero_grad_fraction": 0.8722439980401764,
+          "dead": false
+        },
+        "head": {
+          "grad_norm": 0.02736704968019984,
+          "n_elements": 530,
+          "zero_grad_fraction": 0.39622641509433965,
+          "dead": false
+        }
+      },
+      "per_stage_update": {
+        "conv0": {
+          "delta_norm": 2.8105574334651062,
+          "max_relative_update": 0.6969392617871778,
+          "effectively_unchanged": false
+        },
+        "conv1": {
+          "delta_norm": 3.790417438728013,
+          "max_relative_update": 0.9096480518200111,
+          "effectively_unchanged": false
+        },
+        "conv2": {
+          "delta_norm": 3.811482913897433,
+          "max_relative_update": 0.9308137423506315,
+          "effectively_unchanged": false
+        },
+        "conv3": {
+          "delta_norm": 3.7992014190852337,
+          "max_relative_update": 0.9133682458838542,
+          "effectively_unchanged": false
+        },
+        "head": {
+          "delta_norm": 1.1052804463115555,
+          "max_relative_update": 0.6092388064952141,
+          "effectively_unchanged": false
+        }
+      },
+      "dead_stages": [],
+      "any_parameter_updated": true,
+      "logit_change": 3.4019651412963867,
+      "diagnostic_steps": 20,
+      "lr": 0.003,
+      "weight_decay": 0.01,
+      "n": 256,
+      "passed": true
+    },
+    "TCN_Lfull": {
+      "name": "TCN_Lfull",
+      "reader": "TCN",
+      "n_trainable_params": 28506,
+      "expected_params": 28506,
+      "n_param_tensors": 10,
+      "all_in_optimizer": true,
+      "all_requires_grad": true,
+      "loss_before": 2.306015968322754,
+      "loss_after": 2.302774667739868,
+      "loss_decreased": true,
+      "loss_finite": true,
+      "aggregate_grad_norm": 0.0307440527255433,
+      "grad_finite": true,
+      "per_stage_grad": {
+        "conv0": {
+          "grad_norm": 0.002257056531326678,
+          "n_elements": 3484,
+          "zero_grad_fraction": 0.022101033295063147,
+          "dead": false
+        },
+        "conv1": {
+          "grad_norm": 0.00352784010184373,
+          "n_elements": 8164,
+          "zero_grad_fraction": 0.06467417932386085,
+          "dead": false
+        },
+        "conv2": {
+          "grad_norm": 0.005530074408841769,
+          "n_elements": 8164,
+          "zero_grad_fraction": 0.35730034296913277,
+          "dead": false
+        },
+        "conv3": {
+          "grad_norm": 0.012215660219316972,
+          "n_elements": 8164,
+          "zero_grad_fraction": 0.7323615874571289,
+          "dead": false
+        },
+        "head": {
+          "grad_norm": 0.0273468963588206,
+          "n_elements": 530,
+          "zero_grad_fraction": 0.39622641509433965,
+          "dead": false
+        }
+      },
+      "per_stage_update": {
+        "conv0": {
+          "delta_norm": 2.8108058586837057,
+          "max_relative_update": 0.697388112081694,
+          "effectively_unchanged": false
+        },
+        "conv1": {
+          "delta_norm": 3.79067426629723,
+          "max_relative_update": 0.9096925545397302,
+          "effectively_unchanged": false
+        },
+        "conv2": {
+          "delta_norm": 3.811124465196654,
+          "max_relative_update": 0.9109525047256255,
+          "effectively_unchanged": false
+        },
+        "conv3": {
+          "delta_norm": 3.799471455540673,
+          "max_relative_update": 0.9133944630683908,
+          "effectively_unchanged": false
+        },
+        "head": {
+          "delta_norm": 1.1066057130340867,
+          "max_relative_update": 0.6099844799418207,
+          "effectively_unchanged": false
+        }
+      },
+      "dead_stages": [],
+      "any_parameter_updated": true,
+      "logit_change": 3.4618895053863525,
+      "diagnostic_steps": 20,
+      "lr": 0.003,
+      "weight_decay": 0.01,
+      "n": 256,
+      "passed": true
+    },
+    "GRU_L4": {
+      "name": "GRU_L4",
+      "reader": "GRU",
+      "n_trainable_params": 28655,
+      "expected_params": 28655,
+      "n_param_tensors": 6,
+      "all_in_optimizer": true,
+      "all_requires_grad": true,
+      "loss_before": 2.305919885635376,
+      "loss_after": 2.256962537765503,
+      "loss_decreased": true,
+      "loss_finite": true,
+      "aggregate_grad_norm": 0.05272050095270128,
+      "grad_finite": true,
+      "per_stage_grad": {
+        "gru": {
+          "grad_norm": 0.03324190705633684,
+          "n_elements": 27795,
+          "zero_grad_fraction": 0.0,
+          "dead": false
+        },
+        "head": {
+          "grad_norm": 0.040919760947024604,
+          "n_elements": 860,
+          "zero_grad_fraction": 0.0,
+          "dead": false
+        }
+      },
+      "per_stage_update": {
+        "gru": {
+          "delta_norm": 7.701697446018542,
+          "max_relative_update": 0.7400560066639094,
+          "effectively_unchanged": false
+        },
+        "head": {
+          "delta_norm": 1.338027612824433,
+          "max_relative_update": 0.7349052679850585,
+          "effectively_unchanged": false
+        }
+      },
+      "dead_stages": [],
+      "any_parameter_updated": true,
+      "logit_change": 6.045098304748535,
+      "diagnostic_steps": 20,
+      "lr": 0.003,
+      "weight_decay": 0.01,
+      "n": 256,
+      "passed": true
+    },
+    "GRU_Lfull": {
+      "name": "GRU_Lfull",
+      "reader": "GRU",
+      "n_trainable_params": 28655,
+      "expected_params": 28655,
+      "n_param_tensors": 6,
+      "all_in_optimizer": true,
+      "all_requires_grad": true,
+      "loss_before": 2.306382179260254,
+      "loss_after": 2.256378173828125,
+      "loss_decreased": true,
+      "loss_finite": true,
+      "aggregate_grad_norm": 0.05620449960452067,
+      "grad_finite": true,
+      "per_stage_grad": {
+        "gru": {
+          "grad_norm": 0.0361331211440172,
+          "n_elements": 27795,
+          "zero_grad_fraction": 0.0,
+          "dead": false
+        },
+        "head": {
+          "grad_norm": 0.04305047423880881,
+          "n_elements": 860,
+          "zero_grad_fraction": 0.0,
+          "dead": false
+        }
+      },
+      "per_stage_update": {
+        "gru": {
+          "delta_norm": 7.697979987778218,
+          "max_relative_update": 0.7401915099966806,
+          "effectively_unchanged": false
+        },
+        "head": {
+          "delta_norm": 1.3243555674807534,
+          "max_relative_update": 0.72750760654808,
+          "effectively_unchanged": false
+        }
+      },
+      "dead_stages": [],
+      "any_parameter_updated": true,
+      "logit_change": 6.188851833343506,
+      "diagnostic_steps": 20,
+      "lr": 0.003,
+      "weight_decay": 0.01,
+      "n": 256,
+      "passed": true
+    }
+  },
+  "models": {
+    "E_candidate": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+          "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1"
+        },
+        "43": {
+          "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+          "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa"
+        },
+        "44": {
+          "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+          "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a"
+        },
+        "45": {
+          "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+          "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8"
+        },
+        "46": {
+          "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+          "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d"
+        }
+      }
+    },
+    "F_combined": {
+      "checkpoints": {
+        "42": {
+          "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+          "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b"
+        },
+        "43": {
+          "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+          "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546"
+        },
+        "44": {
+          "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+          "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72"
+        },
+        "45": {
+          "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+          "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef"
+        },
+        "46": {
+          "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+          "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953"
+        }
+      }
+    }
+  },
+  "preflight_pass": true,
+  "n": {
+    "subset": 1280,
+    "subset_per_seed": 256,
+    "val": 4000,
+    "E_candidate__test": 15763,
+    "F_combined__test": 15763
+  },
+  "date": "2026-10-10 21:10:38"
+}

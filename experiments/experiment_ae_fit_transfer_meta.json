@@ -1,0 +1,123 @@
+{
+  "experiment": "AE \u2014 baseline-aware fit-transfer diagnostic (AD adamw condition)",
+  "date": "2026-10-11 18:54:19",
+  "source": {
+    "ad_npz": "experiments/experiment_ad_qualified_access.npz",
+    "ad_npz_sha256": "5a37a028f92c1f9c5aeec1f2c504a0ff8dba0d9daeb6a7107d52a58d66cf8298",
+    "ad_meta": "experiments/experiment_ad_qualified_access_meta.json",
+    "ad_meta_sha256": "0583ed42eae52e9b1926be0f87bb3c4a8455cd25f38686e49e7b0bd029e565df",
+    "ad_raw": "experiments/experiment_ad_grid_raw.json",
+    "ad_raw_sha256": "9e666e25d56c378080b67efb32880e046249e51a8d1773ee2e90f92cb42bbdf6",
+    "v_npz": "experiments/experiment_v_sequence_access.npz",
+    "v_npz_sha256": "b985c386653538cd8312f6fdd0983330f5bee6b8c256718145492c1ae2a55494",
+    "v_sha256_recorded_in_ad_meta": "b985c386653538cd8312f6fdd0983330f5bee6b8c256718145492c1ae2a55494",
+    "ad_v_array_identity": true
+  },
+  "condition": "adamw",
+  "reused_retained_states": false,
+  "reproduction_plan": "AD retained the best-on-VAL accuracy metrics and train/val trajectories but NO state dictionaries, so the selected reader states cannot be reused. AE deterministically reproduces the exact AdamW fits with AD's trainer (ab.train_ab), V's source arrays, V's deterministic reader-seed convention (av.reader_seed) and the AB-qualified adamw condition (lr 3e-3, wd 1e-2, 200 full-batch updates, best-on-VAL selection). No optimizer condition, initialization change, target, loss or tuning is added; only `adamw` is reproduced.",
+  "inspection": {
+    "n_parts": 120,
+    "fit_keys": [
+      "best_val",
+      "best_val_acc",
+      "best_val_update",
+      "cond",
+      "final",
+      "finite",
+      "init",
+      "init_hash",
+      "n_train",
+      "opt",
+      "params",
+      "rep",
+      "train_acc_final",
+      "val_acc_final",
+      "variant"
+    ],
+    "has_state_dict": false,
+    "retained_metrics": [
+      "best_val_acc",
+      "best_val_update",
+      "train_acc_final",
+      "val_acc_final",
+      "best_val.acc",
+      "best_val.train_acc",
+      "best_val.val_acc",
+      "events"
+    ],
+    "retained_seen_heldout": true,
+    "conditions": [
+      "adam_ref",
+      "adamw"
+    ],
+    "readers": [
+      "GRU",
+      "TCN"
+    ],
+    "variants": [
+      "heldout",
+      "main"
+    ]
+  },
+  "invariants_ok": true,
+  "checkpoints": {
+    "E_candidate": {
+      "42": {
+        "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+        "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+        "unchanged_after_run": true
+      },
+      "43": {
+        "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+        "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+        "unchanged_after_run": true
+      },
+      "44": {
+        "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+        "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+        "unchanged_after_run": true
+      },
+      "45": {
+        "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+        "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+        "unchanged_after_run": true
+      },
+      "46": {
+        "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+        "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+        "unchanged_after_run": true
+      }
+    },
+    "F_combined": {
+      "42": {
+        "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+        "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+        "unchanged_after_run": true
+      },
+      "43": {
+        "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+        "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+        "unchanged_after_run": true
+      },
+      "44": {
+        "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+        "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+        "unchanged_after_run": true
+      },
+      "45": {
+        "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+        "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+        "unchanged_after_run": true
+      },
+      "46": {
+        "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+        "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+        "unchanged_after_run": true
+      }
+    }
+  },
+  "post_run": {
+    "all_checkpoints_unchanged": true
+  }
+}
