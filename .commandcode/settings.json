@@ -16,5 +16,6 @@
     ],
     "deny": [],
     "defaultMode": "default"
-  }
+  },
+  "tasteLearning": true
 }
