@@ -1,0 +1,141 @@
+{
+  "experiment": "AF \u2014 held-out operand task-difficulty stratification",
+  "date": "2026-10-11 21:07:14",
+  "source": {
+    "ad_npz": "experiments/experiment_ad_qualified_access.npz",
+    "ad_npz_sha256": "5a37a028f92c1f9c5aeec1f2c504a0ff8dba0d9daeb6a7107d52a58d66cf8298",
+    "ad_meta_sha256": "0583ed42eae52e9b1926be0f87bb3c4a8455cd25f38686e49e7b0bd029e565df",
+    "v_npz": "experiments/experiment_v_sequence_access.npz",
+    "v_npz_sha256": "b985c386653538cd8312f6fdd0983330f5bee6b8c256718145492c1ae2a55494",
+    "ad_v_array_identity": true
+  },
+  "estimator": "U's exact-interface machinery (analyze_experiment_u: history_features, exact_bayes)",
+  "trained_anything": false,
+  "held_out_b": [
+    0,
+    5
+  ],
+  "held_out_pairs": 20,
+  "masks": {
+    "E_candidate": {
+      "42": {
+        "classA": 448,
+        "correct": 2751,
+        "all_add": 3199,
+        "heldout_rows": 1568,
+        "heldout_pairs": 20
+      },
+      "43": {
+        "classA": 330,
+        "correct": 2866,
+        "all_add": 3196,
+        "heldout_rows": 1620,
+        "heldout_pairs": 20
+      },
+      "44": {
+        "classA": 363,
+        "correct": 2808,
+        "all_add": 3171,
+        "heldout_rows": 1626,
+        "heldout_pairs": 20
+      },
+      "45": {
+        "classA": 327,
+        "correct": 2798,
+        "all_add": 3125,
+        "heldout_rows": 1595,
+        "heldout_pairs": 20
+      },
+      "46": {
+        "classA": 337,
+        "correct": 2735,
+        "all_add": 3072,
+        "heldout_rows": 1533,
+        "heldout_pairs": 20
+      }
+    },
+    "F_combined": {
+      "42": {
+        "classA": 367,
+        "correct": 2832,
+        "all_add": 3199,
+        "heldout_rows": 1568,
+        "heldout_pairs": 20
+      },
+      "43": {
+        "classA": 347,
+        "correct": 2849,
+        "all_add": 3196,
+        "heldout_rows": 1620,
+        "heldout_pairs": 20
+      },
+      "44": {
+        "classA": 358,
+        "correct": 2813,
+        "all_add": 3171,
+        "heldout_rows": 1626,
+        "heldout_pairs": 20
+      },
+      "45": {
+        "classA": 328,
+        "correct": 2797,
+        "all_add": 3125,
+        "heldout_rows": 1595,
+        "heldout_pairs": 20
+      },
+      "46": {
+        "classA": 423,
+        "correct": 2649,
+        "all_add": 3072,
+        "heldout_rows": 1533,
+        "heldout_pairs": 20
+      }
+    }
+  },
+  "invariants_ok": true,
+  "checkpoints": {
+    "E_candidate|42": {
+      "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+      "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1"
+    },
+    "E_candidate|43": {
+      "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+      "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa"
+    },
+    "E_candidate|44": {
+      "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+      "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a"
+    },
+    "E_candidate|45": {
+      "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+      "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8"
+    },
+    "E_candidate|46": {
+      "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+      "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d"
+    },
+    "F_combined|42": {
+      "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+      "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b"
+    },
+    "F_combined|43": {
+      "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+      "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546"
+    },
+    "F_combined|44": {
+      "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+      "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72"
+    },
+    "F_combined|45": {
+      "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+      "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef"
+    },
+    "F_combined|46": {
+      "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+      "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953"
+    }
+  },
+  "post_run": {
+    "all_checkpoints_unchanged": true
+  }
+}

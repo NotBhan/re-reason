@@ -31,6 +31,7 @@
     "docs/reports/experiment_ac_ytrue_requalification.md": "ee93f41fba106183c58fd38a0b34ba049ba9e5a9958e32284a89fd230de779b8",
     "docs/reports/experiment_ad_qualified_access.md": "143e6c93a7bcbd4b8647e65904e3e0793bed5da284db47df95f760bbd5b05912",
     "docs/reports/experiment_ae_fit_transfer.md": "8a5400814904517fd624f30bde088711ae2f53229009747ffd933add44cded31",
+    "docs/reports/experiment_af_task_difficulty.md": "e9461890a0f473d52ddc28dcf8a11819d08d1e18603ec86e167c11a41da0456a",
     "docs/reports/generator_repair_feasibility.md": "b572ff3b776625f90d8d4ef27972fab75c69ae56ff7a48485ec3874a270c3a38",
     "docs/reports/mechanism_audit_round2.md": "9c823379360e62467627e3ff5eefa8b92c4691522c01e2b3a9dcc24b644dd0c2",
     "docs/reports/mechanism_qa_diagnostic.md": "24d60972107170d5cf3eb02809f6d6469800670e0c5bd41416a31ebd907377f0",
@@ -161,6 +162,11 @@
       "date": "2026-10-11",
       "event": "Experiment AE completed; report docs/reports/experiment_ae_fit_transfer.md registered (no partial transfer; overall inconclusive_mixed; V-B unchanged)",
       "n_reports": 36
+    },
+    {
+      "date": "2026-10-11",
+      "event": "Experiment AF completed; report docs/reports/experiment_af_task_difficulty.md registered (task_side_limitation_not_indicated; held-out strata retain ≈1.0 raw-interface identifiability)",
+      "n_reports": 37
     }
   ]
 }
