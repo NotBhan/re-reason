@@ -33,6 +33,7 @@
     "docs/reports/experiment_ae_fit_transfer.md": "8a5400814904517fd624f30bde088711ae2f53229009747ffd933add44cded31",
     "docs/reports/experiment_af_task_difficulty.md": "e9461890a0f473d52ddc28dcf8a11819d08d1e18603ec86e167c11a41da0456a",
     "docs/reports/experiment_ag_training_pool_stress.md": "1e4befa6cb9e4979e2af0b60b5a555e8a22ddde66cdbaedd74a09e598a21a053",
+    "docs/reports/experiment_ah_capacity_ladder.md": "cd7edfea330e2b4d6d4a2d21e08a96b2f96878ad2dde003f391254cf6f7f831f",
     "docs/reports/generator_repair_feasibility.md": "b572ff3b776625f90d8d4ef27972fab75c69ae56ff7a48485ec3874a270c3a38",
     "docs/reports/mechanism_audit_round2.md": "9c823379360e62467627e3ff5eefa8b92c4691522c01e2b3a9dcc24b644dd0c2",
     "docs/reports/mechanism_qa_diagnostic.md": "24d60972107170d5cf3eb02809f6d6469800670e0c5bd41416a31ebd907377f0",
@@ -173,6 +174,11 @@
       "date": "2026-10-11",
       "event": "Experiment AG completed; report docs/reports/experiment_ag_training_pool_stress.md registered (inconclusive_mixed; no sampling policy improves held-out transfer; V-A not reached)",
       "n_reports": 38
+    },
+    {
+      "date": "2026-10-12",
+      "event": "Experiment AH completed; report docs/reports/experiment_ah_capacity_ladder.md registered (H2_fit_without_transfer / AH-B: fit-transfer gap capacity-insensitive over the width ladder; H1 falsified; V-A not reached, V-B unchanged)",
+      "n_reports": 39
     }
   ]
 }

@@ -1,0 +1,293 @@
+{
+  "experiment": "AH \u2014 bounded-reader capacity / inductive-bias sensitivity at V's scale",
+  "date": "2026-10-12 17:23:38",
+  "verification_timestamp": "2026-10-12 17:23:38",
+  "source": {
+    "ad_npz": "experiments/experiment_ad_qualified_access.npz",
+    "ad_npz_sha256": "5a37a028f92c1f9c5aeec1f2c504a0ff8dba0d9daeb6a7107d52a58d66cf8298",
+    "ad_meta": "experiments/experiment_ad_qualified_access_meta.json",
+    "ad_meta_sha256": "0583ed42eae52e9b1926be0f87bb3c4a8455cd25f38686e49e7b0bd029e565df",
+    "v_npz": "experiments/experiment_v_sequence_access.npz",
+    "v_npz_sha256": "b985c386653538cd8312f6fdd0983330f5bee6b8c256718145492c1ae2a55494",
+    "ad_v_array_identity": true,
+    "array_sha256_verified": 108
+  },
+  "trained_anything": false,
+  "protocol_matches_v": {
+    "readers": [
+      "GRU",
+      "TCN"
+    ],
+    "histories": [
+      "L4",
+      "Lfull"
+    ],
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "held_out_b": [
+    0,
+    5
+  ],
+  "grid": {
+    "definition": "2 readers x 5 widths x 2 histories (L4, Lfull) x 5 seeds = 100 fits",
+    "n_readers": 2,
+    "n_widths": 5,
+    "n_histories": 2,
+    "n_seeds": 5,
+    "n_fits": 100
+  },
+  "capacity_ladder": {
+    "cap_ratio": 4.0,
+    "n_levels": 5,
+    "indim": 22,
+    "kernel": 3,
+    "n_causal_layers": 4,
+    "nclass_primary": 10,
+    "max_nclass": 19,
+    "u_mlp128_budget": 29578,
+    "levels": [
+      {
+        "level_key": "small",
+        "level_name": "Small",
+        "gru_hidden": 42,
+        "tcn_channels": 26,
+        "gru_params": 8746,
+        "tcn_params": 8174,
+        "gru_params_max_nclass": 9133,
+        "tcn_params_max_nclass": 8417,
+        "gru_ratio_vs_baseline": 0.30521723957424535,
+        "tcn_ratio_vs_baseline": 0.2867466498281064,
+        "gru_ratio_vs_baseline_max_nclass": 0.31034014067756294,
+        "tcn_ratio_vs_baseline_max_nclass": 0.29041162060518233,
+        "within_cap": true,
+        "within_cap_max_nclass": true
+      },
+      {
+        "level_key": "medium_small",
+        "level_name": "Medium-small",
+        "gru_hidden": 60,
+        "tcn_channels": 37,
+        "gru_params": 15730,
+        "tcn_params": 15291,
+        "gru_params_max_nclass": 16279,
+        "tcn_params_max_nclass": 15633,
+        "gru_ratio_vs_baseline": 0.5489443378119002,
+        "tcn_ratio_vs_baseline": 0.5364133866554409,
+        "gru_ratio_vs_baseline_max_nclass": 0.5531618471575657,
+        "tcn_ratio_vs_baseline_max_nclass": 0.5393851568160646,
+        "within_cap": true,
+        "within_cap_max_nclass": true
+      },
+      {
+        "level_key": "baseline",
+        "level_name": "Baseline",
+        "gru_hidden": 85,
+        "tcn_channels": 52,
+        "gru_params": 28655,
+        "tcn_params": 28506,
+        "gru_params_max_nclass": 29429,
+        "tcn_params_max_nclass": 28983,
+        "gru_ratio_vs_baseline": 1.0,
+        "tcn_ratio_vs_baseline": 1.0,
+        "gru_ratio_vs_baseline_max_nclass": 1.0,
+        "tcn_ratio_vs_baseline_max_nclass": 1.0,
+        "within_cap": true,
+        "within_cap_max_nclass": true
+      },
+      {
+        "level_key": "medium_large",
+        "level_name": "Medium-large",
+        "gru_hidden": 120,
+        "tcn_channels": 74,
+        "gru_params": 53050,
+        "tcn_params": 55214,
+        "gru_params_max_nclass": 54139,
+        "tcn_params_max_nclass": 55889,
+        "gru_ratio_vs_baseline": 1.8513348455766883,
+        "tcn_ratio_vs_baseline": 1.9369255595313268,
+        "gru_ratio_vs_baseline_max_nclass": 1.839647966291753,
+        "tcn_ratio_vs_baseline_max_nclass": 1.9283373011765517,
+        "within_cap": true,
+        "within_cap_max_nclass": true
+      },
+      {
+        "level_key": "large",
+        "level_name": "Large",
+        "gru_hidden": 170,
+        "tcn_channels": 104,
+        "gru_params": 100650,
+        "tcn_params": 105674,
+        "gru_params_max_nclass": 102189,
+        "tcn_params_max_nclass": 106619,
+        "gru_ratio_vs_baseline": 3.512476007677543,
+        "tcn_ratio_vs_baseline": 3.7070792113940927,
+        "gru_ratio_vs_baseline_max_nclass": 3.472391178769241,
+        "tcn_ratio_vs_baseline_max_nclass": 3.6786737052755063,
+        "within_cap": true,
+        "within_cap_max_nclass": true
+      }
+    ],
+    "all_levels_within_cap": true,
+    "baseline_reproduces_v_architecture": true,
+    "max_ratio_vs_baseline": 3.7070792113940927
+  },
+  "eligible_pool": {
+    "definition": "trainord rows with operand_b not in {0, 5}",
+    "held_out_b": [
+      0,
+      5
+    ],
+    "held_out_pairs_excluded": 20,
+    "expected_size_range": [
+      741,
+      781
+    ],
+    "models": {
+      "E_candidate": {
+        "42": {
+          "trainord_rows": 1500,
+          "eligible": 746,
+          "heldout_excluded": 754,
+          "in_range": true
+        },
+        "43": {
+          "trainord_rows": 1500,
+          "eligible": 741,
+          "heldout_excluded": 759,
+          "in_range": true
+        },
+        "44": {
+          "trainord_rows": 1500,
+          "eligible": 759,
+          "heldout_excluded": 741,
+          "in_range": true
+        },
+        "45": {
+          "trainord_rows": 1500,
+          "eligible": 781,
+          "heldout_excluded": 719,
+          "in_range": true
+        },
+        "46": {
+          "trainord_rows": 1500,
+          "eligible": 753,
+          "heldout_excluded": 747,
+          "in_range": true
+        }
+      },
+      "F_combined": {
+        "42": {
+          "trainord_rows": 1500,
+          "eligible": 746,
+          "heldout_excluded": 754,
+          "in_range": true
+        },
+        "43": {
+          "trainord_rows": 1500,
+          "eligible": 741,
+          "heldout_excluded": 759,
+          "in_range": true
+        },
+        "44": {
+          "trainord_rows": 1500,
+          "eligible": 759,
+          "heldout_excluded": 741,
+          "in_range": true
+        },
+        "45": {
+          "trainord_rows": 1500,
+          "eligible": 781,
+          "heldout_excluded": 719,
+          "in_range": true
+        },
+        "46": {
+          "trainord_rows": 1500,
+          "eligible": 753,
+          "heldout_excluded": 747,
+          "in_range": true
+        }
+      }
+    },
+    "e_f_eligible_pool_identical": {
+      "42": true,
+      "43": true,
+      "44": true,
+      "45": true,
+      "46": true
+    }
+  },
+  "invariants_ok": true,
+  "checkpoints": {
+    "E_candidate|42": {
+      "path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+      "sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1",
+      "ad_recorded_path": "experiments/checkpoints/E_candidate_seed42_3000steps.pt",
+      "ad_recorded_sha256": "ad486f4a4daf53a88a5a6ea9c816fffc232646933f769be9fbaadc5ce1a898a1"
+    },
+    "E_candidate|43": {
+      "path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+      "sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa",
+      "ad_recorded_path": "experiments/checkpoints/E_candidate_seed43_3000steps.pt",
+      "ad_recorded_sha256": "873e71ba8a9afa248b406b63d7109e902f3b30195aa3d040e34111e888476eaa"
+    },
+    "E_candidate|44": {
+      "path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+      "sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a",
+      "ad_recorded_path": "experiments/checkpoints/E_candidate_seed44_3000steps.pt",
+      "ad_recorded_sha256": "0db0d30c2051b66abe4364b4e2cc50f66d44cf860c44189de3cf9c2f92fef39a"
+    },
+    "E_candidate|45": {
+      "path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+      "sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8",
+      "ad_recorded_path": "experiments/checkpoints/E_candidate_seed45_3000steps.pt",
+      "ad_recorded_sha256": "08029624347f865f739705277be0c903dbf5f47439312d760a2c251e4d2657c8"
+    },
+    "E_candidate|46": {
+      "path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+      "sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d",
+      "ad_recorded_path": "experiments/checkpoints/E_candidate_seed46_3000steps.pt",
+      "ad_recorded_sha256": "c0835e9538db123dc4931c5bcacfea1f65cd34feacbeb68b3823fffef071ec3d"
+    },
+    "F_combined|42": {
+      "path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+      "sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b",
+      "ad_recorded_path": "experiments/checkpoints/F_combined_seed42_3000steps.pt",
+      "ad_recorded_sha256": "12bf49020ddc232773f656b35a568abb9e8369d07a02ed9d288247a8ed832d7b"
+    },
+    "F_combined|43": {
+      "path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+      "sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546",
+      "ad_recorded_path": "experiments/checkpoints/F_combined_seed43_3000steps.pt",
+      "ad_recorded_sha256": "e9624918d81226fab0611a974e3de974f415b97da7032ade85a305a1736bc546"
+    },
+    "F_combined|44": {
+      "path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+      "sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72",
+      "ad_recorded_path": "experiments/checkpoints/F_combined_seed44_3000steps.pt",
+      "ad_recorded_sha256": "b7d9e80a70d4824293a17d13c7aef4615a7a2da24ad13a61929c3b15e03d1e72"
+    },
+    "F_combined|45": {
+      "path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+      "sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef",
+      "ad_recorded_path": "experiments/checkpoints/F_combined_seed45_3000steps.pt",
+      "ad_recorded_sha256": "f3618ef42dc2cbfecc83c93956774307ae49ec769f6422d45b14d322c69965ef"
+    },
+    "F_combined|46": {
+      "path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+      "sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953",
+      "ad_recorded_path": "experiments/checkpoints/F_combined_seed46_3000steps.pt",
+      "ad_recorded_sha256": "18e40d771bd0ae63e7e3dbf94d4f07d6646af4f5e309994a213c9963c3d2c953"
+    }
+  },
+  "post_run": {
+    "all_checkpoints_unchanged": true,
+    "v_npz_sha256": "b985c386653538cd8312f6fdd0983330f5bee6b8c256718145492c1ae2a55494",
+    "ad_npz_sha256": "5a37a028f92c1f9c5aeec1f2c504a0ff8dba0d9daeb6a7107d52a58d66cf8298"
+  }
+}
