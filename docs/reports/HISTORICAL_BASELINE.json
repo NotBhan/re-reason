@@ -39,6 +39,8 @@
     "docs/reports/mechanism_qa_diagnostic.md": "24d60972107170d5cf3eb02809f6d6469800670e0c5bd41416a31ebd907377f0",
     "docs/reports/model_e_novelty_and_mechanism_audit.md": "9eba977a9f7cc76b8176b752a5cdd706611ad34257c77bac9fde226962b6bd90",
     "docs/reports/parameterization_isolation_audit.md": "f9e944fbd626c79ed9855e7f1c6d9f2dedd3f83f1e85a263197fb4d9e34cbbec",
+    "docs/reports/phase_1_6_architectural_reformulation_proposal.md": "b4210fe3a1a615139654c74ff1f2f46067faf2effc7d569c8aed8a3f3e501922",
+    "docs/reports/phase_1_evidence_synthesis.md": "ebe0352e08a5f8e4cc6763b2af64ccd0041ea6490fbf907cae4523dd086d9f3f",
     "docs/reports/phase1_5_bounded_convex_ablation_report.md": "a467030fabe5c9f66a97bd5a53c372fb3ca71dc068d3e0808eba23b390629ac3",
     "docs/reports/phase1_5_causal_ablation_report.md": "dcad4ff1e608a41e902b0f2c4ae732d80d4b10d8619b9662ea96857c6c8cba96",
     "docs/reports/phase1_overfitting_underfitting_diagnosis.md": "1529fa366a796caa70b3286b6bcfb5a750fda5597399d847a9bd8f451838e260",
@@ -179,6 +181,91 @@
       "date": "2026-10-12",
       "event": "Experiment AH completed; report docs/reports/experiment_ah_capacity_ladder.md registered (H2_fit_without_transfer / AH-B: fit-transfer gap capacity-insensitive over the width ladder; H1 falsified; V-A not reached, V-B unchanged)",
       "n_reports": 39
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1 synthesis completed; report docs/reports/phase_1_evidence_synthesis.md registered (Decision A: GO to close Phase 1 empirical cycle; Decision B: NO-GO on model modification or Phase 2)",
+      "n_reports": 40
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1 synthesis targeted audit completed; report docs/reports/phase_1_evidence_synthesis.md hash updated following accounting, scientific-claim, and reproducibility-bridge finalisation (Decision A: GO, Decision B: NO-GO)",
+      "n_reports": 40
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 architectural reformulation research proposal drafted; report docs/reports/phase_1_6_architectural_reformulation_proposal.md registered (proposal drafted, implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal specification consistency review completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following unified threshold reconciliation, cyclic candidate specification, primitive split repair, and behavioral metric alignment (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal final technical audit completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following complete Candidate 2 read-compute-write semantics, Candidate 3 state transitions, historical baseline provenance audit, joint Stage 4 success criteria, total decision classification partitioning, and deterministic Stage 1 split algorithm (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal final design freeze completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following Candidate 2 convex writer freeze, Candidate 3 auxiliary state firewall and primary configuration freeze, and Stage 1 split validation target correction covering all 10 classes (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal preregistration integrity pass completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following removal of final-test data leakage from pilot progression, specification of atomic SWAP transition for Candidate 2, validation class frequency audit, and complete compute budget reconciliation including mandatory Vanilla GRU control (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal training-protocol consistency audit completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following Stage 3 vs Stage 4 training regime reconciliation (mandating separate in-distribution Regime A and held-out masked Regime B pools to prevent data leakage and baseline asymmetry), Candidate 3 MSM auxiliary state semantics reconciliation (frozen write-event timestamps/traces replacing background decay to guarantee structural identity preservation ||Δs_r|| = 0.0), and full compute budget reconciliation across 60 parameter-training runs (< 5.0 hrs envelope) with documented 45-run alternative (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal candidate-selection preregistration decision completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following candidate-advancement policy definition (Option A 70-run full factorial recommended vs Option B 50-run advance pruning alternative; deterministic contingency ladder for 0–3 passing candidates; PI sign-off mandated at Review Gate 1), exact parameter counts reconciliation (Candidate 1: 220,806; Candidate 2: 219,018; Candidate 3: 223,126; Control 2 Vanilla GRU: 225,640; all compliant within 203,722–248,994 envelope without claiming exact matching), and feedforward timestamp recency clarification with zero background decay (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal architectural specification review completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following Candidate 1 SET input contract specification (categorical one-hot literal e(v) into 128-dim unified input with 223,414 parameters avoiding harmonic leakage), 2x2 factorial design audit (reclassifying design as 3-condition comparison under Factorial Option 1 with 70 runs vs Factorial Option 2 adding Candidate 4 with 90 runs, reserved for PI sign-off), Candidate 3 timestamp and recency mechanics clarification (distinguishing slot-modification t_{slot_write} from value-provenance t_{val_birth} timestamps, learned non-linear approximation of recency over input features, non-mutating READ, and structural untouched-slot identity), and Section 9/13 parameter reconciliation (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal pilot-interface and audit-integrity check completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following Stage 1 end-to-end canonical 3-step trace interface specification across actual register pathways, Candidate 4 parameter count arithmetic recomputation (221,138 parameters, -2.31% vs Model E) with input contract specification, and test-result integrity distinctions (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal Stage 1 protocol inconsistency resolved; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following structural separation of Stage 1 into Track 1A (trained end-to-end trace pilot for Candidate 1 & Control 2) and Track 1B (deterministic component pre-flight unit test for Candidates 2 & 3 with explicit non-claims for unexercised learned pathways) under Approach 2, and documentation of Approach 1 (+5 runs) for PI determination at Review Gate 1 (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal documentation consistency audit completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following explicit historical supersession clarification of earlier Stage 1 statements, candidate-specific separation of Track 1B-C2 (isolated cyclic ALU unit test) vs Track 1B-C3 (deterministic slot-and-arithmetic pipeline unit test) across all 5 evaluation dimensions, Vanilla GRU dual-interface parameter reconciliation (220,874 Stage 1 dedicated vs 225,704 general composed, noting historical 225,640 count), and technical contract choice formulation for PI determination at Review Gate 1 (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal final Track 1B acceptance correction completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following MSM slot preservation criterion correction (reconciling unwritten slot preservation across all non-destination slots r in {1, 2, 3} following ADD r0 r1), narrowing of MSM verification scope to primary value-coordinate slot-and-arithmetic pathway (10-dim z_r), and Candidate 2 VAL-SEEN input domain clarification (strictly 16 pairs from 80-pair seen domain with held-out test withheld) (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-13",
+      "event": "Phase 1.6 proposal final scope and dimensionality reconciliation completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following MSM measured preservation criterion reconciliation (||Δz_r|| = 0.0 on non-destination slots r in {1, 2, 3} across canonical 3-step trace, distinguishing measured value-coordinate scope from design-level ||Δs_r|| = 0.0 invariant) and Candidate 2 cyclic ALU interface contract clarification (20-dimensional concatenated operand input [Φ(a), Φ(b)] to 10-dimensional harmonic rotation output Φ((a+b) mod 10)) (Proposal under review — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-14",
+      "event": "Phase 1.6 PI design decisions and documentation freeze recorded; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following Option B adoption for Candidate 3 MSM (parameter-free deterministic analytical reference, 40-dim state, 0 parameters), research design realignment (Factorial Option 1 ratified, Candidate 4 rejected), Stage 1 protocol ratification (Approach 2 ratified), Candidate Advancement Option A ratification, Vanilla GRU dedicated 10-class head selection (220,874 parameters), and campaign budget reconciliation (55 parameter-training runs / 258.75 min + provisional 35.00 min evaluation allowance = 293.75 min total wall time, < 5.0 hrs envelope) (Proposal documentation frozen — implementation not authorized)",
+      "n_reports": 41
+    },
+    {
+      "date": "2026-10-14",
+      "event": "Phase 1.6 scientific consistency audit completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following RQ3 reformulation (evaluating two trainable candidates Slot-MGU and Cyclic-MGU against Vanilla GRU baseline and deterministic MSM exact-rule reference, with explicit non-claims on untested neural composition), Section 3 Hypothesis C deferred-curriculum realignment (retaining matched end-to-end evaluation for trainable candidates, MSM receiving 0 parameter-training runs, and contingent triggers restricted to trainable candidates upon credit-assignment failure), Section 11.2 scoped contribution claims update, and historical supersession clarification for Candidate 3 auxiliary networks (Proposal documentation frozen — implementation not authorized)",
+      "n_reports": 41
     }
   ]
 }
