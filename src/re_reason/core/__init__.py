@@ -14,6 +14,7 @@ from re_reason.state.container import BaseStateContainer, LatentState
 from re_reason.verification.base import BaseVerifier
 
 from re_reason.core.register_machine_models import (
+    Candidate1HDeterministicKernel,
     CyclicMGUPhase16Model,
     MSMDeterministicReference,
     Phase16ModelOutput,
@@ -41,6 +42,7 @@ __all__ = [
     "CyclicMGUPhase16Model",
     "VanillaGRUPhase16Model",
     "MSMDeterministicReference",
+    "Candidate1HDeterministicKernel",
     "Phase16ModelOutput",
     "cyclic_alu",
     "get_harmonic_basis",

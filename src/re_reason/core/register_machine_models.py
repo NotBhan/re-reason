@@ -652,3 +652,224 @@ class MSMDeterministicReference(nn.Module):
             final_state=state,
             step_logits=step_logits_t,
         )
+
+
+# ===========================================================================
+# Candidate 1H: Deterministic Harmonic Register-Machine Execution Kernel
+# ===========================================================================
+
+class Candidate1HDeterministicKernel(nn.Module):
+    """Candidate 1H Deterministic Execution Kernel.
+
+    Standalone parameter-free register-machine execution kernel using the 5-frequency
+    circular harmonic codebook on S^1.
+
+    Architecture and Specifications:
+    - 4 discrete register slots (M=4), each holding a 10-dimensional cyclic harmonic vector
+      Phi(v) in R^10, formed by K=5 harmonic frequencies on S^1.
+    - Initial state: All 4 registers initialized canonically to Phi(0) = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0]^T,
+      strictly matching the canonical register machine benchmark ground-state 0_4.
+    - Exact arithmetic: 2D Givens rotation matrix multiplication modulo 10 (cyclic_alu).
+    - Exact discrete routing: Einsum tensor contractions with one-hot address indicators.
+    - Exact state isolation: Registers not modified by the active instruction satisfy
+      ||Delta s_r|| == 0.000000.
+    - Primary Readout: Non-parametric codebook matching via inner-product argmax against
+      canonical basis Phi(0)..Phi(9). Zero learned temperature; zero contextual logits.
+    - Total Trainable Parameters: exactly 0.
+
+    Classification: Deterministic execution kernel / neuro-symbolic interpreter;
+    not a trained neural model.
+    """
+
+    def __init__(
+        self,
+        num_registers: int = 4,
+        num_frequencies: int = 5,
+        num_classes: int = 10,
+        eps: float = 1e-6,
+    ) -> None:
+        super().__init__()
+        self.num_registers = num_registers
+        self.num_frequencies = num_frequencies
+        self.harmonic_dim = 2 * num_frequencies  # 10
+        self.state_dim = num_registers * self.harmonic_dim  # 40
+        self.num_classes = num_classes
+        self.eps = eps
+
+        # Fixed prototype cosine bank Phi(c) in R^(10, 10), non-trainable
+        self.register_buffer("basis", get_harmonic_basis(num_classes, num_frequencies))
+
+    def count_parameters(self) -> int:
+        """Returns trainable parameters count (strictly 0)."""
+        return sum(p.numel() for p in self.parameters() if p.requires_grad)
+
+    def initial_state(self, batch_size: int = 1, device: Optional[torch.device] = None) -> torch.Tensor:
+        """Initial state S_0 where all 4 slots are initialized canonically to Phi(0). Shape: (B, 4, 10)."""
+        if device is None:
+            device = self.basis.device
+        phi_0 = self.basis[0].to(device)
+        return phi_0.unsqueeze(0).unsqueeze(0).repeat(batch_size, self.num_registers, 1)
+
+    def encode_value(self, val: int) -> torch.Tensor:
+        """Returns the canonical 10-dimensional harmonic codeword Phi(val)."""
+        if val < 0 or val >= self.num_classes:
+            raise ValueError(f"Value {val} outside valid range [0, {self.num_classes - 1}]")
+        return self.basis[val].clone()
+
+    def decode_harmonic(self, slot_harm: torch.Tensor) -> torch.Tensor:
+        """Decodes harmonic representation(s) to integer class(es) via inner product with basis.
+
+        Args:
+            slot_harm: Tensor of shape (..., 10).
+
+        Returns:
+            Decoded integer class tensor of shape (...).
+        """
+        orig_shape = slot_harm.shape[:-1]
+        flat_harm = slot_harm.reshape(-1, self.harmonic_dim)
+        dots = torch.matmul(flat_harm, self.basis.t())  # (N, 10)
+        preds = dots.argmax(dim=-1)
+        return preds.reshape(orig_shape)
+
+    def execute_instruction(
+        self,
+        state_prev: torch.Tensor,
+        op_type: int,
+        reg_dest: int,
+        reg_src: int = -1,
+        val: int = -1,
+    ) -> Tuple[torch.Tensor, int]:
+        """Executes a single discrete instruction on an individual state tensor of shape (4, 10).
+
+        Returns:
+            state_next: Updated state of shape (4, 10).
+            read_val: Integer decoded value for destination register.
+        """
+        device = state_prev.device
+        x_t = torch.zeros((1, 22), dtype=torch.float32, device=device)
+        x_t[0, op_type] = 1.0
+        x_t[0, 4 + reg_dest] = 1.0
+        if reg_src >= 0:
+            x_t[0, 8 + reg_src] = 1.0
+        if val >= 0:
+            x_t[0, 12 + val] = 1.0
+
+        state_batched = state_prev.unsqueeze(0)
+        state_next_batched, step_logits = self.forward_step(x_t, state_batched)
+        read_val = int(step_logits.argmax(dim=-1).item())
+        return state_next_batched.squeeze(0), read_val
+
+    def forward_step(
+        self,
+        x_t: torch.Tensor,
+        state_prev: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """Executes a single deterministic step across batch.
+
+        Args:
+            x_t: One-hot instruction tensor of shape (B, 22).
+                 0:4 -> op_type (SET=0, SWAP=1, READ=2, ADD=3)
+                 4:8 -> reg_dest
+                 8:12 -> reg_src
+                 12:22 -> immediate_val
+            state_prev: Harmonic register state of shape (B, 4, 10).
+
+        Returns:
+            state_next: Updated register state of shape (B, 4, 10).
+            step_logits: Codebook projection logits of shape (B, 10) on destination register.
+        """
+        e_op = x_t[:, 0:4]      # (B, 4)
+        e_dest = x_t[:, 4:8]    # (B, 4)
+        e_src = x_t[:, 8:12]    # (B, 4)
+        e_val = x_t[:, 12:22]   # (B, 10)
+
+        # 1. Extract operand representations
+        u_a = torch.einsum("br,brd->bd", e_dest, state_prev)  # (B, 10)
+        u_b = torch.einsum("br,brd->bd", e_src, state_prev)   # (B, 10)
+
+        # 2. SET payload: immediate value embedding Phi(val)
+        val_embed = torch.einsum("bv,vd->bd", e_val, self.basis)  # (B, 10)
+
+        # 3. ADD payload: exact cyclic Givens rotation
+        c_add = cyclic_alu(u_a, u_b, self.num_frequencies, self.eps)  # (B, 10)
+
+        # Operation indicators
+        w_set = e_op[:, 0:1].unsqueeze(-1)    # (B, 1, 1)
+        w_swap = e_op[:, 1:2].unsqueeze(-1)   # (B, 1, 1)
+        w_read = e_op[:, 2:3].unsqueeze(-1)   # (B, 1, 1)
+        w_add = e_op[:, 3:4].unsqueeze(-1)    # (B, 1, 1)
+
+        mask_dest = e_dest.unsqueeze(-1)  # (B, 4, 1)
+        mask_src = e_src.unsqueeze(-1)    # (B, 4, 1)
+
+        # SET: destination slot becomes val_embed; untouched slots preserved exactly
+        state_set = (1.0 - mask_dest) * state_prev + mask_dest * val_embed.unsqueeze(1)
+
+        # ADD: destination slot becomes c_add; untouched slots preserved exactly
+        state_add = (1.0 - mask_dest) * state_prev + mask_dest * c_add.unsqueeze(1)
+
+        # SWAP: atomic bidirectional swap; untouched slots preserved exactly
+        # Handles self-swap (r_dest == r_src) cleanly as an exact no-op
+        keep_mask = (1.0 - mask_dest) * (1.0 - mask_src)
+        state_swap = (
+            keep_mask * state_prev
+            + mask_dest * u_b.unsqueeze(1)
+            + mask_src * (1.0 - mask_dest) * u_a.unsqueeze(1)
+        )
+
+        # Combine operation branches
+        # READ preserves all slots with zero mutation (state_prev)
+        state_next = (
+            w_set * state_set
+            + w_add * state_add
+            + w_swap * state_swap
+            + w_read * state_prev
+        )
+
+        # Primary decision: project destination slot against basis codebook
+        u_dest_post = torch.einsum("br,brd->bd", e_dest, state_next)
+        step_logits = torch.einsum("bd,vd->bv", u_dest_post, self.basis)
+
+        return state_next, step_logits
+
+    def forward(
+        self,
+        inputs: torch.Tensor,
+        initial_state: Optional[torch.Tensor] = None,
+        return_step_diagnostics: bool = False,
+    ) -> Phase16ModelOutput:
+        """Executes deterministic sequence rollout over horizon T.
+
+        Args:
+            inputs: Tensor of shape (B, T, 22).
+            initial_state: Optional initial state of shape (B, 4, 10).
+            return_step_diagnostics: Whether to return per-step logits.
+
+        Returns:
+            Phase16ModelOutput containing terminal logits, final state, and optional step logits.
+        """
+        batch_size, seq_len, _ = inputs.shape
+        device = inputs.device
+
+        state = (
+            initial_state
+            if initial_state is not None
+            else self.initial_state(batch_size, device)
+        )
+
+        step_logits_list: List[torch.Tensor] = []
+
+        for t in range(seq_len):
+            x_t = inputs[:, t, :]
+            state, step_logits = self.forward_step(x_t, state)
+            if return_step_diagnostics:
+                step_logits_list.append(step_logits)
+
+        terminal_logits = step_logits
+        step_logits_t = torch.stack(step_logits_list, dim=1) if return_step_diagnostics else None
+
+        return Phase16ModelOutput(
+            logits=terminal_logits,
+            final_state=state,
+            step_logits=step_logits_t,
+        )

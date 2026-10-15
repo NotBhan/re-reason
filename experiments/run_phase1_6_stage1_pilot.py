@@ -99,6 +99,8 @@ def run_track_1a_trained_pilot(
             checkpoints: List[Dict[str, Any]] = []
             best_val_loss = float("inf")
             best_val_acc = 0.0
+            best_train_loss = float("inf")
+            best_train_acc = 0.0
             best_step = -1
 
             t_start = time.perf_counter()
@@ -126,6 +128,11 @@ def run_track_1a_trained_pilot(
                 if step % val_cadence == 0:
                     model.eval()
                     with torch.no_grad():
+                        train_out = model(inputs_train)
+                        train_loss = F.cross_entropy(train_out.logits, targets_train).item()
+                        train_preds = train_out.logits.argmax(dim=-1)
+                        train_acc = (train_preds == targets_train).float().mean().item()
+
                         val_out = model(inputs_val)
                         val_loss = F.cross_entropy(val_out.logits, targets_val).item()
                         val_preds = val_out.logits.argmax(dim=-1)
@@ -133,6 +140,8 @@ def run_track_1a_trained_pilot(
 
                     checkpoints.append({
                         "step": step,
+                        "train_loss": train_loss,
+                        "train_acc": train_acc,
                         "val_loss": val_loss,
                         "val_acc": val_acc,
                     })
@@ -140,14 +149,18 @@ def run_track_1a_trained_pilot(
                     if val_loss < best_val_loss:
                         best_val_loss = val_loss
                         best_val_acc = val_acc
+                        best_train_loss = train_loss
+                        best_train_acc = train_acc
                         best_step = step
 
             t_total = time.perf_counter() - t_start
-            mean_time_100 = float(np.mean(time_per_100_list))
+            mean_time_100 = float(np.mean(time_per_100_list)) if time_per_100_list else 0.0
 
             print(
                 f"  [{model_name} | Seed {seed}] "
                 f"Selected Update: {best_step:4d} | "
+                f"Train Loss: {best_train_loss:.4f} | "
+                f"Train Acc: {best_train_acc:.4f} | "
                 f"Min Val Loss: {best_val_loss:.4f} | "
                 f"Val Acc: {best_val_acc:.4f} | "
                 f"Runtime: {t_total:.2f}s (~{mean_time_100:.3f}s / 100 updates)"
@@ -163,6 +176,8 @@ def run_track_1a_trained_pilot(
                 "weight_decay": weight_decay,
                 "selected_checkpoint": {
                     "step": best_step,
+                    "train_loss": best_train_loss,
+                    "train_acc": best_train_acc,
                     "val_loss": best_val_loss,
                     "val_acc": best_val_acc,
                 },
