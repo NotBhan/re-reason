@@ -15,4 +15,5 @@ experiments/checkpoints/
 
 # Editor/agent tool config
 .commandcode/
+latent-thing-git/
 
