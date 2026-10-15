@@ -1147,3 +1147,29 @@
 **Changes to project state:** Stage 1 runner updated to record complete training telemetry. Candidate 1H deterministic execution kernel added to core library. 14 new tests added. Historical Stage 1 results preserved without modification.
 **Open questions:** Will the Principal Investigator authorize implementing the auxiliary contextual neural network for Candidate 1H, or formal adoption of Protocol Amendment 1?
 **Next experiment:** **PI determination on Candidate 1H auxiliary contextual network implementation or research direction closure**; Stage 3 remains strictly unauthorized.
+
+---
+
+## 2026-10-15 — EXP-CYCLIC-ADD-01: Cyclic-MGU Modular Addition Integration Pilot
+
+**Status:** Completed — 5/5 registered training runs finished (seeds 42–46, 3,000 updates, AdamW). Preregistered rejection boundary met ($5/5 < 0.250$ validation accuracy); Gate 1 FAIL_REJECTION recorded. Official results saved to `experiments/exp_cyclic_add_01_results.json`. Protected test split strictly firewalled.
+**Research question:** Can the existing trainable Cyclic-MGU architecture (`CyclicMGUPhase16Model`, 219,018 trainable parameters) correctly integrate its fixed parameter-free cyclic ALU into the register-machine execution pipeline and generalize modular addition to the registered validation pairs? Hypothesis: The fixed cyclic arithmetic inductive bias may allow Cyclic-MGU to generalize modular addition more reliably than the tested Slot-MGU and Vanilla GRU configurations, provided that surrounding trainable components integrate the arithmetic result into execution. Critical scientific distinction: The cyclic ALU is fixed and analytical; success would test integration into a trainable architecture, not learned arithmetic from data.
+**Configuration:** (1) Architecture: `CyclicMGUPhase16Model` (219,018 trainable parameters in `mlp_read`, `mlp_write`, `mlp_gate`; fixed 5-harmonic basis $\Phi(v) \in \mathbb{R}^{10}$; parameter-free Givens rotation ALU; monolithic continuous state $S \in \mathbb{R}^{212}$); (2) Seeds: 42, 43, 44, 45, 46; (3) Dataset: 64 training pairs, 16 validation pairs from canonical `Stage1PairPartition`; 20 test pairs with $b \in \{0, 5\}$ strictly firewalled (0 queries, never evaluated); (4) Training & Evaluation: AdamW (lr $3 \times 10^{-3}$, weight decay $10^{-2}$, batch size 64, 3,000 updates); validation cadence every 50 updates recording `step`, `train_loss`, `train_acc`, `val_loss`, `val_acc`; checkpoint selection by minimum validation cross-entropy; (5) Comparison criteria: Progression requires $acc_{val} \ge 0.950$ across $\ge 4/5$ seeds with zero seeds $< 0.250$; Rejection boundary requires $acc_{val} < 0.250$ across $\ge 4/5$ seeds; (6) Runner: `experiments/run_exp_cyclic_add_01.py`; focused tests: `tests/test_exp_cyclic_add_01.py`.
+**Key result:** (1) Per-seed selected checkpoint performance:
+- Seed 42: Step 350 | Train Loss 0.0388 | Train Acc 1.0000 | Min Val Loss 3.6720 | Val Acc 0.0000 (0/16)
+- Seed 43: Step 50 | Train Loss 2.0515 | Train Acc 0.3594 | Min Val Loss 3.2529 | Val Acc 0.0625 (1/16)
+- Seed 44: Step 350 | Train Loss 0.0404 | Train Acc 1.0000 | Min Val Loss 2.6773 | Val Acc 0.1250 (2/16)
+- Seed 45: Step 100 | Train Loss 2.1930 | Train Acc 0.3281 | Min Val Loss 2.4168 | Val Acc 0.1250 (2/16)
+- Seed 46: Step 3000 | Train Loss 0.0386 | Train Acc 1.0000 | Min Val Loss 3.9637 | Val Acc 0.0000 (0/16)
+(2) Gate assessment: 0/5 seeds reached $\ge 0.950$; 5/5 seeds fell below $< 0.250$ ($acc_{val}$ range: [0.0000, 0.1250], mean $0.0625$, near chance 0.10); preregistered rejection boundary met -> **FAIL_REJECTION**; (3) Comparison with historical Stage 1 baselines: Slot-MGU (223,414 params) achieved $acc_{val} = 0.0000$ (5/5 seeds); Vanilla GRU (220,874 params) achieved $acc_{val} = 0.0000$ (5/5 seeds); Cyclic-MGU achieved $acc_{val} \le 0.1250$ (5/5 seeds $< 0.250$); (4) Hypothesis evaluation: The hypothesis is contradicted under the registered protocol. Even with a fixed exact cyclic ALU, the trainable read/write/gate MLPs operating over the monolithic state failed to reliably preserve and route canonical harmonic coordinates for unseen validation operands.
+**Decision:** **EXP-CYCLIC-ADD-01 closed as FAIL_REJECTION; hypothesis contradicted for monolithic Cyclic-MGU under registered Stage 1 protocol.** Results establish that embedding a fixed analytical arithmetic component in a continuous recurrent architecture is insufficient for out-of-training-pair generalization when the surrounding neural routing networks do not preserve canonical basis coordinates. Stage 3 composed sequence training remains CLOSED.
+**Evidence:**
+- runner: `experiments/run_exp_cyclic_add_01.py`
+- results: `experiments/exp_cyclic_add_01_results.json`
+- models: `src/re_reason/core/register_machine_models.py`
+- tests: `tests/test_exp_cyclic_add_01.py`
+- governance: `docs/DOCUMENTATION_POLICY.md`
+**Changes to project state:** `experiments/run_exp_cyclic_add_01.py` and `tests/test_exp_cyclic_add_01.py` added to repository. Official artifact `experiments/exp_cyclic_add_01_results.json` recorded. All historical artifacts preserved without modification.
+**Open questions:** Does modular arithmetic generalization in candidate recurrent architectures strictly require discrete slot partitioning combined with canonical coordinate enforcement (as proposed in Candidate 1H), or can alternative coordinate regularization allow monolithic or continuous architectures to preserve harmonic coordinates?
+**Next experiment:** **PI review of EXP-CYCLIC-ADD-01 findings and determination on future architecture directions**; Stage 3 composed sequence training remains strictly closed.
+
