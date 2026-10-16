@@ -1,0 +1,690 @@
+{
+  "experiment_id": "EXP-CYCLIC-PERSIST-01",
+  "run_mode": "SMOKE_TEST_ONLY",
+  "timestamp_iso": "2026-10-16T15:57:42Z",
+  "objective": "Determine whether auxiliary supervision of unaddressed-register persistence at the step-1 transition (requiring r0 to preserve operand a during S1 -> S2) eliminates the r0/r1 read asymmetry and restores canonical ALU input alignment in CyclicMGUPhase16Model.",
+  "hypothesis": "HYPOTHESIS (not a proven cause): insufficient persistence supervision at step 1 may be the primary cause of the r0/r1 read asymmetry, because r0 receives zero direct gradient signal during the S1 -> S2 transition. This experiment tests whether intermediate persistence supervision helps.",
+  "scientific_distinction": "The cyclic ALU is fixed and analytical. Any improvement from this intervention concerns the supervision of the learned read, write and gate networks around it; it is not evidence of learned arithmetic from data.",
+  "loss_definition": {
+    "total_loss": "terminal_loss + 1.0 * destination_loss + 0.5 * persistence_loss",
+    "terminal_loss": "CE(logits_terminal, (a + b) % 10)",
+    "destination_loss": "0.5 * [CE(logits_dest_0, a) + CE(logits_dest_1, b)]",
+    "persistence_loss": "CE(logits_persist_1, a)",
+    "lambda_dest": 1.0,
+    "lambda_persist": 0.5,
+    "step_2_auxiliary_supervision": "excluded (logits_terminal == step_logits[:, -1, :])",
+    "effective_per_assertion_weight": 0.5
+  },
+  "persistence_query_definition": {
+    "state": "S2 (post step-1 transition, instruction 'SET r1 b')",
+    "register": "r0 (unaddressed at step 1, written at step 0)",
+    "address": "e_r0 = [1, 0, 0, 0]",
+    "readout": "project(mlp_read([S2, e_r0])) using the existing shared mlp_read network",
+    "decode": "prototype bank u_persist @ Phi^T (fixed 5-harmonic basis)",
+    "target": "a (the r0 value written at step 0)",
+    "equivalence": "u_persist_1 is computationally identical to the step-2 operand read u_a"
+  },
+  "target_definition": {
+    "canonical_trace": [
+      "SET r0 a",
+      "SET r1 b",
+      "ADD r0 r1"
+    ],
+    "destination_target_sequence": "(a, b, (a + b) % 10)",
+    "persistence_target": "a",
+    "extraction": "step_targets[b, t, argmax(inputs[b, t, 4:8])]",
+    "verification": "matched Phase16RegisterTask.simulate_trace() on every allowed example"
+  },
+  "metric_definitions": {
+    "c_read": "mean of the per-role mean cosine(u_a, Phi(a)) and cosine(u_b, Phi(b)) at step 2",
+    "c_read_r0": "mean cosine(u_a, Phi(a)) at step 2",
+    "c_read_r1": "mean cosine(u_b, Phi(b)) at step 2",
+    "c_persist_r0": "mean cosine(u_persist_1, Phi(a)) at step 1",
+    "s_context": "unweighted mean over digits of the mean pairwise cosine similarity of same-integer step-2 operand reads pooled across roles and contexts",
+    "c_alu": "mean cosine of the raw cyclic_alu(u_a, u_b) tensor at step 2 with Phi((a+b)%10)",
+    "c_dest": "mean of the step-0/1/2 mean cosines of u_dest_post with Phi(y_destination_t)",
+    "cosine_guard": "denominator epsilon 1e-08; similarity 0.0 if either norm < 1e-07"
+  },
+  "protocol": {
+    "seeds": [
+      42
+    ],
+    "total_updates": 100,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "learning_rate": 0.003,
+    "weight_decay": 0.01,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "evaluation_cadence": 50,
+    "checkpoint_selection": "minimum validation total loss, ties by highest validation accuracy, then earliest update",
+    "train_pairs_count": 64,
+    "val_pairs_count": 16,
+    "model_parameter_count": 219018
+  },
+  "protected_test_split": {
+    "definition": "20 operand pairs with b in [0, 5]",
+    "status": "STRICTLY FIREWALLED \u2014 never loaded, constructed, evaluated, queried or logged",
+    "queries": 0
+  },
+  "runs": [
+    {
+      "seed": 42,
+      "parameter_count": 219018,
+      "parameter_count_after_training": 219018,
+      "total_updates": 100,
+      "batch_size": 64,
+      "learning_rate": 0.003,
+      "weight_decay": 0.01,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "lambda_dest": 1.0,
+      "lambda_persist": 0.5,
+      "runtime_seconds": 0.8886814010002126,
+      "finite_value_checks_passed": 100,
+      "gradient_blocks_present": [
+        "mlp_gate",
+        "mlp_read",
+        "mlp_write"
+      ],
+      "selected_checkpoint": {
+        "update": 100,
+        "train_loss_total": 0.2661975920200348,
+        "train_loss_terminal": 0.0493309311568737,
+        "train_loss_dest": 0.11894342303276062,
+        "train_loss_persist": 0.19584645330905914,
+        "train_c_read": 0.8243855535984039,
+        "train_c_read_r0": 0.825094997882843,
+        "train_c_read_r1": 0.8236761093139648,
+        "train_c_persist_r0": 0.825094997882843,
+        "train_s_context": 0.7199966967105865,
+        "train_s_context_per_digit": {
+          "0": {
+            "n_vectors": 6,
+            "n_distinct_pairs": 15,
+            "mean_pairwise_cosine": 0.8228510618209839
+          },
+          "1": {
+            "n_vectors": 14,
+            "n_distinct_pairs": 91,
+            "mean_pairwise_cosine": 0.6674514412879944
+          },
+          "2": {
+            "n_vectors": 13,
+            "n_distinct_pairs": 78,
+            "mean_pairwise_cosine": 0.7952661514282227
+          },
+          "3": {
+            "n_vectors": 13,
+            "n_distinct_pairs": 78,
+            "mean_pairwise_cosine": 0.6634610295295715
+          },
+          "4": {
+            "n_vectors": 14,
+            "n_distinct_pairs": 91,
+            "mean_pairwise_cosine": 0.7066120505332947
+          },
+          "5": {
+            "n_vectors": 6,
+            "n_distinct_pairs": 15,
+            "mean_pairwise_cosine": 0.8183144927024841
+          },
+          "6": {
+            "n_vectors": 15,
+            "n_distinct_pairs": 105,
+            "mean_pairwise_cosine": 0.7189460396766663
+          },
+          "7": {
+            "n_vectors": 16,
+            "n_distinct_pairs": 120,
+            "mean_pairwise_cosine": 0.6966332793235779
+          },
+          "8": {
+            "n_vectors": 16,
+            "n_distinct_pairs": 120,
+            "mean_pairwise_cosine": 0.677786648273468
+          },
+          "9": {
+            "n_vectors": 15,
+            "n_distinct_pairs": 105,
+            "mean_pairwise_cosine": 0.632644772529602
+          }
+        },
+        "train_s_context_omitted_digits": [],
+        "train_c_alu": 0.8776857852935791,
+        "train_c_dest": 0.9250344832738241,
+        "train_c_dest_step0": 0.9838258028030396,
+        "train_c_dest_step1": 0.8236761093139648,
+        "train_c_dest_step2": 0.9676015377044678,
+        "train_step0_acc": 1.0,
+        "train_step1_acc": 1.0,
+        "train_step2_acc": 1.0,
+        "train_persist1_acc": 0.984375,
+        "train_acc": 1.0,
+        "val_loss_total": 1.3129889965057373,
+        "val_loss_terminal": 0.48184120655059814,
+        "val_loss_dest": 0.36796778440475464,
+        "val_loss_persist": 0.9263601303100586,
+        "val_c_read": 0.6450600922107697,
+        "val_c_read_r0": 0.6484436392784119,
+        "val_c_read_r1": 0.6416765451431274,
+        "val_c_persist_r0": 0.6484436392784119,
+        "val_s_context": 0.472896109521389,
+        "val_s_context_per_digit": {
+          "0": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": 0.8842473030090332
+          },
+          "1": {
+            "n_vectors": 4,
+            "n_distinct_pairs": 6,
+            "mean_pairwise_cosine": 0.4512377977371216
+          },
+          "2": {
+            "n_vectors": 5,
+            "n_distinct_pairs": 10,
+            "mean_pairwise_cosine": 0.2713860869407654
+          },
+          "3": {
+            "n_vectors": 5,
+            "n_distinct_pairs": 10,
+            "mean_pairwise_cosine": 0.17230893671512604
+          },
+          "4": {
+            "n_vectors": 4,
+            "n_distinct_pairs": 6,
+            "mean_pairwise_cosine": 0.4691849946975708
+          },
+          "5": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": 0.875652015209198
+          },
+          "6": {
+            "n_vectors": 3,
+            "n_distinct_pairs": 3,
+            "mean_pairwise_cosine": 0.44705626368522644
+          },
+          "7": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": -0.07613557577133179
+          },
+          "8": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": 0.6850167512893677
+          },
+          "9": {
+            "n_vectors": 3,
+            "n_distinct_pairs": 3,
+            "mean_pairwise_cosine": 0.5490065217018127
+          }
+        },
+        "val_s_context_omitted_digits": [],
+        "val_c_alu": 0.6816860437393188,
+        "val_c_dest": 0.8011147777239481,
+        "val_c_dest_step0": 0.9833759069442749,
+        "val_c_dest_step1": 0.6416765451431274,
+        "val_c_dest_step2": 0.7782918810844421,
+        "val_step0_acc": 1.0,
+        "val_step1_acc": 0.75,
+        "val_step2_acc": 0.8125,
+        "val_persist1_acc": 0.625,
+        "val_acc": 0.8125
+      },
+      "final_checkpoint": {
+        "update": 100,
+        "train_loss_total": 0.2661975920200348,
+        "train_loss_terminal": 0.0493309311568737,
+        "train_loss_dest": 0.11894342303276062,
+        "train_loss_persist": 0.19584645330905914,
+        "train_c_read": 0.8243855535984039,
+        "train_c_read_r0": 0.825094997882843,
+        "train_c_read_r1": 0.8236761093139648,
+        "train_c_persist_r0": 0.825094997882843,
+        "train_s_context": 0.7199966967105865,
+        "train_s_context_per_digit": {
+          "0": {
+            "n_vectors": 6,
+            "n_distinct_pairs": 15,
+            "mean_pairwise_cosine": 0.8228510618209839
+          },
+          "1": {
+            "n_vectors": 14,
+            "n_distinct_pairs": 91,
+            "mean_pairwise_cosine": 0.6674514412879944
+          },
+          "2": {
+            "n_vectors": 13,
+            "n_distinct_pairs": 78,
+            "mean_pairwise_cosine": 0.7952661514282227
+          },
+          "3": {
+            "n_vectors": 13,
+            "n_distinct_pairs": 78,
+            "mean_pairwise_cosine": 0.6634610295295715
+          },
+          "4": {
+            "n_vectors": 14,
+            "n_distinct_pairs": 91,
+            "mean_pairwise_cosine": 0.7066120505332947
+          },
+          "5": {
+            "n_vectors": 6,
+            "n_distinct_pairs": 15,
+            "mean_pairwise_cosine": 0.8183144927024841
+          },
+          "6": {
+            "n_vectors": 15,
+            "n_distinct_pairs": 105,
+            "mean_pairwise_cosine": 0.7189460396766663
+          },
+          "7": {
+            "n_vectors": 16,
+            "n_distinct_pairs": 120,
+            "mean_pairwise_cosine": 0.6966332793235779
+          },
+          "8": {
+            "n_vectors": 16,
+            "n_distinct_pairs": 120,
+            "mean_pairwise_cosine": 0.677786648273468
+          },
+          "9": {
+            "n_vectors": 15,
+            "n_distinct_pairs": 105,
+            "mean_pairwise_cosine": 0.632644772529602
+          }
+        },
+        "train_s_context_omitted_digits": [],
+        "train_c_alu": 0.8776857852935791,
+        "train_c_dest": 0.9250344832738241,
+        "train_c_dest_step0": 0.9838258028030396,
+        "train_c_dest_step1": 0.8236761093139648,
+        "train_c_dest_step2": 0.9676015377044678,
+        "train_step0_acc": 1.0,
+        "train_step1_acc": 1.0,
+        "train_step2_acc": 1.0,
+        "train_persist1_acc": 0.984375,
+        "train_acc": 1.0,
+        "val_loss_total": 1.3129889965057373,
+        "val_loss_terminal": 0.48184120655059814,
+        "val_loss_dest": 0.36796778440475464,
+        "val_loss_persist": 0.9263601303100586,
+        "val_c_read": 0.6450600922107697,
+        "val_c_read_r0": 0.6484436392784119,
+        "val_c_read_r1": 0.6416765451431274,
+        "val_c_persist_r0": 0.6484436392784119,
+        "val_s_context": 0.472896109521389,
+        "val_s_context_per_digit": {
+          "0": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": 0.8842473030090332
+          },
+          "1": {
+            "n_vectors": 4,
+            "n_distinct_pairs": 6,
+            "mean_pairwise_cosine": 0.4512377977371216
+          },
+          "2": {
+            "n_vectors": 5,
+            "n_distinct_pairs": 10,
+            "mean_pairwise_cosine": 0.2713860869407654
+          },
+          "3": {
+            "n_vectors": 5,
+            "n_distinct_pairs": 10,
+            "mean_pairwise_cosine": 0.17230893671512604
+          },
+          "4": {
+            "n_vectors": 4,
+            "n_distinct_pairs": 6,
+            "mean_pairwise_cosine": 0.4691849946975708
+          },
+          "5": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": 0.875652015209198
+          },
+          "6": {
+            "n_vectors": 3,
+            "n_distinct_pairs": 3,
+            "mean_pairwise_cosine": 0.44705626368522644
+          },
+          "7": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": -0.07613557577133179
+          },
+          "8": {
+            "n_vectors": 2,
+            "n_distinct_pairs": 1,
+            "mean_pairwise_cosine": 0.6850167512893677
+          },
+          "9": {
+            "n_vectors": 3,
+            "n_distinct_pairs": 3,
+            "mean_pairwise_cosine": 0.5490065217018127
+          }
+        },
+        "val_s_context_omitted_digits": [],
+        "val_c_alu": 0.6816860437393188,
+        "val_c_dest": 0.8011147777239481,
+        "val_c_dest_step0": 0.9833759069442749,
+        "val_c_dest_step1": 0.6416765451431274,
+        "val_c_dest_step2": 0.7782918810844421,
+        "val_step0_acc": 1.0,
+        "val_step1_acc": 0.75,
+        "val_step2_acc": 0.8125,
+        "val_persist1_acc": 0.625,
+        "val_acc": 0.8125
+      },
+      "checkpoints": [
+        {
+          "update": 50,
+          "train_loss_total": 0.7790314555168152,
+          "train_loss_terminal": 0.08470042049884796,
+          "train_loss_dest": 0.40977251529693604,
+          "train_loss_persist": 0.5691170692443848,
+          "train_c_read": 0.6163117587566376,
+          "train_c_read_r0": 0.6455687880516052,
+          "train_c_read_r1": 0.5870547294616699,
+          "train_c_persist_r0": 0.6455687880516052,
+          "train_s_context": 0.5294257432222367,
+          "train_s_context_per_digit": {
+            "0": {
+              "n_vectors": 6,
+              "n_distinct_pairs": 15,
+              "mean_pairwise_cosine": 0.5933314561843872
+            },
+            "1": {
+              "n_vectors": 14,
+              "n_distinct_pairs": 91,
+              "mean_pairwise_cosine": 0.4844413697719574
+            },
+            "2": {
+              "n_vectors": 13,
+              "n_distinct_pairs": 78,
+              "mean_pairwise_cosine": 0.48171913623809814
+            },
+            "3": {
+              "n_vectors": 13,
+              "n_distinct_pairs": 78,
+              "mean_pairwise_cosine": 0.5869264602661133
+            },
+            "4": {
+              "n_vectors": 14,
+              "n_distinct_pairs": 91,
+              "mean_pairwise_cosine": 0.5171950459480286
+            },
+            "5": {
+              "n_vectors": 6,
+              "n_distinct_pairs": 15,
+              "mean_pairwise_cosine": 0.6613875031471252
+            },
+            "6": {
+              "n_vectors": 15,
+              "n_distinct_pairs": 105,
+              "mean_pairwise_cosine": 0.5076739192008972
+            },
+            "7": {
+              "n_vectors": 16,
+              "n_distinct_pairs": 120,
+              "mean_pairwise_cosine": 0.4621438682079315
+            },
+            "8": {
+              "n_vectors": 16,
+              "n_distinct_pairs": 120,
+              "mean_pairwise_cosine": 0.5632826089859009
+            },
+            "9": {
+              "n_vectors": 15,
+              "n_distinct_pairs": 105,
+              "mean_pairwise_cosine": 0.4361560642719269
+            }
+          },
+          "train_s_context_omitted_digits": [],
+          "train_c_alu": 0.8207454681396484,
+          "train_c_dest": 0.815940260887146,
+          "train_c_dest_step0": 0.9483653903007507,
+          "train_c_dest_step1": 0.5870547294616699,
+          "train_c_dest_step2": 0.9124006628990173,
+          "train_step0_acc": 1.0,
+          "train_step1_acc": 0.734375,
+          "train_step2_acc": 1.0,
+          "train_persist1_acc": 0.859375,
+          "train_acc": 1.0,
+          "val_loss_total": 1.7144914865493774,
+          "val_loss_terminal": 0.538437008857727,
+          "val_loss_dest": 0.7218053936958313,
+          "val_loss_persist": 0.9084980487823486,
+          "val_c_read": 0.5185778886079788,
+          "val_c_read_r0": 0.5883421301841736,
+          "val_c_read_r1": 0.44881364703178406,
+          "val_c_persist_r0": 0.5883421301841736,
+          "val_s_context": 0.3191008155059535,
+          "val_s_context_per_digit": {
+            "0": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.853697657585144
+            },
+            "1": {
+              "n_vectors": 4,
+              "n_distinct_pairs": 6,
+              "mean_pairwise_cosine": 0.12084651738405228
+            },
+            "2": {
+              "n_vectors": 5,
+              "n_distinct_pairs": 10,
+              "mean_pairwise_cosine": 0.24752512574195862
+            },
+            "3": {
+              "n_vectors": 5,
+              "n_distinct_pairs": 10,
+              "mean_pairwise_cosine": 0.4856252670288086
+            },
+            "4": {
+              "n_vectors": 4,
+              "n_distinct_pairs": 6,
+              "mean_pairwise_cosine": 0.3338196277618408
+            },
+            "5": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.73095703125
+            },
+            "6": {
+              "n_vectors": 3,
+              "n_distinct_pairs": 3,
+              "mean_pairwise_cosine": 0.07745025306940079
+            },
+            "7": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.0004935532924719155
+            },
+            "8": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.2156209498643875
+            },
+            "9": {
+              "n_vectors": 3,
+              "n_distinct_pairs": 3,
+              "mean_pairwise_cosine": 0.12497217208147049
+            }
+          },
+          "val_s_context_omitted_digits": [],
+          "val_c_alu": 0.6659696698188782,
+          "val_c_dest": 0.7177483141422272,
+          "val_c_dest_step0": 0.9462835788726807,
+          "val_c_dest_step1": 0.44881364703178406,
+          "val_c_dest_step2": 0.7581477165222168,
+          "val_step0_acc": 1.0,
+          "val_step1_acc": 0.375,
+          "val_step2_acc": 0.875,
+          "val_persist1_acc": 0.5625,
+          "val_acc": 0.875
+        },
+        {
+          "update": 100,
+          "train_loss_total": 0.2661975920200348,
+          "train_loss_terminal": 0.0493309311568737,
+          "train_loss_dest": 0.11894342303276062,
+          "train_loss_persist": 0.19584645330905914,
+          "train_c_read": 0.8243855535984039,
+          "train_c_read_r0": 0.825094997882843,
+          "train_c_read_r1": 0.8236761093139648,
+          "train_c_persist_r0": 0.825094997882843,
+          "train_s_context": 0.7199966967105865,
+          "train_s_context_per_digit": {
+            "0": {
+              "n_vectors": 6,
+              "n_distinct_pairs": 15,
+              "mean_pairwise_cosine": 0.8228510618209839
+            },
+            "1": {
+              "n_vectors": 14,
+              "n_distinct_pairs": 91,
+              "mean_pairwise_cosine": 0.6674514412879944
+            },
+            "2": {
+              "n_vectors": 13,
+              "n_distinct_pairs": 78,
+              "mean_pairwise_cosine": 0.7952661514282227
+            },
+            "3": {
+              "n_vectors": 13,
+              "n_distinct_pairs": 78,
+              "mean_pairwise_cosine": 0.6634610295295715
+            },
+            "4": {
+              "n_vectors": 14,
+              "n_distinct_pairs": 91,
+              "mean_pairwise_cosine": 0.7066120505332947
+            },
+            "5": {
+              "n_vectors": 6,
+              "n_distinct_pairs": 15,
+              "mean_pairwise_cosine": 0.8183144927024841
+            },
+            "6": {
+              "n_vectors": 15,
+              "n_distinct_pairs": 105,
+              "mean_pairwise_cosine": 0.7189460396766663
+            },
+            "7": {
+              "n_vectors": 16,
+              "n_distinct_pairs": 120,
+              "mean_pairwise_cosine": 0.6966332793235779
+            },
+            "8": {
+              "n_vectors": 16,
+              "n_distinct_pairs": 120,
+              "mean_pairwise_cosine": 0.677786648273468
+            },
+            "9": {
+              "n_vectors": 15,
+              "n_distinct_pairs": 105,
+              "mean_pairwise_cosine": 0.632644772529602
+            }
+          },
+          "train_s_context_omitted_digits": [],
+          "train_c_alu": 0.8776857852935791,
+          "train_c_dest": 0.9250344832738241,
+          "train_c_dest_step0": 0.9838258028030396,
+          "train_c_dest_step1": 0.8236761093139648,
+          "train_c_dest_step2": 0.9676015377044678,
+          "train_step0_acc": 1.0,
+          "train_step1_acc": 1.0,
+          "train_step2_acc": 1.0,
+          "train_persist1_acc": 0.984375,
+          "train_acc": 1.0,
+          "val_loss_total": 1.3129889965057373,
+          "val_loss_terminal": 0.48184120655059814,
+          "val_loss_dest": 0.36796778440475464,
+          "val_loss_persist": 0.9263601303100586,
+          "val_c_read": 0.6450600922107697,
+          "val_c_read_r0": 0.6484436392784119,
+          "val_c_read_r1": 0.6416765451431274,
+          "val_c_persist_r0": 0.6484436392784119,
+          "val_s_context": 0.472896109521389,
+          "val_s_context_per_digit": {
+            "0": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.8842473030090332
+            },
+            "1": {
+              "n_vectors": 4,
+              "n_distinct_pairs": 6,
+              "mean_pairwise_cosine": 0.4512377977371216
+            },
+            "2": {
+              "n_vectors": 5,
+              "n_distinct_pairs": 10,
+              "mean_pairwise_cosine": 0.2713860869407654
+            },
+            "3": {
+              "n_vectors": 5,
+              "n_distinct_pairs": 10,
+              "mean_pairwise_cosine": 0.17230893671512604
+            },
+            "4": {
+              "n_vectors": 4,
+              "n_distinct_pairs": 6,
+              "mean_pairwise_cosine": 0.4691849946975708
+            },
+            "5": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.875652015209198
+            },
+            "6": {
+              "n_vectors": 3,
+              "n_distinct_pairs": 3,
+              "mean_pairwise_cosine": 0.44705626368522644
+            },
+            "7": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": -0.07613557577133179
+            },
+            "8": {
+              "n_vectors": 2,
+              "n_distinct_pairs": 1,
+              "mean_pairwise_cosine": 0.6850167512893677
+            },
+            "9": {
+              "n_vectors": 3,
+              "n_distinct_pairs": 3,
+              "mean_pairwise_cosine": 0.5490065217018127
+            }
+          },
+          "val_s_context_omitted_digits": [],
+          "val_c_alu": 0.6816860437393188,
+          "val_c_dest": 0.8011147777239481,
+          "val_c_dest_step0": 0.9833759069442749,
+          "val_c_dest_step1": 0.6416765451431274,
+          "val_c_dest_step2": 0.7782918810844421,
+          "val_step0_acc": 1.0,
+          "val_step1_acc": 0.75,
+          "val_step2_acc": 0.8125,
+          "val_persist1_acc": 0.625,
+          "val_acc": 0.8125
+        }
+      ],
+      "numerical_stability": "finite_throughout"
+    }
+  ],
+  "artifact_status": "SMOKE TEST TELEMETRY ONLY \u2014 ONE SEED, 100 UPDATES \u2014 NOT OFFICIAL RESULTS \u2014 NOT EVIDENCE FOR OR AGAINST THE RESEARCH HYPOTHESIS \u2014 NOT FOR GATE ASSESSMENT",
+  "gate_assessment": null,
+  "gate_assessment_note": "No gate assessment is produced. A single-seed 100-update smoke run is an implementation and instrumentation check only; the registered gate requires the separate, unauthorized five-seed (seeds 42-46, 3000-update) Stage 2 experiment."
+}

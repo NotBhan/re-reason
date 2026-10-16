@@ -5,12 +5,12 @@
 
 ## Current plan
 
-### 1. EXP-CYCLIC-PERSIST-01 — Stage 1 Implementation Authorization Gate
+### 1. EXP-CYCLIC-PERSIST-01 — Stage 2 Official Experiment Authorization Gate
 
-* **Context:** Authoritative experiment specification and protocol preregistration finalized in `docs/research/exp_cyclic_persist_01_specification.md`. The PI has approved Option 1 ($\lambda_{\text{dest}} = 1.0, \lambda_{\text{persist}} = 0.5$), providing equal effective weighting ($0.5$) across all three intermediate register assertions while preserving the individual destination gradient scale from `EXP-CYCLIC-STEPWISE-01`. Architecture remains invariant (219,018 trainable parameters, 0 new heads, shared readout query).
-* **Pending task:** PI authorization for Stage 1 (DeepSeek implementation of `experiments/run_exp_cyclic_persist_01.py`, focused unit tests in `tests/test_exp_cyclic_persist_01.py`, and the 100-update seed-42 smoke test).
-* **Status:** Protocol finalized and frozen. Stage 1 implementation, runner code changes, and smoke testing remain strictly unauthorized pending explicit PI approval.
-* **Owner:** PI (authorization gate) / DeepSeek (implementation upon authorization).
+* **Context:** Stage 1 (runner implementation in `experiments/run_exp_cyclic_persist_01.py`, 26 focused unit tests in `tests/test_exp_cyclic_persist_01.py`, and the 100-update seed-42 smoke test in `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`) is complete, independently audited, and verified. Loss decomposition equality, gradient flow across `mlp_read`/`mlp_write`/`mlp_gate`, parameter invariance (219,018), and protected split firewall (`queries = 0`) are fully verified.
+* **Pending task:** PI authorization decision for Stage 2 (official five-seed run across seeds 42–46 for 3,000 updates each via `--stage2-authorized`, serializing `experiments/exp_cyclic_persist_01_results.json`).
+* **Status:** Stage 1 complete. Stage 2 remains strictly unauthorized pending separate explicit PI authorization.
+* **Owner:** PI (authorization decision) / DeepSeek (execution upon authorization).
 
 ### 2. Pre-existing Unrelated Test Drift — Experiment L
 
@@ -21,12 +21,15 @@
 
 ## Owner map
 
-* **Antigravity:** Research specification and proposal for `EXP-CYCLIC-PERSIST-01`; investigation of Experiment L test drift.
-* **DeepSeek:** Implementation and execution (on hold; Stage 1 implementation pending PI authorization).
+* **Antigravity:** Research governance, audit of Stage 1 artifacts, independent review of Stage 2 outcomes upon completion; investigation of Experiment L test drift.
+* **DeepSeek:** Stage 2 execution (on hold pending explicit PI authorization).
 
 ## Canonical references
 
 * `docs/research/exp_cyclic_persist_01_specification.md` (authoritative protocol specification)
+* `experiments/run_exp_cyclic_persist_01.py` (Stage 1 runner)
+* `tests/test_exp_cyclic_persist_01.py` (Stage 1 unit tests)
+* `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json` (Stage 1 smoke artifact)
 * `docs/reports/exp_cyclic_stepwise_01_report.md` (predecessor STEPWISE experiment report)
 * `experiments/exp_cyclic_stepwise_01_results.json` (predecessor STEPWISE official artifact)
 * `docs/reports/exp_cyclic_add_01_report.md` (predecessor ADD baseline experiment report)

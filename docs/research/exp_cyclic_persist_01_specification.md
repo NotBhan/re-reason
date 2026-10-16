@@ -7,12 +7,12 @@
 * **Predecessor Baselines:**
   * `EXP-CYCLIC-ADD-01` (`docs/reports/exp_cyclic_add_01_report.md`; `experiments/exp_cyclic_add_01_results.json`) — Terminal-only supervision baseline ($acc_{\text{val}} = 0.0625$, rejection outcome).
   * `EXP-CYCLIC-STEPWISE-01` (`docs/reports/exp_cyclic_stepwise_01_report.md`; `experiments/exp_cyclic_stepwise_01_results.json`) — Destination-only intermediate supervision ($acc_{\text{val}} = 0.6750$, inconclusive intermediate outcome).
-* **Document Status:** Preregistered Specification (Authoritative — Finalized Protocol; Stage 1 Implementation Pending Authorization)
+* **Document Status:** Preregistered Specification (Authoritative — Finalized Protocol; Stage 1 Verified, Stage 2 Authorization Pending)
 * **Date:** 2026-10-16
-* **Runner Target Path:** `experiments/run_exp_cyclic_persist_01.py`
-* **Focused Test Suite Target:** `tests/test_exp_cyclic_persist_01.py`
+* **Runner Path:** `experiments/run_exp_cyclic_persist_01.py`
+* **Focused Test Suite:** `tests/test_exp_cyclic_persist_01.py`
 * **Official Results Target Artifact:** `experiments/exp_cyclic_persist_01_results.json`
-* **Smoke Test Target Artifact:** `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`
+* **Smoke Test Artifact:** `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`
 
 ---
 
@@ -185,20 +185,20 @@ All representation metrics operate on 10-dimensional Fourier vectors with cosine
 
 Execution is strictly partitioned into two gated stages:
 
-### Stage 1: Implementation, Focused Tests, and Smoke Test
-* **Scope:** 
-  1. Implement persistence query hook and loss calculation in new runner `experiments/run_exp_cyclic_persist_01.py`.
-  2. Implement unit tests in `tests/test_exp_cyclic_persist_01.py` verifying parameter invariance (219,018), loss decomposition, gradient flow to unaddressed state coordinates, and protected split firewall.
-  3. Execute 100-update smoke test on Seed 42 via `--smoke`.
-* **Mandatory Smoke Test Validations:**
-  The 100-update smoke test artifact must explicitly satisfy and log all five validation criteria:
-  1. **Loss Decomposition:** Exact numerical equality $\mathcal{L}_{\text{total}} == \mathcal{L}_{\text{terminal}} + 1.0 \times \mathcal{L}_{\text{dest}} + 0.5 \times \mathcal{L}_{\text{persist}}$ across every update and logged checkpoint.
+### Stage 1: Implementation, Focused Tests, and Smoke Test (Completed & Audited)
+* **Status:** Complete and independently audited. Runner implemented in `experiments/run_exp_cyclic_persist_01.py`, 26 focused unit tests passing in `tests/test_exp_cyclic_persist_01.py`, and 100-update seed-42 smoke test successfully executed in `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`.
+* **Scope and Invariants Verified:**
+  1. Persistence query hook and loss calculation implemented without new trainable heads or parameters (219,018 parameters invariant).
+  2. Focused unit tests verify loss decomposition, gradient flow to unaddressed register coordinates ($r0$), and firewall integrity.
+  3. 100-update smoke test on Seed 42 executed via `--smoke`.
+* **Mandatory Smoke Test Validations (All Verified):**
+  1. **Loss Decomposition:** Exact numerical equality $\mathcal{L}_{\text{total}} == \mathcal{L}_{\text{terminal}} + 1.0 \times \mathcal{L}_{\text{dest}} + 0.5 \times \mathcal{L}_{\text{persist}}$ verified at tensor level and within single-precision float32 rounding ($\le 5.96 \times 10^{-8}$) in telemetry.
   2. **Gradient Flow:** Non-zero, finite gradients verified across `mlp_read`, `mlp_write`, and `mlp_gate` on every update, confirming direct gradient propagation to the unaddressed register ($r0$) coordinate space during the step 1 transition.
-  3. **Parameter-Count Invariance:** Total trainable parameters strictly equal to exactly 219,018 throughout instantiation and forward execution (zero new trainable heads or parameters).
+  3. **Parameter-Count Invariance:** Total trainable parameters strictly verified as exactly 219,018 before and after training.
   4. **Diagnostic Metric Correctness:** All representations ($C_{\text{read}}(r0), C_{\text{read}}(r1), C_{\text{persist}}(r0), S_{\text{context}}, C_{\text{ALU}}, C_{\text{dest}}$) strictly bounded in $[-1.0, 1.0]$, accuracies in $[0.0, 1.0]$, and losses finite and non-negative.
-  5. **Protected TEST Split Firewall:** Zero queries to held-out test split ($b \in \{0, 5\}$), with `queries = 0` verified in the smoke artifact.
+  5. **Protected TEST Split Firewall:** Zero queries to held-out test split ($b \in \{0, 5\}$); `queries = 0` recorded in artifact.
 * **Artifact:** `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`.
-* **Hard Stop Condition:** DeepSeek must stop immediately after the smoke test and deliver the Stage 1 report. The five-seed experiment is strictly unauthorized.
+* **Hard Stop Condition:** Maintained. The official five-seed experiment was not executed during Stage 1 and remains strictly unauthorized pending explicit PI approval.
 
 ### Stage 2: Official Five-Seed Experiment
 * **Gating:** Requires explicit, separate PI authorization after reviewing the Stage 1 report.
@@ -287,6 +287,7 @@ $$\bar{C}_{\text{read}} = \frac{1}{5} \sum_{s=1}^5 C_{\text{read}}^{(s)}, \quad 
 ## 11. Authorization Status and Governance Gates
 
 * **Objective Weighting Decision:** **RESOLVED.** The PI formally approved Option 1 ($\lambda_{\text{dest}} = 1.0, \lambda_{\text{persist}} = 0.5$) on 2026-10-16. This establishes equal effective weighting ($0.5$) across all three intermediate register assertions ($r0$ at step 0, $r1$ at step 1, $r0$ at step 1) while preserving the individual destination gradient scale from `EXP-CYCLIC-STEPWISE-01` without dilution.
+* **Stage 1 Verification Status:** **COMPLETE & AUDITED.** Stage 1 runner implementation (`experiments/run_exp_cyclic_persist_01.py`), 26 focused tests (`tests/test_exp_cyclic_persist_01.py`), and 100-update seed-42 smoke test (`experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`) are completed and independently verified. All five mandatory criteria (loss decomposition, gradient flow, parameter count invariance, diagnostic bounds, and TEST firewall `queries = 0`) passed.
 * **Ablation Arm Decision:** **DEFERRED.** The persistence-only ablation arm ($\mathcal{L}_{\text{term}} + \mathcal{L}_{\text{persist}}$) is deferred until the primary multi-objective outcome is established.
-* **Next Authorization Gate (Stage 1 Authorization):** **PENDING.** Stage 1 implementation (code changes in `experiments/run_exp_cyclic_persist_01.py`, focused unit tests in `tests/test_exp_cyclic_persist_01.py`, and execution of the 100-update seed-42 smoke test) remains strictly unauthorized pending separate explicit PI authorization.
-* **Stage 2 Authorization:** **BLOCKED.** The five-seed experiment (`--stage2-authorized`) remains blocked until Stage 1 completion and independent audit review.
+* **Next Authorization Gate (Stage 2 Official Five-Seed Experiment Authorization):** **PENDING.** Stage 2 official five-seed training across seeds 42–46 for 3,000 updates each using `--stage2-authorized` remains strictly unauthorized pending separate explicit PI authorization.
+* **Protected TEST Firewall:** **MAINTAINED.** The held-out TEST partition ($b \in \{0, 5\}$) remains strictly firewalled (`queries = 0`).
