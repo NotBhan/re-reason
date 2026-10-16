@@ -149,6 +149,15 @@ def test_agents_document_contains_permanent_rule():
     assert "Never silently rewrite" in text
 
 
+def test_global_plan_file_present_and_well_formed():
+    plan = os.path.join(ROOT, "PLAN.md")
+    assert os.path.exists(plan), "missing repository-global plan file: PLAN.md (see AGENTS.md)"
+    text = _read(plan)
+    assert "Last updated:" in text, "PLAN.md must carry a 'Last updated:' line"
+    assert "/home/" not in text, "PLAN.md contains a machine-specific /home/ path"
+    assert "file:///" not in text, "PLAN.md contains an absolute file:/// link"
+
+
 def test_historical_reports_match_sha256_baseline():
     with open(BASELINE, encoding="utf-8") as f:
         baseline = json.load(f)

@@ -16,11 +16,40 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+class Phase16StepDiagnostics(NamedTuple):
+    """Optional zero-parameter diagnostic capture for the Cyclic-MGU rollout.
+
+    Every tensor is a reference to the actual value computed by the forward pass
+    (never a recomputed approximation) and is populated only when
+    ``return_step_diagnostics=True``. Capturing these tensors adds no trainable
+    parameters and does not alter the default forward computation.
+
+    Fields:
+        u_a: Operand-read vector for the destination register (r_dest) immediately
+            before the ALU operation at the final rollout step. Shape (B, 10).
+        u_b: Operand-read vector for the source register (r_src) immediately before
+            the ALU operation at the final rollout step. Shape (B, 10).
+        c1_alu: Raw output of ``cyclic_alu(u_a, u_b)`` at the final rollout step,
+            before any instruction-conditioned write payload mixing. Shape (B, 10).
+        u_dest_post: Post-transition destination-read representation for every
+            timestep. Shape (B, T, 10).
+        step_index: Rollout index at which ``u_a``/``u_b``/``c1_alu`` were captured
+            (equals ``T - 1``). For the registered 3-step Stage 1 trace this is
+            step 2 (the ADD transition).
+    """
+    u_a: torch.Tensor
+    u_b: torch.Tensor
+    c1_alu: torch.Tensor
+    u_dest_post: torch.Tensor
+    step_index: int
+
+
 class Phase16ModelOutput(NamedTuple):
     """Container for Phase 1.6 sequential model predictions."""
     logits: torch.Tensor  # Terminal logits (B, num_classes) or (B, num_registers, num_classes)
     final_state: torch.Tensor  # Final recurrent state
     step_logits: Optional[torch.Tensor] = None  # Step-wise logits across rollout
+    diagnostics: Optional[Phase16StepDiagnostics] = None  # Optional zero-parameter capture
 
 
 def get_harmonic_basis(
@@ -342,8 +371,19 @@ class CyclicMGUPhase16Model(nn.Module):
         self,
         x_t: torch.Tensor,
         state_prev: torch.Tensor,
+        diagnostics: Optional[Dict[str, torch.Tensor]] = None,
     ) -> Tuple[torch.Tensor, torch.Tensor]:
-        """Executes a single-step recurrent transition."""
+        """Executes a single-step recurrent transition.
+
+        Args:
+            x_t: Instruction tensor of shape (B, 22).
+            state_prev: Monolithic state S_{t-1} of shape (B, 212).
+            diagnostics: Optional out-parameter. When a dict is supplied, it is
+                populated in place with references to the actual computed tensors
+                ``u_a``, ``u_b``, ``c1_alu`` and ``u_dest_post`` for this step.
+                When None (the default), no extra bookkeeping occurs and the
+                computation is unchanged.
+        """
         e_op = x_t[:, 0:4]      # (B, 4)
         e_dest = x_t[:, 4:8]    # (B, 4)
         e_src = x_t[:, 8:12]    # (B, 4)
@@ -394,6 +434,13 @@ class CyclicMGUPhase16Model(nn.Module):
         )
         step_logits = torch.einsum("bd,vd->bv", u_dest_post, self.basis)  # (B, 10)
 
+        # 7. Optional zero-parameter diagnostic capture (references, never recomputed)
+        if diagnostics is not None:
+            diagnostics["u_a"] = u_a
+            diagnostics["u_b"] = u_b
+            diagnostics["c1_alu"] = c1_alu
+            diagnostics["u_dest_post"] = u_dest_post
+
         return state_next, step_logits
 
     def forward(
@@ -402,7 +449,13 @@ class CyclicMGUPhase16Model(nn.Module):
         initial_state: Optional[torch.Tensor] = None,
         return_step_diagnostics: bool = False,
     ) -> Phase16ModelOutput:
-        """Executes full sequence rollout over horizon T."""
+        """Executes full sequence rollout over horizon T.
+
+        When ``return_step_diagnostics=True`` the returned output additionally
+        carries a ``Phase16StepDiagnostics`` capture. ``u_a``/``u_b``/``c1_alu``
+        correspond to the final rollout transition (step 2 for the registered
+        3-step Stage 1 trace); ``u_dest_post`` covers every timestep.
+        """
         batch_size, seq_len, _ = inputs.shape
         device = inputs.device
 
@@ -413,20 +466,37 @@ class CyclicMGUPhase16Model(nn.Module):
         )
 
         step_logits_list: List[torch.Tensor] = []
+        step_diagnostics_list: List[Dict[str, torch.Tensor]] = []
 
         for t in range(seq_len):
             x_t = inputs[:, t, :]
-            state, step_logits = self.forward_step(x_t, state)
+            step_diagnostics = {} if return_step_diagnostics else None
+            state, step_logits = self.forward_step(x_t, state, step_diagnostics)
             if return_step_diagnostics:
                 step_logits_list.append(step_logits)
+                step_diagnostics_list.append(step_diagnostics)
 
         terminal_logits = step_logits
         step_logits_t = torch.stack(step_logits_list, dim=1) if return_step_diagnostics else None
+
+        diagnostics_out = None
+        if return_step_diagnostics:
+            final_step = step_diagnostics_list[-1]
+            diagnostics_out = Phase16StepDiagnostics(
+                u_a=final_step["u_a"],
+                u_b=final_step["u_b"],
+                c1_alu=final_step["c1_alu"],
+                u_dest_post=torch.stack(
+                    [step_diag["u_dest_post"] for step_diag in step_diagnostics_list], dim=1
+                ),
+                step_index=seq_len - 1,
+            )
 
         return Phase16ModelOutput(
             logits=terminal_logits,
             final_state=state,
             step_logits=step_logits_t,
+            diagnostics=diagnostics_out,
         )
 
 

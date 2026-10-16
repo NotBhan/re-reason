@@ -1,6 +1,6 @@
 # AGENTS.md — Repository Agent & Developer Instructions
 
-RE:Reason is an experimental research project (candidate recurrent inference architecture), not a finalized architecture. Start with `PROJECT_PLAN.md` and the specification suite in `docs/`. The project operates under the empirical cycle BUILD → MEASURE → ABLATE → INTERPRET → KEEP OR KILL → EXTEND.
+RE:Reason is an experimental research project (candidate recurrent inference architecture), not a finalized architecture. Start with `PROJECT_PLAN.md` and the specification suite in `docs/`; the current to-be-done plan is maintained in `PLAN.md` (repository root). The project operates under the empirical cycle BUILD → MEASURE → ABLATE → INTERPRET → KEEP OR KILL → EXTEND.
 
 ## RESEARCH DOCUMENTATION POLICY
 
@@ -26,6 +26,16 @@ The full, canonical policy is `docs/DOCUMENTATION_POLICY.md`; read it before mod
 * New experiment reports follow the required 19-section structure in the policy (§8) and record runner, analysis, tests, data artifacts, checkpoints (with hashes where relevant), figures, and exact reproduction commands — using repository-relative paths.
 * After any documentation change, run: `pytest tests/test_documentation_governance.py -v` (and the full suite `pytest tests/`).
 * Corrections are appended amendments, never silent edits; failed experiments and negative results are preserved, with rejected approaches recorded in the ledger and the status document.
+* Maintain the repository-global plan file `PLAN.md` and rewrite it after every agent task completion (rules in the section below).
+
+## Global plan file (trackable, current plan only)
+
+* **File:** `PLAN.md` in the repository root. It is a normal repository file — keep it in the working tree so it stays trackable; never keep the global plan in session scratch or machine-local agent plan folders.
+* **Content:** strictly the current to-be-done plan — pending tasks, their status, owner, gating condition, and open decisions. It is not a history, not a research record, and not a status synthesis; do not duplicate `docs/RESEARCH_LOG.md` (append-only chronology) or `docs/RESEARCH_STATUS.md` (current validated state).
+* **Update timing:** rewrite it after every agent task completion — drop completed items, keep still-pending ones, add newly planned work, and replace its contents with the updated current plan. Do not accumulate history; if nothing is pending, state that plainly.
+* **Format:** keep it short — a title, a last-updated date, and a compact list of the current planned items, citing canonical repository documents (repository-relative paths) instead of restating them.
+* **Enforcement:** `tests/test_documentation_governance.py` checks that `PLAN.md` exists, carries a `Last updated:` line, and contains no machine-specific absolute paths.
+* **Git:** committable like any other repository file; this rule does not change the repository's Git-authorization requirements (no staging, commits, or history changes without explicit instruction).
 
 ## Protocol Rigor, Metric Precision, and Epistemic Guardrails
 
