@@ -5,33 +5,43 @@
 
 ## Current plan
 
-### 1. EXP-CYCLIC-PERSIST-01 — Stage 2 Official Experiment Authorization Gate
+### 1. EXP-CYCLIC-PERSIST-ABL-01 — Stage 2 Authorization Review
 
-* **Context:** Stage 1 (runner implementation in `experiments/run_exp_cyclic_persist_01.py`, 26 focused unit tests in `tests/test_exp_cyclic_persist_01.py`, and the 100-update seed-42 smoke test in `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json`) is complete, independently audited, and verified. Loss decomposition equality, gradient flow across `mlp_read`/`mlp_write`/`mlp_gate`, parameter invariance (219,018), and protected split firewall (`queries = 0`) are fully verified.
-* **Pending task:** PI authorization decision for Stage 2 (official five-seed run across seeds 42–46 for 3,000 updates each via `--stage2-authorized`, serializing `experiments/exp_cyclic_persist_01_results.json`).
-* **Status:** Stage 1 complete. Stage 2 remains strictly unauthorized pending separate explicit PI authorization.
-* **Owner:** PI (authorization decision) / DeepSeek (execution upon authorization).
+* **Context:** Authoritative experiment protocol approved and frozen by PI on 2026-10-16 in `docs/research/exp_cyclic_persist_abl_01_specification.md` with Option 1 ($\lambda_{\text{persist}} = 0.5$; $\mathcal{L}_{\text{total}}^{\text{abl}} = \mathcal{L}_{\text{terminal}} + 0.5 \cdot \mathcal{L}_{\text{persist}}$). Stage 1 execution (runner, unit tests, 100-update seed-42 smoke run) completed and verified.
+* **Current State:**
+  1. Runner implemented: `experiments/run_exp_cyclic_persist_abl_01.py`.
+  2. Focused unit tests implemented: `tests/test_exp_cyclic_persist_abl_01.py` (26/26 passing).
+  3. Smoke run completed and verified: `experiments/exp_cyclic_persist_abl_01_SMOKE_ONLY_seed42.json`.
+  4. Trainable parameters invariant at 219,018; loss decomposition and finite gradient flow verified; protected TEST partition intact (`queries = 0`).
+* **Gating:** Stage 2 official five-seed training remains strictly unauthorized pending separate PI review and explicit authorization.
+* **Owner:** PI (Stage 2 decision) / Antigravity (Stage 2 execution upon authorization).
 
-### 2. Pre-existing Unrelated Test Drift — Experiment L
+### 2. Candidate 2 Post-Progression Next Steps (Phase 1.6)
 
-* **Context:** `tests/test_experiment_l.py::test_stored_artifact_is_reproducible_from_checkpoints` fails on this worktree. Confirmed pre-existing and unrelated to Phase 1.6 / cyclic models (Experiment L artifact dated 2026-10-07; fails even when unmodified HEAD model code is force-loaded).
+* **Context:** `EXP-CYCLIC-PERSIST-01` achieved `BEHAVIORAL_PASS_CANONICAL_FULL` on `VAL-SEEN` ($acc_{\text{val}} = 0.9875$; asymmetry resolved at $\bar{C}_{\text{read}}(r0) = 0.8879$ and $\bar{C}_{\text{read}}(r1) = 0.9303$).
+* **Pending PI Decisions (all require explicit authorization before action):**
+  1. *Phase 1.6 Stage 3 Composed Sequence Benchmark Formulation:* Whether to formulate the composed sequence evaluation protocol for Candidate 2 (`CyclicMGUPhase16Model`).
+  2. *Protected TEST-HELDOUT Evaluation:* Whether and when to evaluate the held-out operand partition ($b \in \{0, 5\}$) under single-evaluation firewall governance.
+* **Status:** Awaiting PI direction.
+* **Owner:** PI.
+
+### 3. Pre-existing Unrelated Test Drift — Experiment L
+
+* **Context:** `tests/test_experiment_l.py::test_stored_artifact_is_reproducible_from_checkpoints` fails on this worktree. Confirmed pre-existing and unrelated to Phase 1.6 / cyclic models (Experiment L artifact dated 2026-10-07; fails even when unmodified HEAD model code is force-loaded). Unchanged by recent experiments.
 * **Pending task:** Audit Experiment L artifact reproduction path and determine whether an amendment under `docs/DOCUMENTATION_POLICY.md` §4 is required.
 * **Status:** Pending PI guidance.
 * **Owner:** Antigravity / PI.
 
 ## Owner map
 
-* **Antigravity:** Research governance, audit of Stage 1 artifacts, independent review of Stage 2 outcomes upon completion; investigation of Experiment L test drift.
-* **DeepSeek:** Stage 2 execution (on hold pending explicit PI authorization).
+* **PI:** Direction and authorization on EXP-CYCLIC-PERSIST-ABL-01 proposal review, Stage 1 execution clearance, Stage 3 composed sequence evaluation, or protected TEST evaluation; Experiment L guidance.
+* **Antigravity:** Protocol specification, focused unit test implementation (when authorized), smoke execution (when authorized), and governance audits.
 
 ## Canonical references
 
-* `docs/research/exp_cyclic_persist_01_specification.md` (authoritative protocol specification)
-* `experiments/run_exp_cyclic_persist_01.py` (Stage 1 runner)
-* `tests/test_exp_cyclic_persist_01.py` (Stage 1 unit tests)
-* `experiments/exp_cyclic_persist_01_SMOKE_ONLY_seed42.json` (Stage 1 smoke artifact)
-* `docs/reports/exp_cyclic_stepwise_01_report.md` (predecessor STEPWISE experiment report)
-* `experiments/exp_cyclic_stepwise_01_results.json` (predecessor STEPWISE official artifact)
-* `docs/reports/exp_cyclic_add_01_report.md` (predecessor ADD baseline experiment report)
-* `docs/reports/HISTORICAL_BASELINE.json` (Layer A baseline registry)
-* `docs/RESEARCH_LOG.md`; `docs/RESEARCH_STATUS.md`; `docs/DOCUMENTATION_POLICY.md`; `AGENTS.md`
+* `docs/research/exp_cyclic_persist_abl_01_specification.md` (proposed ablation specification)
+* `docs/reports/exp_cyclic_persist_01_report.md` (authoritative primary experiment report)
+* `experiments/exp_cyclic_persist_01_results.json` (official Stage 2 primary artifact)
+* `docs/research/exp_cyclic_persist_01_specification.md` (primary experiment specification)
+* `docs/reports/exp_cyclic_stepwise_01_report.md`; `experiments/exp_cyclic_stepwise_01_results.json` (predecessor STEPWISE)
+* `docs/reports/HISTORICAL_BASELINE.json`; `docs/RESEARCH_LOG.md`; `docs/RESEARCH_STATUS.md`; `docs/DOCUMENTATION_POLICY.md`; `AGENTS.md`
