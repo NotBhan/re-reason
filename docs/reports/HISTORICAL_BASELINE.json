@@ -6,6 +6,7 @@
   "reports": {
     "docs/reports/branching_feasibility_oracle.md": "b8eb25c76ba04422bbd562eb1e325ef552a0f1c2a59ccfd2309567fed7a8f36b",
     "docs/reports/combined_objective_confirmation.md": "cac41e08bfe5ed92ab7eb7776c40adb6fb435bbcc7da8ce058f7306b204599d3",
+    "docs/reports/exp_cyclic_stepwise_01_report.md": "1884a57d26a3da4043560ee0764bd0c48fd521cf5b9b057479d786b3267343cc",
     "docs/reports/experiment_g_add_commit_gap.md": "55ce839bafc8ca6a9427a0b17f5f72b9647483dd098cfee2a478304ca5eee715",
     "docs/reports/experiment_h_lambda_interpolation.md": "1ce5d477d3de4c83f9707900ef33e8e40e7664a45880fd873062b2a5e5191471",
     "docs/reports/experiment_i_coordinate_commit.md": "980df5eb0b954f05a4ad819cd5f72b043521388bfe99a50171e2a3f6446d60e3",
@@ -266,6 +267,11 @@
       "date": "2026-10-14",
       "event": "Phase 1.6 scientific consistency audit completed; report docs/reports/phase_1_6_architectural_reformulation_proposal.md hash updated following RQ3 reformulation (evaluating two trainable candidates Slot-MGU and Cyclic-MGU against Vanilla GRU baseline and deterministic MSM exact-rule reference, with explicit non-claims on untested neural composition), Section 3 Hypothesis C deferred-curriculum realignment (retaining matched end-to-end evaluation for trainable candidates, MSM receiving 0 parameter-training runs, and contingent triggers restricted to trainable candidates upon credit-assignment failure), Section 11.2 scoped contribution claims update, and historical supersession clarification for Candidate 3 auxiliary networks (Proposal documentation frozen — implementation not authorized)",
       "n_reports": 41
+    },
+    {
+      "date": "2026-10-16",
+      "event": "EXP-CYCLIC-STEPWISE-01 completed; report docs/reports/exp_cyclic_stepwise_01_report.md registered (outcome: INCONCLUSIVE_INTERMEDIATE)",
+      "n_reports": 42
     }
   ]
 }
