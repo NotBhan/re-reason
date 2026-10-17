@@ -4,9 +4,11 @@
   "scope": "SHA-256 baseline of completed experiment reports (Layer A historical record).",
   "note": "This baseline is the immutability anchor for the historical research record. Completed reports must not be rewritten. If a report is intentionally amended with an APPENDED section (see policy), update its hash here AND record the amendment in docs/RESEARCH_LOG.md plus a new entry in this file's history array. Verified by tests/test_documentation_governance.py.",
   "reports": {
+    "docs/reports/architecture_gap_audit_and_milestone_proposal.md": "f70299686bf648343306be35203ac4a9bc4d2549af9a6807929f3f27b4f0ce57",
     "docs/reports/branching_feasibility_oracle.md": "b8eb25c76ba04422bbd562eb1e325ef552a0f1c2a59ccfd2309567fed7a8f36b",
     "docs/reports/combined_objective_confirmation.md": "cac41e08bfe5ed92ab7eb7776c40adb6fb435bbcc7da8ce058f7306b204599d3",
     "docs/reports/exp_cyclic_persist_01_report.md": "cc9caefcbc9d2bdab5ea8c8c5bdf71253dff7c1b657c246fcbd70cd82a90e39d",
+    "docs/reports/exp_cyclic_persist_abl_01_report.md": "9a7de63048f0ac5d307b5dca7158da7d0bf35a96185ddf067649d94e8b5a12f4",
     "docs/reports/exp_cyclic_stepwise_01_report.md": "1884a57d26a3da4043560ee0764bd0c48fd521cf5b9b057479d786b3267343cc",
     "docs/reports/experiment_g_add_commit_gap.md": "55ce839bafc8ca6a9427a0b17f5f72b9647483dd098cfee2a478304ca5eee715",
     "docs/reports/experiment_h_lambda_interpolation.md": "1ce5d477d3de4c83f9707900ef33e8e40e7664a45880fd873062b2a5e5191471",
@@ -278,6 +280,21 @@
       "date": "2026-10-16",
       "event": "EXP-CYCLIC-PERSIST-01 completed; report docs/reports/exp_cyclic_persist_01_report.md registered (outcome: BEHAVIORAL_PASS_CANONICAL_FULL)",
       "n_reports": 43
+    },
+    {
+      "date": "2026-10-17",
+      "event": "EXP-CYCLIC-PERSIST-ABL-01 completed; report docs/reports/exp_cyclic_persist_abl_01_report.md registered (outcome: INCONCLUSIVE_INTERMEDIATE)",
+      "n_reports": 44
+    },
+    {
+      "date": "2026-10-17",
+      "event": "EXP-CYCLIC-PERSIST-ABL-01 report reconciled: aligned rejection boundary threshold citation ($N_reject >= 4$ per spec §8.1) and scoped causal necessity wording to evaluated architecture and objective",
+      "n_reports": 44
+    },
+    {
+      "date": "2026-10-17",
+      "event": "Architecture-to-implementation gap audit and milestone proposal completed; report docs/reports/architecture_gap_audit_and_milestone_proposal.md registered",
+      "n_reports": 45
     }
   ]
 }
