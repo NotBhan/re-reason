@@ -24,15 +24,19 @@ Engineering properties:
   gradient clipping) are supplied explicitly on the command line; the protocol
   does not ratify numeric values, so no defaults are baked in. AdamW follows the
   repository's established optimizer convention.
+* Every update is guarded: a non-finite training loss or non-finite gradient
+  raises immediately (fail-closed), and telemetry records the optimizer-step
+  count, gradient-check count, and initial/final batch losses.
 """
 
 import argparse
 import json
+import math
 import os
 import sys
 import tempfile
 import time
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, Iterable, List, Optional, Sequence
 
 import torch
 
@@ -193,6 +197,19 @@ def _resolve_device(requested: str) -> torch.device:
     return torch.device("cpu")
 
 
+def _gradients_are_finite(parameters: Iterable[torch.Tensor]) -> bool:
+    """True when every present parameter gradient is finite.
+
+    Parameters without a gradient are tolerated: for very short demonstration
+    batches the branch core can legitimately receive no downstream policy loss.
+    """
+    for parameter in parameters:
+        gradient = parameter.grad
+        if gradient is not None and not bool(torch.isfinite(gradient).all()):
+            return False
+    return True
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = build_argument_parser()
     args = parser.parse_args(argv)
@@ -255,34 +272,76 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     }
 
     start_time = time.perf_counter()
+    optimizer_steps = 0
+    gradient_checks = 0
+    initial_batch_loss: Optional[float] = None
+    final_batch_loss: Optional[float] = None
+
     for epoch in range(1, args.epochs + 1):
         batch_losses: List[float] = []
+        epoch_steps = 0
         for batch in iter_training_batches(
             demonstrations, args.batch_size, training_rng.batch_generator
         ):
             report = teacher_forced_batch_loss(brancher, batch)
+            loss_value = float(report.loss.detach().item())
+            if not math.isfinite(loss_value):
+                raise RuntimeError(
+                    f"non-finite training loss at epoch {epoch} (seed {args.seed}); "
+                    "refusing to update"
+                )
             optimizer.zero_grad()
             report.loss.backward()
+            if not _gradients_are_finite(brancher.parameters()):
+                raise RuntimeError(
+                    f"non-finite gradients at epoch {epoch} (seed {args.seed}); "
+                    "refusing to update"
+                )
+            gradient_checks += 1
             torch.nn.utils.clip_grad_norm_(brancher.parameters(), args.gradient_clip_norm)
             optimizer.step()
-            batch_losses.append(float(report.loss.detach().item()))
+            optimizer_steps += 1
+            epoch_steps += 1
+            batch_losses.append(loss_value)
+            if initial_batch_loss is None:
+                initial_batch_loss = loss_value
+            final_batch_loss = loss_value
         telemetry["epochs"].append(
             {
                 "epoch": epoch,
                 "batches": len(batch_losses),
+                "optimizer_steps": epoch_steps,
                 "mean_loss": sum(batch_losses) / len(batch_losses) if batch_losses else None,
+                "first_batch_loss": batch_losses[0] if batch_losses else None,
+                "last_batch_loss": batch_losses[-1] if batch_losses else None,
             }
         )
         print(f"[seed {args.seed}] epoch {epoch}/{args.epochs} mean loss: {telemetry['epochs'][-1]['mean_loss']}")
     telemetry["runtime_seconds"] = time.perf_counter() - start_time
+    telemetry["optimization"] = {
+        "optimizer": "AdamW",
+        "optimizer_steps": optimizer_steps,
+        "gradient_checks": gradient_checks,
+        "non_finite_gradient_incidents": 0,
+        "gradient_clipping_applied": True,
+        "gradient_clip_norm": args.gradient_clip_norm,
+        "initial_batch_loss": initial_batch_loss,
+        "final_batch_loss": final_batch_loss,
+    }
 
     checkpoint_metadata = {
         "runner": "run_phase3b_training",
         "seed": args.seed,
         "parameter_count": brancher.count_parameters(),
         "hyperparameters": telemetry["hyperparameters"],
+        "rng": telemetry["rng"],
         "timestamp_utc": timestamp,
         "training_partition": "train",
+        "train_episodes": args.train_size,
+        "demonstration_sequences": len(demonstrations),
+        "demonstration_transitions": telemetry["demonstration_transitions"],
+        "optimizer_steps": optimizer_steps,
+        "gradient_checks": gradient_checks,
     }
     write_checkpoint_atomic(artifacts["checkpoint"], brancher.state_dict(), checkpoint_metadata)
     write_json_atomic(artifacts["telemetry"], telemetry)

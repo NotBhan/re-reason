@@ -165,3 +165,14 @@ def test_runner_source_has_no_evaluation_or_heldout_paths() -> None:
     assert "generate_pathfinding_splits" not in source
     assert "rollout_two_trajectory" not in source
     assert "docs/reports" not in source
+
+
+def test_gradient_finiteness_guard_detects_non_finite_gradients() -> None:
+    model = torch.nn.Linear(2, 2)
+    for parameter in model.parameters():
+        parameter.grad = torch.zeros_like(parameter)
+    assert runner._gradients_are_finite(model.parameters())
+
+    first_parameter = next(iter(model.parameters()))
+    first_parameter.grad[0, 0] = float("nan")
+    assert not runner._gradients_are_finite(model.parameters())

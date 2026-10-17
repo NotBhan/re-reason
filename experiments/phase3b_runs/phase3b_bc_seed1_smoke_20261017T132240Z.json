@@ -1,0 +1,57 @@
+{
+  "runner": "run_phase3b_training",
+  "status": "completed",
+  "seed": 1,
+  "partition": "train",
+  "train_episodes": 200,
+  "demonstration_sequences": 200,
+  "demonstration_transitions": 844,
+  "graph_base_seed": 42,
+  "parameter_count": 171660,
+  "device": "cpu",
+  "hyperparameters": {
+    "epochs": 2,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 1.0,
+    "optimizer": "AdamW"
+  },
+  "rng": {
+    "training_python_seed": 100001,
+    "training_numpy_seed": 100001,
+    "training_model_seed": 1
+  },
+  "overwrite_authorized": false,
+  "overwritten_artifacts": [],
+  "timestamp_utc": "20261017T132240Z",
+  "epochs": [
+    {
+      "epoch": 1,
+      "batches": 12,
+      "optimizer_steps": 12,
+      "mean_loss": 2.4694846471150718,
+      "first_batch_loss": 2.6062188148498535,
+      "last_batch_loss": 2.3476247787475586
+    },
+    {
+      "epoch": 2,
+      "batches": 12,
+      "optimizer_steps": 12,
+      "mean_loss": 1.856577714284261,
+      "first_batch_loss": 2.0076513290405273,
+      "last_batch_loss": 1.777105450630188
+    }
+  ],
+  "runtime_seconds": 0.4619522840002901,
+  "optimization": {
+    "optimizer": "AdamW",
+    "optimizer_steps": 24,
+    "gradient_checks": 24,
+    "non_finite_gradient_incidents": 0,
+    "gradient_clipping_applied": true,
+    "gradient_clip_norm": 1.0,
+    "initial_batch_loss": 2.6062188148498535,
+    "final_batch_loss": 1.777105450630188
+  }
+}
