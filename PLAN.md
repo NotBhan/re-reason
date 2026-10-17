@@ -5,40 +5,42 @@
 
 ## Current plan
 
-### 1. PI Decisions on Architectural Pivot & Milestone Roadmap
+### 1. PI Decision & Authorization: Milestone 1 Acceptance & Milestone 2 Authorization
 
-* **Context:** Comprehensive architecture-to-implementation gap audit completed and registered on 2026-10-17 (`docs/reports/architecture_gap_audit_and_milestone_proposal.md`). Audit established that 5 of 7 core state-machine mechanisms are absent from active code. Primitive modular addition 2x2 supervision grid is empirically closed. Phase 1.6 Stage 3 composed sequence benchmark recommended for de-prioritization.
-* **Pending PI Decisions (all require explicit authorization before action):**
-  1. *Roadmap Approval:* Authorize Milestone 1 (Speculative State Isolation & Transaction Gate Engine implementation and unit testing).
-  2. *Task Domain Authorization:* Approve Constrained Graph Pathfinding as the target benchmark for end-to-end state machine validation (Milestone 2).
-  3. *Stage 3 De-prioritization:* Confirm de-prioritizing Phase 1.6 Stage 3 composed sequence evaluation.
-  4. *Firewall Confirmation:* Reaffirm single-evaluation firewall protecting held-out test split ($b \in \{0, 5\}$).
-  5. *Runner Hardening & Exp L Drift:* Authorize adding artifact overwrite refusal checks to official runners and auditing Experiment L reproduction drift.
+* **Context:** Milestone 1 implementation and independent Antigravity audit are complete (Verdict: PASS, 2026-10-17). `SpeculativeCandidateSet` (`src/re_reason/state/speculative.py`) and `TransactionCommitGate` (`src/re_reason/verification/transaction_gate.py`) verified against contracts, isolation invariants, and non-training tests (48 passed, 21 skipped on CPU).
+* **Pending PI decision:** Accept Milestone 1 audit handoff and authorize next roadmap step (Milestone 2: Constrained Pathfinding Benchmark Suite).
+* **Gating:** Milestone 2 implementation, model integration, neural branching, and any model training or experiment runners remain strictly unauthorized pending explicit PI instruction.
+* **Owner:** PI.
+
+### 2. Remaining PI Decisions on Architectural Pivot & Milestone Roadmap
+
+* **Context:** `docs/reports/architecture_gap_audit_and_milestone_proposal.md` (2026-10-17). The Milestone 1 roadmap decision has been executed; the following remain open.
+* **Still pending (each requires explicit PI authorization before action):**
+  1. *Task Domain Authorization:* Approve Constrained Graph Pathfinding as the target benchmark for end-to-end state-machine validation (Milestone 2).
+  2. *Stage 3 De-prioritization:* Confirm de-prioritizing Phase 1.6 Stage 3 composed sequence evaluation.
+  3. *Firewall Confirmation:* Reaffirm the single-evaluation firewall protecting the held-out test split ($b \in \{0, 5\}$).
+  4. *Runner Hardening & Exp L Drift:* Authorize artifact overwrite refusal checks in official runners and audit Experiment L reproduction drift (not covered by the Milestone 1 work order).
 * **Status:** Awaiting PI direction.
 * **Owner:** PI.
 
-### 2. Milestone 1 — Speculative State Isolation & Transaction Gate Engine
-
-* **Context:** Software engineering milestone implementing `TransactionCommitGate`, multi-candidate `StateContainer` buffering, and isolated rollback unit tests.
-* **Pending task:** Implement and test Milestone 1 components upon explicit PI authorization.
-* **Status:** Blocked pending PI decision on Item 1.
-* **Owner:** Antigravity.
-
 ### 3. Pre-existing Unrelated Test Drift — Experiment L
 
-* **Context:** `tests/test_experiment_l.py::test_stored_artifact_is_reproducible_from_checkpoints` fails on this worktree. Confirmed pre-existing and unrelated to Phase 1.6 / cyclic models (Experiment L artifact dated 2026-10-07; fails even when unmodified HEAD model code is force-loaded). Unchanged by recent experiments.
+* **Context:** `tests/test_experiment_l.py::test_stored_artifact_is_reproducible_from_checkpoints` fails on this worktree. Confirmed pre-existing and unrelated to Phase 1.6 / cyclic models (Experiment L artifact dated 2026-10-07; fails even when unmodified HEAD model code is force-loaded). Unchanged by recent work.
 * **Pending task:** Audit Experiment L artifact reproduction path and determine whether an amendment under `docs/DOCUMENTATION_POLICY.md` §4 is required.
 * **Status:** Pending PI guidance.
 * **Owner:** Antigravity / PI.
 
 ## Owner map
 
-* **PI:** Direction and authorization on architecture roadmap, task selection, runner hardening, and test drift.
-* **Antigravity:** Component implementation, test suites, and documentation governance upon explicit PI authorization.
+* **PI:** Next-milestone authorization, task-domain decision, Stage 3 de-prioritization, firewall confirmation, runner hardening and Experiment L guidance.
+* **Antigravity:** Independent audit of the Milestone 1 implementation; subsequent implementation and governance work upon explicit PI authorization.
 
 ## Canonical references
 
 * `docs/reports/architecture_gap_audit_and_milestone_proposal.md` (authoritative architecture gap audit & roadmap)
+* `src/re_reason/state/speculative.py`; `src/re_reason/verification/transaction_gate.py` (Milestone 1 infrastructure)
+* `tests/test_speculative_state.py`; `tests/test_transaction_gate.py` (Milestone 1 focused suites)
+* `src/re_reason/state/container.py`; `src/re_reason/verification/base.py` (existing contracts built upon)
 * `docs/reports/exp_cyclic_persist_abl_01_report.md` (authoritative ablation report)
 * `docs/reports/exp_cyclic_persist_01_report.md` (authoritative primary report)
 * `docs/02_core_architecture.md` (target conceptual pipeline)
