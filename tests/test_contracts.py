@@ -115,3 +115,9 @@ def test_core_package_exports() -> None:
     assert ExportedCognitionCore is BaseCognitionCore
     assert DirectVerifier is BaseVerifier
     assert issubclass(LatentState, BaseStateContainer)
+
+
+def test_state_container_contract_includes_checkpoint_restoration() -> None:
+    """The state-container interface exposes checkpoint restoration for recovery."""
+    assert "restore_checkpoint" in BaseStateContainer.__abstractmethods__
+    assert callable(getattr(LatentState, "restore_checkpoint"))

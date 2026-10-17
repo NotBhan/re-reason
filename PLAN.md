@@ -5,21 +5,25 @@
 
 ## Current plan
 
-### 1. PI Decision & Authorization: Milestone 1 Acceptance & Milestone 2 Authorization
+### 1. Milestone 3A — Neural Hypothesis Branching & Transaction-Safe Integration: audit complete (Verdict: PASS); pending PI acceptance
 
-* **Context:** Milestone 1 implementation and independent Antigravity audit are complete (Verdict: PASS, 2026-10-17). `SpeculativeCandidateSet` (`src/re_reason/state/speculative.py`) and `TransactionCommitGate` (`src/re_reason/verification/transaction_gate.py`) verified against contracts, isolation invariants, and non-training tests (48 passed, 21 skipped on CPU).
-* **Pending PI decision:** Accept Milestone 1 audit handoff and authorize next roadmap step (Milestone 2: Constrained Pathfinding Benchmark Suite).
-* **Gating:** Milestone 2 implementation, model integration, neural branching, and any model training or experiment runners remain strictly unauthorized pending explicit PI instruction.
-* **Owner:** PI.
+* **Context:** Authorized and executed 2026-10-17 under the PI work order "Milestone 3A: Neural Hypothesis Branching, Speculative State Isolation, and Transaction-Safe Integration". Non-training engineering only: no model training, no experiment execution, no baseline selection, no held-out evaluation.
+* **Deliverables:** `src/re_reason/hypothesis/pathfinding_branching.py` (`ObservationEncoder`, `ActionConditionedBrancher`, typed `CandidateProposal`/`BranchProposal`; exactly 171,660 trainable parameters); `src/re_reason/hypothesis/two_phase_orchestrator.py` (`TwoPhaseTransitionOrchestrator`, `TransitionResult`; bounded `R_max = 3` proposal rounds, `T_max = 24` episode transitions, `B_max = 4` reserved for deferred backtracking, failure recovery via checkpoint restoration); additive `LatentState.restore_checkpoint` on the shared `BaseStateContainer` contract (`src/re_reason/state/container.py`); additive exports in `src/re_reason/hypothesis/__init__.py`; focused suites `tests/test_pathfinding_branching.py` and `tests/test_two_phase_orchestrator.py`, plus additive restoration tests in `tests/test_state.py` and a contract check in `tests/test_contracts.py`.
+* **Audit Verdict (2026-10-17):** **PASS**. Independent code audit confirmed: exact 171,660 trainable parameter count; shared embedding and branch-core weights; strict public observation surface; independent verifier rejection; compensating checkpoint rollback across all failure boundaries; bounded retry and episode horizons; and full passing test suite (131 passed, 27 skipped on CPU host; 0 failures).
+* **Pending tasks:** (1) PI formal acceptance of Milestone 3A; (2) PI decisions on pre-3B parameters (primary baseline selection, margin ratification, seed contingency).
+* **Gating:** Milestone 3B, neural training, experiment runners, primary-baseline selection, statistical-margin ratification, seed-expansion rules, and held-out pathfinding test evaluation remain strictly unauthorized pending separate explicit PI authorization.
+* **Owner:** PI (formal acceptance and next-action decision).
 
 ### 2. Remaining PI Decisions on Architectural Pivot & Milestone Roadmap
 
-* **Context:** `docs/reports/architecture_gap_audit_and_milestone_proposal.md` (2026-10-17). The Milestone 1 roadmap decision has been executed; the following remain open.
+* **Resolved by the Milestone 3A work order:** approval of the additive `restore_checkpoint(tensor)` container API.
 * **Still pending (each requires explicit PI authorization before action):**
-  1. *Task Domain Authorization:* Approve Constrained Graph Pathfinding as the target benchmark for end-to-end state-machine validation (Milestone 2).
-  2. *Stage 3 De-prioritization:* Confirm de-prioritizing Phase 1.6 Stage 3 composed sequence evaluation.
-  3. *Firewall Confirmation:* Reaffirm the single-evaluation firewall protecting the held-out test split ($b \in \{0, 5\}$).
-  4. *Runner Hardening & Exp L Drift:* Authorize artifact overwrite refusal checks in official runners and audit Experiment L reproduction drift (not covered by the Milestone 1 work order).
+  1. *Pre-3B Primary Baseline Selection:* designate the primary comparator from the distinguishable alternatives (Un-Gated GRU, Action-Masking GRU, Episode-Budget Matched GRU). The algorithmically equivalent sequential "Beam-3" formulation remains rejected and must not be reintroduced as a scientific control.
+  2. *Pre-3B Margin Ratification:* ratify or adjust the provisional +0.10 absolute goal-reaching-rate improvement margin.
+  3. *Pre-3B Inconclusive-Outcome Rule:* confirm whether inconclusive outcomes trigger expansion from five to ten seed pairs or remain inconclusive.
+  4. *Stage 3 De-prioritization:* Confirm de-prioritizing Phase 1.6 Stage 3 composed sequence evaluation.
+  5. *Firewall Confirmation:* Reaffirm the single-evaluation firewalls protecting the modular-addition held-out split ($b \in \{0, 5\}$) and the pathfinding held-out `test` partition.
+  6. *Runner Hardening & Exp L Drift:* Authorize artifact overwrite refusal checks in official runners and audit Experiment L reproduction drift.
 * **Status:** Awaiting PI direction.
 * **Owner:** PI.
 
@@ -32,15 +36,17 @@
 
 ## Owner map
 
-* **PI:** Next-milestone authorization, task-domain decision, Stage 3 de-prioritization, firewall confirmation, runner hardening and Experiment L guidance.
-* **Antigravity:** Independent audit of the Milestone 1 implementation; subsequent implementation and governance work upon explicit PI authorization.
+* **PI:** Next-milestone authorization, pre-3B baseline/margin/contingency decisions, Stage 3 de-prioritization, firewall confirmation, runner hardening and Experiment L guidance.
+* **Antigravity:** Independent audit of the Milestone 3A implementation; subsequent implementation and governance upon explicit PI authorization.
 
 ## Canonical references
 
 * `docs/reports/architecture_gap_audit_and_milestone_proposal.md` (authoritative architecture gap audit & roadmap)
-* `src/re_reason/state/speculative.py`; `src/re_reason/verification/transaction_gate.py` (Milestone 1 infrastructure)
-* `tests/test_speculative_state.py`; `tests/test_transaction_gate.py` (Milestone 1 focused suites)
-* `src/re_reason/state/container.py`; `src/re_reason/verification/base.py` (existing contracts built upon)
+* `src/re_reason/hypothesis/pathfinding_branching.py`; `src/re_reason/hypothesis/two_phase_orchestrator.py` (Milestone 3A architecture & orchestration)
+* `tests/test_pathfinding_branching.py`; `tests/test_two_phase_orchestrator.py` (Milestone 3A focused suites)
+* `src/re_reason/state/container.py` (checkpoint restoration contract); `src/re_reason/state/speculative.py`; `src/re_reason/verification/transaction_gate.py` (Milestone 1 infrastructure)
+* `src/re_reason/benchmarks/pathfinding_benchmark.py`; `src/re_reason/verification/pathfinding_verifier.py` (Milestone 2 benchmark suite)
+* `tests/test_pathfinding_benchmark.py`; `tests/test_pathfinding_verifier.py` (Milestone 2 focused suites)
 * `docs/reports/exp_cyclic_persist_abl_01_report.md` (authoritative ablation report)
 * `docs/reports/exp_cyclic_persist_01_report.md` (authoritative primary report)
 * `docs/02_core_architecture.md` (target conceptual pipeline)

@@ -1,4 +1,4 @@
-"""Verification package contracts and transaction commit gate."""
+"""Verification package contracts, transaction commit gate, and pathfinding verifier."""
 
 from re_reason.verification.base import BaseVerifier
 from re_reason.verification.transaction_gate import (
@@ -13,6 +13,7 @@ from re_reason.verification.transaction_gate import (
     UnverifiedCandidateError,
     VerificationOutcome,
 )
+from re_reason.verification.pathfinding_verifier import PathfindingVerifier
 
 __all__ = [
     "BaseVerifier",
@@ -26,4 +27,5 @@ __all__ = [
     "TransactionOutcome",
     "UnverifiedCandidateError",
     "VerificationOutcome",
+    "PathfindingVerifier",
 ]

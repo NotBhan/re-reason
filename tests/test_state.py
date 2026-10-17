@@ -8,6 +8,11 @@ from hypothesis import strategies as st
 
 from re_reason.state.container import LatentState
 from re_reason.utils.memory import check_monotonic_growth, inspect_tensor_retention
+from re_reason.verification.transaction_gate import (
+    CandidateRecord,
+    TransactionCommitGate,
+    VerificationOutcome,
+)
 
 
 def test_state_creation_and_properties(all_available_devices: torch.device) -> None:
@@ -270,3 +275,129 @@ def test_property_state_isolation(b: int, d: int, k: int) -> None:
     state.rollback()
     assert torch.equal(state.committed_state, init)
     assert state.working_branches is None
+
+
+# ---------------------------------------------------------------------------
+# Checkpoint restoration contract (multi-step recovery after a completed commit)
+# ---------------------------------------------------------------------------
+
+def test_restore_checkpoint_restores_committed_state(all_available_devices: torch.device) -> None:
+    """A valid checkpoint replaces the committed master state exactly."""
+    device = all_available_devices
+    state = LatentState.zeros(4, 16, device=device)
+    checkpoint = torch.arange(64, dtype=torch.float32, device=device).reshape(4, 16) / 3.0
+
+    state.restore_checkpoint(checkpoint)
+
+    assert torch.equal(state.committed_state, checkpoint)
+
+
+def test_restore_checkpoint_storage_is_independent(all_available_devices: torch.device) -> None:
+    """Restored storage does not alias the caller's checkpoint tensor."""
+    device = all_available_devices
+    state = LatentState.zeros(4, 16, device=device)
+    checkpoint = torch.randn(4, 16, device=device)
+    expected = checkpoint.clone()
+
+    state.restore_checkpoint(checkpoint)
+
+    assert state.committed_state.data_ptr() != checkpoint.data_ptr()
+    checkpoint.add_(100.0)
+    assert torch.equal(state.committed_state, expected)
+
+
+def test_restore_checkpoint_clears_speculative_and_snapshot(all_available_devices: torch.device) -> None:
+    """Restoration releases active speculative branches and transient snapshot state."""
+    device = all_available_devices
+    state = LatentState.zeros(4, 16, device=device)
+    state.spawn_branches(k=3)
+    state.snapshot()
+    assert state.has_speculative and state.snapshot_state is not None
+
+    state.restore_checkpoint(torch.zeros(4, 16, device=device))
+
+    assert state.working_branches is None
+    assert state.snapshot_state is None
+    assert not state.has_speculative
+
+
+def test_restore_checkpoint_rejects_invalid_inputs(all_available_devices: torch.device) -> None:
+    """Non-tensors and mismatched shape/dtype/device are rejected without mutation."""
+    device = all_available_devices
+    state = LatentState.zeros(4, 16, device=device)
+    master_before = state.committed_state.clone()
+
+    with pytest.raises(TypeError):
+        state.restore_checkpoint("checkpoint")
+    with pytest.raises(ValueError):
+        state.restore_checkpoint(torch.zeros(4, 15, device=device))
+    with pytest.raises(ValueError):
+        state.restore_checkpoint(torch.zeros(4, 16, dtype=torch.float64, device=device))
+    with pytest.raises(ValueError):
+        state.restore_checkpoint(torch.zeros(4, 16, device="meta"))
+
+    assert torch.equal(state.committed_state, master_before)
+
+
+def test_restore_checkpoint_after_commit_returns_prior_committed_tensor(
+    all_available_devices: torch.device,
+) -> None:
+    """Restoration recovers the pre-commit master tensor after an already completed commit."""
+    device = all_available_devices
+    initial = torch.randn(4, 16, device=device)
+    state = LatentState(initial)
+    checkpoint = state.committed_state.clone()
+
+    branches = state.spawn_branches(k=2)
+    branches[:, 1, :] = torch.full((4, 16), 7.0, device=device)
+    state.commit(candidate=1)
+    assert torch.equal(state.committed_state, torch.full((4, 16), 7.0, device=device))
+
+    state.restore_checkpoint(checkpoint)
+
+    assert torch.equal(state.committed_state, initial)
+    assert state.committed_state.grad_fn is None
+    assert not state.has_speculative
+
+
+def test_restore_checkpoint_preserves_container_identity_and_gate_binding(
+    all_available_devices: torch.device,
+) -> None:
+    """The container object and a previously bound transaction gate survive restoration."""
+    device = all_available_devices
+    state = LatentState.zeros(4, 16, device=device)
+    gate = TransactionCommitGate(state)
+    container_identity = id(state)
+    checkpoint = state.committed_state.clone()
+
+    winner = torch.full((4, 16), 3.0, device=device)
+    first = gate.decide_and_commit(
+        [
+            CandidateRecord(
+                candidate_id="first",
+                state=winner,
+                verification=VerificationOutcome(valid=True),
+                score=0.5,
+            )
+        ]
+    )
+    assert first.committed
+
+    state.restore_checkpoint(checkpoint)
+
+    assert id(state) == container_identity
+    assert gate.container is state
+    assert torch.equal(state.committed_state, checkpoint)
+
+    second = gate.decide_and_commit(
+        [
+            CandidateRecord(
+                candidate_id="second",
+                state=winner,
+                verification=VerificationOutcome(valid=True),
+                score=0.5,
+            )
+        ]
+    )
+    assert second.committed
+    assert torch.equal(state.committed_state, winner)

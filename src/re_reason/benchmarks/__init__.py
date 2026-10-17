@@ -7,6 +7,21 @@ from re_reason.benchmarks.register_machine_benchmark import (
     Phase16SplitManager,
     Stage1PairPartition,
 )
+from re_reason.benchmarks.pathfinding_benchmark import (
+    PathValidation,
+    PathfindingAction,
+    PathfindingEpisode,
+    PathfindingGeneratorConfig,
+    PathfindingObservation,
+    PathfindingSolution,
+    PathfindingSplitSet,
+    PathfindingState,
+    generate_pathfinding_episode,
+    generate_pathfinding_splits,
+    goal_reachable_from,
+    solve_shortest_path,
+    validate_path,
+)
 
 __all__ = [
     "BaseTask",
@@ -15,4 +30,17 @@ __all__ = [
     "Phase16RegisterTask",
     "Stage1PairPartition",
     "Phase16SplitManager",
+    "PathValidation",
+    "PathfindingAction",
+    "PathfindingEpisode",
+    "PathfindingGeneratorConfig",
+    "PathfindingObservation",
+    "PathfindingSolution",
+    "PathfindingSplitSet",
+    "PathfindingState",
+    "generate_pathfinding_episode",
+    "generate_pathfinding_splits",
+    "goal_reachable_from",
+    "solve_shortest_path",
+    "validate_path",
 ]

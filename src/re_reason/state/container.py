@@ -52,6 +52,20 @@ class BaseStateContainer(ABC):
         pass
 
     @abstractmethod
+    def restore_checkpoint(self, checkpoint: torch.Tensor) -> None:
+        """Restores the committed master state from an external checkpoint tensor.
+
+        The checkpoint must match the container's committed state shape, dtype, and
+        device; it is detached and cloned into committed storage so the restored
+        state never aliases the caller's tensor. Speculative working branches and
+        transient snapshot state are released. The container instance itself is
+        preserved (callers such as the transaction commit gate keep their binding).
+        Invalid checkpoints are rejected explicitly and never silently cast,
+        reshaped, or moved.
+        """
+        pass
+
+    @abstractmethod
     def clear_speculative(self) -> None:
         """Releases speculative tensor buffers to allow memory reclamation by the caching allocator."""
         pass
@@ -225,6 +239,47 @@ class LatentState(BaseStateContainer):
         """
         if self._snapshot_state is not None:
             self._committed_state = self._snapshot_state.detach().clone()
+        self.clear_speculative()
+
+    def restore_checkpoint(self, checkpoint: torch.Tensor) -> None:
+        """Restores the committed master state from an external detached checkpoint.
+
+        Unlike ``rollback`` (which can only undo uncommitted speculative work), this
+        method restores a checkpoint captured before an already-completed commit.
+        The checkpoint is validated against the committed state's shape, dtype, and
+        device, then detached and cloned into fresh committed storage, so later
+        mutation of the caller's tensor cannot affect the container. Speculative
+        working branches and transient snapshot state are released, and the
+        container instance remains the same object.
+
+        Args:
+            checkpoint: Previously captured committed-state tensor with matching
+                shape, dtype, and device.
+
+        Raises:
+            TypeError: If ``checkpoint`` is not a ``torch.Tensor``.
+            ValueError: If the shape, dtype, or device does not match the
+                container's committed-state contract.
+        """
+        if not isinstance(checkpoint, torch.Tensor):
+            raise TypeError(f"checkpoint must be a torch.Tensor, got {type(checkpoint).__name__}")
+        if checkpoint.shape != self._committed_state.shape:
+            raise ValueError(
+                f"checkpoint shape {checkpoint.shape} does not match committed state shape "
+                f"{self._committed_state.shape}"
+            )
+        if checkpoint.dtype != self._committed_state.dtype:
+            raise ValueError(
+                f"checkpoint dtype {checkpoint.dtype} does not match committed state dtype "
+                f"{self._committed_state.dtype}"
+            )
+        if checkpoint.device != self._committed_state.device:
+            raise ValueError(
+                f"checkpoint device {checkpoint.device} does not match committed state device "
+                f"{self._committed_state.device}"
+            )
+
+        self._committed_state = checkpoint.detach().clone()
         self.clear_speculative()
 
     def clear_speculative(self) -> None:
