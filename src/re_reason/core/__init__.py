@@ -25,6 +25,19 @@ from re_reason.core.register_machine_models import (
     project_to_unit_circle,
 )
 
+from re_reason.core.pathfinding_baselines import (
+    ActionMaskingRecurrentBaseline,
+    PathfindingRecurrentBaseline,
+    TrajectoryResult,
+    TwoRolloutRecurrentBaseline,
+    TwoTrajectoryResult,
+    UnGatedRecurrentBaseline,
+    rollout_action_masked,
+    rollout_two_trajectory,
+    rollout_un_gated,
+    select_trajectory,
+)
+
 __all__ = [
     "BaseTask",
     "TaskBatch",
@@ -47,4 +60,14 @@ __all__ = [
     "cyclic_alu",
     "get_harmonic_basis",
     "project_to_unit_circle",
+    "PathfindingRecurrentBaseline",
+    "UnGatedRecurrentBaseline",
+    "ActionMaskingRecurrentBaseline",
+    "TwoRolloutRecurrentBaseline",
+    "TrajectoryResult",
+    "TwoTrajectoryResult",
+    "select_trajectory",
+    "rollout_un_gated",
+    "rollout_action_masked",
+    "rollout_two_trajectory",
 ]

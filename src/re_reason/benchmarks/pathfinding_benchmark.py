@@ -70,6 +70,8 @@ PATH_EMPTY = "empty_path"
 PATH_START_MISMATCH = "path_start_mismatch"
 PATH_GOAL_MISMATCH = "path_goal_mismatch"
 
+PARTITION_SEED_OFFSETS = {"train": 1000, "validation": 50000, "test": 90000}
+
 
 def _require_int(name: str, value: object, minimum: int) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
@@ -585,6 +587,36 @@ class PathfindingSplitSet:
     test: tuple[PathfindingEpisode, ...]
 
 
+def generate_pathfinding_partition(
+    config: PathfindingGeneratorConfig,
+    partition: str,
+    size: int,
+    base_seed: int = 42,
+) -> tuple[PathfindingEpisode, ...]:
+    """Generates one named partition without materializing the other partitions.
+
+    Partition seed spaces follow the repository convention (``base_seed + 1000``
+    for ``train``, ``+50000`` for ``validation``, ``+90000`` for ``test``).
+    Duplicate draws within the partition are skipped under a bounded attempt
+    budget. Callers that are restricted to one partition (for example authorized
+    training code restricted to ``train``) can generate it without constructing
+    the held-out partitions.
+    """
+    if not isinstance(config, PathfindingGeneratorConfig):
+        raise TypeError(
+            f"config must be a PathfindingGeneratorConfig, got {type(config).__name__}"
+        )
+    if partition not in PARTITION_SEED_OFFSETS:
+        raise ValueError(
+            f"partition must be one of {sorted(PARTITION_SEED_OFFSETS)}, got {partition!r}"
+        )
+    _require_int("size", size, 1)
+    _require_int("base_seed", base_seed, 0)
+    return _generate_unique_partition(
+        config, base_seed + PARTITION_SEED_OFFSETS[partition], size
+    )
+
+
 def generate_pathfinding_splits(
     train_size: int,
     validation_size: int,
@@ -611,9 +643,11 @@ def generate_pathfinding_splits(
     _require_int("base_seed", base_seed, 0)
 
     partitions = {
-        "train": _generate_unique_partition(config, base_seed + 1000, train_size),
-        "validation": _generate_unique_partition(config, base_seed + 50000, validation_size),
-        "test": _generate_unique_partition(config, base_seed + 90000, test_size),
+        "train": generate_pathfinding_partition(config, "train", train_size, base_seed),
+        "validation": generate_pathfinding_partition(
+            config, "validation", validation_size, base_seed
+        ),
+        "test": generate_pathfinding_partition(config, "test", test_size, base_seed),
     }
     for left, right in (("train", "validation"), ("train", "test"), ("validation", "test")):
         overlap = {episode.digest() for episode in partitions[left]} & {

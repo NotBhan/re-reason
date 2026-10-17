@@ -327,6 +327,49 @@ class ActionConditionedBrancher(nn.Module):
         delta = self.branch_output(hidden)  # (B, K, 256)
         return self.branch_norm(committed_state.unsqueeze(1) + delta)  # (B, K, 256)
 
+    def advance_states(
+        self,
+        committed_state: torch.Tensor,
+        encoded_observation: torch.Tensor,
+        action_ids: torch.Tensor,
+    ) -> torch.Tensor:
+        """Advances the shared residual core with one action id per batch row.
+
+        Computes ``LayerNorm(S_t + f([S_t || e_t || E_node[a]]))`` through the same
+        shared branch core as :meth:`evaluate_candidates`, returning shape
+        ``(B, state_dim)``. This entry point is used by teacher-forced behavioral
+        cloning and the recurrent baselines, which need a different action per
+        batch row; per-row results are mathematically identical to the
+        corresponding :meth:`evaluate_candidates` slices.
+        """
+        committed_state, encoded_observation = self._validate_state_pair(
+            committed_state, encoded_observation
+        )
+        if not isinstance(action_ids, torch.Tensor):
+            raise TypeError(f"action_ids must be a torch.Tensor, got {type(action_ids).__name__}")
+        if action_ids.dtype != torch.long:
+            raise ValueError(f"action_ids must have dtype torch.long, got {action_ids.dtype}")
+        expected_shape = (committed_state.shape[0],)
+        if tuple(action_ids.shape) != expected_shape:
+            raise ValueError(
+                f"action_ids must have shape {expected_shape}, got {tuple(action_ids.shape)}"
+            )
+        if action_ids.device != committed_state.device:
+            raise ValueError(
+                f"action_ids device {action_ids.device} does not match state device "
+                f"{committed_state.device}"
+            )
+        if bool(((action_ids < 0) | (action_ids >= self.num_nodes)).any()):
+            raise ValueError(f"action_ids must be node ids in [0, {self.num_nodes})")
+
+        action_embeddings = self.node_embeddings(action_ids)  # (B, node_embedding_dim)
+        branch_features = torch.cat(
+            [committed_state, encoded_observation, action_embeddings], dim=-1
+        )  # (B, 2 * state_dim + node_embedding_dim)
+        hidden = F.gelu(self.branch_input(branch_features))
+        delta = self.branch_output(hidden)
+        return self.branch_norm(committed_state + delta)
+
     def propose_candidates(
         self,
         committed_state: torch.Tensor,
