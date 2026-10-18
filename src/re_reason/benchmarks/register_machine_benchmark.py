@@ -20,7 +20,12 @@ import numpy as np
 import torch
 
 from re_reason.benchmarks.base import BaseTask, TaskBatch
-from re_reason.benchmarks.dataset_split import SplitDataset, hash_sequence
+from re_reason.benchmarks.dataset_split import (
+    SplitDataset,
+    assert_manifests_disjoint,
+    build_hash_manifest,
+    hash_sequence,
+)
 
 
 class Instruction(NamedTuple):
@@ -391,14 +396,31 @@ class Phase16RegisterTask(BaseTask):
         self,
         rng: np.random.Generator,
         max_attempts: int = 100,
+        excluded_source_values: Tuple[int, ...] = (0, 5),
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Generates a Regime B training/validation sequence with execution-time operand masking.
 
         Invariant: Every ADD transition in the sequence must satisfy:
-            runtime source-register value v(r_src) not in {0, 5}.
-        The check is evaluated at the exact runtime moment of the transition,
-        accounting for all preceding SET, SWAP, and ADD mutations.
+            runtime source-register value v(r_src) not in ``excluded_source_values``
+            (default {0, 5}; the 2026-10-18 held-out campaign registers {0, 3, 5}).
+        Immediate literals in SET instructions remain unrestricted (0..9); masking
+        applies strictly to the runtime source value of ADD transitions. The check is
+        evaluated at the exact runtime moment of the transition, accounting for all
+        preceding SET, SWAP, and ADD mutations.
         """
+        if not excluded_source_values:
+            raise ValueError("excluded_source_values must be non-empty")
+        if any(v not in range(self.num_values) for v in excluded_source_values):
+            raise ValueError(
+                f"excluded_source_values must be within [0, {self.num_values - 1}], "
+                f"got {excluded_source_values!r}"
+            )
+        excluded = tuple(sorted(set(int(v) for v in excluded_source_values)))
+        if len(set(range(self.num_values)) - set(excluded)) == 0:
+            raise ValueError(
+                "excluded_source_values must leave at least one eligible runtime source value"
+            )
+
         for _ in range(max_attempts):
             inputs_list: List[np.ndarray] = []
             registers = np.zeros(self.num_registers, dtype=np.int64)
@@ -428,11 +450,11 @@ class Phase16RegisterTask(BaseTask):
 
                 elif op_type == self.OP_ADD:
                     reg_dest = int(rng.integers(0, self.num_registers))
-                    # Pick reg_src such that registers[reg_src] not in {0, 5}
-                    eligible_src = [r for r in range(self.num_registers) if registers[r] not in (0, 5)]
+                    # Pick reg_src such that registers[reg_src] not in the excluded set
+                    eligible_src = [r for r in range(self.num_registers) if registers[r] not in excluded]
                     if not eligible_src:
                         # No register currently holds an eligible operand; fallback to SET or resample
-                        val = int(rng.choice([1, 2, 3, 4, 6, 7, 8, 9]))
+                        val = int(rng.choice([v for v in range(self.num_values) if v not in excluded]))
                         reg_dest = int(rng.integers(0, self.num_registers))
                         op_type = self.OP_SET
                         reg_src = -1
@@ -440,7 +462,7 @@ class Phase16RegisterTask(BaseTask):
                         reg_src = int(rng.choice(eligible_src))
                         val = -1
                         # Runtime invariant verification
-                        if registers[reg_src] in (0, 5):
+                        if registers[reg_src] in excluded:
                             valid_sequence = False
                             break
                 else:
@@ -456,13 +478,122 @@ class Phase16RegisterTask(BaseTask):
             inputs_arr = np.stack(inputs_list, axis=0)
             step_targets, history = self.simulate_trace(inputs_arr)
 
-            # Replay verification: verify 100% of ADD steps exclude runtime {0, 5}
+            # Replay verification: verify 100% of ADD steps exclude the masked runtime values
             add_steps = [h for h in history if h["op_type"] == self.OP_ADD]
-            violating_add = [h for h in add_steps if h["runtime_src_val_pre"] in (0, 5)]
+            violating_add = [h for h in add_steps if h["runtime_src_val_pre"] in excluded]
             if not violating_add:
                 return inputs_arr, step_targets, step_targets[-1].copy()
 
         raise RuntimeError(f"Failed to generate valid Regime B masked sequence after {max_attempts} attempts")
+
+    def generate_proxy_dev_sequence(
+        self,
+        rng: np.random.Generator,
+        target_class: int,
+        max_attempts: int = 100,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """Generates one PROXY-DEV development sequence for a requested target class.
+
+        Conditioning invariants (registered 2026-10-18 Phase 1.6 amendment):
+        * exactly one designated ADD transition per sequence with runtime source value 3;
+        * zero ADD transitions with runtime source value in {0, 5};
+        * any other ADD transitions must have runtime sources in {1, 2, 4, 6, 7, 8, 9};
+        * the designated ADD's post-`ADD` target class ``(v(r_dest) + 3) mod 10``
+          equals ``target_class``.
+
+        Randomized trace details: designated ADD step position, destination/source
+        register addresses, intervening operations, and SET literals (0..9 remain
+        unrestricted). Every accepted sequence passes deterministic replay verification
+        of all invariants. Attempt exhaustion raises a fatal ``RuntimeError``; the
+        sample count is never silently reduced and the mask is never relaxed.
+        """
+        if self.sequence_length < 3:
+            raise ValueError("PROXY-DEV generation requires sequence_length >= 3")
+        if not (0 <= target_class < self.num_values):
+            raise ValueError(f"target_class must be in [0, {self.num_values - 1}], got {target_class}")
+
+        designated_src_value = 3
+        dest_literal = (target_class - designated_src_value) % self.num_values
+        excluded = (0, 3, 5)
+        seen_only = (1, 2, 4, 6, 7, 8, 9)
+
+        for _ in range(max_attempts):
+            inputs_list: List[np.ndarray] = []
+            registers = np.zeros(self.num_registers, dtype=np.int64)
+
+            designated_step = int(rng.integers(2, self.sequence_length))
+            src_reg = int(rng.integers(0, self.num_registers))
+            dest_candidates = [r for r in range(self.num_registers) if r != src_reg]
+            dest_reg = int(rng.choice(dest_candidates)) if dest_candidates else src_reg
+
+            for step in range(self.sequence_length):
+                if step == designated_step - 2:
+                    op_type, reg_dest, reg_src, val = self.OP_SET, src_reg, -1, designated_src_value
+                elif step == designated_step - 1:
+                    op_type, reg_dest, reg_src, val = self.OP_SET, dest_reg, -1, dest_literal
+                elif step == designated_step:
+                    op_type, reg_dest, reg_src, val = self.OP_ADD, dest_reg, src_reg, -1
+                else:
+                    op_type = int(rng.integers(0, self.NUM_OPS))
+                    if op_type == self.OP_SET:
+                        reg_dest = int(rng.integers(0, self.num_registers))
+                        reg_src = -1
+                        val = int(rng.integers(0, self.num_values))
+                    elif op_type == self.OP_SWAP:
+                        reg_dest = int(rng.integers(0, self.num_registers))
+                        candidates = [r for r in range(self.num_registers) if r != reg_dest]
+                        reg_src = int(rng.choice(candidates)) if candidates else reg_dest
+                        val = -1
+                    elif op_type == self.OP_READ:
+                        reg_dest = int(rng.integers(0, self.num_registers))
+                        reg_src = -1
+                        val = -1
+                    elif op_type == self.OP_ADD:
+                        reg_dest = int(rng.integers(0, self.num_registers))
+                        # Non-designated ADDs must source the seen set only.
+                        eligible_src = [
+                            r for r in range(self.num_registers) if registers[r] not in excluded
+                        ]
+                        if not eligible_src:
+                            val = int(rng.choice(seen_only))
+                            reg_dest = int(rng.integers(0, self.num_registers))
+                            op_type = self.OP_SET
+                            reg_src = -1
+                        else:
+                            reg_src = int(rng.choice(eligible_src))
+                            val = -1
+                    else:
+                        raise ValueError(f"Unknown op_type: {op_type}")
+
+                token = self.encode_instruction(op_type, reg_dest, reg_src, val)
+                inputs_list.append(token)
+                registers, _ = self.execute_step(registers, Instruction(op_type, reg_dest, reg_src, val))
+
+            inputs_arr = np.stack(inputs_list, axis=0)
+            step_targets, history = self.simulate_trace(inputs_arr)
+
+            add_steps = [h for h in history if h["op_type"] == self.OP_ADD]
+            designated = [h for h in add_steps if h["runtime_src_val_pre"] == designated_src_value]
+            forbidden_05 = [h for h in add_steps if h["runtime_src_val_pre"] in (0, 5)]
+            outside_seen = [
+                h
+                for h in add_steps
+                if h["runtime_src_val_pre"] not in seen_only
+                and h["runtime_src_val_pre"] != designated_src_value
+            ]
+
+            class_ok = (
+                len(designated) == 1
+                and (designated[0]["runtime_dest_val_pre"] + designated_src_value) % self.num_values
+                == target_class
+            )
+            if class_ok and not forbidden_05 and not outside_seen:
+                return inputs_arr, step_targets, step_targets[-1].copy()
+
+        raise RuntimeError(
+            f"Failed to generate PROXY-DEV sequence for target class {target_class} "
+            f"after {max_attempts} attempts"
+        )
 
     def generate_regime_b_heldout_test_sequence(
         self,
@@ -708,15 +839,22 @@ class Phase16SplitManager:
         seed: int,
         generation_mode: str = "regime_a",
         max_attempts_factor: int = 20,
+        excluded_source_values: Tuple[int, ...] = (0, 5),
     ) -> Tuple[SplitDataset, List[str]]:
         """Generates a verified sequence-disjoint split under the specified mode.
 
         Modes:
             - 'regime_a': Standard in-distribution unmasked composed sequences.
             - 'stage2_binding': Pure address binding sequences (SET, SWAP, READ, zero ADD).
-            - 'regime_b_masked': Masked sequences excluding runtime source operand b in {0, 5} on ADD.
+            - 'regime_b_masked': Masked sequences excluding the configured runtime source
+              operand values (default {0, 5}; the held-out campaign registers {0, 3, 5}).
             - 'regime_b_heldout_test': Conditioned sequences with >= 1 ADD sourcing runtime b in {0, 5}.
         """
+        if generation_mode != "regime_b_masked" and tuple(excluded_source_values) != (0, 5):
+            raise ValueError(
+                "excluded_source_values are only supported for 'regime_b_masked' generation; "
+                f"got mode {generation_mode!r}"
+            )
         rng = np.random.default_rng(seed)
         seen_hashes: Set[str] = set()
         hashes_list: List[str] = []
@@ -741,7 +879,9 @@ class Phase16SplitManager:
             elif generation_mode == "stage2_binding":
                 inp, step_tgt, final_tgt = self.task.generate_stage2_binding_sequence(rng)
             elif generation_mode == "regime_b_masked":
-                inp, step_tgt, final_tgt = self.task.generate_regime_b_sequence(rng)
+                inp, step_tgt, final_tgt = self.task.generate_regime_b_sequence(
+                    rng, excluded_source_values=excluded_source_values
+                )
             elif generation_mode == "regime_b_heldout_test":
                 inp, step_tgt, final_tgt = self.task.generate_regime_b_heldout_test_sequence(rng)
             else:
@@ -795,3 +935,94 @@ class Phase16SplitManager:
             raise RuntimeError(f"Data leakage detected! {len(s_va & s_te)} sequences overlap between val and test.")
 
         return train_set, val_set, test_set
+
+    def create_masked_campaign_splits(
+        self,
+        train_size: int = 6000,
+        val_size: int = 1200,
+        base_seed: int = 42,
+        excluded_source_values: Tuple[int, ...] = (0, 3, 5),
+    ) -> Tuple[SplitDataset, SplitDataset]:
+        """Creates the registered TRAIN-MASKED / VAL-SEEN pools of the held-out campaign.
+
+        ADD runtime sources are masked to ``excluded_source_values`` (registered
+        default {0, 3, 5}); SET literals remain unrestricted. TRAIN/VAL
+        sequence-disjointness is verified via SHA-256 hash manifests (metadata only).
+        """
+        train_set, train_hashes = self.generate_disjoint_split(
+            train_size,
+            seed=base_seed + 1000,
+            generation_mode="regime_b_masked",
+            excluded_source_values=excluded_source_values,
+        )
+        val_set, val_hashes = self.generate_disjoint_split(
+            val_size,
+            seed=base_seed + 50000,
+            generation_mode="regime_b_masked",
+            excluded_source_values=excluded_source_values,
+        )
+        assert_manifests_disjoint(
+            build_hash_manifest(train_hashes, "TRAIN-MASKED"),
+            build_hash_manifest(val_hashes, "VAL-SEEN"),
+        )
+        return train_set, val_set
+
+    def create_proxy_dev_split(
+        self,
+        per_class: int = 120,
+        base_seed: int = 42,
+        max_attempts: int = 100,
+    ) -> SplitDataset:
+        """Creates the registered PROXY-DEV split with exact per-class balance.
+
+        Every sequence contains exactly one designated ADD with runtime source 3 and
+        the requested post-ADD target class; classes are generated with ``per_class``
+        sequences each. Generation is bounded: each sequence call has ``max_attempts``
+        attempts, and the uniqueness-retry loop is bounded at
+        ``max_attempts * per_class`` attempts per class. Exhaustion raises a fatal
+        ``RuntimeError`` (no silent sample reduction, no mask relaxation).
+        """
+        if per_class < 1:
+            raise ValueError(f"per_class must be >= 1, got {per_class!r}")
+
+        rng = np.random.default_rng(base_seed + 70000)
+        seen_hashes: Set[str] = set()
+        inputs_list: List[np.ndarray] = []
+        step_targets_list: List[np.ndarray] = []
+        final_targets_list: List[np.ndarray] = []
+        hashes_list: List[str] = []
+
+        for target_class in range(self.task.num_values):
+            made = 0
+            attempts = 0
+            while made < per_class:
+                attempts += 1
+                if attempts > max_attempts * per_class:
+                    raise RuntimeError(
+                        f"Exceeded PROXY-DEV uniqueness attempts for target class {target_class} "
+                        f"(requested {per_class}, generated {made})."
+                    )
+                inp, step_tgt, final_tgt = self.task.generate_proxy_dev_sequence(
+                    rng, target_class, max_attempts=max_attempts
+                )
+                h = hash_sequence(inp)
+                if h in seen_hashes:
+                    continue
+                seen_hashes.add(h)
+                hashes_list.append(h)
+                inputs_list.append(inp)
+                step_targets_list.append(step_tgt)
+                final_targets_list.append(final_tgt)
+                made += 1
+
+        if len(inputs_list) != per_class * self.task.num_values:
+            raise RuntimeError(
+                f"PROXY-DEV split size mismatch: expected {per_class * self.task.num_values}, "
+                f"got {len(inputs_list)}"
+            )
+
+        inputs_t = torch.from_numpy(np.stack(inputs_list, axis=0)).float()
+        step_targets_t = torch.from_numpy(np.stack(step_targets_list, axis=0)).long()
+        final_targets_t = torch.from_numpy(np.stack(final_targets_list, axis=0)).long()
+
+        return SplitDataset(inputs_t, final_targets_t, step_targets_t, hashes_list)

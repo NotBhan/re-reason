@@ -4,7 +4,7 @@ Ensures zero data leakage across splits via cryptographic SHA-256 sequence hashi
 """
 
 import hashlib
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 import numpy as np
 import torch
 
@@ -17,6 +17,56 @@ def hash_sequence(inputs_arr: np.ndarray) -> str:
     hasher = hashlib.sha256()
     hasher.update(inputs_arr.tobytes())
     return hasher.hexdigest()
+
+
+def build_hash_manifest(hashes: Iterable[str], label: str) -> Dict[str, Any]:
+    """Builds a metadata-only SHA-256 manifest for a split.
+
+    The manifest contains only the label, the sequence count, and the sorted unique
+    hash list. It never contains sequence inputs, targets, or labels, so comparing
+    manifests cannot stream, browse, or inspect the underlying examples.
+    """
+    hash_list = list(hashes)
+    unique_hashes = sorted(set(hash_list))
+    if len(unique_hashes) != len(hash_list):
+        raise ValueError(f"duplicate sequence hashes within manifest {label!r}")
+    return {"label": label, "count": len(unique_hashes), "hashes": unique_hashes}
+
+
+def check_manifest_disjointness(
+    manifest_a: Dict[str, Any],
+    manifest_b: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Metadata-only collision check.
+
+    Returns only pass/fail status and the overlap count (plus labels and counts);
+    never returns sequence contents.
+    """
+    hashes_a = set(manifest_a["hashes"])
+    hashes_b = set(manifest_b["hashes"])
+    overlap = hashes_a & hashes_b
+    return {
+        "pass": not overlap,
+        "overlap_count": len(overlap),
+        "label_a": manifest_a.get("label"),
+        "label_b": manifest_b.get("label"),
+        "count_a": manifest_a.get("count"),
+        "count_b": manifest_b.get("count"),
+    }
+
+
+def assert_manifests_disjoint(
+    manifest_a: Dict[str, Any],
+    manifest_b: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Raises ``RuntimeError`` on any overlap; otherwise returns the check result."""
+    result = check_manifest_disjointness(manifest_a, manifest_b)
+    if not result["pass"]:
+        raise RuntimeError(
+            f"split collision detected: {result['overlap_count']} overlapping sequences "
+            f"between {result['label_a']!r} and {result['label_b']!r}"
+        )
+    return result
 
 
 class SplitDataset:
