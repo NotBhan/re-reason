@@ -1,6 +1,6 @@
 # PLAN — Current To-Be-Done Work
 
-**Last updated:** 2026-10-17
+**Last updated:** 2026-10-19
 **Rule:** this file contains strictly the current to-be-done plan; it is rewritten after every agent task completion and is not a history or a research record (see `AGENTS.md`).
 
 ## Current plan
@@ -33,10 +33,17 @@
 * **Status:** Pending PI guidance and authorization.
 * **Owner:** Antigravity / PI.
 
+### 4. Model E Held-Out Generalization — SCLM implementation committed; execution gates pending
+
+* **Context:** The accepted design proposal is `docs/research/model_e_heldout_generalization_design.md`; its append-only protocol amendment and implementation are recorded in `docs/reports/phase_1_6_architectural_reformulation_proposal.md` and `docs/RESEARCH_LOG.md`. SCLM is a four-slot, 53-dim-per-slot latent model with fixed exact cyclic arithmetic and matched memory/arithmetic comparisons. Model E remains the preserved research baseline; SCLM is not yet trained or qualified for the goal system.
+* **Pending tasks:** (1) Establish and approve the protected-set hash manifest before training; (2) run the registered split tests and authorized dataset generation; (3) obtain explicit authorization for and complete the profiling stop-gate, then the registered training campaign; (4) evaluate the proxy gate and, only if it passes, obtain authorization for the one-time protected test pass. Follow the phase amendment and firewall at every stage.
+* **Status:** Protocol amendment and guarded implementation committed (`3db8183`; smoke-check scope correction `3908a46`). Implementation-stage tests are recorded in the research log; no official training, profiling, dataset campaign, checkpoint inspection, or held-out evaluation has occurred. The local runtime must be measured below 12 hours before the full campaign. The protected `b∈{0,5}` split remains sealed for one final pass only.
+* **Owner:** PI (stage authorizations and protected-set manifest); engineering execution only after each required gate.
+
 ## Owner map
 
 * **PI:** Disposition of Milestone 3B results, Stage 3 de-prioritization, firewall re-affirmation, remaining runner hardening, and Experiment L guidance.
-* **Antigravity:** Independent audit of the held-out test evaluation; all further research action deferred pending explicit PI authorization.
+* **Antigravity:** Independent audit of the held-out test evaluation; its evidence-only SCLM planning review is complete. Further research action is deferred pending the listed gates.
 
 ## Canonical references
 
