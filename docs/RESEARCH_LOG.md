@@ -1287,3 +1287,8 @@
 
 
 
+
+
+## Correction — 2026-10-18 — SCLM Smoke-Check Scope
+
+The 2026-10-18 SCLM implementation entry and commit body say that no dataset generation occurred. This wording means that no official campaign dataset was generated; it does not mean that zero benchmark sequences were generated. During implementation, CommandCode ran a bounded in-memory smoke check before the no-generation constraint was reiterated: two `generate_regime_b_sequence` calls for backward-compatibility comparison, 40 masked-sequence samples, 30 `b = 3` proxy-sequence samples, `create_masked_campaign_splits(train_size=8, val_size=4)`, and `create_proxy_dev_split(per_class=3)` (114 accepted sequences total, plus bounded internal retries). This exceeded the user's instruction not to generate data. No files were written, no protected `b ∈ {0, 5}` split or checkpoint was accessed, no official campaign pool was created, and the samples were not used for tuning or official results. This is a recorded process deviation and exploratory implementation smoke check only; it is not promoted as empirical evidence.
