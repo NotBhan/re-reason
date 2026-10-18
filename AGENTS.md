@@ -26,6 +26,7 @@ The full, canonical policy is `docs/DOCUMENTATION_POLICY.md`; read it before mod
 * New experiment reports follow the required 19-section structure in the policy (§8) and record runner, analysis, tests, data artifacts, checkpoints (with hashes where relevant), figures, and exact reproduction commands — using repository-relative paths.
 * After any documentation change, run: `pytest tests/test_documentation_governance.py -v` (and the full suite `pytest tests/`).
 * Corrections are appended amendments, never silent edits; failed experiments and negative results are preserved, with rejected approaches recorded in the ledger and the status document.
+* **Abbreviations and acronyms:** When an abbreviation or acronym is introduced in repository documentation, code comments, or research artifacts, add it to `docs/ABBREVIATIONS.md` with its expansion and a brief project context. Spell the term out on first use where practical, and clarify distinct meanings rather than overwriting an existing definition.
 * Maintain the repository-global plan file `PLAN.md` and rewrite it after every agent task completion (rules in the section below).
 
 ## Global plan file (trackable, current plan only)
